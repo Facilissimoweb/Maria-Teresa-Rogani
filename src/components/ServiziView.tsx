@@ -139,7 +139,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
   ];
 
   return (
-    <div id="services-view" className="animate-fadeIn py-16 bg-[#F8FAFC] text-slate-800">
+    <article id="servizi-view" className="animate-fadeIn py-16 bg-[#F8FAFC] text-slate-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         {/* HEADER */}
@@ -399,6 +399,6 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
         </div>
 
       </div>
-    </div>
+    </article>
   );
 }

@@ -24,22 +24,35 @@ export default function App() {
   const [accessibilityOpen, setAccessibilityOpen] = useState<boolean>(false);
   const [announcement, setAnnouncement] = useState<string>('');
 
-  // 1. Initial mounting hook to parse URL hash on page load and listen to back/forward navigation
+  // 1. Initial mounting hook to parse URL path or hash on page load and listen to back/forward navigation
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleUrlChange = () => {
+      // First try to parse path from window.location.pathname
+      const rawPath = window.location.pathname.replace(/^\/|\/$/g, '');
+      const path = rawPath as ActiveTab;
+      // Second try to parse hash
       const hash = window.location.hash.replace('#', '') as ActiveTab;
+      
       const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'contatti', 'normativa'];
-      if (validTabs.includes(hash)) {
+      if (validTabs.includes(path)) {
+        setActiveTab(path);
+      } else if (validTabs.includes(hash)) {
         setActiveTab(hash);
+      } else if (rawPath === '') {
+        setActiveTab('home');
       }
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleUrlChange();
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
   }, []);
 
-  // 2. Synchronize active tab changes with document titles, URL hash, and accessibility announcements
+  // 2. Synchronize active tab changes with document titles, URL path/hash, and accessibility announcements
   useEffect(() => {
     // Scroll to top instantly when tab changes
     window.scrollTo(0, 0);
@@ -49,9 +62,15 @@ export default function App() {
       // fallback handled by previous call
     }
 
-    // Sync state to URL hash
+    // Sync state to URL pathname using history.pushState so Chrome/browsers detect true page navigation!
+    const targetPath = activeTab === 'home' ? '/' : `/${activeTab}`;
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ tab: activeTab }, '', targetPath);
+    }
+
+    // Also update hash for compatibility
     if (window.location.hash.replace('#', '') !== activeTab) {
-      window.location.hash = activeTab;
+      window.history.replaceState(null, '', `${targetPath}#${activeTab}`);
     }
 
     // Map activeTab to structured Titles for screen readers, browsers and SEO
@@ -73,6 +92,19 @@ export default function App() {
       'contatti': 'Pagina Contatti caricata. Compila il modulo di richiesta per richiedere un preventivo o una consulenza.'
     };
     setAnnouncement(announcementMap[activeTab] || 'Contenuto aggiornato.');
+  }, [activeTab]);
+
+  // 3. Accessibility: Focus the active view container when navigation occurs
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const containerId = `${activeTab}-view`;
+      const element = document.getElementById(containerId);
+      if (element) {
+        element.setAttribute('tabindex', '-1');
+        element.focus({ preventScroll: true });
+      }
+    }, 120);
+    return () => clearTimeout(timer);
   }, [activeTab]);
 
   // Global Legal Modal States

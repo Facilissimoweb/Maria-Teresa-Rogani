@@ -8,7 +8,7 @@ interface HomeViewProps {
 
 export default function HomeView({ setActiveTab }: HomeViewProps) {
   return (
-    <div id="home-view" className="animate-fadeIn">
+    <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
       <section id="hero-section" className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
         {/* Background Decorative Polygon Grid */}
@@ -301,6 +301,6 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
           </div>
         </div>
       </section>
-    </div>
+    </article>
   );
 }

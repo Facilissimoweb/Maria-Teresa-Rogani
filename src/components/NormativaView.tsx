@@ -152,7 +152,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-[#081526] min-h-screen text-slate-800 dark:text-slate-200">
+    <article id="normativa-view" className="bg-slate-50 dark:bg-[#081526] min-h-screen text-slate-800 dark:text-slate-200">
       
       {/* 1. HERO HEADER SECTION */}
       <section className="bg-[#0A192F] text-white py-16 md:py-24 relative overflow-hidden border-b-2 border-[#4A90E2]/20">
@@ -961,6 +961,6 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
         </div>
       </div>
 
-    </div>
+    </article>
   );
 }

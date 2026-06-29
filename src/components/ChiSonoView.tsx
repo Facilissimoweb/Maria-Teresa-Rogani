@@ -8,7 +8,7 @@ interface ChiSonoViewProps {
 
 export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
   return (
-    <div id="chi-sono-view" className="animate-fadeIn py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200">
+    <article id="chi-sono-view" className="animate-fadeIn py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         {/* HEADER */}
@@ -187,6 +187,6 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
         </div>
 
       </div>
-    </div>
+    </article>
   );
 }

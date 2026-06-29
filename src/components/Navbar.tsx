@@ -81,6 +81,13 @@ export default function Navbar({
     }
   }, []);
 
+  // Synchronize HTML lang attribute dynamically with activeLang to prevent language mismatches
+  useEffect(() => {
+    if (activeLang) {
+      document.documentElement.setAttribute('lang', activeLang);
+    }
+  }, [activeLang]);
+
   const handleLanguageChange = (langCode: string) => {
     // 1. Force cookie setting so Google Translate picks it up on load
     // Crucial for iframes: Use SameSite=None and Secure so standard Chrome/Safari privacy policies don't block translation inside AI Studio preview iframes!
