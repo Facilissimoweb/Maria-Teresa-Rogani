@@ -1,0 +1,462 @@
+import React, { useState } from 'react';
+import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, AlertCircle, Sparkles, Send, MapPin } from 'lucide-react';
+import { LeadForm } from '../types';
+import LegalModal, { LegalDocType } from './LegalModal';
+
+export default function ContattiView() {
+  const [formData, setFormData] = useState<LeadForm>({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    projectType: 'non-sicuro',
+    inquiryType: 'call-gratuita',
+    message: '',
+    budgetRange: '€ 1.500 - € 3.000',
+    preferredTime: 'Mattina (09:00 - 13:00)',
+    consent: false
+  });
+
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [errors, setErrors] = useState<string[]>([]);
+
+  // Legal Modal states
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [selectedDocType, setSelectedDocType] = useState<LegalDocType>('privacy');
+
+  const handleOpenLegal = (type: LegalDocType) => {
+    setSelectedDocType(type);
+    setLegalModalOpen(true);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: checked
+    }));
+  };
+
+  const handleInquirySelect = (type: 'call-gratuita' | 'sessione-codifica') => {
+    setFormData(prev => ({
+      ...prev,
+      inquiryType: type
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors: string[] = [];
+
+    if (!formData.name.trim()) validationErrors.push('Il campo Nome è obbligatorio.');
+    if (!formData.email.trim()) validationErrors.push('Il campo Email è obbligatorio.');
+    if (!formData.phone.trim()) validationErrors.push('Il campo Telefono è obbligatorio.');
+    if (!formData.consent) validationErrors.push('È necessario acconsentire al trattamento dei dati personali.');
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      // Scroll to error box
+      const errorEl = document.getElementById('error-box');
+      errorEl?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setErrors([]);
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div id="contatti-view" className="animate-fadeIn py-16 bg-[#F8FAFC] text-slate-800">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        {/* HEADER */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0A192F] bg-slate-200/50 px-4 py-2 rounded-none inline-block">
+            LEAD GENERATION & CONTATTI
+          </span>
+          <h1 className="text-3xl font-light text-[#0A192F] tracking-tight sm:text-4xl italic">
+            Iniziamo a Progettare <span className="font-bold not-italic">il Vostro Futuro Online</span>
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.
+          </p>
+          <div className="h-[2px] w-16 bg-[#0A192F] mx-auto mt-4" />
+        </div>
+
+        {submitted ? (
+          /* SUCCESS SCREEN */
+          <div id="submission-success-card" className="max-w-3xl mx-auto bg-white border-2 border-[#0A192F] rounded-none p-10 shadow-lg text-center space-y-6">
+            <div className="w-16 h-16 bg-slate-50 rounded-none flex items-center justify-center mx-auto text-[#0A192F] border border-slate-200">
+              <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+            </div>
+            
+            <div className="space-y-2">
+              <h2 className="text-2xl font-light italic text-[#0A192F]">Richiesta <span className="font-bold not-italic">Ricevuta con Successo!</span></h2>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Gentile <strong>{formData.name}</strong>, vi ringraziamo per l'interesse dimostrato nei confronti di <strong>FACILISSIMO WEB</strong>.
+              </p>
+            </div>
+
+            <div className="bg-[#F8FAFC] rounded-none p-6 text-left border border-slate-200 space-y-4 max-w-xl mx-auto text-xs sm:text-sm">
+              <h3 className="font-bold text-[#0A192F] uppercase text-[10px] tracking-widest border-b border-slate-200 pb-2">Riepilogo delle Vostre Opzioni:</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Tipologia Ingaggio:</span>
+                  <span className="text-slate-800 font-bold">
+                    {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (15 min)' : '💻 Sessione di Codifica Strategica (60 min)'}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Ambito Progetto:</span>
+                  <span className="text-slate-800 font-bold">
+                    {formData.projectType === 'cms' ? 'Sviluppo CMS (WordPress/Shopify)' : formData.projectType === 'custom' ? 'Sviluppo Custom (React/Codice)' : 'Non sono ancora sicuro'}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Budget Indicativo:</span>
+                  <span className="text-slate-800 font-bold">{formData.budgetRange}</span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Orario Preferito:</span>
+                  <span className="text-slate-800 font-bold">{formData.preferredTime}</span>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-slate-200">
+                <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Messaggio Allegato:</span>
+                <p className="text-slate-600 italic mt-1 font-mono text-xs">
+                  "{formData.message || 'Nessun messaggio allegato.'}"
+                </p>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-500 leading-relaxed max-w-md mx-auto">
+              Analizzerò personalmente i Vostri requisiti ed il Vostro sito web attuale (se esistente) per contattarvi tramite email o telefono entro le prossime 12-24 ore lavorative.
+            </p>
+
+            <div className="pt-4">
+              <button
+                onClick={() => setSubmitted(false)}
+                className="px-6 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150"
+              >
+                Invia una nuova richiesta
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* LEAD GENERATION GRID WITH COMPARISON AND FORM */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            {/* ENGAGEMENT TYPES COMPARISON */}
+            <div className="lg:col-span-5 space-y-6">
+              <h2 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">Le Mie Fasi di Ingaggio Preliminare</h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Credo che la trasparenza parta dal primo contatto. Per questo motivo vi offro la possibilità di scegliere liberamente tra due modalità distinte per parlarmi del Vostro progetto:
+              </p>
+
+              {/* Interaction Selector Cards */}
+              <div 
+                id="select-call-gratuita"
+                onClick={() => handleInquirySelect('call-gratuita')}
+                className={`p-6 rounded-none border-t-4 cursor-pointer transition-all duration-200 text-left relative ${
+                  formData.inquiryType === 'call-gratuita'
+                    ? 'border-[#0A192F] bg-white shadow-md'
+                    : 'border-slate-200 bg-white/70 hover:border-slate-300'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2">
+                    <Phone className="w-5 h-5 text-[#0A192F] shrink-0" />
+                    <h3 className="font-bold text-[#0A192F] text-sm uppercase tracking-wider">Call Preliminare Gratuita</h3>
+                  </div>
+                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1.5 rounded-none uppercase tracking-wider">Gratis</span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Un briefing telefonico o video di 15 minuti. Serve a conoscerci, inquadrare l'idea generale della Vostra piattaforma e valutare se la Vostra attività necessita di un CMS o di uno sviluppo Custom.
+                </p>
+                <ul className="mt-3 space-y-1.5 text-[10px] text-slate-500 uppercase tracking-wider">
+                  <li className="flex items-center space-x-2">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span>Nessun obbligo di acquisto</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span>Durata: 15 minuti precisi</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div 
+                id="select-sessione-codifica"
+                onClick={() => handleInquirySelect('sessione-codifica')}
+                className={`p-6 rounded-none border-t-4 cursor-pointer transition-all duration-200 text-left relative ${
+                  formData.inquiryType === 'sessione-codifica'
+                    ? 'border-[#0A192F] bg-white shadow-md'
+                    : 'border-slate-200 bg-white/70 hover:border-slate-300'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2">
+                    <Calendar className="w-5 h-5 text-[#4A90E2] shrink-0" />
+                    <h3 className="font-bold text-[#0A192F] text-sm uppercase tracking-wider">Sessione Strategica</h3>
+                  </div>
+                  <span className="text-[10px] font-bold text-[#0A192F] bg-[#0A192F]/5 px-2.5 py-1.5 rounded-none uppercase tracking-wider">60 Minuti</span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Una sessione approfondita di 60 minuti. Creiamo insieme un wireframe strategico preliminare, analizziamo l'architettura delle informazioni, definiamo i messaggi chiave e vi fornisco un piano strategico dettagliato per il funnel di conversione.
+                </p>
+                <ul className="mt-3 space-y-1.5 text-[10px] text-slate-500 uppercase tracking-wider">
+                  <li className="flex items-center space-x-2">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span>Analisi architetturale approfondita</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span>Consigliata per e-commerce e portali</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Certifications and support badge */}
+              <div className="bg-[#0A192F] text-white p-6 rounded-none border border-slate-800 space-y-3">
+                <div className="flex items-center space-x-2 text-[#4A90E2]">
+                  <ShieldCheck className="w-5 h-5" />
+                  <span className="font-bold text-xs uppercase tracking-[0.15em]">Garanzia di Sicurezza</span>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Ogni informazione o idea di business condivisa con me è tutelata da segreto professionale assoluto. Tratto i Vostri dati personali unicamente per rispondere alla Vostra richiesta, in piena conformità con il GDPR.
+                </p>
+              </div>
+            </div>
+
+            {/* FORM COLUMN */}
+            <div className="lg:col-span-7 bg-white p-8 rounded-none border-2 border-[#0A192F] shadow-sm">
+              <h2 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider mb-6">Compilate il Modulo di Richiesta</h2>
+
+              {errors.length > 0 && (
+                <div id="error-box" className="p-4 bg-red-50 border border-red-150 text-red-700 text-xs rounded-none mb-6 space-y-1">
+                  <div className="flex items-center space-x-2 font-bold mb-1 uppercase tracking-wider">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>Si prega di verificare i seguenti campi:</span>
+                  </div>
+                  <ul className="list-disc pl-5 space-y-0.5">
+                    {errors.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <form id="lead-generation-form" onSubmit={handleSubmit} className="space-y-5">
+                {/* Visual indicator of what's selected above */}
+                <div className="bg-slate-100 p-4 rounded-none border border-slate-200 text-xs flex justify-between items-center">
+                  <div>
+                    <span className="text-slate-400 block font-bold uppercase tracking-wider text-[9px]">Ingaggio Selezionato:</span>
+                    <span className="text-[#0A192F] font-bold text-xs">
+                      {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (15 Minuti)' : '💻 Sessione Strategica (60 Minuti)'}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-[#4A90E2] font-bold uppercase tracking-wider cursor-pointer underline" onClick={() => window.scrollTo({ top: 300, behavior: 'smooth' })}>
+                    Modifica
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Name field */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Il Vostro Nome *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="es. Maria Teresa Rogani"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F] bg-[#F8FAFC]"
+                    />
+                  </div>
+
+                  {/* Company field */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="company" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Nome Azienda / Ente</label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      placeholder="es. Società Agricola SpA"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F] bg-[#F8FAFC]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Email field */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Indirizzo Email *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="es. nome@azienda.it"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F] bg-[#F8FAFC]"
+                    />
+                  </div>
+
+                  {/* Phone field */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="phone" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Recapito Telefonico *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="es. +39 333 1234567"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F] bg-[#F8FAFC]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Project Type field */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="projectType" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Ambito del Progetto</label>
+                    <select
+                      id="projectType"
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
+                    >
+                      <option value="cms">Sviluppo CMS (WordPress/Shopify)</option>
+                      <option value="custom">Sviluppo Custom (React/Vite/Node)</option>
+                      <option value="non-sicuro">Non ho ancora deciso (Valutiamo insieme)</option>
+                    </select>
+                  </div>
+
+                  {/* Budget selector */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="budgetRange" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Budget Previsto Indicativo</label>
+                    <select
+                      id="budgetRange"
+                      name="budgetRange"
+                      value={formData.budgetRange}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
+                    >
+                      <option value="Fino a € 1.500">Fino a € 1.500</option>
+                      <option value="€ 1.500 - € 3.000">€ 1.500 - € 3.000</option>
+                      <option value="€ 3.000 - € 6.000">€ 3.000 - € 6.000</option>
+                      <option value="Oltre € 6.000">Oltre € 6.000</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Scheduling dropdown */}
+                <div className="space-y-1.5">
+                  <label htmlFor="preferredTime" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Fascia Oraria Preferita per il Ricontatto</label>
+                  <select
+                    id="preferredTime"
+                    name="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
+                  >
+                    <option value="Mattina (09:00 - 13:00)">Mattina (09:00 - 13:00)</option>
+                    <option value="Pomeriggio (14:00 - 18:00)">Pomeriggio (14:00 - 18:00)</option>
+                    <option value="Tardo Pomeriggio (18:00 - 19:30)">Tardo Pomeriggio (18:00 - 19:30)</option>
+                  </select>
+                </div>
+
+                {/* Message field */}
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Dettagli sul Progetto o Domande</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Fornitemi una breve descrizione della Vostra attività ed i Vostri obiettivi commerciali principali..."
+                    className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]"
+                  />
+                </div>
+
+                {/* Privacy check */}
+                <div className="flex items-start space-x-3 pt-2">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    checked={formData.consent}
+                    onChange={handleCheckboxChange}
+                    className="w-4 h-4 mt-0.5 rounded-none border-slate-300 text-[#0A192F] focus:ring-[#0A192F] cursor-pointer"
+                  />
+                  <label htmlFor="consent" className="text-[11px] text-slate-500 leading-relaxed">
+                    Acconsento al trattamento dei dati personali ai sensi della{' '}
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLegal('privacy')}
+                      className="text-[#4A90E2] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                    >
+                      Privacy Policy
+                    </button>{' '}
+                    e della{' '}
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLegal('cookie')}
+                      className="text-[#4A90E2] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                    >
+                      Cookie Policy
+                    </button>{' '}
+                    e dichiaro di accettare i{' '}
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLegal('terms')}
+                      className="text-[#4A90E2] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                    >
+                      Termini di Servizio
+                    </button>
+                    . Dichiaro di essere l'unico titolare dei dati inseriti. *
+                  </label>
+                </div>
+
+                {/* Submit button */}
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    id="form-submit-button"
+                    className="w-full py-4 bg-[#4A90E2] hover:bg-[#4A90E2]/90 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-150 shadow-md flex items-center justify-center space-x-2 cursor-pointer"
+                  >
+                    <Send className="w-4 h-4 text-white" />
+                    <span>Invia la Vostra Richiesta</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        )}
+
+      </div>
+
+      {/* Interactive Legal Documents Overlay Modal */}
+      <LegalModal 
+        isOpen={legalModalOpen} 
+        docType={selectedDocType} 
+        onClose={() => setLegalModalOpen(false)} 
+      />
+    </div>
+  );
+}

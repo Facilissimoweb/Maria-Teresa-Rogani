@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* --- ACCESSIBILITY ENHANCEMENTS --- */
+
+/* Text sizing zoom levels */
+.zoom-100 {
+  font-size: 100%;
+}
+
+.zoom-110 {
+  font-size: 110%;
+}
+
+.zoom-121 {
+  font-size: 121%;
+}
+
+.zoom-135 {
+  font-size: 135%;
+}
+
+/* Ensure child elements expand elegantly when zoom levels are applied */
+.zoom-110 h1, .zoom-110 h2, .zoom-110 h3, .zoom-110 p, .zoom-110 span, .zoom-110 button, .zoom-110 li, .zoom-110 a {
+  font-size: 1.1em;
+}
+.zoom-121 h1, .zoom-121 h2, .zoom-121 h3, .zoom-121 p, .zoom-121 span, .zoom-121 button, .zoom-121 li, .zoom-121 a {
+  font-size: 1.21em;
+}
+.zoom-135 h1, .zoom-135 h2, .zoom-135 h3, .zoom-135 p, .zoom-135 span, .zoom-135 button, .zoom-135 li, .zoom-135 a {
+  font-size: 1.35em;
+}
+
+/* Dyslexic-friendly / highly legible font */
+.readable-font-active, 
+.readable-font-active h1, 
+.readable-font-active h2, 
+.readable-font-active h3, 
+.readable-font-active p, 
+.readable-font-active span, 
+.readable-font-active button, 
+.readable-font-active a, 
+.readable-font-active li {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.08em !important;
+}
+
+/* High Contrast mode */
+.high-contrast-active {
+  filter: contrast(1.25) saturate(1.15);
+}
+.high-contrast-active.dark {
+  filter: contrast(1.4) brightness(1.1);
+}
+
+/* --- DARK MODE OVERRIDES --- */
+.dark {
+  background-color: #071120 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark #app-navbar {
+  background-color: #0d1e36 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark #desktop-navigation button {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark #desktop-navigation button:hover {
+  color: #ffffff !important;
+}
+
+.dark #desktop-navigation button.border-b-2 {
+  border-color: #4A90E2 !important;
+  color: #ffffff !important;
+}
+
+.dark #desktop-navigation #nav-cta-button {
+  border-color: #4A90E2 !important;
+  color: #ffffff !important;
+}
+.dark #desktop-navigation #nav-cta-button:hover {
+  background-color: #4A90E2 !important;
+}
+
+.dark #mobile-nav-menu {
+  background-color: #0d1e36 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark #mobile-nav-menu button {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark #mobile-nav-menu button.border-l-4 {
+  border-color: #4A90E2 !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: white !important;
+}
+
+.dark #mobile-nav-cta {
+  border-color: #4A90E2 !important;
+  color: white !important;
+}
+.dark #mobile-nav-cta:hover {
+  background-color: #4A90E2 !important;
+}
+
+/* Section BG and Text Changes */
+.dark .bg-white {
+  background-color: #0d1e36 !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: #071120 !important;
+}
+
+.dark .bg-\[\#F8FAFC\] {
+  background-color: #0a192f !important;
+}
+
+.dark .text-\[\#0A192F\],
+.dark .text-\[\#0a192f\] {
+  color: #ffffff !important;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #ffffff !important;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-600 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-slate-300 {
+  color: #f8fafc !important;
+}
+
+/* Match arbitrary hex text colors (like #0A192F or #0a192f) with class-wildcards in dark mode */
+.dark [class*="text-[#0A192F]"],
+.dark [class*="text-[#0a192f]"] {
+  color: #ffffff !important;
+}
+
+/* Specific content overrides inside Legal Modal container for perfect dark-mode legibility */
+.dark #legal-modal-body p,
+.dark #legal-modal-body li,
+.dark #legal-modal-body span,
+.dark #legal-modal-body strong {
+  color: #e2e8f0 !important;
+}
+
+.dark #legal-modal-body h3,
+.dark #legal-modal-body h4 {
+  color: #ffffff !important;
+}
+
+.dark #legal-modal-body a {
+  color: #4A90E2 !important;
+}
+.dark .border-slate-200, 
+.dark .border-slate-100 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: #34d399 !important;
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgba(74, 144, 226, 0.1) !important;
+  color: #4A90E2 !important;
+}
+
+.dark .bg-slate-200\/50 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #4A90E2 !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: #0f2441 !important;
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Contact and input elements in dark mode */
+.dark input, 
+.dark textarea, 
+.dark select {
+  background-color: #0a192f !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.dark input::placeholder, 
+.dark textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.dark #trust-banner {
+  background-color: #0a192f !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Google Translate Style Tuning */
+#google_translate_element {
+  display: inline-block;
+}
+
+.goog-te-gadget-simple {
+  background-color: white !important;
+  border: 1px solid rgba(10, 25, 47, 0.2) !important;
+  padding: 6px 12px !important;
+  border-radius: 0px !important;
+  font-family: inherit !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #0A192F !important;
+  transition: all 0.2s ease !important;
+}
+
+.goog-te-gadget-simple:hover {
+  border-color: #4A90E2 !important;
+  background-color: rgba(74, 144, 226, 0.05) !important;
+}
+
+.dark .goog-te-gadget-simple {
+  background-color: #0a192f !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark .goog-te-gadget-simple:hover {
+  border-color: #4A90E2 !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.goog-te-gadget-simple img {
+  display: none !important;
+}
+
+.goog-te-gadget-simple span {
+  color: inherit !important;
+}
+
+/* Hide standard top translate bar to make UX pristine */
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+.skiptranslate iframe {
+  display: none !important;
+  visibility: hidden !important;
+}
