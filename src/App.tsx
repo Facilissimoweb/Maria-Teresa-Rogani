@@ -22,15 +22,57 @@ export default function App() {
   const [highContrast, setHighContrast] = useState<boolean>(false);
   const [readableFont, setReadableFont] = useState<boolean>(false);
   const [accessibilityOpen, setAccessibilityOpen] = useState<boolean>(false);
+  const [announcement, setAnnouncement] = useState<string>('');
 
-  // Scroll to top instantly when the active section/tab changes
+  // 1. Initial mounting hook to parse URL hash on page load and listen to back/forward navigation
   useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '') as ActiveTab;
+      const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'contatti', 'normativa'];
+      if (validTabs.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // 2. Synchronize active tab changes with document titles, URL hash, and accessibility announcements
+  useEffect(() => {
+    // Scroll to top instantly when tab changes
     window.scrollTo(0, 0);
     try {
       window.scrollTo({ top: 0, behavior: 'instant' as any });
     } catch (e) {
       // fallback handled by previous call
     }
+
+    // Sync state to URL hash
+    if (window.location.hash.replace('#', '') !== activeTab) {
+      window.location.hash = activeTab;
+    }
+
+    // Map activeTab to structured Titles for screen readers, browsers and SEO
+    const titleMap: Record<ActiveTab, string> = {
+      'home': 'Facilissimo Web | Web Graphic Design & Strategia di M. Teresa Rogani',
+      'chi-sono': 'Chi Sono | M. Teresa Rogani - Web Graphic Designer e Alleata delle Imprese',
+      'servizi': 'Servizi, Strategia e Lead Generation | Facilissimo Web',
+      'normativa': 'Compliance Normativa, Accessibilità, AI Act e GDPR | Facilissimo Web',
+      'contatti': 'Contatti, Consulenza Gratuita e Preventivo | Facilissimo Web'
+    };
+    document.title = titleMap[activeTab] || 'Facilissimo Web';
+
+    // Map activeTab to explicit screen reader announcements
+    const announcementMap: Record<ActiveTab, string> = {
+      'home': 'Pagina Home caricata. Esplora i servizi e il design strategico.',
+      'chi-sono': 'Pagina Chi Sono caricata. Scopri la professionalità e il percorso di M. Teresa Rogani.',
+      'servizi': 'Pagina Servizi e Metodologia caricata. Scopri i servizi di design, strategia e lead generation.',
+      'normativa': 'Pagina Compliance Normativa caricata. Approfondisci l\'Accessibilità Web, il GDPR e l\'AI Act.',
+      'contatti': 'Pagina Contatti caricata. Compila il modulo di richiesta per richiedere un preventivo o una consulenza.'
+    };
+    setAnnouncement(announcementMap[activeTab] || 'Contenuto aggiornato.');
   }, [activeTab]);
 
   // Global Legal Modal States
@@ -172,6 +214,11 @@ export default function App() {
         setActiveTab={setActiveTab}
         onLegalClick={handleOpenLegal}
       />
+
+      {/* Dynamic Voice/Screen Reader Announcement Hook */}
+      <div className="sr-only" aria-live="assertive" aria-atomic="true">
+        {announcement}
+      </div>
     </div>
   );
 }
