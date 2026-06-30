@@ -332,12 +332,13 @@ export default function Navbar({
       {/* Mobile Drawer */}
       {isOpen && (
         <div id="mobile-nav-menu" className="lg:hidden bg-white border-b border-slate-200 animate-fadeIn transition-all duration-300">
-          <div className="px-6 pt-2 pb-6 space-y-2">
+          <div style={{ backgroundColor: '#ffffff' }} className="px-6 pt-2 pb-6 space-y-2">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 id={`mobile-nav-link-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
+                style={{ fontFamily: "'Poppins', sans-serif", fontSize: '15px' }}
                 className={`block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer ${
                   activeTab === item.id
                     ? 'bg-slate-50 dark:bg-white/5 text-[#0A192F] dark:text-white border-l-4 border-[#0A192F] dark:border-[#4A90E2]'
@@ -354,6 +355,7 @@ export default function Navbar({
               <button
                 id="mobile-nav-cta"
                 onClick={() => handleNavClick('contatti')}
+                style={{ fontFamily: "'Poppins', sans-serif", fontSize: '12px' }}
                 className="w-full text-center py-3 border-2 border-[#0A192F] dark:border-[#4A90E2] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#0A192F] dark:hover:bg-[#4A90E2] hover:text-white dark:hover:text-slate-950 text-[#0A192F] dark:text-white transition-all duration-200"
               >
                 Area Clienti & Richiesta
