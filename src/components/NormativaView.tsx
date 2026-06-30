@@ -155,44 +155,82 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
     <article id="normativa-view" className="bg-slate-50 dark:bg-[#081526] min-h-screen text-slate-800 dark:text-slate-200">
       
       {/* 1. HERO HEADER SECTION */}
-      <section className="bg-[#0A192F] text-white py-16 md:py-24 relative overflow-hidden border-b-2 border-[#4A90E2]/20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A192F] via-[#0D1E36] to-[#0A192F]" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#4A90E2]/10 blur-3xl rounded-full -mr-20 -mt-20" />
+      <section className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
+        {/* Background Decorative Polygon Grid */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 hidden lg:block">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 L100 0 L100 100 Z" fill="#4A90E2" />
+          </svg>
+        </div>
         
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
-          <div className="inline-flex items-center space-x-2 bg-[#4A90E2]/10 border border-[#4A90E2]/30 px-3 py-1.5 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#4A90E2]">
-            <Scale className="w-4 h-4 animate-pulse" />
-            <span>Sicurezza Digitale & Legalità</span>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
+            
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
+              <Scale className="w-4 h-4 text-[#4A90E2] shrink-0" />
+              <span>SICUREZZA DIGITALE & LEGALITÀ</span>
+            </div>
+            
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight italic">
+              Normativa & Compliance: <br />
+              <span className="font-bold not-italic text-white">Il Vostro Sito in Regola.</span>
+            </h1>
+            
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Guida pratica agli adempimenti normativi per microimprese e professionisti. Perché la conformità digitale non è un optional, ma un vantaggio competitivo tangibile.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button
+                onClick={() => setActiveTab('contatti')}
+                className="px-8 py-3.5 bg-[#4A90E2] hover:bg-[#357ABD] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-black/20 transition-all duration-300 cursor-pointer text-center"
+              >
+                Prenota Consulenza Gratuita
+              </button>
+              
+              <button
+                onClick={() => {
+                  const element = document.getElementById('checklist-section');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-8 py-3.5 border border-white/30 hover:border-white/60 hover:bg-white/5 text-white text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer text-center"
+              >
+                Esegui l'Audit Interattivo
+              </button>
+            </div>
           </div>
           
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight italic max-w-4xl mx-auto">
-            Normativa & Compliance: <br />
-            <span className="font-bold not-italic text-white">Il Vostro Sito in Regola con la Legge.</span>
-          </h1>
-          
-          <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Guida pratica agli adempimenti normativi per microimprese e professionisti. Perché la conformità digitale non è un optional, ma un vantaggio competitivo tangibile.
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setActiveTab('contatti')}
-              className="px-6 py-3.5 bg-[#4A90E2] hover:bg-[#357ABD] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-lg hover:shadow-[#4A90E2]/20 cursor-pointer flex items-center justify-center space-x-2"
-            >
-              <span>Prenota consulenza gratuita</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => handleScrollToSection('checklist-section')}
-              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-widest transition-all border border-white/20 cursor-pointer flex items-center justify-center space-x-2"
-            >
-              <span>Esegui l'Audit interattivo</span>
-              <CheckSquare className="w-4 h-4" />
-            </button>
+          {/* Hero Side Block */}
+          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
+              <div className="mb-4">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Standard Obbligatori</p>
+                <p className="text-xl font-serif italic text-white">Pratiche di Compliance Legale</p>
+              </div>
+              <div className="space-y-3 text-xs text-slate-300">
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Accessibilità Web</span>
+                  <span className="font-semibold text-white">European Accessibility Act 2025</span>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">AI Transparency</span>
+                  <span className="font-semibold text-white">EU AI Act (Watermarking & Info)</span>
+                </div>
+                <div className="flex justify-between items-end pb-1">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Data Protection</span>
+                  <span className="font-semibold text-[#4A90E2]">GDPR Consenso Granulare</span>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* DISCLAIMER OBBLIGATORIO */}
-          <div className="mt-12 max-w-3xl mx-auto bg-amber-500/10 border-l-4 border-amber-500 p-4 text-left">
+        {/* DISCLAIMER OBBLIGATORIO */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-12 relative z-10">
+          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-4 text-left">
             <div className="flex items-start space-x-3">
               <AlertOctagon className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>

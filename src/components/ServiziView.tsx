@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange } from 'lucide-react';
+import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange, Sparkles } from 'lucide-react';
 
 interface ServiziViewProps {
   setActiveTab: (tab: 'home' | 'chi-sono' | 'servizi' | 'contatti') => void;
@@ -139,22 +139,76 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
   ];
 
   return (
-    <article id="servizi-view" className="animate-fadeIn py-16 bg-[#F8FAFC] text-slate-800">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0A192F] bg-slate-200/50 px-4 py-2 rounded-none inline-block">
-            LE MIE SOLUZIONI
-          </span>
-          <h1 className="text-3xl font-light text-[#0A192F] tracking-tight sm:text-4xl italic">
-            Soluzioni Web su Misura <span className="font-bold not-italic">per i Vostri Obiettivi</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Distinguiamo nettamente tra piattaforme CMS programmabili per la massima versatilità ordinaria e sviluppi custom puri per performance tecnologiche d'élite.
-          </p>
-          <div className="h-[2px] w-16 bg-[#0A192F] mx-auto mt-4" />
+    <article id="servizi-view" className="animate-fadeIn transition-colors duration-200">
+      {/* HERO SECTION */}
+      <section id="servizi-hero" className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
+        {/* Background Decorative Polygon Grid */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 hidden lg:block">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 L100 0 L100 100 Z" fill="#4A90E2" />
+          </svg>
         </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
+            
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>LE MIE SOLUZIONI STRATEGICHE</span>
+            </div>
+            
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight italic">
+              Servizi Professionali <br />
+              <span className="font-bold not-italic text-white">su Misura per Voi</span>
+            </h1>
+            
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Distinguiamo nettamente tra piattaforme CMS programmabili per la massima versatilità ordinaria e sviluppi custom puri per performance tecnologiche d'élite.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button
+                id="servizi-hero-cta"
+                onClick={() => setActiveTab('contatti')}
+                className="px-8 py-3.5 bg-[#4A90E2] hover:bg-[#357ABD] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-black/20 transition-all duration-300"
+              >
+                Iniziate Ora
+              </button>
+            </div>
+          </div>
+          
+          {/* Hero Side Block */}
+          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
+              <div className="mb-4">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Standard di Progettazione</p>
+                <p className="text-xl font-serif italic text-white">Trasparenza & Alta Affidabilità</p>
+              </div>
+              <div className="space-y-3 text-xs text-slate-300">
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Piattaforme CMS</span>
+                  <span className="font-semibold text-white">WordPress o Webflow</span>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Sviluppo Custom</span>
+                  <span className="font-semibold text-white">React / SPA & Tailwind</span>
+                </div>
+                <div className="flex justify-between items-end pb-1">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">SLA & Supporto</span>
+                  <span className="font-semibold text-white text-[#4A90E2]">Incluso & Formativo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Area */}
+      <div className="py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200 text-slate-800 dark:text-slate-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* COMPARISON TABS (CMS VS CUSTOM) */}
         <div className="mb-20">
@@ -398,6 +452,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
           </div>
         </div>
 
+        </div>
       </div>
     </article>
   );

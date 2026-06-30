@@ -155,96 +155,102 @@ export default function Navbar({
           </div>
 
           {/* Desktop Nav */}
-          <nav id="desktop-navigation" className="hidden md:flex space-x-6 lg:space-x-8 items-center">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                id={`nav-link-${item.id}`}
-                onClick={() => handleNavClick(item.id)}
-                className={`text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 relative py-2 cursor-pointer ${
-                  activeTab === item.id
-                    ? 'text-[#0A192F] dark:text-white border-b-2 border-[#0A192F] dark:border-[#4A90E2]'
-                    : 'text-[#0A192F]/70 dark:text-slate-300 hover:text-[#0A192F] dark:hover:text-white'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}            {/* Custom Globe Language Selector */}
-            <div className="relative">
-              <button
-                id="navbar-lang-toggle"
-                onClick={() => setIsLangOpen(!isLangOpen)}
-                className="p-2 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors rounded-none cursor-pointer flex items-center justify-center ml-2 border border-transparent hover:border-slate-200/20"
-                title="Scegli la lingua / Choose language"
-                aria-label="Scegli la lingua"
-              >
-                <span className="text-sm mr-1.5">{currentLang.flag}</span>
-                <span className="text-[10px] font-mono font-bold uppercase">{currentLang.label}</span>
-              </button>
-              
-              {isLangOpen && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#0d1e36] border border-slate-200 dark:border-white/10 shadow-2xl py-1.5 z-50 rounded-2xl max-h-72 overflow-y-auto animate-fadeIn">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleLanguageChange(lang.code)}
-                        className={`w-full text-left px-4 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-center justify-between cursor-pointer ${
-                          activeLang === lang.code 
-                            ? 'text-[#4A90E2] bg-slate-50 dark:bg-white/5' 
-                            : 'text-[#0A192F] dark:text-slate-200'
-                        }`}
-                      >
-                        <div className="flex items-center space-x-2">
-                          <span className="text-base">{lang.flag}</span>
-                          <span>{lang.label}</span>
-                        </div>
-                        {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#4A90E2] rounded-full" />}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
+          <nav id="desktop-navigation" className="hidden md:flex flex-1 justify-between items-center ml-8 lg:ml-16">
+            <div className="flex justify-between flex-1 max-w-md lg:max-w-xl mx-6">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  id={`nav-link-${item.id}`}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 relative py-2 cursor-pointer ${
+                    activeTab === item.id
+                      ? 'text-[#0A192F] dark:text-white border-b-2 border-[#0A192F] dark:border-[#4A90E2]'
+                      : 'text-[#0A192F]/70 dark:text-slate-300 hover:text-[#0A192F] dark:hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
 
-            {/* Quick Dark Mode Toggler */}
-            {setDarkMode && (
-              <button
-                id="navbar-dark-toggle"
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors rounded-none cursor-pointer flex items-center justify-center ml-2 border border-transparent hover:border-slate-200/20"
-                title={darkMode ? "Attiva modalità chiara" : "Attiva modalità scura"}
-                aria-label="Cambia tema chiaro/scuro"
-              >
-                {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-              </button>
-            )}
+            <div className="flex items-center space-x-1.5 lg:space-x-3 shrink-0">
+              {/* Custom Globe Language Selector */}
+              <div className="relative">
+                <button
+                  id="navbar-lang-toggle"
+                  onClick={() => setIsLangOpen(!isLangOpen)}
+                  className="p-2 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors rounded-none cursor-pointer flex items-center justify-center border border-transparent hover:border-slate-200/20"
+                  title="Scegli la lingua / Choose language"
+                  aria-label="Scegli la lingua"
+                >
+                  <span className="text-sm mr-1.5">{currentLang.flag}</span>
+                  <span className="text-[10px] font-mono font-bold uppercase">{currentLang.label}</span>
+                </button>
+                
+                {isLangOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#0d1e36] border border-slate-200 dark:border-white/10 shadow-2xl py-1.5 z-50 rounded-2xl max-h-72 overflow-y-auto animate-fadeIn">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleLanguageChange(lang.code)}
+                          className={`w-full text-left px-4 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-center justify-between cursor-pointer ${
+                            activeLang === lang.code 
+                              ? 'text-[#4A90E2] bg-slate-50 dark:bg-white/5' 
+                              : 'text-[#0A192F] dark:text-slate-200'
+                          }`}
+                        >
+                          <div className="flex items-center space-x-2">
+                            <span className="text-base">{lang.flag}</span>
+                            <span>{lang.label}</span>
+                          </div>
+                          {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#4A90E2] rounded-full" />}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
 
-            {/* Accessibility Panel Toggle in Desktop Navbar */}
-            {setAccessibilityOpen && (
-              <button
-                id="navbar-accessibility-toggle"
-                onClick={() => setAccessibilityOpen(!accessibilityOpen)}
-                className={`p-2 transition-colors rounded-none cursor-pointer flex items-center justify-center ml-2 border border-transparent hover:border-slate-200/20 ${
-                  accessibilityOpen 
-                    ? 'text-[#4A90E2] border-slate-200/20 bg-slate-50 dark:bg-white/5' 
-                    : 'text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2]'
-                }`}
-                title="Navigazione Facilitata"
-                aria-label="Apri pannello di accessibilità"
-              >
-                <Accessibility className="w-5 h-5" />
-              </button>
-            )}
+              {/* Quick Dark Mode Toggler */}
+              {setDarkMode && (
+                <button
+                  id="navbar-dark-toggle"
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="p-2 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors rounded-none cursor-pointer flex items-center justify-center border border-transparent hover:border-slate-200/20"
+                  title={darkMode ? "Attiva modalità chiara" : "Attiva modalità scura"}
+                  aria-label="Cambia tema chiaro/scuro"
+                >
+                  {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
+                </button>
+              )}
 
-            <button
-              id="nav-cta-button"
-              onClick={() => handleNavClick('contatti')}
-              className="ml-2 px-5 py-2.5 border-2 border-[#0A192F] dark:border-[#4A90E2] text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:bg-[#0A192F] dark:hover:bg-[#4A90E2] hover:text-white dark:hover:text-slate-950 text-[#0A192F] dark:text-white transition-all duration-200"
-            >
-              Richiedi Consulenza
-            </button>
+              {/* Accessibility Panel Toggle in Desktop Navbar */}
+              {setAccessibilityOpen && (
+                <button
+                  id="navbar-accessibility-toggle"
+                  onClick={() => setAccessibilityOpen(!accessibilityOpen)}
+                  className={`p-2 transition-colors rounded-none cursor-pointer flex items-center justify-center border border-transparent hover:border-slate-200/20 ${
+                    accessibilityOpen 
+                      ? 'text-[#4A90E2] border-slate-200/20 bg-slate-50 dark:bg-white/5' 
+                      : 'text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2]'
+                  }`}
+                  title="Navigazione Facilitata"
+                  aria-label="Apri pannello di accessibilità"
+                >
+                  <Accessibility className="w-5 h-5" />
+                </button>
+              )}
+
+              <button
+                id="nav-cta-button"
+                onClick={() => handleNavClick('contatti')}
+                className="px-5 py-2.5 border-2 border-[#0A192F] dark:border-[#4A90E2] text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:bg-[#0A192F] dark:hover:bg-[#4A90E2] hover:text-white dark:hover:text-slate-950 text-[#0A192F] dark:text-white transition-all duration-200"
+              >
+                Richiedi Consulenza
+              </button>
+            </div>
           </nav>
 
           {/* Mobile Menu Button & Toggler */}

@@ -20,22 +20,76 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
   };
 
   return (
-    <article id="chi-sono-view" className="animate-fadeIn py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0A192F] dark:text-[#4A90E2] bg-slate-200/50 dark:bg-white/5 px-4 py-2 rounded-none inline-block">
-            VISUAL COMMUNICATION & WEB DESIGN STRATEGY
-          </span>
-          <h1 className="text-3xl font-light text-[#0A192F] dark:text-white tracking-tight sm:text-4xl italic">
-            M. Teresa Rogani: <span className="font-bold not-italic">Il Vostro Partner per una Presenza Digitale Professionale</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Affianco la Vostra impresa come Web Graphic Designer e alleata strategica, unendo una solida preparazione accademica nella progettazione visiva a una visione orientata agli obiettivi concreti del Vostro business.
-          </p>
-          <div className="h-[2px] w-16 bg-[#0A192F] dark:bg-[#4A90E2] mx-auto mt-4" />
+    <article id="chi-sono-view" className="animate-fadeIn transition-colors duration-200">
+      {/* HERO SECTION */}
+      <section id="chi-sono-hero" className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
+        {/* Background Decorative Polygon Grid */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 hidden lg:block">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 L100 0 L100 100 Z" fill="#4A90E2" />
+          </svg>
         </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
+            
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>VISUAL COMMUNICATION & WEB DESIGN STRATEGY</span>
+            </div>
+            
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight italic">
+              Chi Sono: <br />
+              <span className="font-bold not-italic text-white">M. Teresa Rogani</span>
+            </h1>
+            
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Affianco la Vostra impresa come Web Graphic Designer e alleata strategica, unendo una solida preparazione accademica nella progettazione visiva a una visione orientata agli obiettivi concreti del Vostro business.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button
+                id="chi-sono-hero-cta"
+                onClick={() => setActiveTab('contatti')}
+                className="px-8 py-3.5 bg-[#4A90E2] hover:bg-[#357ABD] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-black/20 transition-all duration-300"
+              >
+                Parliamo del Vostro Progetto
+              </button>
+            </div>
+          </div>
+          
+          {/* Hero Side Block */}
+          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
+              <div className="mb-4">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Unica Titolare</p>
+                <p className="text-xl font-serif italic text-white">Web Graphic Designer Strategica</p>
+              </div>
+              <div className="space-y-3 text-xs text-slate-300">
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Ruolo</span>
+                  <span className="font-semibold text-white">Consulente Indipendente</span>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Competenza</span>
+                  <span className="font-semibold text-white">Design, Social, Legale & AI</span>
+                </div>
+                <div className="flex justify-between items-end pb-1">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Status</span>
+                  <span className="font-semibold text-white text-[#4A90E2]">Lead's Manager Certificata</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Area */}
+      <div className="py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* PROFILE & VISION SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
@@ -199,6 +253,7 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
           </div>
         </div>
 
+        </div>
       </div>
     </article>
   );

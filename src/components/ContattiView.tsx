@@ -74,22 +74,66 @@ export default function ContattiView() {
   };
 
   return (
-    <article id="contatti-view" className="animate-fadeIn py-16 bg-[#F8FAFC] text-slate-800">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0A192F] bg-slate-200/50 px-4 py-2 rounded-none inline-block">
-            LEAD GENERATION & CONTATTI
-          </span>
-          <h1 className="text-3xl font-light text-[#0A192F] tracking-tight sm:text-4xl italic">
-            Iniziamo a Progettare <span className="font-bold not-italic">il Vostro Futuro Online</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.
-          </p>
-          <div className="h-[2px] w-16 bg-[#0A192F] mx-auto mt-4" />
+    <article id="contatti-view" className="animate-fadeIn transition-colors duration-200">
+      {/* HERO SECTION */}
+      <section id="contatti-hero" className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
+        {/* Background Decorative Polygon Grid */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 hidden lg:block">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 L100 0 L100 100 Z" fill="#4A90E2" />
+          </svg>
         </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
+            
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>CONTATTI & CONSULENZA STRATEGICA</span>
+            </div>
+            
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight italic">
+              Iniziamo a Progettare <br />
+              <span className="font-bold not-italic text-white">il Vostro Successo Online</span>
+            </h1>
+            
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.
+            </p>
+          </div>
+          
+          {/* Hero Side Block */}
+          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
+              <div className="mb-4">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Primo Incontro Gratuito</p>
+                <p className="text-xl font-serif italic text-white">Sessione Strategica di 30 Minuti</p>
+              </div>
+              <div className="space-y-3 text-xs text-slate-300">
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Durata</span>
+                  <span className="font-semibold text-white">30 Minuti in Video Call</span>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Focus</span>
+                  <span className="font-semibold text-white">Obiettivi, Target & Compliance</span>
+                </div>
+                <div className="flex justify-between items-end pb-1">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Costo</span>
+                  <span className="font-semibold text-emerald-400 font-mono">GRATUITA (100% Off)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Area */}
+      <div className="py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200 text-slate-800 dark:text-slate-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {submitted ? (
           /* SUCCESS SCREEN */
@@ -449,6 +493,7 @@ export default function ContattiView() {
           </div>
         )}
 
+        </div>
       </div>
 
       {/* Interactive Legal Documents Overlay Modal */}
