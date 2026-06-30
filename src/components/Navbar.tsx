@@ -39,6 +39,7 @@ export default function Navbar({
     { id: 'home', label: 'Home' },
     { id: 'chi-sono', label: 'Chi Sono' },
     { id: 'servizi', label: 'Servizi' },
+    { id: 'blog', label: 'Blog' },
     { id: 'normativa', label: 'Compliance' },
     { id: 'contatti', label: 'Contatti' },
   ] as const;

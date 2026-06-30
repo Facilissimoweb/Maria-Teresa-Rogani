@@ -8,7 +8,7 @@ interface ServiziViewProps {
 
 export default function ServiziView({ setActiveTab }: ServiziViewProps) {
   const [activePhase, setActivePhase] = useState<number>(1);
-  const [activeCategory, setActiveCategory] = useState<'cms' | 'custom'>('cms');
+  const [activeCategory, setActiveCategory] = useState<'cms' | 'custom' | 'social'>('cms');
 
   const phaseLabelColors: Record<number, string> = {
     2: '#f8fbff',
@@ -86,6 +86,40 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
         'Accordi di livello di servizio (SLA) per manutenzione e SLA'
       ],
       bestFor: 'Grandi aziende, Portali associativi, Piattaforme web dinamiche con migliaia di utenti'
+    }
+  ];
+
+  const socialPackages = [
+    {
+      id: 'social-start',
+      title: 'Social Lead Generation Start',
+      price: 'Da € 1.290',
+      description: 'Configurazione ed ottimizzazione delle Vostre prime campagne di acquisizione contatti sui canali social. Ideale per lanciare la Vostra presenza ed iniziare a raccogliere contatti profilati con un investimento contenuto.',
+      features: [
+        'Studio del target e definizione del pubblico ottimale',
+        'Creazione e ottimizzazione di Meta Ads (Facebook/Instagram)',
+        'Sviluppo di 1 Landing Page ad alta conversione',
+        'Sincronizzazione dei contatti via Email / Telegram / WhatsApp',
+        'Configurazione tracciamenti fondamentali (Meta Pixel)',
+        '1 mese di monitoraggio attivo delle campagne con reportistica'
+      ],
+      bestFor: 'Professionisti e attività locali che desiderano testare l\'efficacia dell\'acquisizione contatti online.'
+    },
+    {
+      id: 'social-advanced',
+      title: 'Social Lead Generation Advanced',
+      price: 'Da € 2.490',
+      description: 'Sistema integrato di lead generation multicanale con flussi automatici di riscaldamento del contatto. Ideale per studi professionali o imprese che desiderano un flusso costante e automatizzato di clienti pronti all\'acquisto.',
+      features: [
+        'Analisi avanzata e ricerca del pubblico B2B/B2C',
+        'Campagne multicanale attive (Meta Ads & LinkedIn Ads)',
+        'Fino a 3 varianti di Landing Page con A/B Testing',
+        'Flusso automatico di Email Marketing (Lead Nurturing - 4 email)',
+        'Integrazione API avanzata con il Vostro CRM aziendale',
+        'Consulenza strategica continua e reportistica quindicinale',
+        'Sviluppo di Lead Magnet personalizzato (PDF, Video o Guida)'
+      ],
+      bestFor: 'Aziende strutturate, Studi professionali, Agenzie e attività B2B ad alto scontrino medio.'
     }
   ];
 
@@ -230,10 +264,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
       <div className="py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200 text-slate-800 dark:text-slate-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* COMPARISON TABS (CMS VS CUSTOM) */}
+        {/* COMPARISON TABS (CMS VS CUSTOM VS SOCIAL) */}
         <div className="mb-20">
           <div className="flex justify-center mb-8">
-            <div className="bg-slate-200 p-1 rounded-none flex space-x-1">
+            <div className="bg-slate-200 p-1 rounded-none flex flex-wrap gap-1 justify-center">
               <button
                 id="tab-selector-cms"
                 onClick={() => setActiveCategory('cms')}
@@ -258,12 +292,24 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <Code className="w-4 h-4 shrink-0" />
                 <span>Sviluppo Custom (Codice Proprietario)</span>
               </button>
+              <button
+                id="tab-selector-social"
+                onClick={() => setActiveCategory('social')}
+                className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
+                  activeCategory === 'social'
+                    ? 'bg-[#0A192F] text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <Sparkles className="w-4 h-4 shrink-0 text-amber-500" />
+                <span>Social Lead Generation (Consulenza & Campagne)</span>
+              </button>
             </div>
           </div>
 
           {/* SERVICE CARDS */}
           <AnimatePresence mode="wait">
-            {activeCategory === 'cms' ? (
+            {activeCategory === 'cms' && (
               <motion.div 
                 key="cms"
                 initial={{ opacity: 0, y: 15 }}
@@ -318,7 +364,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                   </div>
                 ))}
               </motion.div>
-            ) : (
+            )}
+
+            {activeCategory === 'custom' && (
               <motion.div 
                 key="custom"
                 initial={{ opacity: 0, y: 15 }}
@@ -367,6 +415,63 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         className="w-full mt-4 py-3 bg-[#4A90E2] hover:bg-[#4A90E2]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
                       >
                         <span>Inizializzate lo sviluppo custom</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+            {activeCategory === 'social' && (
+              <motion.div 
+                key="social"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+              >
+                {socialPackages.map((pkg) => (
+                  <div 
+                    key={pkg.id} 
+                    id={`pkg-${pkg.id}`}
+                    className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
+                  >
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-start">
+                        <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
+                        <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
+                          {pkg.price}
+                        </span>
+                      </div>
+                      
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {pkg.description}
+                      </p>
+
+                      <div className="border-t border-slate-100 pt-6">
+                        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
+                        <ul className="space-y-2.5">
+                          {pkg.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-slate-100 mt-8 pt-6">
+                      <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
+                      </p>
+                      <button
+                        onClick={() => setActiveTab('contatti')}
+                        className="w-full mt-4 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
+                      >
+                        <span>Selezionate questa strategia</span>
                         <ChevronRight className="w-4 h-4" />
                       </button>
                     </div>

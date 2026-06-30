@@ -7,6 +7,7 @@ import ChiSonoView from './components/ChiSonoView';
 import ServiziView from './components/ServiziView';
 import ContattiView from './components/ContattiView';
 import NormativaView from './components/NormativaView';
+import BlogView from './components/BlogView';
 import AccessibilityPanel from './components/AccessibilityPanel';
 import ChatAssistant from './components/ChatAssistant';
 import LegalModal, { LegalDocType } from './components/LegalModal';
@@ -35,7 +36,7 @@ export default function App() {
       // Second try to parse hash
       const hash = window.location.hash.replace('#', '') as ActiveTab;
       
-      const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'contatti', 'normativa'];
+      const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'blog', 'contatti', 'normativa'];
       if (validTabs.includes(path)) {
         setActiveTab(path);
       } else if (validTabs.includes(hash)) {
@@ -80,6 +81,7 @@ export default function App() {
       'home': 'Facilissimo Web | Web Graphic Design & Strategia di M. Teresa Rogani',
       'chi-sono': 'Chi Sono | M. Teresa Rogani - Web Graphic Designer e Alleata delle Imprese',
       'servizi': 'Servizi, Strategia e Lead Generation | Facilissimo Web',
+      'blog': 'Blog, Risorse e Strategia Digitale | Facilissimo Web',
       'normativa': 'Compliance Normativa, Accessibilità, AI Act e GDPR | Facilissimo Web',
       'contatti': 'Contatti, Consulenza Gratuita e Preventivo | Facilissimo Web'
     };
@@ -90,6 +92,7 @@ export default function App() {
       'home': 'Pagina Home caricata. Esplora i servizi e il design strategico.',
       'chi-sono': 'Pagina Chi Sono caricata. Scopri la professionalità e il percorso di M. Teresa Rogani.',
       'servizi': 'Pagina Servizi e Metodologia caricata. Scopri i servizi di design, strategia e lead generation.',
+      'blog': 'Pagina Blog caricata. Leggi le ultime risorse, novità e guide strategiche.',
       'normativa': 'Pagina Compliance Normativa caricata. Approfondisci l\'Accessibilità Web, il GDPR e l\'AI Act.',
       'contatti': 'Pagina Contatti caricata. Compila il modulo di richiesta per richiedere un preventivo o una consulenza.'
     };
@@ -129,6 +132,8 @@ export default function App() {
         return <ServiziView setActiveTab={setActiveTab} />;
       case 'contatti':
         return <ContattiView />;
+      case 'blog':
+        return <BlogView setActiveTab={setActiveTab} />;
       case 'normativa':
         return <NormativaView setActiveTab={setActiveTab} />;
       default:
