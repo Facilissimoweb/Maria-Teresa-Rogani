@@ -39,9 +39,8 @@ export default function Navbar({
     { id: 'home', label: 'Home' },
     { id: 'chi-sono', label: 'Chi Sono' },
     { id: 'servizi', label: 'Servizi' },
-    { id: 'blog', label: 'Blog' },
     { id: 'normativa', label: 'Compliance' },
-    { id: 'contatti', label: 'Contatti' },
+    { id: 'blog', label: 'Blog' },
   ] as const;
 
   const languages = [
@@ -132,7 +131,7 @@ export default function Navbar({
 
   return (
     <header id="app-navbar" className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 shadow-sm backdrop-blur-md bg-opacity-95 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="w-full px-6 lg:px-12">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div 
@@ -156,21 +155,28 @@ export default function Navbar({
           </div>
 
           {/* Desktop Nav */}
-          <nav id="desktop-navigation" className="hidden lg:flex flex-1 justify-between items-center ml-8 lg:ml-16">
-            <div className="flex justify-between flex-1 max-w-md lg:max-w-xl mx-6">
+          <nav id="desktop-navigation" className="hidden xl:flex flex-1 justify-between items-center ml-8 xl:ml-16">
+            <div className="flex justify-between flex-1 mx-8 xl:mx-16">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
                   id={`nav-link-${item.id}`}
                   onClick={() => handleNavClick(item.id)}
                   style={{ fontFamily: "'Poppins', sans-serif" }}
-                  className={`text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 relative py-2 cursor-pointer ${
-                    activeTab === item.id
-                      ? 'text-[#0A192F] dark:text-white border-b-2 border-[#0A192F] dark:border-[#4A90E2]'
-                      : 'text-[#0A192F]/70 dark:text-slate-300 hover:text-[#0A192F] dark:hover:text-white'
+                  className={`text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 relative py-2 cursor-pointer flex items-center space-x-1.5 ${
+                    item.id === 'blog'
+                      ? activeTab === 'blog'
+                        ? 'text-amber-500 dark:text-amber-400 border-b-2 border-amber-500 dark:border-amber-400 font-extrabold'
+                        : 'text-amber-600 dark:text-amber-500 hover:text-amber-500 dark:hover:text-amber-400 bg-amber-500/5 px-2.5 py-0.5 border border-amber-500/20 rounded-none'
+                      : activeTab === item.id
+                        ? 'text-[#0A192F] dark:text-white border-b-2 border-[#0A192F] dark:border-[#4A90E2]'
+                        : 'text-[#0A192F]/70 dark:text-slate-300 hover:text-[#0A192F] dark:hover:text-white'
                   }`}
                 >
-                  {item.label}
+                  {item.id === 'blog' && (
+                    <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping shrink-0" />
+                  )}
+                  <span>{item.label}</span>
                 </button>
               ))}
             </div>
@@ -256,7 +262,7 @@ export default function Navbar({
           </nav>
 
           {/* Mobile Menu Button & Toggler */}
-          <div className="flex lg:hidden items-center space-x-1">
+          <div className="flex xl:hidden items-center space-x-1">
             {/* Mobile accessibility selector button */}
             {setAccessibilityOpen && (
               <button
@@ -332,7 +338,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div id="mobile-nav-menu" className="lg:hidden bg-white border-b border-slate-200 animate-fadeIn transition-all duration-300">
+        <div id="mobile-nav-menu" className="xl:hidden bg-white border-b border-slate-200 animate-fadeIn transition-all duration-300">
           <div style={{ backgroundColor: '#ffffff' }} className="px-6 pt-2 pb-6 space-y-2">
             {menuItems.map((item) => (
               <button
@@ -340,13 +346,20 @@ export default function Navbar({
                 id={`mobile-nav-link-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
                 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '15px' }}
-                className={`block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer ${
-                  activeTab === item.id
-                    ? 'bg-slate-50 dark:bg-white/5 text-[#0A192F] dark:text-white border-l-4 border-[#0A192F] dark:border-[#4A90E2]'
-                    : 'text-[#0A192F]/70 dark:text-slate-300 hover:bg-slate-50 hover:text-[#0A192F]'
+                className={`block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
+                  item.id === 'blog'
+                    ? activeTab === 'blog'
+                      ? 'bg-amber-500/10 text-amber-500 border-l-4 border-amber-500 font-extrabold'
+                      : 'bg-amber-500/5 text-amber-600 border border-amber-500/10'
+                    : activeTab === item.id
+                      ? 'bg-slate-50 dark:bg-white/5 text-[#0A192F] dark:text-white border-l-4 border-[#0A192F] dark:border-[#4A90E2]'
+                      : 'text-[#0A192F]/70 dark:text-slate-300 hover:bg-slate-50 hover:text-[#0A192F]'
                 }`}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {item.id === 'blog' && (
+                  <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+                )}
               </button>
             ))}
 

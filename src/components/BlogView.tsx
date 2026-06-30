@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Calendar, 
@@ -197,24 +197,101 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
 
   const handleShare = (article: Article, platform: 'wa' | 'fb' | 'li' | 'tw' | 'copy') => {
     const url = `${window.location.origin}/blog#${article.id}`;
-    const text = `Leggi l'articolo interessante su Facilissimo Web: "${article.title}"`;
+    
+    // Explicitly construct share contents with Excerpt and Image URL where possible
+    const shareText = `*${article.title}*\n\n"${article.excerpt}"\n\nAnteprima visiva: ${article.image}\n\nLeggi l'articolo completo su Facilissimo Web: ${url}`;
     
     if (platform === 'wa') {
-      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
     } else if (platform === 'fb') {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+      // Facebook uses OG meta tags scraped from the URL. We also append a text summary in fallback
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(article.excerpt)}`, '_blank');
     } else if (platform === 'li') {
+      // LinkedIn relies heavily on OG tags scraped from URL
       window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
     } else if (platform === 'tw') {
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+      // Twitter accepts text and URL parameters. We pass truncated excerpt and the URL
+      const truncatedExcerpt = article.excerpt.length > 100 ? article.excerpt.substring(0, 97) + "..." : article.excerpt;
+      const tweetText = `"${article.title}"\n\n${truncatedExcerpt}\n\nAnteprima: ${article.image}\n`;
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(url)}`, '_blank');
     } else if (platform === 'copy') {
-      navigator.clipboard.writeText(url);
+      // Custom clipboard text including title, excerpt, image, and link
+      const clipboardContent = `${article.title}\n\n${article.excerpt}\n\nImmagine di riferimento: ${article.image}\n\nLink: ${url}`;
+      navigator.clipboard.writeText(clipboardContent);
       setCopiedId(article.id);
       setTimeout(() => setCopiedId(null), 2500);
     }
   };
 
   const selectedArticle = articles.find(a => a.id === selectedArticleId);
+
+  // Synchronize browser metadata dynamically with selected article
+  useEffect(() => {
+    if (selectedArticleId && selectedArticle) {
+      document.title = `${selectedArticle.title} | Il Blog di Facilissimo Web`;
+
+      const setMetaTag = (attributeName: string, attributeValue: string, contentValue: string) => {
+        let el = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attributeName, attributeValue);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', contentValue);
+      };
+
+      // Standard metadata
+      setMetaTag('name', 'description', selectedArticle.excerpt);
+      
+      // Open Graph (Facebook / LinkedIn) metadata
+      setMetaTag('property', 'og:title', selectedArticle.title);
+      setMetaTag('property', 'og:description', selectedArticle.excerpt);
+      setMetaTag('property', 'og:image', selectedArticle.image);
+      setMetaTag('property', 'og:type', 'article');
+      setMetaTag('property', 'og:url', `${window.location.origin}/blog#${selectedArticle.id}`);
+
+      // Twitter Card metadata
+      setMetaTag('name', 'twitter:card', 'summary_large_image');
+      setMetaTag('name', 'twitter:title', selectedArticle.title);
+      setMetaTag('name', 'twitter:description', selectedArticle.excerpt);
+      setMetaTag('name', 'twitter:image', selectedArticle.image);
+    } else {
+      // Fallback/Default Blog page title and description
+      document.title = 'Blog, Risorse e Strategia Digitale | Facilissimo Web';
+      
+      const setMetaTag = (attributeName: string, attributeValue: string, contentValue: string) => {
+        let el = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
+        if (el) el.setAttribute('content', contentValue);
+      };
+      
+      setMetaTag('name', 'description', 'Il blog di Facilissimo Web. Leggi le ultime risorse, novità e guide strategiche per migliorare la presenza digitale della tua impresa.');
+      setMetaTag('property', 'og:title', 'Blog, Risorse e Strategia Digitale | Facilissimo Web');
+      setMetaTag('property', 'og:description', 'Il blog di Facilissimo Web. Leggi le ultime risorse, novità e guide strategiche per migliorare la presenza digitale della tua impresa.');
+      setMetaTag('property', 'og:image', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');
+    }
+  }, [selectedArticleId, selectedArticle]);
+
+  // Handle direct url hash access on mount / hash change
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && articles.some(a => a.id === hash)) {
+        setSelectedArticleId(hash);
+        // Scroll to article content nicely
+        setTimeout(() => {
+          const el = document.getElementById('blog-hero');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+          }
+        }, 150);
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   return (
     <article id="blog-view" className="w-full bg-[#FAFBFD] dark:bg-[#0a192f] transition-colors duration-300 min-h-screen text-slate-800 dark:text-slate-200">
@@ -257,7 +334,11 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                 <div 
                   key={article.id} 
                   id={`article-card-${article.id}`}
-                  className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-white/5 rounded-none flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group"
+                  onClick={() => {
+                    setSelectedArticleId(article.id);
+                    window.scrollTo({ top: 300, behavior: 'smooth' });
+                  }}
+                  className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-white/5 rounded-none flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group cursor-pointer"
                 >
                   <div>
                     {/* Cover Image */}
@@ -310,7 +391,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     </button>
 
                     {/* Social sharing row */}
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2" onClick={(e) => e.stopPropagation()}>
                       <button
                         onClick={() => handleShare(article, 'copy')}
                         className="p-1.5 text-slate-400 hover:text-[#0A192F] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all rounded-none cursor-pointer"

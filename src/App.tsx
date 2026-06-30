@@ -37,10 +37,13 @@ export default function App() {
       const hash = window.location.hash.replace('#', '') as ActiveTab;
       
       const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'blog', 'contatti', 'normativa'];
+      const articleIds = ['ai-act-web-design', 'lead-gen-social-strategy', 'accessibilita-web-business'];
       if (validTabs.includes(path)) {
         setActiveTab(path);
       } else if (validTabs.includes(hash)) {
         setActiveTab(hash);
+      } else if (articleIds.includes(hash) || articleIds.includes(rawPath)) {
+        setActiveTab('blog');
       } else if (rawPath === '') {
         setActiveTab('home');
       }
