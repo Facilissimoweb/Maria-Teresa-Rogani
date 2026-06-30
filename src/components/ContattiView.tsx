@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, AlertCircle, Sparkles, Send, MapPin } from 'lucide-react';
+import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, AlertCircle, Sparkles, Send, MapPin, Loader2 } from 'lucide-react';
 import { LeadForm } from '../types';
 import LegalModal, { LegalDocType } from './LegalModal';
 
@@ -34,6 +34,8 @@ export default function ContattiView() {
   });
 
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submissionWarning, setSubmissionWarning] = useState<string | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
 
   // Legal Modal states
@@ -68,7 +70,7 @@ export default function ContattiView() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors: string[] = [];
 
@@ -84,8 +86,37 @@ export default function ContattiView() {
       errorEl?.scrollIntoView({ behavior: 'smooth' });
     } else {
       setErrors([]);
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsSubmitting(true);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+
+        const resData = await response.json();
+
+        if (!response.ok) {
+          throw new Error(resData.error || 'Si è verificato un errore durante l\'invio della richiesta.');
+        }
+
+        if (resData.simulated) {
+          setSubmissionWarning(resData.message);
+        } else {
+          setSubmissionWarning(null);
+        }
+
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err: any) {
+        setErrors([err.message || 'Si è verificato un errore imprevisto. Si prega di riprovare più tardi o contattarmi direttamente.']);
+        setTimeout(() => {
+          const errorEl = document.getElementById('error-box');
+          errorEl?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -214,6 +245,33 @@ export default function ContattiView() {
             <p className="text-xs text-slate-500 leading-relaxed max-w-md mx-auto">
               Analizzerò personalmente i Vostri requisiti ed il Vostro sito web attuale (se esistente) per contattarvi tramite email o telefono entro le prossime 12-24 ore lavorative.
             </p>
+
+            {submissionWarning && (
+              <div className="bg-amber-50 border border-amber-200 p-6 text-left max-w-xl mx-auto text-xs space-y-2 text-slate-700 rounded-none">
+                <div className="flex items-center space-x-2 font-bold uppercase tracking-wider text-[10px] text-amber-800">
+                  <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>Nota di Configurazione SMTP (M. Teresa)</span>
+                </div>
+                <p className="leading-relaxed">
+                  L'invio sul frontend è avvenuto con successo, ma si tratta di una <strong>simulazione sul server</strong> perché non hai ancora inserito le credenziali SMTP nel file <code className="font-mono bg-amber-100 text-amber-900 px-1 py-0.5 rounded text-[11px]">.env</code> o nelle variabili di ambiente.
+                </p>
+                <div className="pt-2">
+                  <p className="font-bold text-[10px] uppercase tracking-wider text-[#0A192F] mb-1">Come ricevere le email reali su <span className="font-mono text-slate-800">facilissimoweb.mc@gmail.com</span>:</p>
+                  <ol className="list-decimal pl-4 space-y-1.5 text-slate-600">
+                    <li>
+                      Apri il file <code className="font-mono bg-slate-100 text-[#0A192F] px-1 py-0.5 rounded">.env</code> o la sezione dei Secrets di hosting.
+                    </li>
+                    <li>
+                      Aggiungi o compila la variabile <code className="font-mono bg-slate-100 text-[#0A192F] px-1 py-0.5 rounded">SMTP_USER="facilissimoweb.mc@gmail.com"</code>.
+                    </li>
+                    <li>
+                      Crea una <strong>Password per le App</strong> sul tuo account Google (Sicurezza account &gt; Verifica in 2 passaggi &gt; Password per le app) e impostala in <code className="font-mono bg-slate-100 text-[#0A192F] px-1 py-0.5 rounded">SMTP_PASS="tua_password_app"</code>.
+                    </li>
+                  </ol>
+                </div>
+                <p className="text-[10px] text-slate-400 italic pt-1">Questo messaggio d'aiuto viene mostrato solo quando le chiavi non sono configurate.</p>
+              </div>
+            )}
 
             <div className="pt-4">
               <button
@@ -543,10 +601,24 @@ export default function ContattiView() {
                   <button
                     type="submit"
                     id="form-submit-button"
-                    className="w-full py-4 bg-[#4A90E2] hover:bg-[#4A90E2]/90 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-150 shadow-md flex items-center justify-center space-x-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className={`w-full py-4 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-150 shadow-md flex items-center justify-center space-x-2 ${
+                      isSubmitting 
+                        ? 'bg-[#4A90E2]/50 cursor-not-allowed' 
+                        : 'bg-[#4A90E2] hover:bg-[#4A90E2]/90 cursor-pointer'
+                    }`}
                   >
-                    <Send className="w-4 h-4 text-white" />
-                    <span>Invia la Vostra Richiesta</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 text-white animate-spin" />
+                        <span>Invio in corso...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 text-white" />
+                        <span>Invia la Vostra Richiesta</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

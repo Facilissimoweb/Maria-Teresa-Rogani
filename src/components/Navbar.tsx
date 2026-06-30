@@ -162,6 +162,7 @@ export default function Navbar({
                   key={item.id}
                   id={`nav-link-${item.id}`}
                   onClick={() => handleNavClick(item.id)}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                   className={`text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 relative py-2 cursor-pointer ${
                     activeTab === item.id
                       ? 'text-[#0A192F] dark:text-white border-b-2 border-[#0A192F] dark:border-[#4A90E2]'
