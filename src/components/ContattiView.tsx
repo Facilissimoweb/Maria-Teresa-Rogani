@@ -94,7 +94,14 @@ export default function ContattiView() {
           body: JSON.stringify(formData),
         });
 
-        const resData = await response.json();
+        let resData: any = {};
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          resData = await response.json();
+        } else {
+          const textError = await response.text();
+          throw new Error(`Risposta del server non valida (${response.status}): ${textError.substring(0, 120)}...`);
+        }
 
         if (!response.ok) {
           throw new Error(resData.error || 'Si è verificato un errore durante l\'invio della richiesta.');

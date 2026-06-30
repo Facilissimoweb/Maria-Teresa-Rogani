@@ -122,7 +122,14 @@ app.post("/api/contact", async (req, res) => {
     const recipientEmail = "facilissimoweb.mc@gmail.com";
 
     // SMTP variables from environment
-    const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
+    let smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
+    // Sanitize host: strip protocols, leading slashes or colons (e.g. ://gmail.com -> gmail.com)
+    smtpHost = smtpHost.replace(/^(https?:\/\/|smtps?:\/\/|:\/\/|smtp:)?/i, "").trim();
+    // If it is just "gmail.com", map to "smtp.gmail.com"
+    if (smtpHost.toLowerCase() === "gmail.com") {
+      smtpHost = "smtp.gmail.com";
+    }
+
     const smtpPort = parseInt(process.env.SMTP_PORT || "587");
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
