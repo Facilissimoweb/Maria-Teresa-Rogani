@@ -171,6 +171,26 @@ export default function ContattiView() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
+            <div className="relative bg-slate-950 border border-slate-800 rounded-lg overflow-hidden shadow-2xl">
+              {/* Window header */}
+              <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+                <div className="flex space-x-2">
+                  <span className="w-3 h-3 bg-red-500 rounded-full inline-block" />
+                  <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block" />
+                  <span className="w-3 h-3 bg-green-500 rounded-full inline-block" />
+                </div>
+                <span className="text-[10px] text-slate-500 font-mono tracking-wider">facilissimoweb/contatti</span>
+              </div>
+              
+              {/* Themed Image */}
+              <img 
+                src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=800&q=80" 
+                alt="Start Your Project With Us"
+                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 xl:h-60 object-cover border-b border-slate-800"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
               <div className="mb-4">
                 <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Primo Incontro Gratuito</p>
