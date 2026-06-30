@@ -415,7 +415,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
           </div>
 
           {/* Phase Details Box */}
-          <div className="bg-[#0b1b36] border border-white/10 rounded-none p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="bg-[#0b1b36] border border-white/10 rounded-none p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mx-auto" style={{ width: '260px' }}>
             <div className="lg:col-span-8 space-y-5">
               <div className="flex items-center space-x-3">
                 <span className="text-4xl font-extrabold text-[#4A90E2] font-mono">0{operationalPhases[activePhase - 1].phase}</span>
