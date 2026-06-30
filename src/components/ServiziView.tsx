@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange, Sparkles } from 'lucide-react';
+import { GlossaryParagraph } from './GlossaryTerm';
 
 interface ServiziViewProps {
   setActiveTab: (tab: 'home' | 'chi-sono' | 'servizi' | 'contatti') => void;
@@ -372,9 +373,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </span>
                       </div>
                       
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {pkg.description}
-                      </p>
+                      </GlossaryParagraph>
 
                       <div className="border-t border-slate-100 pt-6">
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
@@ -429,9 +430,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </span>
                       </div>
                       
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {pkg.description}
-                      </p>
+                      </GlossaryParagraph>
 
                       <div className="border-t border-slate-100 pt-6">
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
@@ -486,9 +487,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </span>
                       </div>
                       
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {pkg.description}
-                      </p>
+                      </GlossaryParagraph>
 
                       <div className="border-t border-slate-100 pt-6">
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>

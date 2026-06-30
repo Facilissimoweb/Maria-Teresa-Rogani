@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucide-react';
 import { ActiveTab } from '../types';
 import heroImg from '../assets/images/regenerated_image_1782808684519.png';
+import { GlossaryParagraph } from './GlossaryTerm';
 
 interface HomeViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -41,9 +42,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               <span className="font-bold not-italic text-white">Progettati con Rigore.</span>
             </h1>
             
-            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
-              FACILISSIMO WEB semplifica lo sviluppo web coniugando tecnologia d'avanguardia, etica professionale della comunicazione e massima trasparenza economica. Garantisco la massima conversione dei Vostri contatti grazie a un approccio fortemente strategico.
-            </p>
+            <GlossaryParagraph className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+              FACILISSIMO WEB semplifica lo sviluppo web coniugando tecnologia d\'avanguardia, etica professionale della comunicazione e massima trasparenza economica. Garantisco la massima conversione dei Vostri contatti grazie a un approccio fortemente strategico come la lead generation.
+            </GlossaryParagraph>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
@@ -143,9 +144,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   <Target className="w-6 h-6 text-[#0A192F]" />
                 </div>
                 <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">Orientamento alla Conversione</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Ogni pixel, pulsante e paragrafo è studiato con l'unico obiettivo di guidare i Vostri utenti verso l'azione desiderata. Non realizzo semplici vetrine statiche, ma veri e propri catalizzatori di contatti e vendite.
-                </p>
+                <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Ogni pixel, pulsante e paragrafo è studiato con l\'unico obiettivo di guidare i Vostri utenti verso l\'azione desiderata. Non realizzo semplici vetrine statiche, ma veri e propri catalizzatori di contatti con strategie avanzate di Lead Generation.
+                </GlossaryParagraph>
               </div>
             </motion.div>
 
@@ -161,9 +162,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   <ShieldCheck className="w-6 h-6 text-[#0A192F]" />
                 </div>
                 <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">Trasparenza Etica ed Economica</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  I Vostri investimenti sono dettagliati singolarmente. Non vi troverete mai a fronteggiare costi nascosti o canoni ingiustificati. Riceverete report limpidi e chiarimenti approfonditi su ogni fase del mio lavoro.
-                </p>
+                <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  I Vostri investimenti sono dettagliati singolarmente. Non vi troverete mai a fronteggiare costi nascosti o canoni ingiustificati. Riceverete report limpidi e chiarimenti approfonditi sulla conformità legale come GDPR e accessibilità.
+                </GlossaryParagraph>
               </div>
             </motion.div>
 
@@ -179,9 +180,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   <Code className="w-6 h-6 text-[#0A192F]" />
                 </div>
                 <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">Eccellenza Tecnologica</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Sfrutto competenze consolidate di comunicazione e sviluppo web strategico. Questo garantisce codice pulito, elevati standard di sicurezza, conformità alle normative e scalabilità futura per la Vostra attività.
-                </p>
+                <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Sfrutto competenze consolidate di comunicazione e sviluppo web in React. Questo garantisce codice d\'élite in Tailwind CSS, elevati standard di sicurezza, conformità alle normative e scalabilità futura.
+                </GlossaryParagraph>
               </div>
             </motion.div>
           </div>
@@ -203,9 +204,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 Integrazione Consapevole <br />
                 <span className="font-bold not-italic">dell'Intelligenza Artificiale.</span>
               </h2>
-                         <p className="text-slate-600 text-sm leading-relaxed">
-                Sono fermamente convinta che l'Intelligenza Artificiale rappresenti il più straordinario amplificatore di produttività del nostro secolo. Presso <strong>FACILISSIMO WEB</strong>, l'AI viene integrata in modo rigoroso e trasparente nel processo creativo e di sviluppo strategico, trasferendo tutti i benefici di tempo e costo direttamente a Voi.
-              </p>
+              <GlossaryParagraph className="text-slate-600 text-sm leading-relaxed">
+                Sono fermamente convinta che l'Intelligenza Artificiale e sistemi LLM rappresentino il più straordinario amplificatore di produttività del nostro secolo. Presso <strong>FACILISSIMO WEB</strong>, l'AI viene integrata in modo rigoroso, etico e pienamente conforme all'AI Act europeo per trasferire tutti i benefici di tempo e costo direttamente a Voi.
+              </GlossaryParagraph>
 
               {/* Grid of AI benefits */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
