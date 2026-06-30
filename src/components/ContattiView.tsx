@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, AlertCircle, Sparkles, Send, MapPin } from 'lucide-react';
 import { LeadForm } from '../types';
 import LegalModal, { LegalDocType } from './LegalModal';
@@ -87,7 +88,12 @@ export default function ContattiView() {
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div 
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
@@ -103,10 +109,15 @@ export default function ContattiView() {
             <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
               Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.
             </p>
-          </div>
+          </motion.div>
           
           {/* Hero Side Block */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+          <motion.div 
+            className="lg:col-span-5 grid grid-cols-1 gap-6"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
               <div className="mb-4">
                 <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Primo Incontro Gratuito</p>
@@ -127,7 +138,7 @@ export default function ContattiView() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

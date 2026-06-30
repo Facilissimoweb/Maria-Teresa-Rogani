@@ -155,7 +155,7 @@ export default function Navbar({
           </div>
 
           {/* Desktop Nav */}
-          <nav id="desktop-navigation" className="hidden md:flex flex-1 justify-between items-center ml-8 lg:ml-16">
+          <nav id="desktop-navigation" className="hidden lg:flex flex-1 justify-between items-center ml-8 lg:ml-16">
             <div className="flex justify-between flex-1 max-w-md lg:max-w-xl mx-6">
               {menuItems.map((item) => (
                 <button
@@ -254,7 +254,7 @@ export default function Navbar({
           </nav>
 
           {/* Mobile Menu Button & Toggler */}
-          <div className="flex md:hidden items-center space-x-1">
+          <div className="flex lg:hidden items-center space-x-1">
             {/* Mobile accessibility selector button */}
             {setAccessibilityOpen && (
               <button
@@ -330,7 +330,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div id="mobile-nav-menu" className="md:hidden bg-white border-b border-slate-200 animate-fadeIn transition-all duration-300">
+        <div id="mobile-nav-menu" className="lg:hidden bg-white border-b border-slate-200 animate-fadeIn transition-all duration-300">
           <div className="px-6 pt-2 pb-6 space-y-2">
             {menuItems.map((item) => (
               <button

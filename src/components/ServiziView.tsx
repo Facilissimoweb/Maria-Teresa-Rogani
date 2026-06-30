@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange, Sparkles } from 'lucide-react';
 
 interface ServiziViewProps {
@@ -152,7 +153,12 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div 
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
@@ -178,10 +184,15 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 Iniziate Ora
               </button>
             </div>
-          </div>
+          </motion.div>
           
           {/* Hero Side Block */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+          <motion.div 
+            className="lg:col-span-5 grid grid-cols-1 gap-6"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
               <div className="mb-4">
                 <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Standard di Progettazione</p>
@@ -202,7 +213,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -242,103 +253,119 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
           </div>
 
           {/* SERVICE CARDS */}
-          {activeCategory === 'cms' ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {cmsPackages.map((pkg) => (
-                <div 
-                  key={pkg.id} 
-                  id={`pkg-${pkg.id}`}
-                  className="bg-white p-8 rounded-none border-t-4 border-[#0A192F] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
-                >
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
-                      <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
-                        {pkg.price}
-                      </span>
-                    </div>
-                    
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {pkg.description}
-                    </p>
+          <AnimatePresence mode="wait">
+            {activeCategory === 'cms' ? (
+              <motion.div 
+                key="cms"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+              >
+                {cmsPackages.map((pkg) => (
+                  <div 
+                    key={pkg.id} 
+                    id={`pkg-${pkg.id}`}
+                    className="bg-white p-8 rounded-none border-t-4 border-[#0A192F] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
+                  >
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-start">
+                        <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
+                        <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
+                          {pkg.price}
+                        </span>
+                      </div>
+                      
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {pkg.description}
+                      </p>
 
-                    <div className="border-t border-slate-100 pt-6">
-                      <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
-                      <ul className="space-y-2.5">
-                        {pkg.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="border-t border-slate-100 pt-6">
+                        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
+                        <ul className="space-y-2.5">
+                          {pkg.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="border-t border-slate-100 mt-8 pt-6">
-                    <p className="text-[11px] text-slate-500 leading-relaxed">
-                      <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
-                    </p>
-                    <button
-                      onClick={() => setActiveTab('contatti')}
-                      className="w-full mt-4 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
-                    >
-                      <span>Selezionate questo pacchetto</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {customPackages.map((pkg) => (
-                <div 
-                  key={pkg.id} 
-                  id={`pkg-${pkg.id}`}
-                  className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
-                >
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
-                      <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
-                        {pkg.price}
-                      </span>
-                    </div>
-                    
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {pkg.description}
-                    </p>
-
-                    <div className="border-t border-slate-100 pt-6">
-                      <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
-                      <ul className="space-y-2.5">
-                        {pkg.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="border-t border-slate-100 mt-8 pt-6">
+                      <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
+                      </p>
+                      <button
+                        onClick={() => setActiveTab('contatti')}
+                        className="w-full mt-4 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
+                      >
+                        <span>Selezionate questo pacchetto</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
                   </div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="custom"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+              >
+                {customPackages.map((pkg) => (
+                  <div 
+                    key={pkg.id} 
+                    id={`pkg-${pkg.id}`}
+                    className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
+                  >
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-start">
+                        <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
+                        <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
+                          {pkg.price}
+                        </span>
+                      </div>
+                      
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {pkg.description}
+                      </p>
 
-                  <div className="border-t border-slate-100 mt-8 pt-6">
-                    <p className="text-[11px] text-slate-500 leading-relaxed">
-                      <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
-                    </p>
-                    <button
-                      onClick={() => setActiveTab('contatti')}
-                      className="w-full mt-4 py-3 bg-[#4A90E2] hover:bg-[#4A90E2]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
-                    >
-                      <span>Inizializzate lo sviluppo custom</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
+                      <div className="border-t border-slate-100 pt-6">
+                        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
+                        <ul className="space-y-2.5">
+                          {pkg.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-slate-100 mt-8 pt-6">
+                      <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
+                      </p>
+                      <button
+                        onClick={() => setActiveTab('contatti')}
+                        className="w-full mt-4 py-3 bg-[#4A90E2] hover:bg-[#4A90E2]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
+                      >
+                        <span>Inizializzate lo sviluppo custom</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* 7 PHASES OPERATIONAL TIMELINE */}

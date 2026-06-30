@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Award, GraduationCap, Check, ShieldCheck, Mail, ArrowRight, BookOpen, Sparkles, Target } from 'lucide-react';
 import { ActiveTab } from '../types';
 import profileImg from '../assets/images/maria_teresa.jpg';
@@ -33,7 +34,12 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div 
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
@@ -59,10 +65,15 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
                 Parliamo del Vostro Progetto
               </button>
             </div>
-          </div>
+          </motion.div>
           
           {/* Hero Side Block */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+          <motion.div 
+            className="lg:col-span-5 grid grid-cols-1 gap-6"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
               <div className="mb-4">
                 <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Unica Titolare</p>
@@ -83,7 +94,7 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -94,7 +105,13 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
         {/* PROFILE & VISION SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           {/* Portrait Column */}
-          <div className="lg:col-span-5 flex justify-center">
+          <motion.div 
+            className="lg:col-span-5 flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="relative w-full max-w-md">
               {/* Geometric Frame Accent */}
               <div className="absolute top-0 right-0 w-8 h-8 bg-[#4A90E2] translate-x-2 -translate-y-2 z-0 hidden sm:block"></div>
@@ -115,10 +132,16 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Biography & Vision Column */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div 
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h2 className="text-xl sm:text-2xl font-light text-[#0A192F] dark:text-white tracking-tight italic">
               Metodologia Rigorosa ed <span className="font-bold not-italic text-[#0A192F] dark:text-[#4A90E2]">Efficacia Comunicativa</span>
             </h2>
@@ -136,7 +159,7 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
             <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
               Il Vostro sito non sarà un semplice template anonimo riempito di testi preconfezionati, ma diventerà una vera e propria risorsa strategica d'impresa in grado di esprimere credibilità immediata a chiunque vi acceda.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* STUDY & FORMATION TIMELINE/CARDS */}
@@ -149,7 +172,13 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1: Formazione Accademica */}
-            <div className="bg-white dark:bg-[#0d1e36] p-6 sm:p-8 rounded-none border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] transition-colors duration-200 flex flex-col justify-between shadow-sm relative group">
+            <motion.div 
+              className="bg-white dark:bg-[#0d1e36] p-6 sm:p-8 rounded-none border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] transition-colors duration-200 flex flex-col justify-between shadow-sm relative group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <div className="space-y-4">
                 <div className="p-3 bg-[#0A192F]/5 dark:bg-white/5 text-[#4A90E2] w-12 h-12 flex items-center justify-center">
                   <GraduationCap className="w-6 h-6" />
@@ -162,10 +191,16 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                 Diploma & Laurea Specialistica
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 2: Aggiornamento Continuo */}
-            <div className="bg-white dark:bg-[#0d1e36] p-6 sm:p-8 rounded-none border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] transition-colors duration-200 flex flex-col justify-between shadow-sm relative group">
+            <motion.div 
+              className="bg-white dark:bg-[#0d1e36] p-6 sm:p-8 rounded-none border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] transition-colors duration-200 flex flex-col justify-between shadow-sm relative group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+            >
               <div className="space-y-4">
                 <div className="p-3 bg-[#0A192F]/5 dark:bg-white/5 text-[#4A90E2] w-12 h-12 flex items-center justify-center">
                   <BookOpen className="w-6 h-6" />
@@ -178,23 +213,29 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                 Best Practice & UX Research
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3: Competenza Strategica */}
-            <div className="bg-white dark:bg-[#0d1e36] p-6 sm:p-8 rounded-none border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] transition-colors duration-200 flex flex-col justify-between shadow-sm relative group">
+            <motion.div 
+              className="bg-white dark:bg-[#0d1e36] p-6 sm:p-8 rounded-none border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] transition-colors duration-200 flex flex-col justify-between shadow-sm relative group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <div className="space-y-4">
                 <div className="p-3 bg-[#0A192F]/5 dark:bg-white/5 text-[#4A90E2] w-12 h-12 flex items-center justify-center">
                   <Target className="w-6 h-6" />
                 </div>
                 <h4 className="font-bold text-[#0A192F] dark:text-white text-sm uppercase tracking-wider">Lead Generation</h4>
                 <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Alla progettazione visiva affianco una competenza strategica nella generazione di contatti, supportata da una formazione specifica come <strong>Social Lead's Manager</strong>. Questo mi permette di concepire il design non solo come estetica, ma come uno strumento strutturato per guidare l'utente e convertire la navigazione in opportunità.
+                  Alla progettazione visiva affianco una competenza strategica nella generazione di contatti, supportata da una formazione specifica come <strong>Social Lead's Manager</strong>. Questo mi permette di concecipere il design non solo come estetica, ma come uno strumento strutturato per guidare l'utente e convertire la navigazione in opportunità.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                 Social Lead's Manager
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 

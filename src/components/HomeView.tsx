@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucide-react';
 import { ActiveTab } from '../types';
 import heroImg from '../assets/images/facilissimo_hero_1782724717858.jpg';
@@ -22,7 +23,12 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div 
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
@@ -56,10 +62,15 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 Scoprite i Metodi
               </button>
             </div>
-          </div>
+          </motion.div>
           
           {/* Hero Image / UI Mockup with Strategic Side Panel */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+          <motion.div 
+            className="lg:col-span-5 grid grid-cols-1 gap-6"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div className="relative bg-slate-950 border border-slate-800 rounded-lg overflow-hidden shadow-2xl">
               {/* Window header */}
               <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
@@ -101,7 +112,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -120,7 +131,13 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-none border-t-4 border-[#0A192F] border-x border-b border-slate-200/80 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 shadow-sm">
+            <motion.div 
+              className="bg-white p-8 rounded-none border-t-4 border-[#0A192F] border-x border-b border-slate-200/80 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 shadow-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <div className="space-y-4">
                 <div className="p-3 bg-[#0A192F]/5 text-[#0A192F] rounded-none w-fit">
                   <Target className="w-6 h-6 text-[#0A192F]" />
@@ -130,9 +147,15 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   Ogni pixel, pulsante e paragrafo è studiato con l'unico obiettivo di guidare i Vostri utenti verso l'azione desiderata. Non realizzo semplici vetrine statiche, ma veri e propri catalizzatori di contatti e vendite.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-white p-8 rounded-none border-t-4 border-[#112240] border-x border-b border-slate-200/80 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 shadow-sm">
+            <motion.div 
+              className="bg-white p-8 rounded-none border-t-4 border-[#112240] border-x border-b border-slate-200/80 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 shadow-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+            >
               <div className="space-y-4">
                 <div className="p-3 bg-[#0A192F]/5 text-[#0A192F] rounded-none w-fit">
                   <ShieldCheck className="w-6 h-6 text-[#0A192F]" />
@@ -142,9 +165,15 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   I Vostri investimenti sono dettagliati singolarmente. Non vi troverete mai a fronteggiare costi nascosti o canoni ingiustificati. Riceverete report limpidi e chiarimenti approfonditi su ogni fase del mio lavoro.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/80 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 shadow-sm">
+            <motion.div 
+              className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/80 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 shadow-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <div className="space-y-4">
                 <div className="p-3 bg-[#0A192F]/5 text-[#0A192F] rounded-none w-fit">
                   <Code className="w-6 h-6 text-[#0A192F]" />
@@ -154,7 +183,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   Sfrutto competenze consolidate di comunicazione e sviluppo web strategico. Questo garantisce codice pulito, elevati standard di sicurezza, conformità alle normative e scalabilità futura per la Vostra attività.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
