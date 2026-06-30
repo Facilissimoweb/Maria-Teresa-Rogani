@@ -12,6 +12,7 @@ import ChatAssistant from './components/ChatAssistant';
 import LegalModal, { LegalDocType } from './components/LegalModal';
 import SitemapModal from './components/SitemapModal';
 import { Sparkles, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
@@ -177,7 +178,17 @@ export default function App() {
 
       {/* Main Content Area */}
       <main id="app-main-content" className="flex-grow">
-        {renderContent()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            {renderContent()}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Global Interactive Banner before Footer */}
