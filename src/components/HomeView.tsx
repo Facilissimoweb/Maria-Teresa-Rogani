@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucide-react';
 import { ActiveTab } from '../types';
+import heroImg from '../assets/images/facilissimo_hero_1782724717858.jpg';
 
 interface HomeViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -72,7 +73,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               
               {/* Image from template */}
               <img 
-                src="/src/assets/images/facilissimo_hero_1782724717858.jpg" 
+                src={heroImg} 
                 alt="Facilissimo Web UI Mockup"
                 className="w-full h-auto object-cover border-b border-slate-800"
                 referrerPolicy="no-referrer"
