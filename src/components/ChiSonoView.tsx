@@ -7,6 +7,22 @@ interface ChiSonoViewProps {
 }
 
 export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
+  const [imageSrc, setImageSrc] = React.useState('/src/assets/images/maria_teresa.jpg');
+  const [fallbackAttempts, setFallbackAttempts] = React.useState(0);
+
+  const handleImageError = () => {
+    if (fallbackAttempts === 0) {
+      setImageSrc('/src/assets/images/maria_teresa.png');
+      setFallbackAttempts(1);
+    } else if (fallbackAttempts === 1) {
+      setImageSrc('/src/assets/images/maria_teresa.jpeg');
+      setFallbackAttempts(2);
+    } else if (fallbackAttempts === 2) {
+      setImageSrc('/src/assets/images/partner_portrait_1782724733588.jpg');
+      setFallbackAttempts(3);
+    }
+  };
+
   return (
     <article id="chi-sono-view" className="animate-fadeIn py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -35,7 +51,8 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               
               <div className="relative bg-white dark:bg-[#0d1e36] p-4 rounded-none shadow-md border-2 border-[#0A192F] dark:border-[#4A90E2] z-10">
                 <img 
-                  src="/src/assets/images/partner_portrait_1782724733588.jpg" 
+                  src={imageSrc} 
+                  onError={handleImageError}
                   alt="M. Teresa Rogani - Web Graphic Designer" 
                   className="w-full h-auto object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
                   referrerPolicy="no-referrer"
