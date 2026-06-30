@@ -35,5 +35,6 @@ export interface LeadForm {
   message: string;
   budgetRange: string;
   preferredTime: string;
+  marketSector?: string;
   consent: boolean;
 }

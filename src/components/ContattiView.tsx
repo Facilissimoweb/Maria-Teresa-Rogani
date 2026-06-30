@@ -4,6 +4,20 @@ import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, Aler
 import { LeadForm } from '../types';
 import LegalModal, { LegalDocType } from './LegalModal';
 
+const getProjectTypeName = (type: string) => {
+  switch (type) {
+    case 'cms-professional': return 'CMS Professional (WordPress/Webflow)';
+    case 'cms-ecommerce': return 'E-Commerce CMS Ready (Shopify/WooCommerce)';
+    case 'custom-spa': return 'Sviluppo Custom React / SPA';
+    case 'custom-enterprise': return 'Soluzione Enterprise Integrata';
+    case 'restyling': return 'Restyling / Migrazione Sito Esistente';
+    case 'seo-performance': return 'Ottimizzazione Performance, Sicurezza & SEO';
+    case 'consulenza': return 'Consulenza Strategica & Assistenza Continua';
+    case 'non-sicuro': return 'Non sono ancora sicuro (Valutiamo insieme)';
+    default: return type;
+  }
+};
+
 export default function ContattiView() {
   const [formData, setFormData] = useState<LeadForm>({
     name: '',
@@ -15,6 +29,7 @@ export default function ContattiView() {
     message: '',
     budgetRange: '€ 1.500 - € 3.000',
     preferredTime: 'Mattina (09:00 - 13:00)',
+    marketSector: 'E-commerce & Retail Online',
     consent: false
   });
 
@@ -166,14 +181,18 @@ export default function ContattiView() {
                 <div>
                   <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Tipologia Ingaggio:</span>
                   <span className="text-slate-800 font-bold">
-                    {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (15 min)' : '💻 Sessione di Codifica Strategica (60 min)'}
+                    {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (30 min)' : '💻 Sessione di Codifica Strategica (60 min)'}
                   </span>
                 </div>
                 <div>
                   <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Ambito Progetto:</span>
                   <span className="text-slate-800 font-bold">
-                    {formData.projectType === 'cms' ? 'Sviluppo CMS (WordPress/Shopify)' : formData.projectType === 'custom' ? 'Sviluppo Custom (React/Codice)' : 'Non sono ancora sicuro'}
+                    {getProjectTypeName(formData.projectType)}
                   </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Settore di Mercato:</span>
+                  <span className="text-slate-800 font-bold">{formData.marketSector || 'Non specificato'}</span>
                 </div>
                 <div>
                   <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Budget Indicativo:</span>
@@ -234,7 +253,7 @@ export default function ContattiView() {
                   <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1.5 rounded-none uppercase tracking-wider">Gratis</span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Un briefing telefonico o video di 15 minuti. Serve a conoscerci, inquadrare l'idea generale della Vostra piattaforma e valutare se la Vostra attività necessita di un CMS o di uno sviluppo Custom.
+                  Un briefing telefonico o video di 30 minuti. Serve a conoscerci, inquadrare l'idea generale della Vostra piattaforma e valutare se la Vostra attività necessita di un CMS o di uno sviluppo Custom.
                 </p>
                 <ul className="mt-3 space-y-1.5 text-[10px] text-slate-500 uppercase tracking-wider">
                   <li className="flex items-center space-x-2">
@@ -243,7 +262,7 @@ export default function ContattiView() {
                   </li>
                   <li className="flex items-center space-x-2">
                     <span className="text-emerald-500 font-bold">✓</span>
-                    <span>Durata: 15 minuti precisi</span>
+                    <span>Durata: 30 minuti</span>
                   </li>
                 </ul>
               </div>
@@ -315,7 +334,7 @@ export default function ContattiView() {
                   <div>
                     <span className="text-slate-400 block font-bold uppercase tracking-wider text-[9px]">Ingaggio Selezionato:</span>
                     <span className="text-[#0A192F] font-bold text-xs">
-                      {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (15 Minuti)' : '💻 Sessione Strategica (60 Minuti)'}
+                      {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (30 Minuti)' : '💻 Sessione Strategica (60 Minuti)'}
                     </span>
                   </div>
                   <span className="text-[10px] text-[#4A90E2] font-bold uppercase tracking-wider cursor-pointer underline" onClick={() => window.scrollTo({ top: 300, behavior: 'smooth' })}>
@@ -384,6 +403,49 @@ export default function ContattiView() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Settore di Mercato select (Extended List) */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="marketSector" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Settore di Mercato</label>
+                    <select
+                      id="marketSector"
+                      name="marketSector"
+                      value={formData.marketSector}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
+                    >
+                      <option value="E-commerce & Retail Online">E-commerce & Retail Online</option>
+                      <option value="Servizi Professionali (Consulenza, Legale, Medico)">Servizi Professionali (Consulenza, Legale, Medico)</option>
+                      <option value="Ristorazione e Ospitalità (B&B, Hotel, Ristorante)">Ristorazione e Ospitalità (B&B, Hotel, Ristorante)</option>
+                      <option value="Agricoltura, Food & Viticoltura">Agricoltura, Food & Viticoltura</option>
+                      <option value="Artigianato & Commercio Locale">Artigianato & Commercio Locale</option>
+                      <option value="Edilizia, Immobiliare & Architettura">Edilizia, Immobiliare & Architettura</option>
+                      <option value="Startup, Tecnologia & Software">Startup, Tecnologia & Software</option>
+                      <option value="Istruzione, Formazione & No-Profit">Istruzione, Formazione & No-Profit</option>
+                      <option value="Benessere, Sport & Personal Care">Benessere, Sport & Personal Care</option>
+                      <option value="Turismo & Agenzie di Viaggio">Turismo & Agenzie di Viaggio</option>
+                      <option value="Arte, Intrattenimento & Spettacolo">Arte, Intrattenimento & Spettacolo</option>
+                      <option value="Altro / Non Elencato">Altro / Non Elencato</option>
+                    </select>
+                  </div>
+
+                  {/* Scheduling dropdown */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="preferredTime" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Fascia Oraria di Ricontatto</label>
+                    <select
+                      id="preferredTime"
+                      name="preferredTime"
+                      value={formData.preferredTime}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
+                    >
+                      <option value="Mattina (09:00 - 13:00)">Mattina (09:00 - 13:00)</option>
+                      <option value="Pomeriggio (14:00 - 18:00)">Pomeriggio (14:00 - 18:00)</option>
+                      <option value="Tardo Pomeriggio (18:00 - 19:30)">Tardo Pomeriggio (18:00 - 19:30)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Project Type field */}
                   <div className="space-y-1.5">
                     <label htmlFor="projectType" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Ambito del Progetto</label>
@@ -394,9 +456,14 @@ export default function ContattiView() {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
                     >
-                      <option value="cms">Sviluppo CMS (WordPress/Shopify)</option>
-                      <option value="custom">Sviluppo Custom (React/Vite/Node)</option>
-                      <option value="non-sicuro">Non ho ancora deciso (Valutiamo insieme)</option>
+                      <option value="cms-professional">CMS Professional (WordPress / Webflow)</option>
+                      <option value="cms-ecommerce">E-Commerce CMS Ready (Shopify / WooCommerce)</option>
+                      <option value="custom-spa">Sviluppo Custom React / SPA (Siti & Web-App Veloci)</option>
+                      <option value="custom-enterprise">Soluzione Enterprise Integrata (Full-Stack & DB)</option>
+                      <option value="restyling">Restyling & Migrazione Sito Esistente</option>
+                      <option value="seo-performance">Ottimizzazione Performance, Sicurezza & SEO</option>
+                      <option value="consulenza">Consulenza Strategica & Assistenza Continua</option>
+                      <option value="non-sicuro">Non ho ancora deciso (Valutiamo nella Call di 30 Minuti)</option>
                     </select>
                   </div>
 
@@ -416,22 +483,6 @@ export default function ContattiView() {
                       <option value="Oltre € 6.000">Oltre € 6.000</option>
                     </select>
                   </div>
-                </div>
-
-                {/* Scheduling dropdown */}
-                <div className="space-y-1.5">
-                  <label htmlFor="preferredTime" className="text-[10px] font-bold text-[#0A192F] uppercase tracking-wider">Fascia Oraria Preferita per il Ricontatto</label>
-                  <select
-                    id="preferredTime"
-                    name="preferredTime"
-                    value={formData.preferredTime}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-slate-200 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#0A192F] bg-[#F8FAFC]"
-                  >
-                    <option value="Mattina (09:00 - 13:00)">Mattina (09:00 - 13:00)</option>
-                    <option value="Pomeriggio (14:00 - 18:00)">Pomeriggio (14:00 - 18:00)</option>
-                    <option value="Tardo Pomeriggio (18:00 - 19:30)">Tardo Pomeriggio (18:00 - 19:30)</option>
-                  </select>
                 </div>
 
                 {/* Message field */}
