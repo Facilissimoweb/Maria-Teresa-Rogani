@@ -10,6 +10,7 @@ const getProjectTypeName = (type: string) => {
     case 'cms-ecommerce': return 'E-Commerce CMS Ready (Shopify/WooCommerce)';
     case 'custom-spa': return 'Sviluppo Custom React / SPA';
     case 'custom-enterprise': return 'Soluzione Enterprise Integrata';
+    case 'custom-ai': return 'Integrazione AI Studiate ad Hoc';
     case 'restyling': return 'Restyling / Migrazione Sito Esistente';
     case 'seo-performance': return 'Ottimizzazione Performance, Sicurezza & SEO';
     case 'consulenza': return 'Consulenza Strategica & Assistenza Continua';
@@ -545,6 +546,7 @@ export default function ContattiView() {
                       <option value="cms-ecommerce">E-Commerce CMS Ready (Shopify / WooCommerce)</option>
                       <option value="custom-spa">Sviluppo Custom React / SPA (Siti & Web-App Veloci)</option>
                       <option value="custom-enterprise">Soluzione Enterprise Integrata (Full-Stack & DB)</option>
+                      <option value="custom-ai">Integrazione AI Studiate ad Hoc (Sistemi AI & Chatbot)</option>
                       <option value="restyling">Restyling & Migrazione Sito Esistente</option>
                       <option value="seo-performance">Ottimizzazione Performance, Sicurezza & SEO</option>
                       <option value="consulenza">Consulenza Strategica & Assistenza Continua</option>

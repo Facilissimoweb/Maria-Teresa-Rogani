@@ -86,6 +86,22 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
         'Accordi di livello di servizio (SLA) per manutenzione e SLA'
       ],
       bestFor: 'Grandi aziende, Portali associativi, Piattaforme web dinamiche con migliaia di utenti'
+    },
+    {
+      id: 'custom-ai',
+      title: 'Integrazioni AI Studiate ad Hoc',
+      price: 'Su Preventivo',
+      description: 'Integrazione di modelli di Intelligenza Artificiale Generativa (Generative AI, Assistenti Virtuali intelligenti, LLM) all\'interno delle Vostre applicazioni web o flussi di lavoro, progettati per automatizzare processi e qualificare lead.',
+      features: [
+        'Studio di fattibilità strategica e selezione del modello AI idoneo (Gemini, GPT)',
+        'Integrazione API server-side sicura per salvaguardare le chiavi e credenziali',
+        'Sviluppo di chatbot intelligenti e assistenti virtuali istruiti sui dati del Vostro business',
+        'Automazione intelligente di flussi di lavoro (AI workflows) tramite webhook dedicati',
+        'Analisi semantica avanzata, riassunto automatico di testi e classificazione dati',
+        'Interfacce utente fluide ed eleganti per interazioni uomo-macchina d\'avanguardia',
+        'Massima aderenza alle linee guida sull\'Intelligenza Artificiale Etica e conformità all\'AI Act'
+      ],
+      bestFor: 'Imprese e studi che desiderano automatizzare flussi operativi interni o qualificare i contatti in modo personalizzato.'
     }
   ];
 
@@ -215,7 +231,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             </h1>
             
             <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
-              Distinguiamo nettamente tra piattaforme CMS programmabili per la massima versatilità ordinaria e sviluppi custom puri per performance tecnologiche d'élite.
+              Distinguiamo nettamente tra piattaforme CMS programmabili per la massima versatilità ordinaria, sviluppi custom puri per performance tecnologiche d'élite ed integrazioni AI studiate ad hoc per massimizzare l'efficienza d'impresa.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -269,6 +285,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
                   <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Sviluppo Custom</span>
                   <span className="font-semibold text-white">React / SPA & Tailwind</span>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Integrazione AI</span>
+                  <span className="font-semibold text-[#4A90E2]">Ad Hoc / LLM & Gemini</span>
                 </div>
                 <div className="flex justify-between items-end pb-1">
                   <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">SLA & Supporto</span>
@@ -393,7 +413,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {customPackages.map((pkg) => (
                   <div 

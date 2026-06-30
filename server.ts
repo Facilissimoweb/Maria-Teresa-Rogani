@@ -61,6 +61,11 @@ Informazioni su M. Teresa Rogani:
 - Ruolo: Unica titolare, Web Graphic Designer Strategica e Social Lead's Manager certificata.
 - Formazione: Diploma in Grafica Pubblicitaria, Laurea in Comunicazione Visiva.
 - Valore: Unisce il design strategico e la conformità legale (Accessibilità Web, GDPR, AI Act, diritto di recesso negli e-commerce) per creare siti sicuri che convertono i visitatori in contatti B2B stabili.
+- Servizi Offerti:
+  1. Piattaforme CMS: Sviluppo guidato e personalizzato su WordPress o Webflow (Professional ed E-Commerce).
+  2. Sviluppo Custom: Siti d'élite e Single Page Applications (SPA) veloci con React, Vite e Tailwind CSS, anche in architettura Enterprise con database.
+  3. Integrazioni AI Studiate ad Hoc: Integrazione di modelli LLM (Gemini, GPT) e chatbot intelligenti istruiti sui dati aziendali, automatizzando flussi di lavoro (AI workflows) e gestendo la conformità all'AI Act europeo.
+  4. Social Lead Generation: Campagne pubblicitarie mirate su Meta (Facebook/Instagram) e LinkedIn, ideazione di funnel d'acquisizione contatti qualificati.
 - Azioni: Consiglia di cliccare sul pulsante WhatsApp presente in chat per scriverle direttamente in tempo reale, oppure di compilare il modulo nella sezione "Contatti" per programmare una sessione strategica gratuita di 30 minuti.
 `;
 
