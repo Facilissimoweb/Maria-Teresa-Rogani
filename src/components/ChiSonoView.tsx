@@ -7,19 +7,22 @@ interface ChiSonoViewProps {
 }
 
 export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
-  const [imageSrc, setImageSrc] = React.useState('/src/assets/images/maria_teresa.jpg');
+  const [imageSrc, setImageSrc] = React.useState('/src/assets/images/maria_teresa.jpg.jpg');
   const [fallbackAttempts, setFallbackAttempts] = React.useState(0);
 
   const handleImageError = () => {
     if (fallbackAttempts === 0) {
-      setImageSrc('/src/assets/images/maria_teresa.png');
+      setImageSrc('/src/assets/images/maria_teresa.jpg');
       setFallbackAttempts(1);
     } else if (fallbackAttempts === 1) {
-      setImageSrc('/src/assets/images/maria_teresa.jpeg');
+      setImageSrc('/src/assets/images/maria_teresa.png');
       setFallbackAttempts(2);
     } else if (fallbackAttempts === 2) {
-      setImageSrc('/src/assets/images/partner_portrait_1782724733588.jpg');
+      setImageSrc('/src/assets/images/maria_teresa.jpeg');
       setFallbackAttempts(3);
+    } else if (fallbackAttempts === 3) {
+      setImageSrc('/src/assets/images/partner_portrait_1782724733588.jpg');
+      setFallbackAttempts(4);
     }
   };
 
