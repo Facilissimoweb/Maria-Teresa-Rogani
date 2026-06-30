@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
@@ -245,11 +246,102 @@ app.post("/api/contact", async (req, res) => {
 
 // Setup Vite Dev Server / Static Asset Serving
 async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
+  const isProd = process.env.NODE_ENV === "production";
+  let vite: any = null;
+
+  if (!isProd) {
+    vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
+  }
+
+  // Helper to dynamically read index.html and inject meta tags for social media preview card crawlers
+  const getHtmlWithMeta = async (articleId: string | null, host: string, originalUrl: string) => {
+    const templatePath = isProd 
+      ? path.join(process.cwd(), "dist", "index.html")
+      : path.join(process.cwd(), "index.html");
+      
+    let html = "";
+    try {
+      html = fs.readFileSync(templatePath, "utf-8");
+    } catch (err) {
+      console.error("Error reading index.html:", err);
+      return null;
+    }
+
+    if (!isProd && vite) {
+      // In development, apply Vite's HTML transform to keep live dev reload and styles working
+      html = await vite.transformIndexHtml(originalUrl, html);
+    }
+
+    if (!articleId) return html;
+
+    const articlesMeta: Record<string, { title: string; excerpt: string; image: string }> = {
+      'ai-act-web-design': {
+        title: "L'era dell'AI Act: Come l'Intelligenza Artificiale Etica trasforma il Web Design",
+        excerpt: "L'introduzione della nuova normativa europea sull'Intelligenza Artificiale (AI Act) ridefinisce le regole del gioco digitale. Scopri come integrare l'AI nei tuoi processi mantenendo trasparenza etica ed assoluta conformità.",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+      },
+      'lead-gen-social-strategy': {
+        title: "Lead Generation Efficace su Meta e LinkedIn: Strategie per Convertire nel 2026",
+        excerpt: "Basta sprecare budget in clic inutili. Scopri la formula scientifica per attrarre lead caldi attraverso un mix strategico di inserzioni targettizzate, landing page dedicate e flussi automatici di nutrimento.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+      },
+      'accessibilita-web-business': {
+        title: "Accessibilità Web: Perché un sito accessibile vende fino al 20% in più",
+        excerpt: "Rendere un sito internet pienamente accessibile non è solo un dovere morale e legislativo. È una scelta di business straordinaria che allarga il bacino dei tuoi clienti e migliora la SEO organica complessiva.",
+        image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80"
+      }
+    };
+
+    const meta = articlesMeta[articleId];
+    if (!meta) return html;
+
+    const titleText = `${meta.title} | Il Blog di Facilissimo Web`;
+    const descText = meta.excerpt;
+    const imageText = meta.image;
+    const urlText = `https://${host}/blog/${articleId}`;
+
+    // Standard title & description replacement
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${titleText}</title>`);
+    html = html.replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${descText}" />`);
+    
+    // Open Graph
+    html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${titleText}" />`);
+    html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${descText}" />`);
+    html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${imageText}" />`);
+    html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${urlText}" />`);
+
+    // Twitter
+    html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${titleText}" />`);
+    html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${descText}" />`);
+    html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${imageText}" />`);
+
+    return html;
+  };
+
+  // Intercept requests for blog articles to serve dynamic meta tags to crawler bots
+  app.get(["/blog/:articleId", "/blog"], async (req, res, next) => {
+    let articleId = req.params.articleId;
+    if (!articleId && req.query.article) {
+      articleId = req.query.article as string;
+    }
+
+    const validArticles = ['ai-act-web-design', 'lead-gen-social-strategy', 'accessibilita-web-business'];
+    if (articleId && validArticles.includes(articleId)) {
+      const host = req.get("host") || "facilissimoweb.it";
+      const customHtml = await getHtmlWithMeta(articleId, host, req.originalUrl);
+      if (customHtml) {
+        res.setHeader("Content-Type", "text/html");
+        return res.send(customHtml);
+      }
+    }
+    
+    next();
+  });
+
+  if (!isProd) {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');

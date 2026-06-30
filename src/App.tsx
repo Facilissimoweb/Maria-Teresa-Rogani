@@ -30,22 +30,42 @@ export default function App() {
   // 1. Initial mounting hook to parse URL path or hash on page load and listen to back/forward navigation
   useEffect(() => {
     const handleUrlChange = () => {
-      // First try to parse path from window.location.pathname
       const rawPath = window.location.pathname.replace(/^\/|\/$/g, '');
-      const path = rawPath as ActiveTab;
-      // Second try to parse hash
-      const hash = window.location.hash.replace('#', '') as ActiveTab;
+      const hash = window.location.hash.replace('#', '');
       
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryArticle = urlParams.get('article');
+
       const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'blog', 'contatti', 'normativa'];
       const articleIds = ['ai-act-web-design', 'lead-gen-social-strategy', 'accessibilita-web-business'];
-      if (validTabs.includes(path)) {
-        setActiveTab(path);
-      } else if (validTabs.includes(hash)) {
-        setActiveTab(hash);
-      } else if (articleIds.includes(hash) || articleIds.includes(rawPath)) {
+
+      // Extract article ID from subpath like blog/ai-act-web-design, query string, or hash
+      let urlArticleId: string | null = null;
+      if (rawPath.startsWith('blog/')) {
+        const parts = rawPath.split('/');
+        if (parts.length > 1 && articleIds.includes(parts[1])) {
+          urlArticleId = parts[1];
+        }
+      } else if (articleIds.includes(rawPath)) {
+        urlArticleId = rawPath;
+      } else if (hash && articleIds.includes(hash)) {
+        urlArticleId = hash;
+      } else if (queryArticle && articleIds.includes(queryArticle)) {
+        urlArticleId = queryArticle;
+      }
+
+      if (urlArticleId) {
         setActiveTab('blog');
-      } else if (rawPath === '') {
-        setActiveTab('home');
+      } else {
+        // Match general tabs
+        const mainPath = rawPath.split('/')[0];
+        if (validTabs.includes(mainPath as ActiveTab)) {
+          setActiveTab(mainPath as ActiveTab);
+        } else if (validTabs.includes(hash as ActiveTab)) {
+          setActiveTab(hash as ActiveTab);
+        } else if (rawPath === '') {
+          setActiveTab('home');
+        }
       }
     };
 

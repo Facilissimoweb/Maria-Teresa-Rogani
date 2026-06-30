@@ -196,7 +196,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
   ];
 
   const handleShare = (article: Article, platform: 'wa' | 'fb' | 'li' | 'tw' | 'copy') => {
-    const url = `${window.location.origin}/blog#${article.id}`;
+    const url = `${window.location.origin}/blog/${article.id}`;
     
     // Explicitly construct share contents with Excerpt and Image URL where possible
     const shareText = `*${article.title}*\n\n"${article.excerpt}"\n\nAnteprima visiva: ${article.image}\n\nLeggi l'articolo completo su Facilissimo Web: ${url}`;
@@ -229,7 +229,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
   useEffect(() => {
     if (selectedArticleId && selectedArticle) {
       document.title = `${selectedArticle.title} | Il Blog di Facilissimo Web`;
-
+ 
       const setMetaTag = (attributeName: string, attributeValue: string, contentValue: string) => {
         let el = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
         if (!el) {
@@ -248,7 +248,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
       setMetaTag('property', 'og:description', selectedArticle.excerpt);
       setMetaTag('property', 'og:image', selectedArticle.image);
       setMetaTag('property', 'og:type', 'article');
-      setMetaTag('property', 'og:url', `${window.location.origin}/blog#${selectedArticle.id}`);
+      setMetaTag('property', 'og:url', `${window.location.origin}/blog/${selectedArticle.id}`);
 
       // Twitter Card metadata
       setMetaTag('name', 'twitter:card', 'summary_large_image');
@@ -271,12 +271,47 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
     }
   }, [selectedArticleId, selectedArticle]);
 
-  // Handle direct url hash access on mount / hash change
+  // Synchronize browser URL bar and back/forward navigation when selectedArticleId changes
   useEffect(() => {
-    const handleHash = () => {
+    if (selectedArticleId) {
+      const targetPath = `/blog/${selectedArticleId}`;
+      if (window.location.pathname !== targetPath) {
+        window.history.pushState({ tab: 'blog', articleId: selectedArticleId }, '', targetPath);
+      }
+    } else {
+      const targetPath = '/blog';
+      if (window.location.pathname !== targetPath && window.location.pathname.startsWith('/blog/')) {
+        window.history.pushState({ tab: 'blog' }, '', targetPath);
+      }
+    }
+  }, [selectedArticleId]);
+
+  // Handle direct url hash, pathname, or query param access on mount or popstate
+  useEffect(() => {
+    const handleUrlRouting = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash && articles.some(a => a.id === hash)) {
-        setSelectedArticleId(hash);
+      const rawPath = window.location.pathname.replace(/^\/|\/$/g, '');
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryArticle = urlParams.get('article');
+
+      let matchedArticleId: string | null = null;
+
+      if (rawPath.startsWith('blog/')) {
+        const parts = rawPath.split('/');
+        if (parts[1] && articles.some(a => a.id === parts[1])) {
+          matchedArticleId = parts[1];
+        }
+      } else if (articles.some(a => a.id === rawPath)) {
+        matchedArticleId = rawPath;
+      } else if (hash && articles.some(a => a.id === hash)) {
+        matchedArticleId = hash;
+      } else if (queryArticle && articles.some(a => a.id === queryArticle)) {
+        matchedArticleId = queryArticle;
+      }
+
+      if (matchedArticleId) {
+        setSelectedArticleId(matchedArticleId);
         // Scroll to article content nicely
         setTimeout(() => {
           const el = document.getElementById('blog-hero');
@@ -286,11 +321,21 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
             window.scrollTo({ top: 300, behavior: 'smooth' });
           }
         }, 150);
+      } else {
+        // Only deselect if the current tab is indeed blog but there's no matching path article
+        if (window.location.pathname === '/blog' || window.location.pathname === '/blog/') {
+          setSelectedArticleId(null);
+        }
       }
     };
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+
+    handleUrlRouting();
+    window.addEventListener('hashchange', handleUrlRouting);
+    window.addEventListener('popstate', handleUrlRouting);
+    return () => {
+      window.removeEventListener('hashchange', handleUrlRouting);
+      window.removeEventListener('popstate', handleUrlRouting);
+    };
   }, []);
 
   return (
