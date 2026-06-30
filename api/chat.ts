@@ -1,22 +1,10 @@
-import express from "express";
-import path from "path";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
-import dotenv from "dotenv";
 
-// Load environment variables from .env
-dotenv.config();
-
-const app = express();
-const PORT = 3000;
-
-app.use(express.json());
-
-// Initialize Gemini SDK with telemetry header
+// Initialize Gemini client using GEMINI_API_KEY from Vercel's environment variables
 const getGeminiClient = () => {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    throw new Error("GEMINI_API_KEY non è configurata nei Secrets del server.");
+    throw new Error("GEMINI_API_KEY non è configurata nelle variabili d'ambiente di Vercel.");
   }
   return new GoogleGenAI({
     apiKey: apiKey,
@@ -28,23 +16,7 @@ const getGeminiClient = () => {
   });
 };
 
-// API chat endpoint with state-of-the-art system prompt in Italian
-app.post("/api/chat", async (req, res) => {
-  try {
-    const { messages } = req.body;
-    if (!messages || !Array.isArray(messages)) {
-      return res.status(400).json({ error: "Il corpo della richiesta deve contenere un array 'messages'." });
-    }
-
-    const ai = getGeminiClient();
-
-    // Map message format into standard Gemini Content parts
-    const contents = messages.map((m: any) => ({
-      role: m.role === "assistant" ? "model" : "user",
-      parts: [{ text: m.content }]
-    }));
-
-    const systemInstruction = `
+const systemInstruction = `
 Sei l'Assistente Strategico Personale di M. Teresa Rogani, fondatrice e unica professionista di "Facilissimo Web" (Web Graphic Designer e alleata strategica delle imprese).
 
 ATTENZIONE MASSIMA - REGOLE RIGIDE:
@@ -61,6 +33,37 @@ Informazioni su M. Teresa Rogani:
 - Valore: Unisce il design strategico e la conformità legale (Accessibilità Web, GDPR, AI Act, diritto di recesso negli e-commerce) per creare siti sicuri che convertono i visitatori in contatti B2B stabili.
 - Azioni: Consiglia di cliccare sul pulsante WhatsApp presente in chat per scriverle direttamente in tempo reale, oppure di compilare il modulo nella sezione "Contatti" per programmare una sessione strategica gratuita di 30 minuti.
 `;
+
+export default async function handler(req: any, res: any) {
+  // CORS Headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  try {
+    const { messages } = req.body;
+    if (!messages || !Array.isArray(messages)) {
+      return res.status(400).json({ error: "Il corpo della richiesta deve contenere un array 'messages'." });
+    }
+
+    const ai = getGeminiClient();
+
+    const contents = messages.map((m: any) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: m.content }]
+    }));
 
     let response;
     try {
@@ -86,35 +89,12 @@ Informazioni su M. Teresa Rogani:
     }
 
     const text = response.text || "Mi scuso, si è verificato un problema nell'elaborazione della risposta.";
-    res.json({ reply: text });
+    return res.status(200).json({ reply: text });
 
   } catch (error: any) {
-    console.error("Errore nel server chat API:", error.message);
-    res.status(500).json({ 
-      error: error.message || "Errore interno del server durante la chiamata a Gemini." 
+    console.error("Errore nel serverless chat API:", error.message);
+    return res.status(500).json({ 
+      error: error.message || "Errore interno durante la chiamata a Gemini." 
     });
   }
-});
-
-// Setup Vite Dev Server / Static Asset Serving
-async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
-  }
-
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
 }
-
-startServer();
