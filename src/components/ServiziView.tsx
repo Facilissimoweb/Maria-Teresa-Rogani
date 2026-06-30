@@ -10,6 +10,15 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
   const [activePhase, setActivePhase] = useState<number>(1);
   const [activeCategory, setActiveCategory] = useState<'cms' | 'custom'>('cms');
 
+  const phaseLabelColors: Record<number, string> = {
+    2: '#f8fbff',
+    3: '#ffffff',
+    4: '#ffffff',
+    5: '#fafdff',
+    6: '#ffffff',
+    7: '#ffffff',
+  };
+
   const cmsPackages = [
     {
       id: 'cms-start',
@@ -369,17 +378,17 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
         </div>
 
         {/* 7 PHASES OPERATIONAL TIMELINE */}
-        <div id="phases-timeline-section" className="bg-[#0A192F] text-white rounded-none p-8 sm:p-12 shadow-xl mb-12 border border-slate-800">
+        <div id="phases-timeline-section" className="text-white rounded-none p-8 sm:p-12 shadow-xl mb-12 border border-slate-800" style={{ backgroundColor: '#4c786f' }}>
           <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
-            <span className="text-[10px] font-bold text-[#4A90E2] uppercase tracking-[0.3em]">IL PROTOCOLLO OPERATIVO IN 7 FASI</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: '#0f1012' }}>IL PROTOCOLLO OPERATIVO IN 7 FASI</span>
             <h2 className="text-2xl sm:text-3xl font-light italic">Il Vostro Progetto, <span className="font-bold not-italic text-white">Passo dopo Passo</span></h2>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs leading-relaxed" style={{ color: '#ffffff' }}>
               Seguo un protocollo rigoroso per assicurarmi che il Vostro sito sia perfetto. Fate clic su ciascuna fase per visualizzare i dettagli operativi e i risultati previsti.
             </p>
           </div>
 
           {/* Interactive Steps List */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 border-b border-slate-800 pb-6">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 border-b border-white/10 pb-6">
             {operationalPhases.map((phase) => (
               <button
                 key={phase.phase}
@@ -387,14 +396,19 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 onClick={() => setActivePhase(phase.phase)}
                 className={`px-4 py-2.5 rounded-none text-[10px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
                   activePhase === phase.phase
-                    ? 'bg-[#4A90E2] text-white shadow-md'
-                    : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
+                    ? 'bg-slate-950 text-white shadow-md'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 <span className="w-5 h-5 bg-slate-950 rounded-none inline-flex items-center justify-center text-[9px] font-mono border border-slate-800 shrink-0">
                   {phase.phase}
                 </span>
-                <span className="hidden md:inline">{phase.title}</span>
+                <span 
+                  className="hidden md:inline"
+                  style={activePhase !== phase.phase && phaseLabelColors[phase.phase] ? { color: phaseLabelColors[phase.phase] } : undefined}
+                >
+                  {phase.title}
+                </span>
                 <span className="md:hidden">Fase {phase.phase}</span>
               </button>
             ))}
