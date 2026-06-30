@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucide-react';
 import { ActiveTab } from '../types';
-import heroImg from '../assets/images/facilissimo_hero_1782724717858.jpg';
+import heroImg from '../assets/images/regenerated_image_1782808684519.png';
 
 interface HomeViewProps {
   setActiveTab: (tab: ActiveTab) => void;

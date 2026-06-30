@@ -11,6 +11,7 @@ import AccessibilityPanel from './components/AccessibilityPanel';
 import ChatAssistant from './components/ChatAssistant';
 import LegalModal, { LegalDocType } from './components/LegalModal';
 import SitemapModal from './components/SitemapModal';
+import WebVitalsOverlay from './components/WebVitalsOverlay';
 import { Sparkles, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -148,6 +149,9 @@ export default function App() {
 
   return (
     <div id="app-root-container" className={containerClasses}>
+      {/* Dev-tool Overlay for Core Web Vitals */}
+      <WebVitalsOverlay />
+
       {/* Dynamic Upper Accent Ribbon */}
       <div id="accent-ribbon" className="w-full bg-slate-950 text-slate-300 py-2.5 px-4 text-center text-xs border-b border-slate-900 flex justify-center items-center space-x-3">
         <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
