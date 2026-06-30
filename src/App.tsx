@@ -156,7 +156,7 @@ export default function App() {
       <div id="accent-ribbon" className="w-full bg-slate-950 text-slate-300 py-2.5 px-4 text-center text-xs border-b border-slate-900 flex justify-center items-center space-x-3">
         <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
         <span className="font-semibold tracking-wide">
-          Sinergia Tecnologica: Scoprite la trasparenza etica dei miei processi integrati con l'Intelligenza Artificiale.
+          Sinergia Tecnologica: Scoprite la trasparenza
         </span>
         <button 
           onClick={() => {
