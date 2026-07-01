@@ -219,7 +219,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>LE MIE SOLUZIONI STRATEGICHE</span>
+              <span className="font-mono font-bold text-[15px]">LE MIE SOLUZIONI STRATEGICHE</span>
             </div>
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
