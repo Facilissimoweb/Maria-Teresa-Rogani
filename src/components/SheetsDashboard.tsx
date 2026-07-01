@@ -480,7 +480,7 @@ export default function SheetsDashboard() {
             <div className="space-y-2">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider">Connetti Google Workspace</h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-md mx-auto">
-                Accedi in sicurezza con il tuo account Google. L'applicazione salverà i contatti ricevuti dal sito web direttamente su un file di calcolo sul tuo account Google Drive, garantendo la tua proprietà esclusiva dei dati.
+                Accedi in sicurezza con il tuo account Google. L'applicazione salverà i contatti ricevuti dal sito web direttamente su un file di calcolo sul tuo account Google Drive, garantendo la tua proprietà exclusività dei dati.
               </p>
             </div>
 
@@ -515,6 +515,33 @@ export default function SheetsDashboard() {
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#FFF" />
               </svg>
               <span>Accedi con Google</span>
+            </button>
+          </div>
+        ) : user.email !== 'facilissimoweb.mc@gmail.com' ? (
+          /* UNAUTHORIZED EMAIL ACCESS BLOCK */
+          <div className="max-w-xl mx-auto bg-white dark:bg-[#0c1e36] border-2 border-red-500 p-8 text-center space-y-6 shadow-xl rounded-none animate-fadeIn">
+            <div className="w-16 h-16 bg-red-50 dark:bg-red-950/20 text-red-600 rounded-none flex items-center justify-center mx-auto border border-red-200">
+              <Lock className="w-8 h-8 text-red-500" />
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider">Accesso Riservato</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-md mx-auto">
+                Questa area privata contiene strumenti interni e metriche di business riservati esclusivamente all'amministratore del sito (<strong className="text-[#0A192F] dark:text-white">facilissimoweb.mc@gmail.com</strong>).
+              </p>
+            </div>
+
+            <div className="bg-red-50/50 dark:bg-red-950/10 p-4 border border-red-100 dark:border-red-900/30 text-center rounded-none font-mono text-xs text-red-700 dark:text-red-400">
+              <span className="block font-bold">Email Connessa:</span>
+              <span className="block break-all mt-1">{user.email}</span>
+            </div>
+
+            <button 
+              onClick={handleSignOut}
+              className="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg flex items-center justify-center space-x-3 cursor-pointer transition-colors w-full"
+            >
+              <LogOut className="w-4 h-4 shrink-0" />
+              <span>Disconnetti & Accedi con l'E-mail Corretta</span>
             </button>
           </div>
         ) : (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe, ArrowRight, Sun, Moon, Accessibility } from 'lucide-react';
+import { Menu, X, Globe, ArrowRight, Sun, Moon, Accessibility, Lock, Unlock, ChevronRight } from 'lucide-react';
 import { ActiveTab } from '../types';
 
 interface NavbarProps {
@@ -9,6 +9,7 @@ interface NavbarProps {
   setDarkMode?: (val: boolean) => void;
   accessibilityOpen?: boolean;
   setAccessibilityOpen?: (val: boolean) => void;
+  isAdmin?: boolean;
 }
 
 export default function Navbar({ 
@@ -17,7 +18,8 @@ export default function Navbar({
   darkMode = false, 
   setDarkMode,
   accessibilityOpen = false,
-  setAccessibilityOpen
+  setAccessibilityOpen,
+  isAdmin = false
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -35,14 +37,17 @@ export default function Navbar({
     return 'it';
   });
 
-  const menuItems = [
+  const baseMenuItems = [
     { id: 'home', label: 'Home' },
     { id: 'chi-sono', label: 'Chi Sono' },
     { id: 'servizi', label: 'Servizi' },
     { id: 'normativa', label: 'Compliance' },
     { id: 'blog', label: 'Blog' },
-    { id: 'fogli', label: 'Google Sheets' },
   ] as const;
+
+  const menuItems = isAdmin 
+    ? [...baseMenuItems, { id: 'fogli', label: 'Google Sheets' } as const]
+    : baseMenuItems;
 
   const languages = [
     { code: 'it', label: 'ITA', flag: '🇮🇹' },
@@ -252,6 +257,26 @@ export default function Navbar({
                 </button>
               )}
 
+              {/* Area Riservata (Admin Access Lock) */}
+              <button
+                id="navbar-admin-lock-toggle"
+                onClick={() => handleNavClick('fogli')}
+                className={`p-2 transition-colors rounded-none cursor-pointer flex items-center justify-center border border-transparent hover:border-slate-200/20 ${
+                  activeTab === 'fogli'
+                    ? 'text-amber-500 border-slate-200/20 bg-amber-500/5'
+                    : isAdmin
+                      ? 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-500'
+                      : 'text-slate-400 hover:text-[#0A192F] dark:hover:text-white'
+                }`}
+                title={isAdmin ? "Area Riservata Sbloccata" : "Accesso Area Riservata"}
+                aria-label="Area Riservata"
+              >
+                {isAdmin ? <Unlock className="w-5 h-5 text-emerald-500" /> : <Lock className="w-5 h-5" />}
+                <span className="text-[10px] font-mono font-bold uppercase ml-1.5 hidden md:inline">
+                  {isAdmin ? "Sbloccato" : "Area Riservata"}
+                </span>
+              </button>
+
               <button
                 id="nav-cta-button"
                 onClick={() => handleNavClick('contatti')}
@@ -363,6 +388,21 @@ export default function Navbar({
                 )}
               </button>
             ))}
+
+            {!isAdmin && (
+              <button
+                id="mobile-nav-admin-lock"
+                onClick={() => handleNavClick('fogli')}
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+                className="block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-all duration-150 cursor-pointer flex items-center justify-between text-slate-500 bg-slate-50 border border-slate-200 hover:text-slate-700 hover:bg-slate-100 dark:bg-[#0c1e36] dark:border-white/10 dark:text-slate-300 dark:hover:text-white"
+              >
+                <span className="flex items-center space-x-2">
+                  <Lock className="w-4 h-4 text-slate-400" />
+                  <span>Area Riservata</span>
+                </span>
+                <ChevronRight className="w-4 h-4 text-slate-400" />
+              </button>
+            )}
 
 
 

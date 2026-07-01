@@ -16,9 +16,27 @@ import SitemapModal from './components/SitemapModal';
 import WebVitalsOverlay from './components/WebVitalsOverlay';
 import { Sparkles, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './lib/firebase';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  // Monitor auth state to determine admin status in real-time
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user && user.email) {
+        setUserEmail(user.email);
+        setIsAdmin(user.email === 'facilissimoweb.mc@gmail.com');
+      } else {
+        setUserEmail(null);
+        setIsAdmin(false);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   
   // Accessibility and Theme States
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -211,6 +229,7 @@ export default function App() {
         setDarkMode={setDarkMode} 
         accessibilityOpen={accessibilityOpen}
         setAccessibilityOpen={setAccessibilityOpen}
+        isAdmin={isAdmin}
       />
 
       {/* Main Content Area */}
