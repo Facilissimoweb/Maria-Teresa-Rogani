@@ -171,10 +171,10 @@ export default function WebVitalsOverlay() {
     const spacer = document.createElement('div');
     spacer.style.height = '120px';
     spacer.style.transition = 'all 0.5s ease';
-    spacer.style.backgroundColor = 'rgba(74, 144, 226, 0.1)';
-    spacer.style.border = '2px dashed #4A90E2';
+    spacer.style.backgroundColor = 'rgba(190, 242, 100, 0.1)';
+    spacer.style.border = '2px dashed #bef264';
     spacer.style.margin = '10px 0';
-    spacer.className = 'temporary-layout-shift-box flex items-center justify-center text-xs font-mono text-[#4A90E2]';
+    spacer.className = 'temporary-layout-shift-box flex items-center justify-center text-xs font-mono text-[#bef264]';
     spacer.innerHTML = 'Simulated Layout Shift (Test CLS)';
     
     const target = document.getElementById('app-main-content');
@@ -248,10 +248,10 @@ export default function WebVitalsOverlay() {
         <button
           id="btn-web-vitals-toggle"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200 px-3.5 py-2.5 shadow-lg border border-slate-800 text-[10px] font-bold uppercase tracking-wider hover:scale-105 active:scale-95"
+          className="flex items-center space-x-2 bg-[#bef264] text-black hover:bg-[#a3e635] transition-all duration-200 px-3.5 py-2.5 shadow-lg border border-[#bef264]/20 text-[10px] font-bold uppercase tracking-wider hover:scale-105 active:scale-95"
           title="Monitor Core Web Vitals"
         >
-          <Activity className="w-4 h-4 text-[#4A90E2] animate-pulse" />
+          <Activity className="w-4 h-4 text-black animate-pulse" />
           <span>Dev Performance ({cls.status === 'good' ? 'Ottimo' : 'Alert'})</span>
         </button>
       </div>
@@ -265,28 +265,28 @@ export default function WebVitalsOverlay() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed bottom-36 left-6 z-50 w-80 sm:w-96 bg-slate-950 text-slate-100 border border-slate-800 shadow-2xl p-4 font-sans overflow-hidden"
+            className="fixed bottom-36 left-6 z-50 w-80 sm:w-96 bg-[#111113] text-slate-100 border-2 border-[#10B981] shadow-2xl p-4 font-sans overflow-hidden rounded-none"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
               <div className="flex items-center space-x-2">
-                <Activity className="w-5 h-5 text-[#4A90E2]" />
+                <Activity className="w-5 h-5 text-[#bef264]" />
                 <div>
-                  <h3 className="text-xs font-extrabold uppercase tracking-widest text-white">Core Web Vitals</h3>
-                  <p className="text-[9px] text-slate-400 font-mono">Real-Time Monitor (Dev Tool)</p>
+                  <h3 className="text-xs font-extrabold uppercase tracking-widest text-white font-display">Core Web Vitals</h3>
+                  <p className="text-[9px] text-[#bef264] font-mono">Real-Time Monitor (Dev Tool)</p>
                 </div>
               </div>
               <div className="flex items-center space-x-1.5">
                 <button
                   onClick={() => setIsMinimized(!isMinimized)}
-                  className="p-1 hover:bg-slate-800 text-slate-400 hover:text-white rounded transition-colors"
+                  className="p-1 hover:bg-white/5 text-slate-400 hover:text-white rounded transition-colors cursor-pointer"
                   title={isMinimized ? 'Espandi' : 'Riduci'}
                 >
                   {isMinimized ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 hover:bg-slate-800 text-slate-400 hover:text-white rounded transition-colors"
+                  className="p-1 hover:bg-white/5 text-slate-400 hover:text-white rounded transition-colors cursor-pointer"
                   title="Chiudi"
                 >
                   <X className="w-4 h-4" />
@@ -305,16 +305,16 @@ export default function WebVitalsOverlay() {
                   className="space-y-4 overflow-hidden"
                 >
                   {/* Tab Selector */}
-                  <div className="flex border-b border-slate-900 text-[10px] font-bold uppercase tracking-wider">
+                  <div className="flex border-b border-white/5 text-[10px] font-bold uppercase tracking-wider font-mono">
                     <button
                       onClick={() => setActiveTab('metrics')}
-                      className={`flex-1 py-1.5 border-b-2 transition-colors ${activeTab === 'metrics' ? 'border-[#4A90E2] text-white bg-slate-900/50' : 'border-transparent text-slate-400 hover:text-white'}`}
+                      className={`flex-1 py-1.5 border-b-2 transition-colors cursor-pointer ${activeTab === 'metrics' ? 'border-[#bef264] text-white bg-white/5' : 'border-transparent text-slate-400 hover:text-white'}`}
                     >
                       Metriche
                     </button>
                     <button
                       onClick={() => setActiveTab('guide')}
-                      className={`flex-1 py-1.5 border-b-2 transition-colors ${activeTab === 'guide' ? 'border-[#4A90E2] text-white bg-slate-900/50' : 'border-transparent text-slate-400 hover:text-white'}`}
+                      className={`flex-1 py-1.5 border-b-2 transition-colors cursor-pointer ${activeTab === 'guide' ? 'border-[#bef264] text-white bg-white/5' : 'border-transparent text-slate-400 hover:text-white'}`}
                     >
                       Guida Rapida
                     </button>
@@ -323,13 +323,13 @@ export default function WebVitalsOverlay() {
                   {activeTab === 'metrics' ? (
                     <div className="space-y-3">
                       {/* Metric Card LCP */}
-                      <div className="bg-slate-900/40 border border-slate-900 p-2.5 flex items-center justify-between">
+                      <div className="bg-white/5 border border-white/10 p-2.5 flex items-center justify-between">
                         <div>
                           <div className="flex items-center space-x-1">
                             <span className="text-[10px] font-bold text-slate-300">LCP</span>
                             <span className="text-[8px] font-mono text-slate-500">(Largest Contentful Paint)</span>
                           </div>
-                          <div className="text-lg font-mono font-bold text-white mt-1">
+                          <div className="text-lg font-mono font-bold text-[#bef264] mt-1">
                             {lcp.raw}
                           </div>
                         </div>
@@ -340,13 +340,13 @@ export default function WebVitalsOverlay() {
                       </div>
 
                       {/* Metric Card FID */}
-                      <div className="bg-slate-900/40 border border-slate-900 p-2.5 flex items-center justify-between">
+                      <div className="bg-white/5 border border-white/10 p-2.5 flex items-center justify-between">
                         <div>
                           <div className="flex items-center space-x-1">
                             <span className="text-[10px] font-bold text-slate-300">FID</span>
                             <span className="text-[8px] font-mono text-slate-500">(First Input Delay)</span>
                           </div>
-                          <div className="text-lg font-mono font-bold text-white mt-1">
+                          <div className="text-lg font-mono font-bold text-[#bef264] mt-1">
                             {fid.raw}
                           </div>
                         </div>
@@ -357,13 +357,13 @@ export default function WebVitalsOverlay() {
                       </div>
 
                       {/* Metric Card CLS */}
-                      <div className="bg-slate-900/40 border border-slate-900 p-2.5 flex items-center justify-between">
+                      <div className="bg-white/5 border border-white/10 p-2.5 flex items-center justify-between">
                         <div>
                           <div className="flex items-center space-x-1">
                             <span className="text-[10px] font-bold text-slate-300">CLS</span>
                             <span className="text-[8px] font-mono text-slate-500">(Cumulative Layout Shift)</span>
                           </div>
-                          <div className="text-lg font-mono font-bold text-white mt-1">
+                          <div className="text-lg font-mono font-bold text-[#bef264] mt-1">
                             {cls.raw}
                           </div>
                         </div>
@@ -374,13 +374,13 @@ export default function WebVitalsOverlay() {
                       </div>
 
                       {/* Metric Card INP */}
-                      <div className="bg-slate-900/40 border border-slate-900 p-2.5 flex items-center justify-between">
+                      <div className="bg-white/5 border border-white/10 p-2.5 flex items-center justify-between">
                         <div>
                           <div className="flex items-center space-x-1">
                             <span className="text-[10px] font-bold text-slate-300">INP</span>
                             <span className="text-[8px] font-mono text-slate-500">(Interaction to Next Paint)</span>
                           </div>
-                          <div className="text-lg font-mono font-bold text-white mt-1">
+                          <div className="text-lg font-mono font-bold text-[#bef264] mt-1">
                             {inp.raw}
                           </div>
                         </div>
@@ -391,17 +391,17 @@ export default function WebVitalsOverlay() {
                       </div>
 
                       {/* Active Actions */}
-                      <div className="pt-2 border-t border-slate-900 flex items-center justify-between gap-2">
+                      <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-2">
                         <button
                           onClick={simulateLayoutShift}
-                          className="flex-1 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors py-2 text-[9px] font-bold uppercase tracking-wider border border-slate-800 rounded-none flex items-center justify-center space-x-1"
+                          className="flex-1 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors py-2 text-[9px] font-bold uppercase tracking-wider border border-white/10 rounded-none flex items-center justify-center space-x-1 cursor-pointer"
                         >
-                          <HelpCircle className="w-3.5 h-3.5 text-[#4A90E2]" />
+                          <HelpCircle className="w-3.5 h-3.5 text-[#bef264]" />
                           <span>Simula Shift ({shiftCount})</span>
                         </button>
                         <button
                           onClick={resetMetrics}
-                          className="px-3 bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors py-2 text-[9px] font-bold uppercase border border-slate-800 rounded-none"
+                          className="px-3 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors py-2 text-[9px] font-bold uppercase border border-white/10 rounded-none cursor-pointer"
                           title="Resetta le metriche simulate"
                         >
                           <RefreshCw className="w-3.5 h-3.5" />
@@ -411,25 +411,25 @@ export default function WebVitalsOverlay() {
                   ) : (
                     <div className="text-xs space-y-2.5 text-slate-300 max-h-64 overflow-y-auto pr-1">
                       <div>
-                        <h4 className="font-bold text-white uppercase text-[10px] text-[#4A90E2] tracking-wider mb-0.5">Largest Contentful Paint (LCP)</h4>
+                        <h4 className="font-bold text-white uppercase text-[10px] text-[#bef264] tracking-wider mb-0.5 font-mono">Largest Contentful Paint (LCP)</h4>
                         <p className="text-[11px] leading-relaxed text-slate-400">
                           Misura la velocità di caricamento percepita. Per fornire una buona esperienza utente, l'LCP deve avvenire entro <strong>2.5 secondi</strong> dall'inizio del caricamento.
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-bold text-white uppercase text-[10px] text-[#4A90E2] tracking-wider mb-0.5">First Input Delay (FID)</h4>
+                        <h4 className="font-bold text-white uppercase text-[10px] text-[#bef264] tracking-wider mb-0.5 font-mono">First Input Delay (FID)</h4>
                         <p className="text-[11px] leading-relaxed text-slate-400">
                           Misura la reattività visiva del sito. Un valore ottimale deve essere inferiore a <strong>100 millisecondi</strong>.
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-bold text-white uppercase text-[10px] text-[#4A90E2] tracking-wider mb-0.5">Cumulative Layout Shift (CLS)</h4>
+                        <h4 className="font-bold text-white uppercase text-[10px] text-[#bef264] tracking-wider mb-0.5 font-mono">Cumulative Layout Shift (CLS)</h4>
                         <p className="text-[11px] leading-relaxed text-slate-400">
                           Misura la stabilità visiva prevenendo spostamenti improvvisi di elementi. Un punteggio ottimale deve essere inferiore a <strong>0.100</strong>.
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-bold text-white uppercase text-[10px] text-[#4A90E2] tracking-wider mb-0.5">Interaction to Next Paint (INP)</h4>
+                        <h4 className="font-bold text-white uppercase text-[10px] text-[#bef264] tracking-wider mb-0.5 font-mono">Interaction to Next Paint (INP)</h4>
                         <p className="text-[11px] leading-relaxed text-slate-400">
                           Misura la latenza complessiva di tutte le interazioni dell'utente. Un valore ottimale deve essere inferiore a <strong>200 millisecondi</strong>.
                         </p>
@@ -438,7 +438,7 @@ export default function WebVitalsOverlay() {
                   )}
 
                   {/* Footnote */}
-                  <div className="pt-2 border-t border-slate-900 flex items-center justify-between text-[8px] text-slate-500 font-mono">
+                  <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[8px] text-slate-500 font-mono">
                     <span>Stato: MONITORAGGIO ATTIVO</span>
                     <span>W3C Perf APIs</span>
                   </div>

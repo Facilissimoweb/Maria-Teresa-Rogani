@@ -56,22 +56,22 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
       {/* Dialog container */}
       <div 
         id="sitemap-modal-body"
-        className="relative bg-white dark:bg-[#0d1e36] border-2 border-[#0A192F] dark:border-[#4A90E2] shadow-2xl p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-slideUp text-left"
+        className="relative bg-[#111113] border-2 border-[#10B981] shadow-2xl p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-slideUp text-left rounded-none"
       >
         {/* Header */}
-        <div className="flex justify-between items-center border-b border-slate-200 dark:border-white/10 pb-4 mb-6">
+        <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-6">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-[#0A192F] dark:bg-[#4A90E2] text-white">
+            <div className="p-2 bg-[#bef264] text-black">
               <Network className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#4A90E2]">ARCHITETTURA SITO</h3>
-              <p className="text-lg font-black uppercase text-[#0A192F] dark:text-white leading-none mt-1">MAPPA DEL SITO (SITEMAP)</p>
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#bef264] font-mono">ARCHITETTURA SITO</h3>
+              <p className="text-lg font-black uppercase text-white leading-none mt-1 font-display">MAPPA DEL SITO (SITEMAP)</p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/5 text-[#0A192F] dark:text-slate-300 transition-colors"
+            className="p-1.5 hover:bg-white/5 text-slate-300 hover:text-white transition-colors cursor-pointer"
             aria-label="Chiudi mappa del sito"
           >
             <X className="w-5 h-5" />
@@ -80,19 +80,19 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
 
         {/* Content */}
         <div className="space-y-6">
-          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed uppercase tracking-wider font-semibold">
+          <p className="text-xs text-slate-300 leading-relaxed uppercase tracking-wider font-semibold font-mono">
             Esplorate tutte le risorse digitali e le sezioni strategiche di Facilissimo Web per orientare la Vostra navigazione.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             {sections.map((sect, idx) => (
               <div key={idx} className="space-y-3">
-                <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#4A90E2] border-b border-slate-100 dark:border-white/5 pb-1">
+                <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#bef264] border-b border-white/10 pb-1 font-mono">
                   {sect.title}
                 </h4>
                 <div className="space-y-2">
                   {sect.items.map((item, itemIdx) => {
-                    const buttonClasses = "w-full text-left p-2.5 bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-100 dark:border-white/5 transition-all text-[#0A192F] dark:text-slate-200 block cursor-pointer group";
+                    const buttonClasses = "w-full text-left p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-slate-200 block cursor-pointer group rounded-none";
                     
                     if (item.tab) {
                       return (
@@ -102,10 +102,10 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
                           className={buttonClasses}
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-extrabold uppercase tracking-wider group-hover:text-[#4A90E2]">{item.name}</span>
-                            <Compass className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#4A90E2] transition-colors" />
+                            <span className="text-xs font-extrabold uppercase tracking-wider group-hover:text-[#bef264] transition-colors">{item.name}</span>
+                            <Compass className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#bef264] transition-colors" />
                           </div>
-                          <p className="text-[10px] text-slate-400 mt-1">{item.desc}</p>
+                          <p className="text-[10px] text-slate-400 mt-1 font-sans">{item.desc}</p>
                         </button>
                       );
                     } else if (item.action) {
@@ -116,10 +116,10 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
                           className={buttonClasses}
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-extrabold uppercase tracking-wider group-hover:text-[#4A90E2]">{item.name}</span>
-                            <Compass className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#4A90E2] transition-colors" />
+                            <span className="text-xs font-extrabold uppercase tracking-wider group-hover:text-[#bef264] transition-colors">{item.name}</span>
+                            <Compass className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#bef264] transition-colors" />
                           </div>
-                          <p className="text-[10px] text-slate-400 mt-1">{item.desc}</p>
+                          <p className="text-[10px] text-slate-400 mt-1 font-sans">{item.desc}</p>
                         </button>
                       );
                     } else {
@@ -132,10 +132,10 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
                           className={buttonClasses}
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">{item.name}</span>
-                            <ExternalLink className="w-3.5 h-3.5 text-emerald-500" />
+                            <span className="text-xs font-extrabold uppercase tracking-wider text-[#bef264] group-hover:text-[#bef264]/85 transition-colors">{item.name}</span>
+                            <ExternalLink className="w-3.5 h-3.5 text-[#bef264]" />
                           </div>
-                          <p className="text-[10px] text-slate-400 mt-1">{item.desc}</p>
+                          <p className="text-[10px] text-slate-400 mt-1 font-sans">{item.desc}</p>
                         </a>
                       );
                     }
@@ -147,8 +147,8 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
         </div>
 
         {/* Footer */}
-        <div className="mt-8 pt-4 border-t border-slate-200 dark:border-white/10 text-center">
-          <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+        <div className="mt-8 pt-4 border-t border-white/10 text-center">
+          <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold font-mono">
             FACILISSIMO WEB &copy; {new Date().getFullYear()} • Architettura Web Performante
           </p>
         </div>

@@ -173,7 +173,7 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
         className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl relative cursor-pointer ${
           isOpen
             ? 'bg-rose-600 text-white hover:bg-rose-700'
-            : 'bg-[#0A192F] dark:bg-[#4A90E2] text-white hover:bg-[#1a365d] dark:hover:bg-[#357ABD] hover:scale-105'
+            : 'bg-[#bef264] text-black hover:bg-[#a3e635] hover:scale-105'
         }`}
         title="Chiedi all'Assistente AI Strategico"
         aria-label="Apri assistente virtuale"
@@ -182,8 +182,8 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
           <X className="w-6 h-6" />
         ) : (
           <div className="relative">
-            <MessageSquare className="w-7 h-7" />
-            <Sparkles className="w-3.5 h-3.5 text-amber-300 absolute -top-1 -right-1 animate-pulse" />
+            <MessageSquare className="w-7 h-7 text-black" />
+            <Sparkles className="w-3.5 h-3.5 text-indigo-950 absolute -top-1 -right-1 animate-pulse" />
           </div>
         )}
       </button>
@@ -192,16 +192,16 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
       {isOpen && (
         <div
           id="ai-chat-window"
-          className="fixed inset-4 sm:inset-auto sm:bottom-20 sm:right-6 sm:left-auto sm:top-auto sm:w-[420px] sm:h-[620px] sm:max-h-[80vh] bg-white dark:bg-[#0d1e36] border-2 border-[#0A192F] dark:border-[#4A90E2] shadow-2xl flex flex-col z-50 animate-slideUp rounded-3xl overflow-hidden text-left"
+          className="fixed inset-4 sm:inset-auto sm:bottom-20 sm:right-6 sm:left-auto sm:top-auto sm:w-[420px] sm:h-[620px] sm:max-h-[80vh] bg-white dark:bg-[#0d1e36] border-2 border-[#10B981] shadow-2xl flex flex-col z-50 animate-slideUp rounded-3xl overflow-hidden text-left"
         >
           {/* Header */}
-          <div className="bg-[#0A192F] text-white p-4 flex justify-between items-center border-b border-[#4A90E2]/20 shrink-0">
+          <div className="bg-[#111113] text-white p-4 flex justify-between items-center border-b border-[#10B981]/20 shrink-0">
             <div className="flex items-center space-x-2">
-              <div className="p-1.5 bg-[#4A90E2] rounded-xl">
+              <div className="p-1.5 bg-[#10B981] rounded-xl">
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-[#4A90E2]">Consulente AI</h4>
+                <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-[#10B981]">Consulente AI</h4>
                 <p className="text-sm font-extrabold uppercase tracking-wider">M.Teresa Assistant</p>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
           <div className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 p-3 flex flex-col sm:flex-row gap-2 items-stretch shrink-0">
             <button
               onClick={handleRequestFormRedirect}
-              className="flex-1 flex items-center justify-center space-x-1.5 bg-[#4A90E2] hover:bg-[#357ABD] text-white font-extrabold py-2 px-3 rounded-xl transition-all duration-200 text-[9px] uppercase tracking-wider shadow-sm hover:shadow hover:scale-[1.01] cursor-pointer"
+              className="flex-1 flex items-center justify-center space-x-1.5 bg-[#10B981] hover:bg-[#10B981]/80 text-white font-extrabold py-2 px-3 rounded-xl transition-all duration-200 text-[9px] uppercase tracking-wider shadow-sm hover:shadow hover:scale-[1.01] cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>COMPILATE IL MODULO DI RICHIESTA</span>
@@ -257,8 +257,8 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
                 <div
                   className={`max-w-[85%] px-4 py-3 text-xs leading-relaxed shadow-sm ${
                     msg.role === 'user'
-                      ? 'bg-[#4A90E2] text-white rounded-2xl rounded-tr-none'
-                      : 'bg-white dark:bg-[#0d1e36] text-[#0A192F] dark:text-slate-200 border border-slate-200 dark:border-white/10 rounded-2xl rounded-tl-none'
+                      ? 'bg-[#10B981] text-white rounded-2xl rounded-tr-none'
+                      : 'bg-white dark:bg-[#0d1e36] text-slate-900 dark:text-slate-200 border border-slate-200 dark:border-white/10 rounded-2xl rounded-tl-none'
                   }`}
                 >
                   {renderMessageContent(msg.content)}
@@ -275,7 +275,7 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
                     <button
                       key={i}
                       onClick={() => handleSendMessage(sug)}
-                      className="text-left py-2 px-3.5 text-[11px] bg-white dark:bg-[#0d1e36] text-[#0A192F] dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] cursor-pointer transition-colors font-semibold rounded-xl"
+                      className="text-left py-2 px-3.5 text-[11px] bg-white dark:bg-[#0d1e36] text-slate-900 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-[#10B981] dark:hover:border-[#10B981] cursor-pointer transition-colors font-semibold rounded-xl"
                     >
                       {sug}
                     </button>
@@ -297,7 +297,7 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
                           <button
                             key={i}
                             onClick={() => handleSendMessage(q)}
-                            className="text-left py-2 px-3.5 text-[11px] bg-white dark:bg-[#0d1e36] text-[#0A192F] dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-[#4A90E2] dark:hover:border-[#4A90E2] cursor-pointer transition-colors font-semibold rounded-xl flex items-center space-x-1"
+                            className="text-left py-2 px-3.5 text-[11px] bg-white dark:bg-[#0d1e36] text-slate-900 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-[#10B981] dark:hover:border-[#10B981] cursor-pointer transition-colors font-semibold rounded-xl flex items-center space-x-1"
                           >
                             <span>💡</span>
                             <span className="flex-1">{q}</span>
@@ -314,8 +314,8 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
             {/* Loader/Thinking block */}
             {isLoading && (
               <div className="flex justify-start items-center space-x-2 pt-1">
-                <div className="bg-white dark:bg-[#0d1e36] text-[#0A192F] dark:text-slate-200 border border-slate-200 dark:border-white/10 p-3 rounded-2xl flex items-center space-x-2 shadow-sm">
-                  <Loader2 className="w-4 h-4 animate-spin text-[#4A90E2]" />
+                <div className="bg-white dark:bg-[#0d1e36] text-slate-900 dark:text-slate-200 border border-slate-200 dark:border-white/10 p-3 rounded-2xl flex items-center space-x-2 shadow-sm">
+                  <Loader2 className="w-4 h-4 animate-spin text-[#10B981]" />
                   <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Elaborazione in corso...</span>
                 </div>
               </div>
@@ -343,12 +343,12 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Scrivete un messaggio..."
               disabled={isLoading}
-              className="flex-1 text-xs px-3.5 py-2.5 border border-slate-200 dark:border-white/10 focus:border-[#4A90E2] dark:focus:border-[#4A90E2] focus:outline-none bg-slate-50 dark:bg-[#081526] text-[#0A192F] dark:text-white rounded-xl"
+              className="flex-1 text-xs px-3.5 py-2.5 border border-slate-200 dark:border-white/10 focus:border-[#10B981] dark:focus:border-[#10B981] focus:outline-none bg-slate-50 dark:bg-[#081526] text-slate-900 dark:text-white rounded-xl"
             />
             <button
               type="submit"
               disabled={!inputValue.trim() || isLoading}
-              className="p-2.5 bg-[#0A192F] dark:bg-[#4A90E2] hover:bg-[#1a365d] dark:hover:bg-[#357ABD] text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer rounded-xl shrink-0"
+              className="p-2.5 bg-[#10B981] hover:bg-[#10B981]/80 text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer rounded-xl shrink-0"
               title="Invia"
               aria-label="Invia messaggio"
             >
