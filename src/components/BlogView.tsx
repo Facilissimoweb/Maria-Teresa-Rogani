@@ -55,6 +55,16 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
+  // Also scroll to top when article is selected or deselected
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [selectedArticleId]);
+
   const articles: Article[] = [
     {
       id: 'ai-act-web-design',
@@ -181,7 +191,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
         },
         {
           question: "L'accessibilità è obbligatoria per legge per le piccole aziende?",
-          answer: "L'Unione Europea, attraverso l'European Accessibility Act, ha esteso gli obblighi di accessibilità a moltissime categorie del settore privato, tra cui e-commerce, servizi bancari e aziende di trasporti. Ma al di là della legge, rimane una scelta etica e commerciale fondamentale per chiunque."
+          answer: "L'Unione Europea, attraverso l'European Accessibility Act, ha esteso gli obblighi di accessibilità a moltissime categorie del settore privato, tra cui e-commerce, servizi bancari e aziende di trasporti. Ma al di l' della legge, rimane una scelta etica e commerciale fondamentale per chiunque."
         },
         {
           question: "Un sito accessibile costa molto di più?",
@@ -200,24 +210,20 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
     const url = `${window.location.origin}/blog/${article.id}`;
     
     // Explicitly construct share contents with Excerpt and Image URL where possible
-    const shareText = `*${article.title}*\n\n"${article.excerpt}"\n\nAnteprima visiva: ${article.image}\n\nLeggi l'articolo completo su Facilissimo Web: ${url}`;
+    const shareText = `*${article.title}*\n\n"${article.excerpt}"\n\nLeggi l'articolo completo su Facilissimo Web: ${url}`;
     
     if (platform === 'wa') {
       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
     } else if (platform === 'fb') {
-      // Facebook uses OG meta tags scraped from the URL. We also append a text summary in fallback
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(article.excerpt)}`, '_blank');
     } else if (platform === 'li') {
-      // LinkedIn relies heavily on OG tags scraped from URL
       window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
     } else if (platform === 'tw') {
-      // Twitter accepts text and URL parameters. We pass truncated excerpt and the URL
       const truncatedExcerpt = article.excerpt.length > 100 ? article.excerpt.substring(0, 97) + "..." : article.excerpt;
-      const tweetText = `"${article.title}"\n\n${truncatedExcerpt}\n\nAnteprima: ${article.image}\n`;
+      const tweetText = `"${article.title}"\n\n${truncatedExcerpt}\n`;
       window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(url)}`, '_blank');
     } else if (platform === 'copy') {
-      // Custom clipboard text including title, excerpt, image, and link
-      const clipboardContent = `${article.title}\n\n${article.excerpt}\n\nImmagine di riferimento: ${article.image}\n\nLink: ${url}`;
+      const clipboardContent = `${article.title}\n\n${article.excerpt}\n\nLink: ${url}`;
       navigator.clipboard.writeText(clipboardContent);
       setCopiedId(article.id);
       setTimeout(() => setCopiedId(null), 2500);
@@ -230,45 +236,8 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
   useEffect(() => {
     if (selectedArticleId && selectedArticle) {
       document.title = `${selectedArticle.title} | Il Blog di Facilissimo Web`;
- 
-      const setMetaTag = (attributeName: string, attributeValue: string, contentValue: string) => {
-        let el = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
-        if (!el) {
-          el = document.createElement('meta');
-          el.setAttribute(attributeName, attributeValue);
-          document.head.appendChild(el);
-        }
-        el.setAttribute('content', contentValue);
-      };
-
-      // Standard metadata
-      setMetaTag('name', 'description', selectedArticle.excerpt);
-      
-      // Open Graph (Facebook / LinkedIn) metadata
-      setMetaTag('property', 'og:title', selectedArticle.title);
-      setMetaTag('property', 'og:description', selectedArticle.excerpt);
-      setMetaTag('property', 'og:image', selectedArticle.image);
-      setMetaTag('property', 'og:type', 'article');
-      setMetaTag('property', 'og:url', `${window.location.origin}/blog/${selectedArticle.id}`);
-
-      // Twitter Card metadata
-      setMetaTag('name', 'twitter:card', 'summary_large_image');
-      setMetaTag('name', 'twitter:title', selectedArticle.title);
-      setMetaTag('name', 'twitter:description', selectedArticle.excerpt);
-      setMetaTag('name', 'twitter:image', selectedArticle.image);
     } else {
-      // Fallback/Default Blog page title and description
       document.title = 'Blog, Risorse e Strategia Digitale | Facilissimo Web';
-      
-      const setMetaTag = (attributeName: string, attributeValue: string, contentValue: string) => {
-        let el = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
-        if (el) el.setAttribute('content', contentValue);
-      };
-      
-      setMetaTag('name', 'description', 'Il blog di Facilissimo Web. Leggi le ultime risorse, novità e guide strategiche per migliorare la presenza digitale della tua impresa.');
-      setMetaTag('property', 'og:title', 'Blog, Risorse e Strategia Digitale | Facilissimo Web');
-      setMetaTag('property', 'og:description', 'Il blog di Facilissimo Web. Leggi le ultime risorse, novità e guide strategiche per migliorare la presenza digitale della tua impresa.');
-      setMetaTag('property', 'og:image', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');
     }
   }, [selectedArticleId, selectedArticle]);
 
@@ -313,17 +282,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
 
       if (matchedArticleId) {
         setSelectedArticleId(matchedArticleId);
-        // Scroll to article content nicely
-        setTimeout(() => {
-          const el = document.getElementById('blog-hero');
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-          }
-        }, 150);
       } else {
-        // Only deselect if the current tab is indeed blog but there's no matching path article
         if (window.location.pathname === '/blog' || window.location.pathname === '/blog/') {
           setSelectedArticleId(null);
         }
@@ -340,32 +299,28 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
   }, []);
 
   return (
-    <article id="blog-view" className="w-full bg-[#FAFBFD] dark:bg-[#0a192f] transition-colors duration-300 min-h-screen text-slate-800 dark:text-slate-200">
+    <article id="blog-view" className="w-full bg-[#161619] text-white">
       
       {/* Blog Hero Banner */}
-      <section id="blog-hero" className="relative py-20 overflow-hidden bg-slate-900 text-white">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-[#4A90E2] blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-indigo-500 blur-3xl" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/40 to-[#0A192F]/95" />
+      <section id="blog-hero" className="relative py-16 lg:py-24 overflow-hidden bg-[#111113] border-b border-white/10">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center space-y-4">
-          <span className="px-3 py-1 bg-[#4A90E2]/20 text-[#4A90E2] text-[10px] font-bold tracking-[0.25em] uppercase border border-[#4A90E2]/30 inline-block rounded-none">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center space-y-6">
+          <div className="w-12 h-1 bg-[#4285F4] mx-auto"></div>
+          <span className="px-3 py-1 bg-white/5 text-[#4285F4] text-[10px] font-bold tracking-[0.25em] uppercase border border-white/10 inline-block font-mono">
             Risorse e Insights
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white uppercase font-sans">
-            Il Blog di <span className="text-[#4A90E2]">Facilissimo</span> Web
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white font-display uppercase">
+            Il Nostro Blog
           </h1>
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-sans font-light leading-relaxed">
             Consulenza, strategie, novità normative e approfondimenti pratici per trasformare la presenza digitale della Vostra azienda in uno strumento etico, performante e ad alta conversione.
           </p>
         </div>
       </section>
 
       {/* Main Blog Page / Detail Switcher */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 bg-[#161619] border-b border-white/10">
         <AnimatePresence mode="wait">
           {!selectedArticleId ? (
             <motion.div
@@ -374,63 +329,57 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {articles.map((article) => (
                 <div 
                   key={article.id} 
                   id={`article-card-${article.id}`}
-                  onClick={() => {
-                    setSelectedArticleId(article.id);
-                    window.scrollTo({ top: 300, behavior: 'smooth' });
-                  }}
-                  className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-white/5 rounded-none flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-white/10 transition-all duration-300 group cursor-pointer"
+                  onClick={() => setSelectedArticleId(article.id)}
+                  className="bg-[#111113] border border-white/5 rounded-none flex flex-col justify-between overflow-hidden shadow-sm hover:border-[#4285F4]/40 transition-all duration-300 group cursor-pointer"
                 >
                   <div>
                     {/* Cover Image */}
-                    <div className="h-48 overflow-hidden bg-slate-100 relative">
+                    <div className="h-48 overflow-hidden bg-black/40 relative border-b border-white/10">
                       <img 
                         src={article.image} 
                         alt={article.title}
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <span className="absolute top-4 left-4 bg-[#0A192F] text-white text-[9px] font-bold tracking-wider uppercase px-2.5 py-1">
+                      <span className="absolute top-4 left-4 bg-black/80 border border-white/15 text-white text-[9px] font-mono font-bold tracking-wider uppercase px-2.5 py-1">
                         {article.category}
                       </span>
                     </div>
 
                     {/* Meta info */}
-                    <div className="p-6 pb-0 space-y-3">
-                      <div className="flex items-center space-x-4 text-[11px] font-mono font-medium text-slate-500">
+                    <div className="p-6 pb-0 space-y-4">
+                      <div className="flex items-center space-x-4 text-[10px] font-mono text-white/50">
                         <span className="flex items-center space-x-1">
-                          <Calendar className="w-3.5 h-3.5 text-[#4A90E2]" />
+                          <Calendar className="w-3.5 h-3.5 text-[#4285F4]" />
                           <span>{article.date}</span>
                         </span>
                         <span className="flex items-center space-x-1">
-                          <Clock className="w-3.5 h-3.5 text-[#4A90E2]" />
+                          <Clock className="w-3.5 h-3.5 text-[#4285F4]" />
                           <span>{article.readTime}</span>
                         </span>
                       </div>
 
-                      <h2 className="text-base sm:text-lg font-bold text-[#0A192F] dark:text-white leading-snug group-hover:text-[#4A90E2] transition-colors duration-200">
+                      <h2 className="text-lg font-bold text-white uppercase tracking-tight font-display leading-snug group-hover:text-[#4285F4] transition-colors duration-200">
                         {article.title}
                       </h2>
 
-                      <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                      <p className="text-xs text-white/60 line-clamp-3 leading-relaxed font-sans font-light">
                         {article.excerpt}
                       </p>
                     </div>
                   </div>
 
                   {/* Footer Action and Sharing */}
-                  <div className="p-6 pt-4 border-t border-slate-100 dark:border-white/5 mt-6 flex justify-between items-center bg-slate-50/50 dark:bg-transparent">
+                  <div className="p-6 pt-4 border-t border-white/5 mt-6 flex justify-between items-center bg-black/10">
                     <button
-                      onClick={() => {
-                        setSelectedArticleId(article.id);
-                        window.scrollTo({ top: 300, behavior: 'smooth' });
-                      }}
-                      className="text-[#0A192F] dark:text-[#4A90E2] font-bold text-xs uppercase tracking-wider flex items-center space-x-1 group/btn cursor-pointer"
+                      onClick={() => setSelectedArticleId(article.id)}
+                      className="text-white hover:text-[#4285F4] font-bold text-[10px] uppercase tracking-wider flex items-center space-x-1 group/btn cursor-pointer font-mono"
                     >
                       <span>Leggi Articolo</span>
                       <ChevronRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" />
@@ -440,20 +389,20 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     <div className="flex items-center space-x-2" onClick={(e) => e.stopPropagation()}>
                       <button
                         onClick={() => handleShare(article, 'copy')}
-                        className="p-1.5 text-slate-400 hover:text-[#0A192F] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all rounded-none cursor-pointer"
+                        className="p-1.5 text-white/40 hover:text-white hover:bg-white/5 transition-all cursor-pointer rounded-none"
                         title="Copia link"
                       >
                         <Link2 className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => handleShare(article, 'wa')}
-                        className="p-1.5 text-slate-400 hover:text-emerald-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-all rounded-none cursor-pointer"
+                        className="p-1.5 text-white/40 hover:text-[#4285F4] hover:bg-white/5 transition-all cursor-pointer rounded-none"
                         title="Condividi su WhatsApp"
                       >
                         <MessageSquare className="w-3.5 h-3.5" />
                       </button>
                       {copiedId === article.id && (
-                        <span className="absolute transform -translate-y-6 bg-slate-900 text-white text-[9px] px-2 py-0.5 rounded shadow">
+                        <span className="absolute transform -translate-y-6 bg-black border border-white/10 text-white text-[9px] px-2 py-0.5 font-mono">
                           Copiato!
                         </span>
                       )}
@@ -478,46 +427,46 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                   setSelectedArticleId(null);
                   setExpandedFaq(null);
                 }}
-                className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0A192F] dark:text-[#4A90E2] hover:underline cursor-pointer"
+                className="inline-flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#4285F4] hover:underline cursor-pointer font-mono"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>Torna alla lista degli articoli</span>
+                <span>Torna alla lista</span>
               </button>
 
               {selectedArticle && (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                   
                   {/* Article Content Area */}
-                  <div className="lg:col-span-8 space-y-10 bg-white dark:bg-slate-900/40 p-6 sm:p-10 border border-slate-200 dark:border-white/5">
+                  <div className="lg:col-span-8 space-y-10 bg-[#111113] p-6 sm:p-10 border border-white/5">
                     
                     {/* Header meta */}
                     <div className="space-y-4">
-                      <span className="bg-[#4A90E2]/10 text-[#4A90E2] text-[10px] font-bold tracking-wider uppercase px-3 py-1 border border-[#4A90E2]/20">
+                      <span className="bg-white/5 text-[#4285F4] text-[10px] font-bold tracking-widest uppercase px-3 py-1 border border-white/10 font-mono">
                         {selectedArticle.category}
                       </span>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0A192F] dark:text-white tracking-tight uppercase leading-tight">
+                      <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight uppercase leading-tight font-display">
                         {selectedArticle.title}
                       </h2>
                       
-                      <div className="flex items-center space-x-6 text-xs text-slate-500 font-mono border-y border-slate-100 py-3">
+                      <div className="flex items-center space-x-6 text-xs text-white/50 font-mono border-y border-white/5 py-3">
                         <span className="flex items-center space-x-1.5">
-                          <Calendar className="w-4 h-4 text-[#4A90E2]" />
+                          <Calendar className="w-4 h-4 text-[#4285F4]" />
                           <span>Pubblicato il: {selectedArticle.date}</span>
                         </span>
                         <span className="flex items-center space-x-1.5">
-                          <Clock className="w-4 h-4 text-[#4A90E2]" />
+                          <Clock className="w-4 h-4 text-[#4285F4]" />
                           <span>Tempo di lettura: {selectedArticle.readTime}</span>
                         </span>
                       </div>
                     </div>
 
                     {/* Excerpt */}
-                    <GlossaryParagraph className="text-sm sm:text-base font-semibold text-[#0A192F] dark:text-slate-300 leading-relaxed border-l-4 border-[#4A90E2] pl-4 italic">
+                    <GlossaryParagraph className="text-sm sm:text-base font-medium text-white/90 leading-relaxed border-l-4 border-[#4285F4] pl-4 italic font-sans">
                       {selectedArticle.excerpt}
                     </GlossaryParagraph>
 
                     {/* Cover image detail */}
-                    <div className="h-64 sm:h-96 w-full overflow-hidden bg-slate-100">
+                    <div className="h-64 sm:h-96 w-full overflow-hidden bg-black/40 border border-white/10">
                       <img 
                         src={selectedArticle.image} 
                         alt={selectedArticle.title}
@@ -530,10 +479,10 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     <div className="space-y-8">
                       {selectedArticle.blocks.map((block, idx) => (
                         <div key={idx} className="space-y-3">
-                          <h3 className="text-base sm:text-lg font-bold text-[#0A192F] dark:text-white uppercase tracking-wider">
+                          <h3 className="text-lg font-bold text-white uppercase tracking-wider font-display border-b border-white/5 pb-1">
                             {block.subtitle}
                           </h3>
-                          <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                          <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed whitespace-pre-line font-sans font-light">
                             {block.content}
                           </GlossaryParagraph>
                         </div>
@@ -541,11 +490,11 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     </div>
 
                     {/* Dedicated Article FAQs */}
-                    <div className="border-t border-slate-200 dark:border-white/10 pt-10 space-y-6">
+                    <div className="border-t border-white/10 pt-10 space-y-6">
                       <div className="flex items-center space-x-2">
-                        <HelpCircle className="w-5 h-5 text-[#4A90E2]" />
-                        <h3 className="text-base sm:text-lg font-bold text-[#0A192F] dark:text-white uppercase tracking-wider">
-                          FAQ / Domande Frequenti sull'Articolo
+                        <HelpCircle className="w-5 h-5 text-[#4285F4]" />
+                        <h3 className="text-lg font-bold text-white uppercase tracking-wider font-display">
+                          Domande Frequenti sull'Articolo
                         </h3>
                       </div>
 
@@ -553,14 +502,14 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                         {selectedArticle.faqs.map((faq, idx) => (
                           <div 
                             key={idx}
-                            className="border border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 p-4"
+                            className="border border-white/5 bg-black/20 p-4"
                           >
                             <button
                               onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                              className="w-full flex justify-between items-center text-left text-xs sm:text-sm font-bold text-[#0A192F] dark:text-white focus:outline-none cursor-pointer"
+                              className="w-full flex justify-between items-center text-left text-xs sm:text-sm font-bold text-white focus:outline-none cursor-pointer font-sans"
                             >
                               <span>{faq.question}</span>
-                              <ChevronRight className={`w-4 h-4 transform transition-transform duration-200 ${expandedFaq === idx ? 'rotate-90 text-[#4A90E2]' : 'text-slate-400'}`} />
+                              <ChevronRight className={`w-4 h-4 transform transition-transform duration-200 ${expandedFaq === idx ? 'rotate-90 text-[#4285F4]' : 'text-slate-400'}`} />
                             </button>
                             
                             <AnimatePresence initial={false}>
@@ -572,7 +521,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                                   transition={{ duration: 0.2 }}
                                   className="overflow-hidden"
                                 >
-                                  <GlossaryParagraph className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-200/50 dark:border-white/5 mt-3">
+                                  <GlossaryParagraph className="text-[11px] sm:text-xs text-white/60 leading-relaxed pt-3 border-t border-white/5 mt-3 font-sans font-light">
                                     {faq.answer}
                                   </GlossaryParagraph>
                                 </motion.div>
@@ -584,19 +533,19 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     </div>
 
                     {/* Dedicated CTA */}
-                    <div className="bg-[#0A192F] text-white p-6 sm:p-8 space-y-4 relative overflow-hidden">
+                    <div className="bg-[#161619] border border-white/10 text-white p-6 sm:p-8 space-y-4 relative overflow-hidden">
                       <div className="absolute right-0 bottom-0 opacity-10 translate-x-10 translate-y-10">
                         <Sparkles className="w-48 h-48 text-white" />
                       </div>
                       
                       <div className="relative z-10 space-y-3">
-                        <h4 className="text-xs font-mono text-[#4A90E2] font-bold uppercase tracking-widest">Sinergia Strategica</h4>
-                        <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-xl font-medium">
+                        <h4 className="text-[10px] font-mono text-[#4285F4] font-bold uppercase tracking-widest">Sinergia Strategica</h4>
+                        <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-xl font-light font-sans">
                           {selectedArticle.cta.text}
                         </p>
                         <button
                           onClick={() => setActiveTab(selectedArticle.cta.actionTab)}
-                          className="px-5 py-3 bg-white text-[#0A192F] hover:bg-[#4A90E2] hover:text-white text-[11px] font-bold uppercase tracking-widest rounded-none transition-all duration-150 inline-flex items-center space-x-1 cursor-pointer"
+                          className="px-5 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-widest rounded-none transition-all duration-150 inline-flex items-center space-x-1 cursor-pointer font-mono"
                         >
                           <span>{selectedArticle.cta.buttonText}</span>
                           <ArrowUpRight className="w-4 h-4" />
@@ -610,67 +559,67 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                   <div className="lg:col-span-4 space-y-8 sticky top-24">
                     
                     {/* Share Box */}
-                    <div className="bg-white dark:bg-slate-900/60 p-6 border border-slate-200 dark:border-white/5 space-y-4">
-                      <h4 className="text-xs font-bold text-[#0A192F] dark:text-white uppercase tracking-wider border-b border-slate-100 pb-2">
+                    <div className="bg-[#111113] p-6 border border-white/5 space-y-4">
+                      <h4 className="text-xs font-bold text-white uppercase tracking-wider border-b border-white/5 pb-2 font-mono">
                         Condividi l'Articolo
                       </h4>
-                      <p className="text-[11px] text-slate-500 leading-relaxed">
+                      <p className="text-[11px] text-white/50 leading-relaxed font-sans font-light">
                         Ti piace questa risorsa? Aiutami a diffondere trasparenza e cultura digitale condividendola sui tuoi canali professionali o personali:
                       </p>
 
-                      <div className="grid grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-2 gap-2.5 font-mono">
                         <button
                           onClick={() => handleShare(selectedArticle, 'li')}
-                          className="py-2.5 px-3 border border-slate-200 hover:border-[#0077b5] text-slate-600 hover:text-[#0077b5] text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                         >
                           <Linkedin className="w-3.5 h-3.5" />
                           <span>LinkedIn</span>
                         </button>
                         <button
                           onClick={() => handleShare(selectedArticle, 'tw')}
-                          className="py-2.5 px-3 border border-slate-200 hover:border-slate-900 text-slate-600 hover:text-slate-900 text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                         >
                           <Twitter className="w-3.5 h-3.5" />
                           <span>Twitter</span>
                         </button>
                         <button
                           onClick={() => handleShare(selectedArticle, 'fb')}
-                          className="py-2.5 px-3 border border-slate-200 hover:border-[#1877f2] text-slate-600 hover:text-[#1877f2] text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                         >
                           <Facebook className="w-3.5 h-3.5" />
                           <span>Facebook</span>
                         </button>
                         <button
                           onClick={() => handleShare(selectedArticle, 'copy')}
-                          className="py-2.5 px-3 border border-slate-200 hover:border-slate-800 text-slate-600 hover:text-slate-800 text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer relative"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer relative"
                         >
-                          <Link2 className="w-3.5 h-3.5 text-[#4A90E2]" />
+                          <Link2 className="w-3.5 h-3.5 text-[#4285F4]" />
                           <span>{copiedId === selectedArticle.id ? 'Copiato!' : 'Link'}</span>
                         </button>
                       </div>
                     </div>
 
                     {/* Metadata Box */}
-                    <div className="bg-white dark:bg-slate-900/60 p-6 border border-slate-200 dark:border-white/5 space-y-4">
-                      <h4 className="text-xs font-bold text-[#0A192F] dark:text-white uppercase tracking-wider border-b border-slate-100 pb-2">
+                    <div className="bg-[#111113] p-6 border border-white/5 space-y-4">
+                      <h4 className="text-xs font-bold text-white uppercase tracking-wider border-b border-white/5 pb-2 font-mono">
                         Indicizzazione & SEO
                       </h4>
-                      <p className="text-[11px] text-slate-500 leading-relaxed">
+                      <p className="text-[11px] text-white/50 leading-relaxed font-sans font-light">
                         Questo articolo è stato ottimizzato dal punto di vista semantico e strutturale con i seguenti metadati tecnici:
                       </p>
 
                       <div className="space-y-3">
                         <div>
-                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Meta Description</span>
-                          <span className="text-[11px] text-slate-600 dark:text-slate-300 block italic leading-relaxed mt-1">
+                          <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider block font-mono">Meta Description</span>
+                          <span className="text-[11px] text-white/70 block italic leading-relaxed mt-1 font-sans font-light">
                             "{selectedArticle.meta.description}"
                           </span>
                         </div>
                         <div>
-                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Parole Chiave Principali</span>
-                          <div className="flex flex-wrap gap-1 mt-1.5">
+                          <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider block font-mono">Parole Chiave Principali</span>
+                          <div className="flex flex-wrap gap-1 mt-1.5 font-mono">
                             {selectedArticle.meta.keywords.map((kw, i) => (
-                              <span key={i} className="text-[9px] font-mono font-bold bg-slate-100 dark:bg-white/5 text-[#0A192F] dark:text-slate-300 px-2 py-0.5">
+                              <span key={i} className="text-[9px] font-bold bg-white/5 text-white/70 px-2 py-0.5">
                                 #{kw}
                               </span>
                             ))}
@@ -680,17 +629,17 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     </div>
 
                     {/* Sinergia banner info */}
-                    <div className="bg-gradient-to-br from-indigo-50 to-slate-50 dark:from-slate-900 dark:to-slate-950 p-6 border border-slate-200 dark:border-white/5 text-center space-y-4">
-                      <Sparkles className="w-8 h-8 text-[#4A90E2] mx-auto animate-pulse" />
-                      <h4 className="text-xs font-bold text-[#0A192F] dark:text-white uppercase tracking-wider">
+                    <div className="bg-[#111113] p-6 border border-white/5 text-center space-y-4">
+                      <Sparkles className="w-8 h-8 text-[#4285F4] mx-auto animate-pulse" />
+                      <h4 className="text-xs font-bold text-white uppercase tracking-wider font-display">
                         Consulenza su Misura
                       </h4>
-                      <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                      <p className="text-[11px] text-white/50 leading-relaxed font-sans font-light">
                         Tutti i progetti di Facilissimo Web integrano accessibilità, conformità legale e copywriting strategico nativamente.
                       </p>
                       <button
                         onClick={() => setActiveTab('contatti')}
-                        className="w-full py-2.5 border-2 border-[#0A192F] dark:border-[#4A90E2] hover:bg-[#0A192F] dark:hover:bg-[#4A90E2] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all duration-200 text-[#0A192F] dark:text-white cursor-pointer"
+                        className="w-full py-2.5 border border-[#4285F4] hover:bg-[#4285F4] text-[#4285F4] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer font-mono"
                       >
                         Prenota Sessione Gratuita
                       </button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange, Sparkles } from 'lucide-react';
 import { GlossaryParagraph } from './GlossaryTerm';
@@ -11,14 +11,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
   const [activePhase, setActivePhase] = useState<number>(1);
   const [activeCategory, setActiveCategory] = useState<'cms' | 'custom' | 'social'>('cms');
 
-  const phaseLabelColors: Record<number, string> = {
-    2: '#f8fbff',
-    3: '#ffffff',
-    4: '#ffffff',
-    5: '#fafdff',
-    6: '#ffffff',
-    7: '#ffffff',
-  };
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const cmsPackages = [
     {
@@ -200,46 +196,41 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
   ];
 
   return (
-    <article id="servizi-view" className="animate-fadeIn transition-colors duration-200">
+    <article id="servizi-view" className="animate-fadeIn text-white">
       {/* HERO SECTION */}
-      <section id="servizi-hero" className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
+      <section id="servizi-hero" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:24px_24px]" />
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 hidden lg:block">
-          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 100 L100 0 L100 100 Z" fill="#4A90E2" />
-          </svg>
-        </div>
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
           <motion.div 
-            className="lg:col-span-7 space-y-6"
+            className="lg:col-span-7 space-y-8"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="w-12 h-1 bg-[#4A90E2] mb-6"></div>
+            <div className="w-12 h-1 bg-[#4285F4] mb-4"></div>
             
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#4A90E2]">
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#4285F4] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>LE MIE SOLUZIONI STRATEGICHE</span>
             </div>
             
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight italic">
-              Servizi Professionali <br />
-              <span className="font-bold not-italic text-white">su Misura per Voi</span>
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
+              Soluzioni<br />
+              Su Misura
             </h1>
             
-            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
-              Distinguiamo nettamente tra piattaforme CMS programmabili per la massima versatilità ordinaria, sviluppi custom puri per performance tecnologiche d'élite ed integrazioni AI studiate ad hoc per massimizzare l'efficienza d'impresa.
+            <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
+              Distinguiamo nettamente tra <span className="font-semibold text-white">piattaforme CMS</span> per la massima versatilità ordinaria, <span className="font-semibold text-white">sviluppi custom puri</span> per performance d'élite ed <span className="font-semibold text-white">integrazioni AI</span> studiate ad hoc.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 id="servizi-hero-cta"
                 onClick={() => setActiveTab('contatti')}
-                className="px-8 py-3.5 bg-[#4A90E2] hover:bg-[#357ABD] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-black/20 transition-all duration-300"
+                className="px-8 py-3.5 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Iniziate Ora
               </button>
@@ -253,47 +244,47 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
-            <div className="relative bg-slate-950 border border-slate-800 rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative bg-black/40 border border-white/10 rounded-none overflow-hidden shadow-2xl">
               {/* Window header */}
-              <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
-                <div className="flex space-x-2">
-                  <span className="w-3 h-3 bg-red-500 rounded-full inline-block" />
-                  <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block" />
-                  <span className="w-3 h-3 bg-green-500 rounded-full inline-block" />
+              <div className="flex items-center justify-between px-4 py-3 bg-[#161619] border-b border-white/10">
+                <div className="flex space-x-1.5">
+                  <span className="w-2.5 h-2.5 bg-white/20 rounded-full inline-block" />
+                  <span className="w-2.5 h-2.5 bg-white/20 rounded-full inline-block" />
+                  <span className="w-2.5 h-2.5 bg-white/20 rounded-full inline-block" />
                 </div>
-                <span className="text-[10px] text-slate-500 font-mono tracking-wider">facilissimoweb/servizi</span>
+                <span className="text-[10px] text-white/40 font-mono tracking-wider">facilissimoweb/servizi</span>
               </div>
               
               {/* Themed Image */}
               <img 
                 src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" 
                 alt="Web App Development Services"
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 xl:h-60 object-cover border-b border-slate-800"
+                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-cover border-b border-white/10"
                 referrerPolicy="no-referrer"
               />
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col justify-center rounded">
+            <div className="bg-[#161619] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
               <div className="mb-4">
-                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4A90E2] mb-1 font-bold">Standard di Progettazione</p>
-                <p className="text-xl font-serif italic text-white">Trasparenza & Alta Affidabilità</p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4285F4] mb-1 font-bold font-mono">Standard di Progettazione</p>
+                <p className="text-xl font-bold text-white font-display uppercase tracking-tight">Trasparenza & Alta Affidabilità</p>
               </div>
-              <div className="space-y-3 text-xs text-slate-300">
-                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
-                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Piattaforme CMS</span>
+              <div className="space-y-3 text-xs text-white/70 font-mono">
+                <div className="flex justify-between items-end border-b border-white/5 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">Piattaforme CMS</span>
                   <span className="font-semibold text-white">WordPress o Webflow</span>
                 </div>
-                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
-                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Sviluppo Custom</span>
+                <div className="flex justify-between items-end border-b border-white/5 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">Sviluppo Custom</span>
                   <span className="font-semibold text-white">React / SPA & Tailwind</span>
                 </div>
-                <div className="flex justify-between items-end border-b border-white/10 pb-1.5">
-                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">Integrazione AI</span>
-                  <span className="font-semibold text-[#4A90E2]">Ad Hoc / LLM & Gemini</span>
+                <div className="flex justify-between items-end border-b border-white/5 pb-1.5">
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">Integrazione AI</span>
+                  <span className="font-semibold text-white">Ad Hoc / LLM & Gemini</span>
                 </div>
                 <div className="flex justify-between items-end pb-1">
-                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-60">SLA & Supporto</span>
-                  <span className="font-semibold text-white text-[#4A90E2]">Incluso & Formativo</span>
+                  <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">SLA & Supporto</span>
+                  <span className="font-semibold text-[#4285F4]">Incluso & Formativo</span>
                 </div>
               </div>
             </div>
@@ -302,342 +293,339 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
       </section>
 
       {/* Main Content Area */}
-      <div className="py-16 bg-[#F8FAFC] dark:bg-[#0a192f] transition-colors duration-200 text-slate-800 dark:text-slate-200">
+      <div className="py-16 bg-[#161619] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* COMPARISON TABS (CMS VS CUSTOM VS SOCIAL) */}
-        <div className="mb-20">
-          <div className="flex justify-center mb-8">
-            <div className="bg-slate-200 p-1 rounded-none flex flex-wrap gap-1 justify-center">
-              <button
-                id="tab-selector-cms"
-                onClick={() => setActiveCategory('cms')}
-                className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
-                  activeCategory === 'cms'
-                    ? 'bg-[#0A192F] text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Layers className="w-4 h-4 shrink-0" />
-                <span>Piattaforme CMS (Sviluppo Guidato)</span>
-              </button>
-              <button
-                id="tab-selector-custom"
-                onClick={() => setActiveCategory('custom')}
-                className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
-                  activeCategory === 'custom'
-                    ? 'bg-[#0A192F] text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Code className="w-4 h-4 shrink-0" />
-                <span>Sviluppo Custom (Codice Proprietario)</span>
-              </button>
-              <button
-                id="tab-selector-social"
-                onClick={() => setActiveCategory('social')}
-                className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
-                  activeCategory === 'social'
-                    ? 'bg-[#0A192F] text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Sparkles className="w-4 h-4 shrink-0 text-amber-500" />
-                <span>Social Lead Generation (Consulenza & Campagne)</span>
-              </button>
-            </div>
-          </div>
-
-          {/* SERVICE CARDS */}
-          <AnimatePresence mode="wait">
-            {activeCategory === 'cms' && (
-              <motion.div 
-                key="cms"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-              >
-                {cmsPackages.map((pkg) => (
-                  <div 
-                    key={pkg.id} 
-                    id={`pkg-${pkg.id}`}
-                    className="bg-white p-8 rounded-none border-t-4 border-[#0A192F] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
-                  >
-                    <div className="space-y-6">
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
-                        <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
-                          {pkg.price}
-                        </span>
-                      </div>
-                      
-                      <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        {pkg.description}
-                      </GlossaryParagraph>
-
-                      <div className="border-t border-slate-100 pt-6">
-                        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
-                        <ul className="space-y-2.5">
-                          {pkg.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="border-t border-slate-100 mt-8 pt-6">
-                      <p className="text-[11px] text-slate-500 leading-relaxed">
-                        <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
-                      </p>
-                      <button
-                        onClick={() => setActiveTab('contatti')}
-                        className="w-full mt-4 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
-                      >
-                        <span>Selezionate questo pacchetto</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            )}
-
-            {activeCategory === 'custom' && (
-              <motion.div 
-                key="custom"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {customPackages.map((pkg) => (
-                  <div 
-                    key={pkg.id} 
-                    id={`pkg-${pkg.id}`}
-                    className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
-                  >
-                    <div className="space-y-6">
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
-                        <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
-                          {pkg.price}
-                        </span>
-                      </div>
-                      
-                      <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        {pkg.description}
-                      </GlossaryParagraph>
-
-                      <div className="border-t border-slate-100 pt-6">
-                        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
-                        <ul className="space-y-2.5">
-                          {pkg.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="border-t border-slate-100 mt-8 pt-6">
-                      <p className="text-[11px] text-slate-500 leading-relaxed">
-                        <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
-                      </p>
-                      <button
-                        onClick={() => setActiveTab('contatti')}
-                        className="w-full mt-4 py-3 bg-[#4A90E2] hover:bg-[#4A90E2]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
-                      >
-                        <span>Inizializzate lo sviluppo custom</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            )}
-
-            {activeCategory === 'social' && (
-              <motion.div 
-                key="social"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-              >
-                {socialPackages.map((pkg) => (
-                  <div 
-                    key={pkg.id} 
-                    id={`pkg-${pkg.id}`}
-                    className="bg-white p-8 rounded-none border-t-4 border-[#4A90E2] border-x border-b border-slate-200/85 flex flex-col justify-between hover:bg-slate-50/50 transition-colors duration-300 relative overflow-hidden shadow-sm"
-                  >
-                    <div className="space-y-6">
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-lg font-bold text-[#0A192F] uppercase tracking-wider">{pkg.title}</h3>
-                        <span className="text-[#0A192F] font-mono font-bold text-sm px-3 py-1.5 bg-[#0A192F]/5 rounded-none border border-[#0A192F]/10">
-                          {pkg.price}
-                        </span>
-                      </div>
-                      
-                      <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        {pkg.description}
-                      </GlossaryParagraph>
-
-                      <div className="border-t border-slate-100 pt-6">
-                        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Servizi Inclusi nel Pacchetto</h4>
-                        <ul className="space-y-2.5">
-                          {pkg.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-700">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="border-t border-slate-100 mt-8 pt-6">
-                      <p className="text-[11px] text-slate-500 leading-relaxed">
-                        <span className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
-                      </p>
-                      <button
-                        onClick={() => setActiveTab('contatti')}
-                        className="w-full mt-4 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
-                      >
-                        <span>Selezionate questa strategia</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* 7 PHASES OPERATIONAL TIMELINE */}
-        <div id="phases-timeline-section" className="text-white rounded-none p-8 sm:p-12 shadow-xl mb-12 border border-slate-800" style={{ backgroundColor: '#4c786f' }}>
-          <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: '#0f1012' }}>IL PROTOCOLLO OPERATIVO IN 7 FASI</span>
-            <h2 className="text-2xl sm:text-3xl font-light italic">Il Vostro Progetto, <span className="font-bold not-italic text-white">Passo dopo Passo</span></h2>
-            <p className="text-xs leading-relaxed" style={{ color: '#ffffff' }}>
-              Seguo un protocollo rigoroso per assicurarmi che il Vostro sito sia perfetto. Fate clic su ciascuna fase per visualizzare i dettagli operativi e i risultati previsti.
-            </p>
-          </div>
-
-          {/* Interactive Steps List */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 border-b border-white/10 pb-6">
-            {operationalPhases.map((phase) => (
-              <button
-                key={phase.phase}
-                id={`phase-tab-${phase.phase}`}
-                onClick={() => setActivePhase(phase.phase)}
-                className={`px-4 py-2.5 rounded-none text-[10px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
-                  activePhase === phase.phase
-                    ? 'bg-slate-950 text-white shadow-md'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                <span className="w-5 h-5 bg-slate-950 rounded-none inline-flex items-center justify-center text-[9px] font-mono border border-slate-800 shrink-0">
-                  {phase.phase}
-                </span>
-                <span 
-                  className="hidden md:inline"
-                  style={activePhase !== phase.phase && phaseLabelColors[phase.phase] ? { color: phaseLabelColors[phase.phase] } : undefined}
-                >
-                  {phase.title}
-                </span>
-                <span className="md:hidden">Fase {phase.phase}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Phase Details Box */}
-          <div className="bg-[#0b1b36] border border-white/10 rounded-none p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-8 space-y-5">
-              <div className="flex items-center space-x-3">
-                <span className="text-4xl font-extrabold text-[#4A90E2] font-mono">0{operationalPhases[activePhase - 1].phase}</span>
-                <div>
-                  <h3 className="text-lg font-bold text-white uppercase tracking-wider">{operationalPhases[activePhase - 1].title}</h3>
-                  <p className="text-[10px] text-[#4A90E2] font-bold uppercase tracking-widest">{operationalPhases[activePhase - 1].timeline}</p>
-                </div>
-              </div>
-              
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {operationalPhases[activePhase - 1].description}
-              </p>
-
-              <div className="bg-slate-950 p-4 rounded-none border border-slate-800 space-y-2">
-                <div className="flex items-center space-x-2 text-[10px] font-bold text-[#4A90E2] uppercase tracking-wider">
-                  <Info className="w-4 h-4 shrink-0" />
-                  <span>Cosa Riceverete (Deliverable):</span>
-                </div>
-                <p className="text-xs text-slate-300 leading-relaxed italic font-serif">
-                  "{operationalPhases[activePhase - 1].deliverable}"
-                </p>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 bg-[#0A192F]/50 p-5 rounded-none border border-white/10 space-y-4">
-              <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2">Vantaggi di questa fase</h4>
-              <ul className="space-y-3 text-xs text-slate-300">
-                <li className="flex items-start space-x-2">
-                  <span className="text-[#4A90E2] font-bold">✓</span>
-                  <span>Consulenza diretta e costante</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <span className="text-[#4A90E2] font-bold">✓</span>
-                  <span>Verifica rigorosa di ogni requisito</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <span className="text-[#4A90E2] font-bold">✓</span>
-                  <span>Trasparenza e rispetto delle tempistiche</span>
-                </li>
-              </ul>
-              
-              <div className="pt-2">
+          {/* COMPARISON TABS (CMS VS CUSTOM VS SOCIAL) */}
+          <div className="mb-20">
+            <div className="flex justify-center mb-10">
+              <div className="bg-[#111113] p-1.5 border border-white/10 rounded-none flex flex-wrap gap-1 justify-center">
                 <button
-                  onClick={() => setActiveTab('contatti')}
-                  className="w-full py-2.5 bg-transparent border border-white/30 hover:border-white text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors duration-150 flex items-center justify-center space-x-1"
+                  id="tab-selector-cms"
+                  onClick={() => setActiveCategory('cms')}
+                  className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                    activeCategory === 'cms'
+                      ? 'bg-[#4285F4] text-white'
+                      : 'text-white/60 hover:text-white hover:bg-white/5'
+                  }`}
                 >
-                  <span>Chiedete informazioni</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <Layers className="w-4 h-4 shrink-0" />
+                  <span>Piattaforme CMS (WordPress / Webflow)</span>
+                </button>
+                <button
+                  id="tab-selector-custom"
+                  onClick={() => setActiveCategory('custom')}
+                  className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                    activeCategory === 'custom'
+                      ? 'bg-[#4285F4] text-white'
+                      : 'text-white/60 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Code className="w-4 h-4 shrink-0" />
+                  <span>Sviluppo Custom (React / Next.js)</span>
+                </button>
+                <button
+                  id="tab-selector-social"
+                  onClick={() => setActiveCategory('social')}
+                  className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                    activeCategory === 'social'
+                      ? 'bg-[#4285F4] text-white'
+                      : 'text-white/60 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Sparkles className="w-4 h-4 shrink-0 text-amber-400" />
+                  <span>Social Lead Generation</span>
                 </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* PRAGMATIC ADVISOR HELPER */}
-        <div className="bg-white border-2 border-[#0A192F] text-[#0A192F] rounded-none p-8 shadow-md grid grid-cols-1 md:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
-          <div className="md:col-span-8 space-y-3">
-            <span className="text-[10px] font-mono font-bold text-[#4A90E2] uppercase tracking-[0.25em] flex items-center space-x-1">
-              <CalendarRange className="w-4 h-4 shrink-0" />
-              <span>Consulenza Preliminare Gratuita</span>
-            </span>
-            <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#0A192F]">Non siete sicuri di quale soluzione scegliere per la Vostra attività?</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Metto a Vostra disposizione un incontro informativo gratuito di 15 minuti. Insieme analizzeremo la natura del Vostro business ed esamineremo i costi di gestione futuri, indicandovi con assoluta trasparenza la strada più idonea.
-            </p>
+            {/* SERVICE CARDS */}
+            <AnimatePresence mode="wait">
+              {activeCategory === 'cms' && (
+                <motion.div 
+                  key="cms"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                >
+                  {cmsPackages.map((pkg) => (
+                    <div 
+                      key={pkg.id} 
+                      id={`pkg-${pkg.id}`}
+                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#4285F4]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
+                    >
+                      <div className="space-y-6">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-bold text-white uppercase tracking-wider font-display">{pkg.title}</h3>
+                          <span className="text-white font-mono font-bold text-xs px-3 py-1.5 bg-white/5 rounded-none border border-white/10 shrink-0 ml-4">
+                            {pkg.price}
+                          </span>
+                        </div>
+                        
+                        <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans font-light">
+                          {pkg.description}
+                        </GlossaryParagraph>
+
+                        <div className="border-t border-white/5 pt-6">
+                          <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3 font-mono">Servizi Inclusi nel Pacchetto</h4>
+                          <ul className="space-y-2.5">
+                            {pkg.features.map((feature, idx) => (
+                              <li key={idx} className="flex items-start space-x-2.5 text-xs text-white/80">
+                                <CheckCircle2 className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-white/5 mt-8 pt-6">
+                        <p className="text-[11px] text-white/50 leading-relaxed font-mono">
+                          <span className="font-bold text-white uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
+                        </p>
+                        <button
+                          onClick={() => setActiveTab('contatti')}
+                          className="w-full mt-4 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                        >
+                          <span>Selezionate questo pacchetto</span>
+                          <ChevronRight className="w-4 h-4 text-white" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+
+              {activeCategory === 'custom' && (
+                <motion.div 
+                  key="custom"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {customPackages.map((pkg) => (
+                    <div 
+                      key={pkg.id} 
+                      id={`pkg-${pkg.id}`}
+                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#4285F4]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
+                    >
+                      <div className="space-y-6">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-bold text-white uppercase tracking-wider font-display">{pkg.title}</h3>
+                          <span className="text-white font-mono font-bold text-xs px-3 py-1.5 bg-white/5 rounded-none border border-white/10 shrink-0 ml-4">
+                            {pkg.price}
+                          </span>
+                        </div>
+                        
+                        <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans font-light">
+                          {pkg.description}
+                        </GlossaryParagraph>
+
+                        <div className="border-t border-white/5 pt-6">
+                          <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3 font-mono">Servizi Inclusi nel Pacchetto</h4>
+                          <ul className="space-y-2.5">
+                            {pkg.features.map((feature, idx) => (
+                              <li key={idx} className="flex items-start space-x-2.5 text-xs text-white/80">
+                                <CheckCircle2 className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-white/5 mt-8 pt-6">
+                        <p className="text-[11px] text-white/50 leading-relaxed font-mono">
+                          <span className="font-bold text-white uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
+                        </p>
+                        <button
+                          onClick={() => setActiveTab('contatti')}
+                          className="w-full mt-4 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                        >
+                          <span>Inizializzate lo sviluppo custom</span>
+                          <ChevronRight className="w-4 h-4 text-white" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+
+              {activeCategory === 'social' && (
+                <motion.div 
+                  key="social"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                >
+                  {socialPackages.map((pkg) => (
+                    <div 
+                      key={pkg.id} 
+                      id={`pkg-${pkg.id}`}
+                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#4285F4]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
+                    >
+                      <div className="space-y-6">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-bold text-white uppercase tracking-wider font-display">{pkg.title}</h3>
+                          <span className="text-white font-mono font-bold text-xs px-3 py-1.5 bg-white/5 rounded-none border border-white/10 shrink-0 ml-4">
+                            {pkg.price}
+                          </span>
+                        </div>
+                        
+                        <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans font-light">
+                          {pkg.description}
+                        </GlossaryParagraph>
+
+                        <div className="border-t border-white/5 pt-6">
+                          <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3 font-mono">Servizi Inclusi nel Pacchetto</h4>
+                          <ul className="space-y-2.5">
+                            {pkg.features.map((feature, idx) => (
+                              <li key={idx} className="flex items-start space-x-2.5 text-xs text-white/80">
+                                <CheckCircle2 className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-white/5 mt-8 pt-6">
+                        <p className="text-[11px] text-white/50 leading-relaxed font-mono">
+                          <span className="font-bold text-white uppercase tracking-wider text-[10px]">Ideale per:</span> {pkg.bestFor}
+                        </p>
+                        <button
+                          onClick={() => setActiveTab('contatti')}
+                          className="w-full mt-4 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                        >
+                          <span>Selezionate questa strategia</span>
+                          <ChevronRight className="w-4 h-4 text-white" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-          <div className="md:col-span-4 flex justify-end">
-            <button
-              onClick={() => setActiveTab('contatti')}
-              className="px-6 py-3 bg-[#0A192F] hover:bg-[#0A192F]/90 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-colors duration-150 shadow-md flex items-center space-x-2 w-full md:w-auto justify-center"
-            >
-              <span>Contattatemi Ora</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+
+          {/* 7 PHASES OPERATIONAL TIMELINE */}
+          <div id="phases-timeline-section" className="bg-[#111113] text-white rounded-none p-8 sm:p-12 shadow-xl mb-12 border border-white/10">
+            <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#4285F4]">IL PROTOCOLLO OPERATIVO IN 7 FASI</span>
+              <h2 className="text-3xl font-bold font-display uppercase tracking-tight text-white">Il Vostro Progetto, Passo dopo Passo</h2>
+              <p className="text-xs leading-relaxed text-white/60 font-sans font-light">
+                Seguo un protocollo rigoroso per assicurarmi che il Vostro sito sia perfetto. Fate clic su ciascuna fase per visualizzare i dettagli operativi e i risultati previsti.
+              </p>
+            </div>
+
+            {/* Interactive Steps List */}
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 border-b border-white/10 pb-6">
+              {operationalPhases.map((phase) => (
+                <button
+                  key={phase.phase}
+                  id={`phase-tab-${phase.phase}`}
+                  onClick={() => setActivePhase(phase.phase)}
+                  className={`px-4 py-2.5 rounded-none text-[10px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                    activePhase === phase.phase
+                      ? 'bg-[#4285F4] text-white shadow-md'
+                      : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  <span className="w-5 h-5 bg-black/40 text-white rounded-none inline-flex items-center justify-center text-[9px] font-mono border border-white/10 shrink-0">
+                    {phase.phase}
+                  </span>
+                  <span className="hidden md:inline">
+                    {phase.title}
+                  </span>
+                  <span className="md:hidden">Fase {phase.phase}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Phase Details Box */}
+            <div className="bg-[#161619] border border-white/10 rounded-none p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-8 space-y-5">
+                <div className="flex items-center space-x-3">
+                  <span className="text-4xl font-extrabold text-[#4285F4] font-mono">0{operationalPhases[activePhase - 1].phase}</span>
+                  <div>
+                    <h3 className="text-lg font-bold text-white uppercase tracking-wider font-display">{operationalPhases[activePhase - 1].title}</h3>
+                    <p className="text-[10px] text-[#4285F4] font-bold uppercase tracking-widest font-mono">{operationalPhases[activePhase - 1].timeline}</p>
+                  </div>
+                </div>
+                
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans font-light">
+                  {operationalPhases[activePhase - 1].description}
+                </p>
+
+                <div className="bg-[#111113] p-4 rounded-none border border-white/5 space-y-2">
+                  <div className="flex items-center space-x-2 text-[10px] font-bold text-[#4285F4] uppercase tracking-wider font-mono">
+                    <Info className="w-4 h-4 shrink-0" />
+                    <span>Cosa Riceverete (Deliverable):</span>
+                  </div>
+                  <p className="text-xs text-white/80 leading-relaxed italic font-sans font-light">
+                    "{operationalPhases[activePhase - 1].deliverable}"
+                  </p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-4 bg-black/20 p-5 rounded-none border border-white/5 space-y-4">
+                <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest border-b border-white/5 pb-2 font-mono">Vantaggi di questa fase</h4>
+                <ul className="space-y-3 text-xs text-white/70">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-[#4285F4] font-bold">✓</span>
+                    <span>Consulenza diretta e costante</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-[#4285F4] font-bold">✓</span>
+                    <span>Verifica rigorosa di ogni requisito</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-[#4285F4] font-bold">✓</span>
+                    <span>Trasparenza e rispetto delle tempistiche</span>
+                  </li>
+                </ul>
+                
+                <div className="pt-2">
+                  <button
+                    onClick={() => setActiveTab('contatti')}
+                    className="w-full py-2.5 bg-transparent border border-white/20 hover:border-white text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                  >
+                    <span>Chiedete informazioni</span>
+                    <ChevronRight className="w-4 h-4 text-white" />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+
+          {/* PRAGMATIC ADVISOR HELPER */}
+          <div className="bg-[#111113] border border-white/10 rounded-none p-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+            <div className="md:col-span-8 space-y-3">
+              <span className="text-[10px] font-mono font-bold text-[#4285F4] uppercase tracking-[0.25em] flex items-center space-x-1">
+                <CalendarRange className="w-4 h-4 shrink-0" />
+                <span>Consulenza Preliminare Gratuita</span>
+              </span>
+              <h3 className="text-xl font-bold uppercase tracking-wider text-white font-display">Non siete sicuri di quale soluzione scegliere per la Vostra attività?</h3>
+              <p className="text-xs text-white/70 leading-relaxed font-sans font-light">
+                Metto a Vostra disposizione un incontro informativo gratuito di 15 minuti. Insieme analizzeremo la natura del Vostro business ed esamineremo i costi di gestione futuri, indicandovi con assoluta trasparenza la strada più idonea.
+              </p>
+            </div>
+            <div className="md:col-span-4 flex justify-end">
+              <button
+                onClick={() => setActiveTab('contatti')}
+                className="px-6 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-colors duration-150 shadow-md flex items-center space-x-2 w-full md:w-auto justify-center font-mono cursor-pointer"
+              >
+                <span>Contattatemi Ora</span>
+                <ArrowRight className="w-4 h-4 text-white" />
+              </button>
+            </div>
+          </div>
 
         </div>
       </div>
