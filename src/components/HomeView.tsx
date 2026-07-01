@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucide-react';
 import { ActiveTab } from '../types';
-import heroImg from '../assets/images/regenerated_image_1782808684519.png';
+import heroImg from '../assets/images/regenerated_image_1782914758419.webp';
 import { GlossaryParagraph } from './GlossaryTerm';
 import ParticleOverlay from './ParticleOverlay';
 
