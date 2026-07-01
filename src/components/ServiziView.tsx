@@ -224,7 +224,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Soluzioni<br />
-              Su Misura
+              <span className="text-[#bef264]">Su Misura</span>
             </h1>
             
             <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">

@@ -177,7 +177,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Normativa &<br />
-              Compliance
+              <span className="text-[#bef264]">Compliance</span>
             </h1>
             
             <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
