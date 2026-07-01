@@ -253,12 +253,6 @@ export default function App() {
         <div className="flex items-center space-x-6 text-xs font-mono text-white/50 uppercase tracking-[0.15em]">
           <span className="cursor-pointer hover:text-white transition-colors" onClick={() => handleOpenLegal('privacy')}>Privacy Policy</span>
           <span className="cursor-pointer hover:text-white transition-colors" onClick={() => setSitemapOpen(true)}>Sitemap</span>
-          <button 
-            onClick={() => setDarkMode(!darkMode)}
-            className="cursor-pointer hover:text-white transition-colors flex items-center space-x-1 uppercase"
-          >
-            <span>Tema: {darkMode ? "Scuro" : "Chiaro"}</span>
-          </button>
         </div>
       </header>
 
@@ -281,7 +275,7 @@ export default function App() {
       </div>
 
       {/* Main Navigation Bar - Mobile only */}
-      <div className="lg:hidden">
+      <div className="lg:hidden sticky top-0 z-50">
         <Navbar 
           activeTab={activeTab} 
           setActiveTab={setActiveTab} 

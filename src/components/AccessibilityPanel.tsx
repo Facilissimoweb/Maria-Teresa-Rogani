@@ -32,7 +32,7 @@ export default function AccessibilityPanel({
   const [showTooltip, setShowTooltip] = useState(true);
 
   const resetAll = () => {
-    setDarkMode(false);
+    setDarkMode(true);
     setTextSize('100');
     setHighContrast(false);
     setReadableFont(false);
@@ -81,27 +81,6 @@ export default function AccessibilityPanel({
         </div>
 
         <div className="space-y-5">
-          {/* 2. Dark Mode Quick Switch */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/5">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Tema Visivo</span>
-              <span className="text-[11px] text-[#0A192F] dark:text-slate-300 font-bold uppercase tracking-wider mt-0.5 block">
-                {darkMode ? 'MODALITÀ SCURA ATTIVA' : 'MODALITÀ CHIARA ATTIVA'}
-              </span>
-            </div>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`w-12 h-6 flex items-center rounded-full p-1 transition-all duration-300 cursor-pointer ${
-                darkMode ? 'bg-[#4A90E2] justify-end' : 'bg-slate-200 justify-start'
-              }`}
-              aria-label="Cambia modalità colore"
-            >
-              <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-md">
-                {darkMode ? <Moon className="w-2.5 h-2.5 text-[#0A192F]" /> : <Sun className="w-2.5 h-2.5 text-[#4A90E2]" />}
-              </div>
-            </button>
-          </div>
-
           {/* 3. Text Sizing Zoom levels */}
           <div className="space-y-2 pb-3 border-b border-slate-100 dark:border-white/5">
             <div className="flex justify-between items-center">

@@ -163,15 +163,15 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
       {/* 1. HERO HEADER SECTION */}
       <section className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="w-12 h-1 bg-[#4285F4] mb-4"></div>
+            <div className="w-12 h-1 bg-[#10B981] mb-4"></div>
             
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#4285F4] font-mono">
-              <Scale className="w-4 h-4 text-[#4285F4] shrink-0" />
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
+              <Scale className="w-4 h-4 text-[#10B981] shrink-0" />
               <span>SICUREZZA DIGITALE & LEGALITÀ</span>
             </div>
             
@@ -187,7 +187,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={() => setActiveTab('contatti')}
-                className="px-8 py-3.5 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Prenota Consulenza Gratuita
               </button>
@@ -228,7 +228,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
             <div className="bg-[#161619] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
               <div className="mb-4">
-                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4285F4] mb-1 font-bold font-mono">Standard Obbligatori</p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#10B981] mb-1 font-bold font-mono">Standard Obbligatori</p>
                 <p className="text-xl font-bold text-white font-display uppercase tracking-tight">Pratiche di Compliance Legale</p>
               </div>
               <div className="space-y-3 text-xs text-white/70 font-mono">
@@ -242,7 +242,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                 </div>
                 <div className="flex justify-between items-end pb-1">
                   <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">Data Protection</span>
-                  <span className="font-semibold text-[#4285F4]">GDPR Consenso Granulare</span>
+                  <span className="font-semibold text-[#10B981]">GDPR Consenso Granulare</span>
                 </div>
               </div>
             </div>
@@ -275,7 +275,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
           <aside className="hidden lg:block lg:col-span-1">
             <div className="sticky top-28 space-y-6">
               <div className="bg-[#111113] border border-white/5 p-5">
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4285F4] border-b border-white/5 pb-2 mb-4 font-mono">
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#10B981] border-b border-white/5 pb-2 mb-4 font-mono">
                   INDICE GUIDA COMPLIANCE
                 </h3>
                 <nav className="space-y-1">
@@ -292,12 +292,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                       onClick={() => handleScrollToSection(sec.id)}
                       className={`w-full text-left px-3 py-2 text-[10px] font-bold uppercase tracking-wider transition-all flex items-center justify-between border-l-2 font-mono ${
                         activeSection === sec.id
-                          ? 'border-[#4285F4] text-[#4285F4] bg-white/2 pl-4'
+                          ? 'border-[#10B981] text-[#10B981] bg-white/2 pl-4'
                           : 'border-transparent text-white/50 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       <span>{sec.label}</span>
-                      <ChevronRight className={`w-3.5 h-3.5 transition-transform ${activeSection === sec.id ? 'transform translate-x-1 text-[#4285F4]' : 'opacity-20'}`} />
+                      <ChevronRight className={`w-3.5 h-3.5 transition-transform ${activeSection === sec.id ? 'transform translate-x-1 text-[#10B981]' : 'opacity-20'}`} />
                     </button>
                   ))}
                 </nav>
@@ -305,15 +305,15 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
               {/* Sidebar Sticky CTA Card */}
               <div className="bg-[#111113] text-white p-5 border border-white/10 shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285F4]/5 blur-2xl rounded-full" />
-                <h4 className="text-[10px] font-bold uppercase text-[#4285F4] tracking-wider mb-1 font-mono">Verifica gratuita</h4>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#10B981]/5 blur-2xl rounded-full" />
+                <h4 className="text-[10px] font-bold uppercase text-[#10B981] tracking-wider mb-1 font-mono">Verifica gratuita</h4>
                 <p className="text-sm font-bold uppercase leading-snug font-display">Il Vostro sito è in regola?</p>
                 <p className="text-[11px] text-white/60 mt-2 leading-relaxed">
                   Prenotate una call conoscitiva gratuita di 20 minuti per valutare le Vostre criticità legali.
                 </p>
                 <button
                   onClick={() => setActiveTab('contatti')}
-                  className="w-full mt-4 py-2 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-bold text-[10px] uppercase tracking-widest transition-colors cursor-pointer flex items-center justify-center space-x-1.5 font-mono"
+                  className="w-full mt-4 py-2 bg-[#10B981] hover:bg-[#10B981]/90 text-white font-bold text-[10px] uppercase tracking-widest transition-colors cursor-pointer flex items-center justify-center space-x-1.5 font-mono"
                 >
                   <span>Iniziamo Ora</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -328,8 +328,8 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             {/* INTRODUZIONE SECTION */}
             <section id="introduzione" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white flex items-center gap-2 border-b border-white/10 pb-2">
-                <BookOpen className="w-5 h-5 text-[#4285F4]" />
-                <span>Introduzione alla <span className="text-[#4285F4]">Trasparenza Digitale</span></span>
+                <BookOpen className="w-5 h-5 text-[#10B981]" />
+                <span>Introduzione alla <span className="text-[#10B981]">Trasparenza Digitale</span></span>
               </h2>
               <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans font-light">
                 Nel panorama economico contemporaneo, un sito web non rappresenta più soltanto una vetrina estetica per il brand, ma una complessa infrastruttura soggetta a rigorose disposizioni giuridiche nazionali ed europee. Progettare con il rigore del Web Graphic Design strategico significa anzitutto garantire che il flusso d'acquisto, la fruizione dei contenuti e l'uso dell'Intelligenza Artificiale avvengano nel pieno rispetto della legge.
@@ -345,12 +345,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
               {/* Section Header */}
               <div className="flex justify-between items-center border-b border-white/10 pb-2">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white flex items-center gap-2">
-                  <Scale className="w-5 h-5 text-[#4285F4]" />
-                  <span>1. Accessibilità Web e <span className="text-[#4285F4]">Inclusione Digitale</span></span>
+                  <Scale className="w-5 h-5 text-[#10B981]" />
+                  <span>1. Accessibilità Web e <span className="text-[#10B981]">Inclusione Digitale</span></span>
                 </h2>
                 <button 
                   onClick={() => toggleMobileSection('accessibilita')}
-                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#4285F4]/15 text-white"
+                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#10B981]/15 text-white"
                   aria-label="Espandi sezione"
                 >
                   {mobileSectionsOpen.accessibilita ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
@@ -379,7 +379,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-[#111113] p-4 border border-white/5">
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#4285F4] mb-1.5 font-mono">European Accessibility Act (EAA)</h4>
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#10B981] mb-1.5 font-mono">European Accessibility Act (EAA)</h4>
                       <GlossaryParagraph className="text-xs text-white/60 leading-relaxed font-sans font-light">
                         Recepito in Italia con il D.Lgs. n. 82/2022. Stabilisce che tutti i servizi e prodotti digitali chiave (inclusi siti web ed e-commerce) devono essere accessibili seguendo i canoni EAA.
                       </GlossaryParagraph>
@@ -395,7 +395,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   {/* TIMELINE ACCESSIBILITÀ */}
                   <div className="bg-[#111113] p-5 border border-white/10 shadow-sm space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-widest text-white flex items-center gap-2 font-mono">
-                      <Clock className="w-4 h-4 text-[#4285F4]" />
+                      <Clock className="w-4 h-4 text-[#10B981]" />
                       <span>Timeline delle Scadenze di Accessibilità</span>
                     </h4>
                     
@@ -507,12 +507,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <section id="recesso" className="scroll-mt-24 space-y-6">
               <div className="flex justify-between items-center border-b border-white/10 pb-2">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[#4285F4]" />
-                  <span>2. Diritto di Recesso <span className="text-[#4285F4]">negli E-commerce</span></span>
+                  <FileText className="w-5 h-5 text-[#10B981]" />
+                  <span>2. Diritto di Recesso <span className="text-[#10B981]">negli E-commerce</span></span>
                 </h2>
                 <button 
                   onClick={() => toggleMobileSection('recesso')}
-                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#4285F4]/15 text-white"
+                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#10B981]/15 text-white"
                   aria-label="Espandi sezione"
                 >
                   {mobileSectionsOpen.recesso ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
@@ -561,11 +561,11 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   </GlossaryParagraph>
                   <ul className="space-y-2 text-xs sm:text-sm text-white/80 leading-relaxed font-sans font-light">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                       <span><strong>Informativa Pre-Acquisto Chiara:</strong> Indicazione dei costi di spedizione di reso e delle modalità pratiche prima del pagamento.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                       <span><strong>Modulistica di Recesso:</strong> Integrazione di moduli di recesso scaricabili in formato standardizzato o form dedicati nell'area cliente.</span>
                     </li>
                   </ul>
@@ -577,12 +577,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <section id="aiact" className="scroll-mt-24 space-y-6">
               <div className="flex justify-between items-center border-b border-white/10 pb-2">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white flex items-center gap-2">
-                  <Cpu className="w-5 h-5 text-[#4285F4]" />
-                  <span>3. AI Act Europeo <span className="text-[#4285F4]">(EU AI Act)</span></span>
+                  <Cpu className="w-5 h-5 text-[#10B981]" />
+                  <span>3. AI Act Europeo <span className="text-[#10B981]">(EU AI Act)</span></span>
                 </h2>
                 <button 
                   onClick={() => toggleMobileSection('aiact')}
-                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#4285F4]/15 text-white"
+                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#10B981]/15 text-white"
                   aria-label="Espandi sezione"
                 >
                   {mobileSectionsOpen.aiact ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}

@@ -136,7 +136,7 @@ export default function Navbar({
   const currentLang = languages.find(l => l.code === activeLang) || { code: 'it', label: 'ITA', flag: '🇮🇹' };
 
   return (
-    <header id="app-navbar" className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 shadow-sm backdrop-blur-md bg-opacity-95 transition-all duration-300">
+    <header id="app-navbar" className="sticky top-0 z-50 w-full bg-[#111113] border-b border-white/10 shadow-sm backdrop-blur-md bg-opacity-95 transition-all duration-300 text-white">
       <div className="w-full px-6 lg:px-12">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
@@ -145,16 +145,16 @@ export default function Navbar({
             className="flex items-center space-x-2 sm:space-x-4 cursor-pointer group shrink-0"
             onClick={() => handleNavClick('home')}
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#0A192F] dark:bg-[#4A90E2] rotate-45 flex items-center justify-center transition-transform duration-300 group-hover:rotate-[135deg] shadow-md shrink-0">
-              <span className="-rotate-45 text-white font-bold text-[10px] sm:text-xs uppercase tracking-tighter block group-hover:rotate-[-135deg] transition-transform duration-300">FW</span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#111113] border border-[#10B981] rotate-45 flex items-center justify-center transition-transform duration-300 group-hover:rotate-[135deg] shadow-md shrink-0">
+              <span className="-rotate-45 text-[#10B981] font-bold text-[10px] sm:text-xs uppercase tracking-tighter block group-hover:rotate-[-135deg] transition-transform duration-300">FW</span>
             </div>
             <div>
-              <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-[#0A192F] dark:text-white block leading-none">
+              <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-white block leading-none">
                 <span className="sm:inline hidden">FACILISSIMO </span>
                 <span className="sm:hidden inline">F.</span>
-                <span className="text-[#4A90E2] font-black">WEB</span>
+                <span className="text-[#10B981] font-black">WEB</span>
               </span>
-              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#0A192F]/50 dark:text-slate-400 block font-bold mt-0.5 sm:mt-1 hidden sm:block">
+              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50 block font-bold mt-0.5 sm:mt-1 hidden sm:block">
                 Strategic Digital Partner
               </span>
             </div>
@@ -227,19 +227,6 @@ export default function Navbar({
                 )}
               </div>
 
-              {/* Quick Dark Mode Toggler */}
-              {setDarkMode && (
-                <button
-                  id="navbar-dark-toggle"
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="p-2 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors rounded-none cursor-pointer flex items-center justify-center border border-transparent hover:border-slate-200/20"
-                  title={darkMode ? "Attiva modalità chiara" : "Attiva modalità scura"}
-                  aria-label="Cambia tema chiaro/scuro"
-                >
-                  {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-                </button>
-              )}
-
               {/* Accessibility Panel Toggle in Desktop Navbar */}
               {setAccessibilityOpen && (
                 <button
@@ -294,7 +281,7 @@ export default function Navbar({
               <button
                 onClick={() => setAccessibilityOpen(!accessibilityOpen)}
                 className={`p-1.5 transition-colors cursor-pointer ${
-                  accessibilityOpen ? 'text-[#4A90E2]' : 'text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2]'
+                  accessibilityOpen ? 'text-[#10B981]' : 'text-white hover:text-[#10B981]'
                 }`}
                 aria-label="Opzioni di Accessibilità"
                 title="Accessibilità"
@@ -307,7 +294,7 @@ export default function Navbar({
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="p-1.5 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors cursor-pointer flex items-center justify-center space-x-1"
+                className="p-1.5 text-white hover:text-[#10B981] transition-colors cursor-pointer flex items-center justify-center space-x-1"
                 aria-label="Cambia lingua"
                 title="Lingua"
               >
@@ -317,20 +304,20 @@ export default function Navbar({
               {isLangOpen && (
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
-                  <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-[#0d1e36] border border-slate-200 dark:border-white/10 shadow-xl py-1.5 z-50 rounded-2xl max-h-72 overflow-y-auto">
+                  <div className="absolute right-0 mt-2 w-44 bg-[#09090b] border border-white/10 shadow-xl py-1.5 z-50 rounded-2xl max-h-72 overflow-y-auto">
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
                         onClick={() => handleLanguageChange(lang.code)}
-                        className={`w-full text-left px-4 py-2 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer flex items-center justify-between ${
-                          activeLang === lang.code ? 'text-[#4A90E2]' : 'text-[#0A192F] dark:text-slate-200'
+                        className={`w-full text-left px-4 py-2 text-xs font-bold uppercase tracking-wider hover:bg-white/5 cursor-pointer flex items-center justify-between ${
+                          activeLang === lang.code ? 'text-[#10B981]' : 'text-slate-200'
                         }`}
                       >
                         <div className="flex items-center space-x-2">
                           <span className="text-sm">{lang.flag}</span>
                           <span>{lang.label}</span>
                         </div>
-                        {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#4A90E2] rounded-full" />}
+                        {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#10B981] rounded-full" />}
                       </button>
                     ))}
                   </div>
@@ -338,19 +325,10 @@ export default function Navbar({
               )}
             </div>
 
-            {setDarkMode && (
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-1.5 text-[#0A192F] dark:text-slate-200 hover:text-[#4A90E2] transition-colors cursor-pointer"
-                aria-label="Inverti tema"
-              >
-                {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-              </button>
-            )}
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[#0A192F] dark:text-white hover:text-[#4A90E2] p-1.5 focus:outline-none"
+              className="text-white hover:text-[#10B981] p-1.5 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -364,8 +342,8 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div id="mobile-nav-menu" className="xl:hidden bg-white border-b border-slate-200 animate-fadeIn transition-all duration-300">
-          <div style={{ backgroundColor: '#ffffff' }} className="px-6 pt-2 pb-6 space-y-2">
+        <div id="mobile-nav-menu" className="xl:hidden bg-[#09090b] border-b border-white/10 animate-fadeIn transition-all duration-300">
+          <div style={{ backgroundColor: '#09090b' }} className="px-6 pt-2 pb-6 space-y-2">
             {menuItems.map((item) => (
               <button
                 key={item.id}
@@ -378,8 +356,8 @@ export default function Navbar({
                       ? 'bg-amber-500/10 text-amber-500 border-l-4 border-amber-500 font-extrabold'
                       : 'bg-amber-500/5 text-amber-600 border border-amber-500/10'
                     : activeTab === item.id
-                      ? 'bg-slate-50 dark:bg-white/5 text-[#0A192F] dark:text-white border-l-4 border-[#0A192F] dark:border-[#4A90E2]'
-                      : 'text-[#0A192F]/70 dark:text-slate-300 hover:bg-slate-50 hover:text-[#0A192F]'
+                      ? 'bg-white/5 text-white border-l-4 border-[#10B981]'
+                      : 'text-slate-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 <span>{item.label}</span>
@@ -394,24 +372,22 @@ export default function Navbar({
                 id="mobile-nav-admin-lock"
                 onClick={() => handleNavClick('fogli')}
                 style={{ fontFamily: "'Poppins', sans-serif" }}
-                className="block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-all duration-150 cursor-pointer flex items-center justify-between text-slate-500 bg-slate-50 border border-slate-200 hover:text-slate-700 hover:bg-slate-100 dark:bg-[#0c1e36] dark:border-white/10 dark:text-slate-300 dark:hover:text-white"
+                className="block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-all duration-150 cursor-pointer flex items-center justify-between text-slate-300 bg-white/5 border border-white/10 hover:text-white hover:bg-white/10"
               >
                 <span className="flex items-center space-x-2">
-                  <Lock className="w-4 h-4 text-slate-400" />
+                  <Lock className="w-4 h-4 text-[#10B981]" />
                   <span>Area Riservata</span>
                 </span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </button>
             )}
 
-
-
             <div className="pt-4">
               <button
                 id="mobile-nav-cta"
                 onClick={() => handleNavClick('contatti')}
                 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '12px' }}
-                className="w-full text-center py-3 border-2 border-[#0A192F] dark:border-[#4A90E2] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#0A192F] dark:hover:bg-[#4A90E2] hover:text-white dark:hover:text-slate-950 text-[#0A192F] dark:text-white transition-all duration-200"
+                className="w-full text-center py-3 border-2 border-[#10B981] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#10B981] hover:text-white text-[#10B981] transition-all duration-200"
               >
                 Area Clienti & Richiesta
               </button>
