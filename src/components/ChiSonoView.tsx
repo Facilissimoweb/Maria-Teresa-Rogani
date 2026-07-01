@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Award, GraduationCap, Check, ShieldCheck, Mail, ArrowRight, BookOpen, Sparkles, Target } from 'lucide-react';
+import { Award, GraduationCap, Check, ShieldCheck, Mail, ArrowRight, BookOpen, Sparkles, Target, X } from 'lucide-react';
 import { ActiveTab } from '../types';
 import profileImg from '../assets/images/maria_teresa.jpg';
 import partnerPortraitImg from '../assets/images/partner_portrait_1782724733588.jpg';
+import regeneratedHeroImg from '../assets/images/regenerated_image_1782924691329.webp';
 import { GlossaryParagraph } from './GlossaryTerm';
 import ParticleOverlay from './ParticleOverlay';
 
@@ -14,6 +15,7 @@ interface ChiSonoViewProps {
 export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
   const [imageSrc, setImageSrc] = React.useState(profileImg);
   const [fallbackAttempts, setFallbackAttempts] = React.useState(0);
+  const [isFullscreenImageOpen, setIsFullscreenImageOpen] = React.useState(false);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -83,7 +85,11 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
-            <div className="relative bg-black/40 border border-white/10 rounded-none overflow-hidden shadow-2xl">
+            <div 
+              className="relative bg-black/40 border border-white/10 rounded-none overflow-hidden shadow-2xl group cursor-zoom-in"
+              onClick={() => setIsFullscreenImageOpen(true)}
+              title="Cliccate per visualizzare a schermo intero"
+            >
               {/* Window header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#161619] border-b border-white/10">
                 <div className="flex space-x-1.5">
@@ -96,9 +102,9 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               
               {/* Themed Image */}
               <img 
-                src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80" 
+                src={regeneratedHeroImg} 
                 alt="Web Graphic Design Workspace"
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-cover border-b border-white/10"
+                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-contain bg-black/80 border-b border-white/10 transition-all duration-300 group-hover:opacity-80"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -323,6 +329,34 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
 
         </div>
       </div>
+
+      {/* Fullscreen Lightbox Modal */}
+      {isFullscreenImageOpen && (
+        <div 
+          onClick={() => setIsFullscreenImageOpen(false)}
+          className="fixed inset-0 bg-black/95 z-[1000] flex flex-col items-center justify-center p-4 cursor-zoom-out animate-fadeIn"
+        >
+          <div className="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={() => setIsFullscreenImageOpen(false)}
+              className="absolute -top-12 right-0 text-white hover:text-[#bef264] transition-colors p-2 text-xs font-mono uppercase tracking-widest flex items-center space-x-1.5 cursor-pointer bg-white/5 border border-white/10 px-3 py-1.5"
+            >
+              <span>Chiudi</span>
+              <X className="w-4 h-4" />
+            </button>
+            <img 
+              src={regeneratedHeroImg} 
+              alt="Web Graphic Design Workspace Fullscreen"
+              className="max-w-full max-h-[80vh] object-contain shadow-2xl border border-white/10 select-none"
+              referrerPolicy="no-referrer"
+            />
+            <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono mt-4 text-center">
+              Web Graphic Design Workspace • Cliccate all'esterno o sul pulsante per chiudere
+            </p>
+          </div>
+        </div>
+      )}
+
     </article>
   );
 }
