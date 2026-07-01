@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucid
 import { ActiveTab } from '../types';
 import heroImg from '../assets/images/regenerated_image_1782808684519.png';
 import { GlossaryParagraph } from './GlossaryTerm';
+import ParticleOverlay from './ParticleOverlay';
 
 interface HomeViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -14,6 +15,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
     <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
       <section id="hero-section" className="relative bg-[#0A192F] text-white overflow-hidden py-20 lg:py-28 border-b border-slate-800">
+        {/* Dynamic Interactive Particle Canvas Overlay */}
+        <ParticleOverlay />
+        
         {/* Background Decorative Polygon Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:24px_24px]" />
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 hidden lg:block">
