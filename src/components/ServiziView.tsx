@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange, Sparkles } from 'lucide-react';
 import { GlossaryParagraph } from './GlossaryTerm';
+import ParticleOverlay from './ParticleOverlay';
 
 interface ServiziViewProps {
   setActiveTab: (tab: 'home' | 'chi-sono' | 'servizi' | 'contatti') => void;
@@ -199,8 +200,11 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
     <article id="servizi-view" className="animate-fadeIn text-white">
       {/* HERO SECTION */}
       <section id="servizi-hero" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
+        {/* Dynamic Interactive Particle Canvas Overlay */}
+        <ParticleOverlay />
+        
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
@@ -210,9 +214,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="w-12 h-1 bg-[#4285F4] mb-4"></div>
+            <div className="w-12 h-1 bg-[#10B981] mb-4"></div>
             
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#4285F4] font-mono">
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>LE MIE SOLUZIONI STRATEGICHE</span>
             </div>
@@ -222,15 +226,15 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
               Su Misura
             </h1>
             
-            <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
-              Distinguiamo nettamente tra <span className="font-semibold text-white">piattaforme CMS</span> per la massima versatilità ordinaria, <span className="font-semibold text-white">sviluppi custom puri</span> per performance d'élite ed <span className="font-semibold text-white">integrazioni AI</span> studiate ad hoc.
-            </p>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">
+              Distinguiamo nettamente tra <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">piattaforme CMS per la massima versatilità ordinaria, sviluppi custom puri per performance d'élite ed integrazioni AI studiate ad hoc.</span>
+            </h2>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 id="servizi-hero-cta"
                 onClick={() => setActiveTab('contatti')}
-                className="px-8 py-3.5 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Iniziate Ora
               </button>
@@ -266,7 +270,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
 
             <div className="bg-[#161619] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
               <div className="mb-4">
-                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4285F4] mb-1 font-bold font-mono">Standard di Progettazione</p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#10B981] mb-1 font-bold font-mono">Standard di Progettazione</p>
                 <p className="text-xl font-bold text-white font-display uppercase tracking-tight">Trasparenza & Alta Affidabilità</p>
               </div>
               <div className="space-y-3 text-xs text-white/70 font-mono">
@@ -284,7 +288,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 </div>
                 <div className="flex justify-between items-end pb-1">
                   <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">SLA & Supporto</span>
-                  <span className="font-semibold text-[#4285F4]">Incluso & Formativo</span>
+                  <span className="font-semibold text-[#10B981]">Incluso & Formativo</span>
                 </div>
               </div>
             </div>
@@ -305,7 +309,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                   onClick={() => setActiveCategory('cms')}
                   className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activeCategory === 'cms'
-                      ? 'bg-[#4285F4] text-white'
+                      ? 'bg-[#10B981] text-white'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -317,7 +321,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                   onClick={() => setActiveCategory('custom')}
                   className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activeCategory === 'custom'
-                      ? 'bg-[#4285F4] text-white'
+                      ? 'bg-[#10B981] text-white'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -329,7 +333,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                   onClick={() => setActiveCategory('social')}
                   className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activeCategory === 'social'
-                      ? 'bg-[#4285F4] text-white'
+                      ? 'bg-[#10B981] text-white'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -354,7 +358,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                     <div 
                       key={pkg.id} 
                       id={`pkg-${pkg.id}`}
-                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#4285F4]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
+                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#10B981]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
                     >
                       <div className="space-y-6">
                         <div className="flex justify-between items-start">
@@ -373,7 +377,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                           <ul className="space-y-2.5">
                             {pkg.features.map((feature, idx) => (
                               <li key={idx} className="flex items-start space-x-2.5 text-xs text-white/80">
-                                <CheckCircle2 className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                                <CheckCircle2 className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                                 <span>{feature}</span>
                               </li>
                             ))}
@@ -387,7 +391,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab('contatti')}
-                          className="w-full mt-4 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                          className="w-full mt-4 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                         >
                           <span>Selezionate questo pacchetto</span>
                           <ChevronRight className="w-4 h-4 text-white" />
@@ -411,7 +415,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                     <div 
                       key={pkg.id} 
                       id={`pkg-${pkg.id}`}
-                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#4285F4]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
+                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#10B981]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
                     >
                       <div className="space-y-6">
                         <div className="flex justify-between items-start">
@@ -430,7 +434,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                           <ul className="space-y-2.5">
                             {pkg.features.map((feature, idx) => (
                               <li key={idx} className="flex items-start space-x-2.5 text-xs text-white/80">
-                                <CheckCircle2 className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                                <CheckCircle2 className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                                 <span>{feature}</span>
                               </li>
                             ))}
@@ -444,7 +448,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab('contatti')}
-                          className="w-full mt-4 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                          className="w-full mt-4 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                         >
                           <span>Inizializzate lo sviluppo custom</span>
                           <ChevronRight className="w-4 h-4 text-white" />
@@ -468,7 +472,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                     <div 
                       key={pkg.id} 
                       id={`pkg-${pkg.id}`}
-                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#4285F4]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
+                      className="bg-[#111113] p-8 rounded-none border border-white/5 hover:border-[#10B981]/40 flex flex-col justify-between transition-colors duration-300 relative overflow-hidden"
                     >
                       <div className="space-y-6">
                         <div className="flex justify-between items-start">
@@ -487,7 +491,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                           <ul className="space-y-2.5">
                             {pkg.features.map((feature, idx) => (
                               <li key={idx} className="flex items-start space-x-2.5 text-xs text-white/80">
-                                <CheckCircle2 className="w-4 h-4 text-[#4285F4] shrink-0 mt-0.5" />
+                                <CheckCircle2 className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                                 <span>{feature}</span>
                               </li>
                             ))}
@@ -501,7 +505,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab('contatti')}
-                          className="w-full mt-4 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                          className="w-full mt-4 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                         >
                           <span>Selezionate questa strategia</span>
                           <ChevronRight className="w-4 h-4 text-white" />
@@ -517,7 +521,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
           {/* 7 PHASES OPERATIONAL TIMELINE */}
           <div id="phases-timeline-section" className="bg-[#111113] text-white rounded-none p-8 sm:p-12 shadow-xl mb-12 border border-white/10">
             <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#4285F4]">IL PROTOCOLLO OPERATIVO IN 7 FASI</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#10B981]">IL PROTOCOLLO OPERATIVO IN 7 FASI</span>
               <h2 className="text-3xl font-bold font-display uppercase tracking-tight text-white">Il Vostro Progetto, Passo dopo Passo</h2>
               <p className="text-xs leading-relaxed text-white/60 font-sans font-light">
                 Seguo un protocollo rigoroso per assicurarmi che il Vostro sito sia perfetto. Fate clic su ciascuna fase per visualizzare i dettagli operativi e i risultati previsti.
@@ -533,7 +537,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                   onClick={() => setActivePhase(phase.phase)}
                   className={`px-4 py-2.5 rounded-none text-[10px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activePhase === phase.phase
-                      ? 'bg-[#4285F4] text-white shadow-md'
+                      ? 'bg-[#10B981] text-white shadow-md'
                       : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
                   }`}
                 >
@@ -552,10 +556,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             <div className="bg-[#161619] border border-white/10 rounded-none p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-8 space-y-5">
                 <div className="flex items-center space-x-3">
-                  <span className="text-4xl font-extrabold text-[#4285F4] font-mono">0{operationalPhases[activePhase - 1].phase}</span>
+                  <span className="text-4xl font-extrabold text-[#10B981] font-mono">0{operationalPhases[activePhase - 1].phase}</span>
                   <div>
                     <h3 className="text-lg font-bold text-white uppercase tracking-wider font-display">{operationalPhases[activePhase - 1].title}</h3>
-                    <p className="text-[10px] text-[#4285F4] font-bold uppercase tracking-widest font-mono">{operationalPhases[activePhase - 1].timeline}</p>
+                    <p className="text-[10px] text-[#10B981] font-bold uppercase tracking-widest font-mono">{operationalPhases[activePhase - 1].timeline}</p>
                   </div>
                 </div>
                 
@@ -564,7 +568,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 </p>
 
                 <div className="bg-[#111113] p-4 rounded-none border border-white/5 space-y-2">
-                  <div className="flex items-center space-x-2 text-[10px] font-bold text-[#4285F4] uppercase tracking-wider font-mono">
+                  <div className="flex items-center space-x-2 text-[10px] font-bold text-[#10B981] uppercase tracking-wider font-mono">
                     <Info className="w-4 h-4 shrink-0" />
                     <span>Cosa Riceverete (Deliverable):</span>
                   </div>
@@ -578,15 +582,15 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest border-b border-white/5 pb-2 font-mono">Vantaggi di questa fase</h4>
                 <ul className="space-y-3 text-xs text-white/70">
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#4285F4] font-bold">✓</span>
+                    <span className="text-[#10B981] font-bold">✓</span>
                     <span>Consulenza diretta e costante</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#4285F4] font-bold">✓</span>
+                    <span className="text-[#10B981] font-bold">✓</span>
                     <span>Verifica rigorosa di ogni requisito</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#4285F4] font-bold">✓</span>
+                    <span className="text-[#10B981] font-bold">✓</span>
                     <span>Trasparenza e rispetto delle tempistiche</span>
                   </li>
                 </ul>
@@ -607,7 +611,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
           {/* PRAGMATIC ADVISOR HELPER */}
           <div className="bg-[#111113] border border-white/10 rounded-none p-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
             <div className="md:col-span-8 space-y-3">
-              <span className="text-[10px] font-mono font-bold text-[#4285F4] uppercase tracking-[0.25em] flex items-center space-x-1">
+              <span className="text-[10px] font-mono font-bold text-[#10B981] uppercase tracking-[0.25em] flex items-center space-x-1">
                 <CalendarRange className="w-4 h-4 shrink-0" />
                 <span>Consulenza Preliminare Gratuita</span>
               </span>
@@ -619,7 +623,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             <div className="md:col-span-4 flex justify-end">
               <button
                 onClick={() => setActiveTab('contatti')}
-                className="px-6 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-colors duration-150 shadow-md flex items-center space-x-2 w-full md:w-auto justify-center font-mono cursor-pointer"
+                className="px-6 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-colors duration-150 shadow-md flex items-center space-x-2 w-full md:w-auto justify-center font-mono cursor-pointer"
               >
                 <span>Contattatemi Ora</span>
                 <ArrowRight className="w-4 h-4 text-white" />

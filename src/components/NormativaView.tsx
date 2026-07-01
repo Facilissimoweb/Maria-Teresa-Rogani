@@ -602,7 +602,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
                 {/* TIMELINE INTERATTIVA AI ACT */}
                 <div className="bg-[#111113] p-6 border border-white/10">
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#4285F4] mb-4 font-mono">FASI DI ENTRATA IN VIGORE AI ACT</h4>
+                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#10B981] mb-4 font-mono">FASI DI ENTRATA IN VIGORE AI ACT</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6">
                     {timelineStages.map((stage, idx) => (
                       <button
@@ -610,7 +610,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                         onClick={() => setActiveTimelineStage(idx)}
                         className={`p-3 border text-left cursor-pointer transition-colors duration-150 rounded-none ${
                           activeTimelineStage === idx
-                            ? 'border-[#4285F4] bg-[#4285F4]/10 text-white'
+                            ? 'border-[#10B981] bg-[#10B981]/10 text-white'
                             : 'border-white/5 bg-black/20 text-white/60 hover:border-white/20'
                         }`}
                       >
@@ -639,12 +639,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <section id="altri" className="scroll-mt-24 space-y-6">
               <div className="flex justify-between items-center border-b border-white/10 pb-2">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-[#4285F4]" />
-                  <span>4. Altri <span className="text-[#4285F4]">Adempimenti</span></span>
+                  <Lock className="w-5 h-5 text-[#10B981]" />
+                  <span>4. Altri <span className="text-[#10B981]">Adempimenti</span></span>
                 </h2>
                 <button 
                   onClick={() => toggleMobileSection('altri')}
-                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#4285F4]/15 text-white"
+                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#10B981]/15 text-white"
                   aria-label="Espandi sezione"
                 >
                   {mobileSectionsOpen.altri ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
@@ -673,12 +673,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <section id="affianco" className="scroll-mt-24 space-y-6">
               <div className="flex justify-between items-center border-b border-white/10 pb-2">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white flex items-center gap-2">
-                  <UserCheck className="w-5 h-5 text-[#4285F4]" />
-                  <span>5. Come Vi Affianco <span className="text-[#4285F4]">Professionalmente</span></span>
+                  <UserCheck className="w-5 h-5 text-[#10B981]" />
+                  <span>5. Come Vi Affianco <span className="text-[#10B981]">Professionalmente</span></span>
                 </h2>
                 <button 
                   onClick={() => toggleMobileSection('affianco')}
-                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#4285F4]/15 text-white"
+                  className="lg:hidden p-1.5 bg-white/5 hover:bg-[#10B981]/15 text-white"
                   aria-label="Espandi sezione"
                 >
                   {mobileSectionsOpen.affianco ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
@@ -701,7 +701,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
         <div className="max-w-4xl mx-auto px-6 lg:px-12">
           
           <div className="text-center space-y-3 mb-10">
-            <span className="text-[10px] font-mono font-bold text-[#4285F4] uppercase tracking-[0.3em]">STRUMENTO DI AUTOVALUTAZIONE</span>
+            <span className="text-[10px] font-mono font-bold text-[#10B981] uppercase tracking-[0.3em]">STRUMENTO DI AUTOVALUTAZIONE</span>
             <h2 className="text-3xl font-bold font-display uppercase tracking-tight text-white">Esegui l'Audit Compliance del Vostro Sito</h2>
             <p className="text-xs text-white/60 font-sans font-light max-w-2xl mx-auto">
               Selezionate gli elementi di cui siete già certi. Il misuratore sottostante calcolerà istantaneamente il Vostro livello teorico di conformità alle normative vigenti.
@@ -712,12 +712,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             {/* PROGRESS BAR */}
             <div className="space-y-2">
               <div className="flex justify-between items-end text-xs font-mono">
-                <span className="text-[#4285F4] font-bold uppercase tracking-wider">LIVELLO DI COMPLIANCE TEORICO:</span>
+                <span className="text-[#10B981] font-bold uppercase tracking-wider">LIVELLO DI COMPLIANCE TEORICO:</span>
                 <span className="text-white font-bold text-lg">{progressPercent}%</span>
               </div>
               <div className="w-full bg-[#111113] h-3 border border-white/5 overflow-hidden">
                 <div 
-                  className="bg-[#4285F4] h-full transition-all duration-500 ease-out"
+                  className="bg-[#10B981] h-full transition-all duration-500 ease-out"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -734,12 +734,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   onClick={() => toggleChecklistItem(item.id)}
                   className={`p-4 border transition-colors duration-150 flex items-start space-x-3 cursor-pointer select-none ${
                     item.checked 
-                      ? 'border-[#4285F4]/40 bg-[#4285F4]/5' 
+                      ? 'border-[#10B981]/40 bg-[#10B981]/5' 
                       : 'border-white/5 bg-[#111113] hover:border-white/10'
                   }`}
                 >
                   <div className={`w-5 h-5 border flex items-center justify-center shrink-0 mt-0.5 rounded-none ${
-                    item.checked ? 'border-[#4285F4] bg-[#4285F4] text-white' : 'border-white/20 bg-black/20'
+                    item.checked ? 'border-[#10B981] bg-[#10B981] text-white' : 'border-white/20 bg-black/20'
                   }`}>
                     {item.checked && <span className="text-[10px]">✓</span>}
                   </div>
@@ -767,7 +767,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
               <button
                 onClick={() => setActiveTab('contatti')}
-                className="px-6 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors flex items-center justify-center space-x-2 font-mono cursor-pointer"
+                className="px-6 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors flex items-center justify-center space-x-2 font-mono cursor-pointer"
               >
                 <span>Richiedi Audit Professionale Completo</span>
                 <ArrowRight className="w-4 h-4 text-white" />

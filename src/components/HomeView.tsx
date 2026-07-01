@@ -19,7 +19,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
         <ParticleOverlay />
         
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
@@ -29,9 +29,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="w-12 h-1 bg-[#4285F4] mb-4"></div>
+            <div className="w-12 h-1 bg-[#10B981] mb-4"></div>
             
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#4285F4] font-mono">
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>[L'Evoluzione dello Sviluppo Web]</span>
             </div>
@@ -42,9 +42,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               Performance.
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
-              Siti Web ad Elevata Conversione, <span className="font-semibold text-white">Progettati con Rigore e Strategia.</span>
-            </p>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">
+              Siti Web ad Elevata Conversione, <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Progettati con Rigore e Strategia.</span>
+            </h2>
             
             <GlossaryParagraph className="text-sm text-slate-400 font-normal leading-relaxed max-w-2xl">
               FACILISSIMO WEB semplifica lo sviluppo web coniugando tecnologia d'avanguardia, etica professionale della comunicazione e massima trasparenza economica. Garantisco la massima conversione dei Vostri contatti grazie a un approccio fortemente strategico come la lead generation.
@@ -57,7 +57,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   setActiveTab('contatti');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-3.5 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Iniziate Ora
               </button>
@@ -105,7 +105,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             {/* Strategic Info Box */}
             <div className="bg-[#161619] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
               <div className="mb-4">
-                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4285F4] mb-1 font-bold font-mono">Status Partner</p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#10B981] mb-1 font-bold font-mono">Status Partner</p>
                 <p className="text-lg font-bold text-white font-display uppercase tracking-tight">Social Lead's Manager Certificato</p>
               </div>
               <div className="space-y-3 text-xs text-white/70 font-mono">
@@ -119,7 +119,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 </div>
                 <div className="flex justify-between items-end pb-1">
                   <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">Focus Primario</span>
-                  <span className="font-semibold text-[#4285F4]">Massima Conversione</span>
+                  <span className="font-semibold text-[#10B981]">Massima Conversione</span>
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-4">
             <div className="space-y-2">
-              <h2 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#4285F4]">I Miei Principi Fondanti</h2>
+              <h2 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#10B981]">I Miei Principi Fondanti</h2>
               <p className="text-2xl sm:text-3xl font-bold font-display uppercase tracking-tight text-white">
                 Un approccio pragmatico focalizzato sui Vostri risultati aziendali
               </p>
@@ -143,33 +143,33 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div 
-              className="bg-[#111113] p-8 rounded-none border-t-4 border-[#4285F4] border-x border-b border-white/5 flex flex-col justify-between hover:bg-white/2 transition-colors duration-300"
+              className="bg-[#111113] p-8 rounded-none border-t-4 border-[#10B981] border-x border-b border-white/5 flex flex-col justify-between hover:bg-white/2 transition-colors duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <div className="space-y-4">
-                <div className="p-3 bg-[#4285F4]/5 text-[#4285F4] rounded-none w-fit border border-white/5">
-                  <Target className="w-6 h-6 text-[#4285F4]" />
+                <div className="p-3 bg-[#10B981]/5 text-[#10B981] rounded-none w-fit border border-white/5">
+                  <Target className="w-6 h-6 text-[#10B981]" />
                 </div>
                 <h3 className="text-base font-bold text-white font-mono uppercase tracking-wider">Orientamento alla Conversione</h3>
                 <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                  Ogni pixel, pulsante e paragrafo è studiato con l'unico obiettivo di guidare i Vostri utenti verso l'azione desiderata. Non realizzo semplici vetrine statiche, ma veri e propri catalizzatori di contatti con strategie avanzate di Lead Generation.
+                   Ogni pixel, pulsante e paragrafo è studiato con l'unico obiettivo di guidare i Vostri utenti verso l'azione desiderata. Non realizzo semplici vetrine statiche, ma veri e propri catalizzatori di contatti con strategie avanzate di Lead Generation.
                 </GlossaryParagraph>
               </div>
             </motion.div>
 
             <motion.div 
-              className="bg-[#111113] p-8 rounded-none border-t-4 border-[#4285F4]/70 border-x border-b border-white/5 flex flex-col justify-between hover:bg-white/2 transition-colors duration-300"
+              className="bg-[#111113] p-8 rounded-none border-t-4 border-[#10B981]/70 border-x border-b border-white/5 flex flex-col justify-between hover:bg-white/2 transition-colors duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.25 }}
             >
               <div className="space-y-4">
-                <div className="p-3 bg-[#4285F4]/5 text-[#4285F4] rounded-none w-fit border border-white/5">
-                  <ShieldCheck className="w-6 h-6 text-[#4285F4]" />
+                <div className="p-3 bg-[#10B981]/5 text-[#10B981] rounded-none w-fit border border-white/5">
+                  <ShieldCheck className="w-6 h-6 text-[#10B981]" />
                 </div>
                 <h3 className="text-base font-bold text-white font-mono uppercase tracking-wider">Trasparenza Etica ed Economica</h3>
                 <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed">
@@ -179,15 +179,15 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             </motion.div>
 
             <motion.div 
-              className="bg-[#111113] p-8 rounded-none border-t-4 border-[#4285F4]/40 border-x border-b border-white/5 flex flex-col justify-between hover:bg-white/2 transition-colors duration-300"
+              className="bg-[#111113] p-8 rounded-none border-t-4 border-[#10B981]/40 border-x border-b border-white/5 flex flex-col justify-between hover:bg-white/2 transition-colors duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="space-y-4">
-                <div className="p-3 bg-[#4285F4]/5 text-[#4285F4] rounded-none w-fit border border-white/5">
-                  <Code className="w-6 h-6 text-[#4285F4]" />
+                <div className="p-3 bg-[#10B981]/5 text-[#10B981] rounded-none w-fit border border-white/5">
+                  <Code className="w-6 h-6 text-[#10B981]" />
                 </div>
                 <h3 className="text-base font-bold text-white font-mono uppercase tracking-wider">Eccellenza Tecnologica</h3>
                 <GlossaryParagraph className="text-xs sm:text-sm text-white/70 leading-relaxed">
@@ -205,14 +205,14 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* AI Text Presentation */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 rounded-none text-[10px] font-bold tracking-[0.25em] text-[#4285F4] font-mono">
-                <Cpu className="w-4 h-4 text-[#4285F4] shrink-0" />
+              <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 rounded-none text-[10px] font-bold tracking-[0.25em] text-[#10B981] font-mono">
+                <Cpu className="w-4 h-4 text-[#10B981] shrink-0" />
                 <span>ETICA E TRASPARENZA AI</span>
               </div>
               
               <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-none font-display uppercase">
                 Integrazione Consapevole <br />
-                <span className="text-[#4285F4]">dell'Intelligenza Artificiale.</span>
+                <span className="text-[#10B981]">dell'Intelligenza Artificiale.</span>
               </h2>
               <GlossaryParagraph className="text-white/70 text-sm leading-relaxed">
                 Sono fermamente convinta che l'Intelligenza Artificiale e i sistemi LLM rappresentino il più straordinario amplificatore di produttività del nostro secolo. Presso <strong>FACILISSIMO WEB</strong>, l'AI viene integrata in modo rigoroso, etico e pienamente conforme all'AI Act europeo per trasferire tutti i benefici di tempo e costo direttamente a Voi.
@@ -221,20 +221,20 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               {/* Grid of AI benefits */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
                 <div className="flex items-start space-x-3">
-                  <div className="p-2 bg-white/5 border-t-2 border-[#4285F4] text-white rounded-none mt-0.5 shrink-0">
-                    <Zap className="w-4 h-4 text-[#4285F4]" />
+                  <div className="p-2 bg-white/5 border-t-2 border-[#10B981] text-white rounded-none mt-0.5 shrink-0">
+                    <Zap className="w-4 h-4 text-[#10B981]" />
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-xs uppercase tracking-wider font-mono">Sviluppo Accelerato del 50%</h4>
                     <p className="text-xs text-white/50 leading-relaxed mt-1">
-                      Strumenti di generazione ed analisi del codice mi consentono di dimezzare i tempi di codifica standard.
+                      Strumenti di generation ed analisi del codice mi consentono di dimezzare i tempi di codifica standard.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <div className="p-2 bg-white/5 border-t-2 border-[#4285F4] text-white rounded-none mt-0.5 shrink-0">
-                    <Code className="w-4 h-4 text-[#4285F4]" />
+                  <div className="p-2 bg-white/5 border-t-2 border-[#10B981] text-white rounded-none mt-0.5 shrink-0">
+                    <Code className="w-4 h-4 text-[#10B981]" />
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-xs uppercase tracking-wider font-mono">Refactoring e Test Avanzati</h4>
@@ -245,7 +245,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <div className="p-2 bg-white/5 border-t-2 border-[#4285F4] text-white rounded-none mt-0.5 shrink-0">
+                  <div className="p-2 bg-white/5 border-t-2 border-[#10B981] text-white rounded-none mt-0.5 shrink-0">
                     <Sparkles className="w-4 h-4 text-amber-500" />
                   </div>
                   <div>
@@ -257,7 +257,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <div className="p-2 bg-white/5 border-t-2 border-[#4285F4] text-white rounded-none mt-0.5 shrink-0">
+                  <div className="p-2 bg-white/5 border-t-2 border-[#10B981] text-white rounded-none mt-0.5 shrink-0">
                     <ShieldCheck className="w-4 h-4 text-emerald-500" />
                   </div>
                   <div>
@@ -273,7 +273,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             {/* AI Interactive Manifesto Sidebar */}
             <div className="lg:col-span-5">
               <div className="bg-[#161619] text-white p-8 rounded-none border border-white/10 shadow-xl space-y-6 relative select-none">
-                <div className="absolute top-4 right-4 text-[#4285F4] opacity-5">
+                <div className="absolute top-4 right-4 text-[#10B981] opacity-5">
                   <Cpu className="w-16 h-16" />
                 </div>
                 
@@ -289,7 +289,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 <div className="space-y-3 pt-2 text-[10px] tracking-wider uppercase font-mono">
                   <div className="flex justify-between items-center py-2 border-b border-white/5">
                     <span className="text-white/50">Progettazione Logica</span>
-                    <span className="text-[#4285F4] font-bold">100% Supervisionata</span>
+                    <span className="text-[#10B981] font-bold">100% Supervisionata</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-white/5">
                     <span className="text-white/50">Generazione Codice Base</span>
@@ -301,12 +301,12 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   </div>
                   <div className="flex justify-between items-center py-2">
                     <span className="text-white/50">Strategia di Conversione</span>
-                    <span className="text-[#4285F4] font-bold">Analisi Umana Esclusiva</span>
+                    <span className="text-[#10B981] font-bold">Analisi Umana Esclusiva</span>
                   </div>
                 </div>
 
                 <div className="bg-white/2 border border-white/5 p-4 rounded-none text-xs text-white/70">
-                  <p className="font-bold text-white mb-1 uppercase tracking-wider text-[10px] text-[#4285F4] font-mono">Perché è un vantaggio per Voi?</p>
+                  <p className="font-bold text-white mb-1 uppercase tracking-wider text-[10px] text-[#10B981] font-mono">Perché è un vantaggio per Voi?</p>
                   Siti che prima richiedevano settimane di lavoro e budget elevati vengono oggi realizzati in tempi rapidi, con standard qualitativi di prim'ordine e tariffe chiare.
                 </div>
               </div>
@@ -318,9 +318,9 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
       {/* FINAL INTERACTIVE CALL TO ACTION */}
       <section id="home-cta-section" className="py-20 bg-[#161619] text-white relative overflow-hidden border-t border-white/10">
         <div className="max-w-5xl mx-auto text-center relative z-10 px-6 lg:px-12 space-y-6">
-          <div className="w-12 h-1 bg-[#4285F4] mx-auto mb-4"></div>
+          <div className="w-12 h-1 bg-[#10B981] mx-auto mb-4"></div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-none font-display uppercase">
-            Pronti a definire la Vostra <span className="text-[#4285F4]">nuova presenza digitale?</span>
+            Pronti a definire la Vostra <span className="text-[#10B981]">nuova presenza digitale?</span>
           </h2>
           <p className="text-white/70 text-sm max-w-xl mx-auto leading-relaxed">
             Sia che desideriate un CMS ottimizzato o uno sviluppo interamente custom su misura, vi affianco con un approccio consulenziale e una strategia di comunicazione mirata ad alti standard qualitativi.
@@ -331,7 +331,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 setActiveTab('contatti');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-8 py-3.5 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+              className="px-8 py-3.5 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
             >
               Richiedete la Vostra Call Gratuita
             </button>

@@ -92,16 +92,16 @@
 }
 
 .dark #desktop-navigation button.border-b-2 {
-  border-color: #4285F4 !important;
+  border-color: #10B981 !important;
   color: #ffffff !important;
 }
 
 .dark #desktop-navigation #nav-cta-button {
-  border-color: #4285F4 !important;
+  border-color: #10B981 !important;
   color: #ffffff !important;
 }
 .dark #desktop-navigation #nav-cta-button:hover {
-  background-color: #4285F4 !important;
+  background-color: #10B981 !important;
 }
 
 .dark #mobile-nav-menu {
@@ -114,17 +114,17 @@
 }
 
 .dark #mobile-nav-menu button.border-l-4 {
-  border-color: #4285F4 !important;
+  border-color: #10B981 !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
   color: white !important;
 }
 
 .dark #mobile-nav-cta {
-  border-color: #4285F4 !important;
+  border-color: #10B981 !important;
   color: white !important;
 }
 .dark #mobile-nav-cta:hover {
-  background-color: #4285F4 !important;
+  background-color: #10B981 !important;
 }
 
 /* Section BG and Text Changes */
@@ -190,7 +190,7 @@
 }
 
 .dark #legal-modal-body a {
-  color: #4285F4 !important;
+  color: #10B981 !important;
 }
 .dark .border-slate-200, 
 .dark .border-slate-100 {
@@ -203,13 +203,13 @@
 }
 
 .dark .bg-indigo-50 {
-  background-color: rgba(66, 133, 244, 0.1) !important;
-  color: #4285F4 !important;
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: #10B981 !important;
 }
 
 .dark .bg-slate-200\/50 {
   background-color: rgba(255, 255, 255, 0.05) !important;
-  color: #4285F4 !important;
+  color: #10B981 !important;
 }
 
 .dark .bg-slate-100 {
@@ -262,8 +262,8 @@
 }
 
 .goog-te-gadget-simple:hover {
-  border-color: #4285F4 !important;
-  background-color: rgba(66, 133, 244, 0.05) !important;
+  border-color: #10B981 !important;
+  background-color: rgba(16, 185, 129, 0.05) !important;
 }
 
 .dark .goog-te-gadget-simple {
@@ -273,7 +273,7 @@
 }
 
 .dark .goog-te-gadget-simple:hover {
-  border-color: #4285F4 !important;
+  border-color: #10B981 !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
 }
 

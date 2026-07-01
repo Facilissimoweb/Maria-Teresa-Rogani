@@ -303,11 +303,11 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
       
       {/* Blog Hero Banner */}
       <section id="blog-hero" className="relative py-16 lg:py-24 overflow-hidden bg-[#111113] border-b border-white/10">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center space-y-6">
-          <div className="w-12 h-1 bg-[#4285F4] mx-auto"></div>
-          <span className="px-3 py-1 bg-white/5 text-[#4285F4] text-[10px] font-bold tracking-[0.25em] uppercase border border-white/10 inline-block font-mono">
+          <div className="w-12 h-1 bg-[#10B981] mx-auto"></div>
+          <span className="px-3 py-1 bg-white/5 text-[#10B981] text-[10px] font-bold tracking-[0.25em] uppercase border border-white/10 inline-block font-mono">
             Risorse e Insights
           </span>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white font-display uppercase">
@@ -336,7 +336,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                   key={article.id} 
                   id={`article-card-${article.id}`}
                   onClick={() => setSelectedArticleId(article.id)}
-                  className="bg-[#111113] border border-white/5 rounded-none flex flex-col justify-between overflow-hidden shadow-sm hover:border-[#4285F4]/40 transition-all duration-300 group cursor-pointer"
+                  className="bg-[#111113] border border-white/5 rounded-none flex flex-col justify-between overflow-hidden shadow-sm hover:border-[#10B981]/40 transition-all duration-300 group cursor-pointer"
                 >
                   <div>
                     {/* Cover Image */}
@@ -356,16 +356,16 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     <div className="p-6 pb-0 space-y-4">
                       <div className="flex items-center space-x-4 text-[10px] font-mono text-white/50">
                         <span className="flex items-center space-x-1">
-                          <Calendar className="w-3.5 h-3.5 text-[#4285F4]" />
+                          <Calendar className="w-3.5 h-3.5 text-[#10B981]" />
                           <span>{article.date}</span>
                         </span>
                         <span className="flex items-center space-x-1">
-                          <Clock className="w-3.5 h-3.5 text-[#4285F4]" />
+                          <Clock className="w-3.5 h-3.5 text-[#10B981]" />
                           <span>{article.readTime}</span>
                         </span>
                       </div>
 
-                      <h2 className="text-lg font-bold text-white uppercase tracking-tight font-display leading-snug group-hover:text-[#4285F4] transition-colors duration-200">
+                      <h2 className="text-lg font-bold text-white uppercase tracking-tight font-display leading-snug group-hover:text-[#10B981] transition-colors duration-200">
                         {article.title}
                       </h2>
 
@@ -379,7 +379,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                   <div className="p-6 pt-4 border-t border-white/5 mt-6 flex justify-between items-center bg-black/10">
                     <button
                       onClick={() => setSelectedArticleId(article.id)}
-                      className="text-white hover:text-[#4285F4] font-bold text-[10px] uppercase tracking-wider flex items-center space-x-1 group/btn cursor-pointer font-mono"
+                      className="text-white hover:text-[#10B981] font-bold text-[10px] uppercase tracking-wider flex items-center space-x-1 group/btn cursor-pointer font-mono"
                     >
                       <span>Leggi Articolo</span>
                       <ChevronRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" />
@@ -396,7 +396,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                       </button>
                       <button
                         onClick={() => handleShare(article, 'wa')}
-                        className="p-1.5 text-white/40 hover:text-[#4285F4] hover:bg-white/5 transition-all cursor-pointer rounded-none"
+                        className="p-1.5 text-white/40 hover:text-[#10B981] hover:bg-white/5 transition-all cursor-pointer rounded-none"
                         title="Condividi su WhatsApp"
                       >
                         <MessageSquare className="w-3.5 h-3.5" />
@@ -427,7 +427,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                   setSelectedArticleId(null);
                   setExpandedFaq(null);
                 }}
-                className="inline-flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#4285F4] hover:underline cursor-pointer font-mono"
+                className="inline-flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#10B981] hover:underline cursor-pointer font-mono"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Torna alla lista</span>
@@ -441,7 +441,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     
                     {/* Header meta */}
                     <div className="space-y-4">
-                      <span className="bg-white/5 text-[#4285F4] text-[10px] font-bold tracking-widest uppercase px-3 py-1 border border-white/10 font-mono">
+                      <span className="bg-white/5 text-[#10B981] text-[10px] font-bold tracking-widest uppercase px-3 py-1 border border-white/10 font-mono">
                         {selectedArticle.category}
                       </span>
                       <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight uppercase leading-tight font-display">
@@ -450,18 +450,18 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                       
                       <div className="flex items-center space-x-6 text-xs text-white/50 font-mono border-y border-white/5 py-3">
                         <span className="flex items-center space-x-1.5">
-                          <Calendar className="w-4 h-4 text-[#4285F4]" />
+                          <Calendar className="w-4 h-4 text-[#10B981]" />
                           <span>Pubblicato il: {selectedArticle.date}</span>
                         </span>
                         <span className="flex items-center space-x-1.5">
-                          <Clock className="w-4 h-4 text-[#4285F4]" />
+                          <Clock className="w-4 h-4 text-[#10B981]" />
                           <span>Tempo di lettura: {selectedArticle.readTime}</span>
                         </span>
                       </div>
                     </div>
 
                     {/* Excerpt */}
-                    <GlossaryParagraph className="text-sm sm:text-base font-medium text-white/90 leading-relaxed border-l-4 border-[#4285F4] pl-4 italic font-sans">
+                    <GlossaryParagraph className="text-sm sm:text-base font-medium text-white/90 leading-relaxed border-l-4 border-[#10B981] pl-4 italic font-sans">
                       {selectedArticle.excerpt}
                     </GlossaryParagraph>
 
@@ -492,7 +492,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     {/* Dedicated Article FAQs */}
                     <div className="border-t border-white/10 pt-10 space-y-6">
                       <div className="flex items-center space-x-2">
-                        <HelpCircle className="w-5 h-5 text-[#4285F4]" />
+                        <HelpCircle className="w-5 h-5 text-[#10B981]" />
                         <h3 className="text-lg font-bold text-white uppercase tracking-wider font-display">
                           Domande Frequenti sull'Articolo
                         </h3>
@@ -509,7 +509,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                               className="w-full flex justify-between items-center text-left text-xs sm:text-sm font-bold text-white focus:outline-none cursor-pointer font-sans"
                             >
                               <span>{faq.question}</span>
-                              <ChevronRight className={`w-4 h-4 transform transition-transform duration-200 ${expandedFaq === idx ? 'rotate-90 text-[#4285F4]' : 'text-slate-400'}`} />
+                              <ChevronRight className={`w-4 h-4 transform transition-transform duration-200 ${expandedFaq === idx ? 'rotate-90 text-[#10B981]' : 'text-slate-400'}`} />
                             </button>
                             
                             <AnimatePresence initial={false}>
@@ -539,13 +539,13 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                       </div>
                       
                       <div className="relative z-10 space-y-3">
-                        <h4 className="text-[10px] font-mono text-[#4285F4] font-bold uppercase tracking-widest">Sinergia Strategica</h4>
+                        <h4 className="text-[10px] font-mono text-[#10B981] font-bold uppercase tracking-widest">Sinergia Strategica</h4>
                         <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-xl font-light font-sans">
                           {selectedArticle.cta.text}
                         </p>
                         <button
                           onClick={() => setActiveTab(selectedArticle.cta.actionTab)}
-                          className="px-5 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-[10px] font-bold uppercase tracking-widest rounded-none transition-all duration-150 inline-flex items-center space-x-1 cursor-pointer font-mono"
+                          className="px-5 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-[10px] font-bold uppercase tracking-widest rounded-none transition-all duration-150 inline-flex items-center space-x-1 cursor-pointer font-mono"
                         >
                           <span>{selectedArticle.cta.buttonText}</span>
                           <ArrowUpRight className="w-4 h-4" />
@@ -570,30 +570,30 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                       <div className="grid grid-cols-2 gap-2.5 font-mono">
                         <button
                           onClick={() => handleShare(selectedArticle, 'li')}
-                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#10B981] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                         >
                           <Linkedin className="w-3.5 h-3.5" />
                           <span>LinkedIn</span>
                         </button>
                         <button
                           onClick={() => handleShare(selectedArticle, 'tw')}
-                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#10B981] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                         >
                           <Twitter className="w-3.5 h-3.5" />
                           <span>Twitter</span>
                         </button>
                         <button
                           onClick={() => handleShare(selectedArticle, 'fb')}
-                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#10B981] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                         >
                           <Facebook className="w-3.5 h-3.5" />
                           <span>Facebook</span>
                         </button>
                         <button
                           onClick={() => handleShare(selectedArticle, 'copy')}
-                          className="py-2.5 px-3 border border-white/10 hover:border-[#4285F4] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer relative"
+                          className="py-2.5 px-3 border border-white/10 hover:border-[#10B981] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors cursor-pointer relative"
                         >
-                          <Link2 className="w-3.5 h-3.5 text-[#4285F4]" />
+                          <Link2 className="w-3.5 h-3.5 text-[#10B981]" />
                           <span>{copiedId === selectedArticle.id ? 'Copiato!' : 'Link'}</span>
                         </button>
                       </div>
@@ -630,7 +630,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
 
                     {/* Sinergia banner info */}
                     <div className="bg-[#111113] p-6 border border-white/5 text-center space-y-4">
-                      <Sparkles className="w-8 h-8 text-[#4285F4] mx-auto animate-pulse" />
+                      <Sparkles className="w-8 h-8 text-[#10B981] mx-auto animate-pulse" />
                       <h4 className="text-xs font-bold text-white uppercase tracking-wider font-display">
                         Consulenza su Misura
                       </h4>
@@ -639,7 +639,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                       </p>
                       <button
                         onClick={() => setActiveTab('contatti')}
-                        className="w-full py-2.5 border border-[#4285F4] hover:bg-[#4285F4] text-[#4285F4] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer font-mono"
+                        className="w-full py-2.5 border border-[#10B981] hover:bg-[#10B981] text-[#10B981] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer font-mono"
                       >
                         Prenota Sessione Gratuita
                       </button>

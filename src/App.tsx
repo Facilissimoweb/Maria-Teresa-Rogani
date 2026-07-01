@@ -226,7 +226,7 @@ export default function App() {
               }}
               className={`w-full text-left py-4 border-b border-white/5 text-xs font-mono tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
                 activeTab === item.id 
-                  ? 'text-[#4285F4] font-bold border-b-[#4285F4]' 
+                  ? 'text-[#10B981] font-bold border-b-[#10B981]' 
                   : item.id === 'blog' 
                     ? 'text-amber-500 hover:text-amber-400'
                     : 'text-white/55 hover:text-white'
@@ -247,7 +247,7 @@ export default function App() {
 
       {/* Header - Desktop only */}
       <header className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#111113] text-white">
-        <div className="px-2 py-0.5 border border-[#4285F4] text-[#4285F4] font-mono text-[9px] uppercase tracking-wider">
+        <div className="px-2 py-0.5 border border-[#10B981] text-[#10B981] font-mono text-[9px] uppercase tracking-wider">
           Consapevolezza AI
         </div>
         <div className="flex items-center space-x-6 text-xs font-mono text-white/50 uppercase tracking-[0.15em]">
@@ -318,7 +318,7 @@ export default function App() {
         </div>
         
         <div className="border-t border-white/10 pt-6 space-y-2">
-          <p className="font-mono text-[9px] text-[#4285F4] uppercase tracking-[0.18em]">Integrazione Consapevole AI</p>
+          <p className="font-mono text-[9px] text-[#10B981] uppercase tracking-[0.18em]">Integrazione Consapevole AI</p>
           <p className="text-xs text-white/60 leading-relaxed font-sans font-light">
             Integrazione etica e pienamente conforme all'AI Act europeo per trasferire tutti i benefici di tempo direttamente a Voi.
           </p>
@@ -340,7 +340,7 @@ export default function App() {
             setActiveTab('contatti');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="w-full bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-mono text-xs font-bold uppercase tracking-[0.2em] py-4 shadow-lg transition-colors cursor-pointer"
+          className="w-full bg-[#10B981] hover:bg-[#10B981]/90 text-white font-mono text-xs font-bold uppercase tracking-[0.2em] py-4 shadow-lg transition-colors cursor-pointer"
         >
           Iniziate Ora
         </button>

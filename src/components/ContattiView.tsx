@@ -4,6 +4,7 @@ import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, Aler
 import { LeadForm } from '../types';
 import LegalModal, { LegalDocType } from './LegalModal';
 import { getAccessToken, appendLeadToSpreadsheet } from '../lib/firebase';
+import ParticleOverlay from './ParticleOverlay';
 
 const getProjectTypeName = (type: string) => {
   switch (type) {
@@ -155,8 +156,11 @@ export default function ContattiView() {
     <article id="contatti-view" className="bg-[#161619] text-white">
       {/* HERO SECTION */}
       <section id="contatti-hero" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
+        {/* Dynamic Interactive Particle Canvas Overlay */}
+        <ParticleOverlay />
+        
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4285f4_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
@@ -166,9 +170,9 @@ export default function ContattiView() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="w-12 h-1 bg-[#4285F4] mb-4"></div>
+            <div className="w-12 h-1 bg-[#10B981] mb-4"></div>
             
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#4285F4] font-mono">
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>CONTATTI & CONSULENZA STRATEGICA</span>
             </div>
@@ -178,9 +182,9 @@ export default function ContattiView() {
               Vostro Successo
             </h1>
             
-            <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
-              Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.
-            </p>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">
+              Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.</span>
+            </h2>
           </motion.div>
           
           {/* Hero Side Block */}
@@ -212,7 +216,7 @@ export default function ContattiView() {
 
             <div className="bg-[#161619] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
               <div className="mb-4">
-                <p className="text-[9px] uppercase tracking-[0.3em] text-[#4285F4] mb-1 font-bold font-mono">Primo Incontro Gratuito</p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#10B981] mb-1 font-bold font-mono">Primo Incontro Gratuito</p>
                 <p className="text-xl font-bold text-white font-display uppercase tracking-tight">Sessione Strategica di 30 Minuti</p>
               </div>
               <div className="space-y-3 text-xs text-white/70 font-mono">
@@ -241,7 +245,7 @@ export default function ContattiView() {
         {submitted ? (
           /* SUCCESS SCREEN */
           <div id="submission-success-card" className="max-w-3xl mx-auto bg-[#111113] border border-white/10 p-10 shadow-lg text-center space-y-8">
-            <div className="w-16 h-16 bg-white/5 rounded-none flex items-center justify-center mx-auto text-[#4285F4] border border-white/10">
+            <div className="w-16 h-16 bg-white/5 rounded-none flex items-center justify-center mx-auto text-[#10B981] border border-white/10">
               <CheckCircle2 className="w-10 h-10 text-emerald-400" />
             </div>
             
@@ -322,7 +326,7 @@ export default function ContattiView() {
             <div className="pt-4">
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 bg-[#4285F4] hover:bg-[#4285F4]/90 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 font-mono cursor-pointer"
+                className="px-6 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 font-mono cursor-pointer"
               >
                 Invia una nuova richiesta
               </button>
@@ -345,13 +349,13 @@ export default function ContattiView() {
                 onClick={() => handleInquirySelect('call-gratuita')}
                 className={`p-6 rounded-none border-t-4 cursor-pointer transition-all duration-200 text-left relative ${
                   formData.inquiryType === 'call-gratuita'
-                    ? 'border-[#4285F4] bg-[#111113] shadow-md'
+                    ? 'border-[#10B981] bg-[#111113] shadow-md'
                     : 'border-white/10 bg-black/25 hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <Phone className="w-5 h-5 text-[#4285F4] shrink-0" />
+                    <Phone className="w-5 h-5 text-[#10B981] shrink-0" />
                     <h3 className="font-bold text-white text-sm uppercase tracking-wider font-display">Call Preliminare Gratuita</h3>
                   </div>
                   <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-none uppercase tracking-wider font-mono">Gratis</span>
@@ -376,13 +380,13 @@ export default function ContattiView() {
                 onClick={() => handleInquirySelect('sessione-codifica')}
                 className={`p-6 rounded-none border-t-4 cursor-pointer transition-all duration-200 text-left relative ${
                   formData.inquiryType === 'sessione-codifica'
-                    ? 'border-[#4285F4] bg-[#111113] shadow-md'
+                    ? 'border-[#10B981] bg-[#111113] shadow-md'
                     : 'border-white/10 bg-black/25 hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <Calendar className="w-5 h-5 text-[#4285F4] shrink-0" />
+                    <Calendar className="w-5 h-5 text-[#10B981] shrink-0" />
                     <h3 className="font-bold text-white text-sm uppercase tracking-wider font-display">Sessione Strategica</h3>
                   </div>
                   <span className="text-[9px] font-bold text-white bg-white/5 border border-white/10 px-2 py-1 rounded-none uppercase tracking-wider font-mono">60 Minuti</span>
@@ -404,7 +408,7 @@ export default function ContattiView() {
 
               {/* Certifications and support badge */}
               <div className="bg-[#111113] text-white p-6 rounded-none border border-white/10 space-y-3">
-                <div className="flex items-center space-x-2 text-[#4285F4]">
+                <div className="flex items-center space-x-2 text-[#10B981]">
                   <ShieldCheck className="w-5 h-5 animate-pulse" />
                   <span className="font-bold text-[10px] uppercase tracking-[0.15em] font-mono">Garanzia di Sicurezza</span>
                 </div>
@@ -437,7 +441,7 @@ export default function ContattiView() {
                 <div className="bg-black/40 p-4 border border-white/5 text-xs flex justify-between items-center select-none font-mono">
                   <div>
                     <span className="text-white/40 block font-bold uppercase tracking-wider text-[9px]">Ingaggio Selezionato:</span>
-                    <span className="text-[#4285F4] font-bold text-xs">
+                    <span className="text-[#10B981] font-bold text-xs">
                       {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (30 Min)' : '💻 Sessione Strategica (60 Min)'}
                     </span>
                   </div>
@@ -457,7 +461,7 @@ export default function ContattiView() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="es. Maria Teresa Rogani"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] focus:ring-1 focus:ring-[#4285F4] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
                     />
                   </div>
 
@@ -471,7 +475,7 @@ export default function ContattiView() {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="es. Società Agricola SpA"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] focus:ring-1 focus:ring-[#4285F4] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
                     />
                   </div>
                 </div>
@@ -487,7 +491,7 @@ export default function ContattiView() {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="es. nome@azienda.it"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] focus:ring-1 focus:ring-[#4285F4] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
                     />
                   </div>
 
@@ -501,7 +505,7 @@ export default function ContattiView() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="es. +39 333 1234567"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] focus:ring-1 focus:ring-[#4285F4] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
                     />
                   </div>
                 </div>
@@ -515,7 +519,7 @@ export default function ContattiView() {
                       name="marketSector"
                       value={formData.marketSector}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
                     >
                       <option value="E-commerce & Retail Online">E-commerce & Retail Online</option>
                       <option value="Servizi Professionali (Consulenza, Legale, Medico)">Servizi Professionali (Consulenza, Legale, Medico)</option>
@@ -540,7 +544,7 @@ export default function ContattiView() {
                       name="preferredTime"
                       value={formData.preferredTime}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
                     >
                       <option value="Mattina (09:00 - 13:00)">Mattina (09:00 - 13:00)</option>
                       <option value="Pomeriggio (14:00 - 18:00)">Pomeriggio (14:00 - 18:00)</option>
@@ -558,7 +562,7 @@ export default function ContattiView() {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
                     >
                       <option value="cms-professional">CMS Professional (WordPress / Webflow)</option>
                       <option value="cms-ecommerce">E-Commerce CMS Ready (Shopify / WooCommerce)</option>
@@ -580,7 +584,7 @@ export default function ContattiView() {
                       name="budgetRange"
                       value={formData.budgetRange}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
                     >
                       <option value="Fino a € 1.500">Fino a € 1.500</option>
                       <option value="€ 1.500 - € 3.000">€ 1.500 - € 3.000</option>
@@ -600,7 +604,7 @@ export default function ContattiView() {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Fornitemi una breve descrizione della Vostra attività ed i Vostri obiettivi commerciali principali..."
-                    className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#4285F4] focus:ring-1 focus:ring-[#4285F4] bg-[#161619] text-white font-sans placeholder-white/30"
+                    className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
                   />
                 </div>
 
@@ -612,14 +616,14 @@ export default function ContattiView() {
                     name="consent"
                     checked={formData.consent}
                     onChange={handleCheckboxChange}
-                    className="w-4 h-4 mt-0.5 rounded-none border-white/20 text-[#4285F4] focus:ring-[#4285F4] bg-[#161619] cursor-pointer"
+                    className="w-4 h-4 mt-0.5 rounded-none border-white/20 text-[#10B981] focus:ring-[#10B981] bg-[#161619] cursor-pointer"
                   />
                   <label htmlFor="consent" className="text-[11px] text-white/60 leading-relaxed font-sans font-light">
                     Acconsento al trattamento dei dati personali ai sensi della{' '}
                     <button
                       type="button"
                       onClick={() => handleOpenLegal('privacy')}
-                      className="text-[#4285F4] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                      className="text-[#10B981] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
                     >
                       Privacy Policy
                     </button>{' '}
@@ -627,7 +631,7 @@ export default function ContattiView() {
                     <button
                       type="button"
                       onClick={() => handleOpenLegal('cookie')}
-                      className="text-[#4285F4] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                      className="text-[#10B981] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
                     >
                       Cookie Policy
                     </button>{' '}
@@ -635,7 +639,7 @@ export default function ContattiView() {
                     <button
                       type="button"
                       onClick={() => handleOpenLegal('terms')}
-                      className="text-[#4285F4] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                      className="text-[#10B981] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
                     >
                       Termini di Servizio
                     </button>
@@ -651,8 +655,8 @@ export default function ContattiView() {
                     disabled={isSubmitting}
                     className={`w-full py-4 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-150 shadow-md flex items-center justify-center space-x-2 font-mono ${
                       isSubmitting 
-                        ? 'bg-[#4285F4]/50 cursor-not-allowed' 
-                        : 'bg-[#4285F4] hover:bg-[#4285F4]/90 cursor-pointer'
+                        ? 'bg-[#10B981]/50 cursor-not-allowed' 
+                        : 'bg-[#10B981] hover:bg-[#10B981]/90 cursor-pointer'
                     }`}
                   >
                     {isSubmitting ? (

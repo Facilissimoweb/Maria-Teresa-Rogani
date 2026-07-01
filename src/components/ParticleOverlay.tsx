@@ -114,7 +114,7 @@ export default function ParticleOverlay() {
         // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(74, 144, 226, ${p.alpha})`; // Elegant brand accent #4A90E2
+        ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha})`; // Elegant brand accent emerald-500
         ctx.fill();
       }
 
@@ -132,7 +132,7 @@ export default function ParticleOverlay() {
 
           if (dist < connectionDistance) {
             const alpha = (1 - dist / connectionDistance) * 0.15;
-            ctx.strokeStyle = `rgba(74, 144, 226, ${alpha})`;
+            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
