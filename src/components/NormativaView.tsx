@@ -19,10 +19,13 @@ import {
   Award,
   Download,
   CheckCircle,
-  Share2
+  Share2,
+  X,
+  Maximize2
 } from 'lucide-react';
 import { ActiveTab } from '../types';
 import { GlossaryParagraph } from './GlossaryTerm';
+import complianceImg from '../assets/images/regenerated_image_1782923856419.jpg';
 
 interface NormativaViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -31,6 +34,9 @@ interface NormativaViewProps {
 export default function NormativaView({ setActiveTab }: NormativaViewProps) {
   // Active Section for Sticky Index highlights
   const [activeSection, setActiveSection] = useState('introduzione');
+  
+  // Fullscreen image preview state
+  const [isFullscreenImageOpen, setIsFullscreenImageOpen] = useState(false);
   
   // Scroll to top on mount
   useEffect(() => {
@@ -206,7 +212,11 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
           
           {/* Hero Side Block */}
           <div className="lg:col-span-5 grid grid-cols-1 gap-6">
-            <div className="relative bg-black/40 border border-white/10 rounded-none overflow-hidden shadow-2xl">
+            <div 
+              className="relative bg-black/40 border border-white/10 rounded-none overflow-hidden shadow-2xl group cursor-zoom-in"
+              onClick={() => setIsFullscreenImageOpen(true)}
+              title="Cliccate per visualizzare a schermo intero"
+            >
               {/* Window header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#161619] border-b border-white/10">
                 <div className="flex space-x-1.5">
@@ -219,9 +229,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
               
               {/* Themed Image */}
               <img 
-                src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80" 
+                src={complianceImg} 
                 alt="Web Accessibility & Legal Compliance"
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-cover border-b border-white/10"
+                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-contain bg-black/80 border-b border-white/10 transition-all duration-300 group-hover:opacity-80"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -777,6 +787,33 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
         </div>
       </section>
+
+      {/* Fullscreen Lightbox Modal */}
+      {isFullscreenImageOpen && (
+        <div 
+          onClick={() => setIsFullscreenImageOpen(false)}
+          className="fixed inset-0 bg-black/95 z-[1000] flex flex-col items-center justify-center p-4 cursor-zoom-out animate-fadeIn"
+        >
+          <div className="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={() => setIsFullscreenImageOpen(false)}
+              className="absolute -top-12 right-0 text-white hover:text-[#bef264] transition-colors p-2 text-xs font-mono uppercase tracking-widest flex items-center space-x-1.5 cursor-pointer bg-white/5 border border-white/10 px-3 py-1.5"
+            >
+              <span>Chiudi</span>
+              <X className="w-4 h-4" />
+            </button>
+            <img 
+              src={complianceImg} 
+              alt="Web Accessibility & Legal Compliance Fullscreen"
+              className="max-w-full max-h-[80vh] object-contain shadow-2xl border border-white/10 select-none"
+              referrerPolicy="no-referrer"
+            />
+            <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono mt-4 text-center">
+              Web Accessibility & Legal Compliance • Cliccate all'esterno o sul pulsante per chiudere
+            </p>
+          </div>
+        </div>
+      )}
 
     </article>
   );
