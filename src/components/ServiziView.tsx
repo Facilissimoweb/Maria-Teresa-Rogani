@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Layers, Settings, Code, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Eye, Info, CalendarRange, Sparkles } from 'lucide-react';
 import { GlossaryParagraph } from './GlossaryTerm';
 import ParticleOverlay from './ParticleOverlay';
+import serviziHeroImg from '../assets/images/regenerated_image_1782920318517.jpg';
 
 interface ServiziViewProps {
   setActiveTab: (tab: 'home' | 'chi-sono' | 'servizi' | 'contatti') => void;
@@ -261,7 +262,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
               
               {/* Themed Image */}
               <img 
-                src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" 
+                src={serviziHeroImg} 
                 alt="Web App Development Services"
                 className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-cover border-b border-white/10"
                 referrerPolicy="no-referrer"
