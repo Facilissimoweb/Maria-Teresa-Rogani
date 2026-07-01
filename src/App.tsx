@@ -39,7 +39,7 @@ export default function App() {
   }, []);
   
   // Accessibility and Theme States
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
   const [textSize, setTextSize] = useState<string>('100'); // '100' | '110' | '121' | '135'
   const [highContrast, setHighContrast] = useState<boolean>(false);
   const [readableFont, setReadableFont] = useState<boolean>(false);
@@ -199,12 +199,71 @@ export default function App() {
   ].filter(Boolean).join(" ");
 
   return (
-    <div id="app-root-container" className={containerClasses}>
+    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr_320px] lg:grid-rows-[auto_1fr_auto] bg-[#111113]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
       <WebVitalsOverlay />
 
-      {/* Dynamic Upper Accent Ribbon */}
-      <div id="accent-ribbon" className="w-full bg-slate-950 text-slate-300 py-2.5 px-4 text-center text-xs border-b border-slate-900 flex justify-center items-center space-x-3">
+      {/* Sidebar Left - Desktop only */}
+      <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-4 border-r border-white/10 flex-col p-8 bg-[#111113] text-white select-none">
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50 mb-12">
+          Facilissimo Web — [v2.0]
+        </div>
+        <nav className="flex-grow flex flex-col space-y-2">
+          {[
+            { id: 'home', label: '01 Home' },
+            { id: 'chi-sono', label: '02 Chi Sono' },
+            { id: 'servizi', label: '03 Servizi' },
+            { id: 'normativa', label: '04 Compliance' },
+            { id: 'blog', label: '05 Blog', badge: true },
+            ...(isAdmin ? [{ id: 'fogli', label: '06 Area Riservata' }] : []),
+            { id: 'contatti', label: '07 Contatti' }
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => {
+                setActiveTab(item.id as ActiveTab);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`w-full text-left py-4 border-b border-white/5 text-xs font-mono tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
+                activeTab === item.id 
+                  ? 'text-[#4285F4] font-bold border-b-[#4285F4]' 
+                  : item.id === 'blog' 
+                    ? 'text-amber-500 hover:text-amber-400'
+                    : 'text-white/55 hover:text-white'
+              }`}
+            >
+              <span>{item.label}</span>
+              {item.badge && (
+                <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping shrink-0" />
+              )}
+            </button>
+          ))}
+        </nav>
+        <div className="font-mono text-[10px] text-white/40 tracking-[0.15em] leading-relaxed uppercase mt-auto">
+          Strategic Digital Partner<br />
+          M. Teresa Rogani
+        </div>
+      </aside>
+
+      {/* Header - Desktop only */}
+      <header className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#111113] text-white">
+        <div className="px-2 py-0.5 border border-[#4285F4] text-[#4285F4] font-mono text-[9px] uppercase tracking-wider">
+          Consapevolezza AI
+        </div>
+        <div className="flex items-center space-x-6 text-xs font-mono text-white/50 uppercase tracking-[0.15em]">
+          <span className="cursor-pointer hover:text-white transition-colors" onClick={() => handleOpenLegal('privacy')}>Privacy Policy</span>
+          <span className="cursor-pointer hover:text-white transition-colors" onClick={() => setSitemapOpen(true)}>Sitemap</span>
+          <button 
+            onClick={() => setDarkMode(!darkMode)}
+            className="cursor-pointer hover:text-white transition-colors flex items-center space-x-1 uppercase"
+          >
+            <span>Tema: {darkMode ? "Scuro" : "Chiaro"}</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Dynamic Upper Accent Ribbon - Mobile only */}
+      <div id="accent-ribbon" className="w-full lg:hidden bg-slate-950 text-slate-300 py-2.5 px-4 text-center text-xs border-b border-slate-900 flex justify-center items-center space-x-3">
         <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
         <span className="font-semibold tracking-wide">
           Sinergia Tecnologica: Scoprite la trasparenza
@@ -221,19 +280,21 @@ export default function App() {
         </button>
       </div>
 
-      {/* Main Navigation Bar */}
-      <Navbar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        darkMode={darkMode} 
-        setDarkMode={setDarkMode} 
-        accessibilityOpen={accessibilityOpen}
-        setAccessibilityOpen={setAccessibilityOpen}
-        isAdmin={isAdmin}
-      />
+      {/* Main Navigation Bar - Mobile only */}
+      <div className="lg:hidden">
+        <Navbar 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+          darkMode={darkMode} 
+          setDarkMode={setDarkMode} 
+          accessibilityOpen={accessibilityOpen}
+          setAccessibilityOpen={setAccessibilityOpen}
+          isAdmin={isAdmin}
+        />
+      </div>
 
       {/* Main Content Area */}
-      <main id="app-main-content" className="flex-grow">
+      <main id="app-main-content" className="flex-grow lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:overflow-y-auto lg:scrollbar-none bg-[#111113]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -247,8 +308,46 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      {/* Global Interactive Banner before Footer */}
-      <section id="trust-banner" className="bg-white border-t border-b border-slate-100 py-8">
+      {/* Panel Right - Desktop only */}
+      <aside className="hidden lg:flex lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3 border-l border-white/10 p-8 bg-white/2 backdrop-blur-sm flex-col space-y-8 text-white select-none">
+        <div className="space-y-1">
+          <p className="font-mono text-[9px] text-white/50 uppercase tracking-[0.2em]">Status Partner</p>
+          <h3 className="font-display text-2xl uppercase tracking-tight text-white leading-none font-bold">
+            Certified Social Lead's Manager
+          </h3>
+        </div>
+        
+        <div className="border-t border-white/10 pt-6 space-y-2">
+          <p className="font-mono text-[9px] text-[#4285F4] uppercase tracking-[0.18em]">Integrazione Consapevole AI</p>
+          <p className="text-xs text-white/60 leading-relaxed font-sans font-light">
+            Integrazione etica e pienamente conforme all'AI Act europeo per trasferire tutti i benefici di tempo direttamente a Voi.
+          </p>
+        </div>
+
+        <div className="border-t border-white/10 pt-6 space-y-4 mt-auto">
+          <p className="font-mono text-[9px] text-white/50 uppercase tracking-[0.18em]">Protocollo Operativo</p>
+          <div className="grid grid-cols-2 gap-2">
+            {['React 18', 'Vite', 'Tailwind', 'LLM Opt.'].map((tech) => (
+              <div key={tech} className="px-2 py-1.5 border border-white/10 text-center font-mono text-[9px] text-white/70 uppercase tracking-wider">
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button 
+          onClick={() => {
+            setActiveTab('contatti');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="w-full bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-mono text-xs font-bold uppercase tracking-[0.2em] py-4 shadow-lg transition-colors cursor-pointer"
+        >
+          Iniziate Ora
+        </button>
+      </aside>
+
+      {/* Global Interactive Banner before Footer - Mobile only */}
+      <section id="trust-banner" className="lg:hidden bg-white border-t border-b border-slate-100 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center space-x-3.5">
             <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded">
@@ -275,12 +374,20 @@ export default function App() {
         </div>
       </section>
 
-      {/* Shared Footer */}
-      <Footer 
-        setActiveTab={setActiveTab} 
-        onLegalClick={handleOpenLegal} 
-        onSitemapClick={() => setSitemapOpen(true)}
-      />
+      {/* Shared Footer - Mobile only */}
+      <div className="lg:hidden">
+        <Footer 
+          setActiveTab={setActiveTab} 
+          onLegalClick={handleOpenLegal} 
+          onSitemapClick={() => setSitemapOpen(true)}
+        />
+      </div>
+
+      {/* Footer - Desktop only */}
+      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between bg-[#111113] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
+        <div>© 2026 FACILISSIMO WEB — P.IVA 02136780430</div>
+        <div>Servizio Nazionale ed Internazionale</div>
+      </footer>
 
       {/* Floating Accessibility Panel */}
       <AccessibilityPanel
