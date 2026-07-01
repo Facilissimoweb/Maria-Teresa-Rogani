@@ -72,22 +72,22 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
-            <div className="relative bg-white border border-slate-200 rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative bg-[#070E1B] border border-slate-800/80 rounded-lg overflow-hidden shadow-2xl">
               {/* Window header */}
-              <div className="flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-150">
+              <div className="flex items-center justify-between px-4 py-3 bg-[#0A1629] border-b border-slate-800">
                 <div className="flex space-x-2">
                   <span className="w-3 h-3 bg-red-500 rounded-full inline-block" />
                   <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block" />
                   <span className="w-3 h-3 bg-green-500 rounded-full inline-block" />
                 </div>
-                <span className="text-[10px] text-slate-400 font-mono tracking-wider">facilissimoweb/brand</span>
+                <span className="text-[10px] text-slate-500 font-mono tracking-wider">facilissimoweb/brand</span>
               </div>
               
               {/* Image from template */}
               <img 
                 src={heroImg} 
                 alt="Facilissimo Web Logo"
-                className="w-full h-auto max-h-[380px] object-contain bg-white p-8 sm:p-12 hover:scale-[1.02] transition-transform duration-500"
+                className="w-full h-[280px] sm:h-[350px] md:h-[380px] lg:h-[400px] object-cover object-center hover:scale-[1.02] transition-transform duration-500"
                 referrerPolicy="no-referrer"
               />
             </div>
