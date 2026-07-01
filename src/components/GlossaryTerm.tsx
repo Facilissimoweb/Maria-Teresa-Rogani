@@ -105,6 +105,48 @@ export const glossaryDb: Record<string, GlossaryDefinition> = {
     category: 'Marketing',
     shortDesc: 'Insieme di strategie volte ad attrarre contatti commerciali qualificati.',
     extendedDesc: 'Processo di acquisizione di nominativi e contatti (email, telefono, azienda) di clienti realmente interessati ai tuoi servizi professionali o prodotti aziendali.'
+  },
+  'e-commerce': {
+    term: 'E-commerce',
+    category: 'Tecnologia',
+    shortDesc: 'Piattaforme di vendita online e negozi digitali.',
+    extendedDesc: 'Siti web strutturati per la compravendita di beni o servizi, con cataloghi, carrelli d\'acquisto digitali e sistemi di pagamento elettronici sicuri (es. Shopify, WooCommerce).'
+  },
+  'web graphic design': {
+    term: 'Web Graphic Design',
+    category: 'Design',
+    shortDesc: 'Progettazione grafica specifica per l\'ambiente web.',
+    extendedDesc: 'Disciplina che unisce la creatività artistica visiva (layout, impaginazione, equilibrio cromatico) alla funzionalità tecnica dell\'interfaccia web, garantendo eccellente comunicazione ed usabilità.'
+  },
+  'diritto di recesso': {
+    term: 'Diritto di Recesso',
+    category: 'Normativa',
+    shortDesc: 'Il diritto del consumatore di ripensare all\'acquisto entro 14 giorni.',
+    extendedDesc: 'Norma di tutela che consente all\'acquirente online di annullare l\'acquisto senza alcuna penale e senza specificare il motivo, ottenendo il rimborso integrale del pagamento.'
+  },
+  'dichiarazione di accessibilità': {
+    term: 'Dichiarazione di Accessibilità',
+    category: 'Normativa',
+    shortDesc: 'Documento ufficiale obbligatorio che attesta la conformità.',
+    extendedDesc: 'Un modello standardizzato redatto dal titolare del sito e pubblicato nel footer, che descrive lo stato di conformità del portale ai requisiti di accessibilità e fornisce un canale per segnalazioni.'
+  },
+  'consenso granulare': {
+    term: 'Consenso Granulare',
+    category: 'Normativa',
+    shortDesc: 'Consenso specifico e separato per ciascuna finalità dei dati.',
+    extendedDesc: 'Un principio cardine del GDPR che vieta di raggruppare i consensi (es. accettare la privacy policy non deve obbligare l\'utente a ricevere newsletter o ad essere tracciato da cookie di marketing).'
+  },
+  'audit': {
+    term: 'Audit (Verifica di Conformità)',
+    category: 'Tecnologia',
+    shortDesc: 'Esame tecnico o normativo approfondito del portale.',
+    extendedDesc: 'Un\'analisi metodica che valuta lo stato di un sito rispetto alle regole vigenti (es. audit di accessibilità WCAG, audit di sicurezza dei dati o audit legale del processo di checkout).'
+  },
+  'cookies': {
+    term: 'Cookies (Cookie Web)',
+    category: 'Tecnologia',
+    shortDesc: 'Piccoli frammenti di testo salvati dal browser dell\'utente.',
+    extendedDesc: 'File utilizzati per ricordare preferenze di navigazione (es. lingua selezionata, carrello, stato del tema scuro) o per tracciare le visite degli utenti a scopi statistici o pubblicitari.'
   }
 };
 

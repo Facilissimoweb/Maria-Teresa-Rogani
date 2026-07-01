@@ -4,6 +4,7 @@ import { Award, GraduationCap, Check, ShieldCheck, Mail, ArrowRight, BookOpen, S
 import { ActiveTab } from '../types';
 import profileImg from '../assets/images/maria_teresa.jpg';
 import partnerPortraitImg from '../assets/images/partner_portrait_1782724733588.jpg';
+import { GlossaryParagraph } from './GlossaryTerm';
 
 interface ChiSonoViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -52,9 +53,9 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               <span className="font-bold not-italic text-white">M. Teresa Rogani</span>
             </h1>
             
-            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
-              Affianco la Vostra impresa come Web Graphic Designer e alleata strategica, unendo una solida preparazione accademica nella progettazione visiva a una visione orientata agli obiettivi concreti del Vostro business.
-            </p>
+            <GlossaryParagraph className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Affianco la Vostra impresa come Web Graphic Designer e alleata strategica, unendo una solida preparazione accademica nella progettazione visiva a una visione orientata agli obiettivi concreti del Vostro business, inclusa la Lead Generation strategica.
+            </GlossaryParagraph>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
@@ -166,9 +167,9 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               Metodologia Rigorosa ed <span className="font-bold not-italic text-[#0A192F] dark:text-[#4A90E2]">Efficacia Comunicativa</span>
             </h2>
             
-            <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
-              In un panorama digitale in costante evoluzione, mi propongo come professionista di riferimento per la progettazione di interfacce web che uniscano estetica, funzionalità e strategia. La mia metodologia poggia su due pilastri fondamentali: il rigore del <strong>Web Graphic Design</strong> e l'efficacia della <strong>comunicazione visiva</strong>.
-            </p>
+            <GlossaryParagraph className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+              In un panorama digitale in costante evoluzione, mi propongo come professionista di riferimento per la progettazione di interfacce web che uniscano estetica, funzionalità e strategia. La mia metodologia poggia su due pilastri fondamentali: il rigore del Web Graphic Design e l'efficacia della comunicazione visiva, con particolare cura dei canoni di UX/UI e accessibilità.
+            </GlossaryParagraph>
 
             <div className="border-l-4 border-[#4A90E2] pl-4 py-1 my-4 bg-slate-50 dark:bg-white/5">
               <p className="text-xs sm:text-sm text-[#0A192F] dark:text-white font-medium italic">
@@ -204,9 +205,9 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
                   <GraduationCap className="w-6 h-6" />
                 </div>
                 <h4 className="font-bold text-[#0A192F] dark:text-white text-sm uppercase tracking-wider">Formazione Accademica</h4>
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  La mia professionalità nasce da un <strong>Diploma in Grafica Pubblicitaria</strong> e si consolida con una <strong>Laurea in Comunicazione Visiva</strong>. Questo background accademico mi ha fornito le fondamenta per progettare esperienze digitali curate, accessibili e coerenti con l'identità del Vostro brand.
-                </p>
+                <GlossaryParagraph className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  La mia professionalità nasce da un Diploma in Grafica Pubblicitaria e si consolida con una Laurea in Comunicazione Visiva. Questo background accademico mi ha fornito le fondamenta per progettare esperienze digitali curate, accessibili e coerenti con l'identità del Vostro brand, sposando la cura del Web Graphic Design.
+                </GlossaryParagraph>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                 Diploma & Laurea Specialistica
@@ -226,9 +227,9 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
                   <BookOpen className="w-6 h-6" />
                 </div>
                 <h4 className="font-bold text-[#0A192F] dark:text-white text-sm uppercase tracking-wider">Formazione Continua</h4>
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Il web non si ferma mai, e neppure la mia formazione. Mi aggiorno costantemente sulle nuove tecnologie, sulle best practice di <strong>User Experience</strong> e sugli strumenti digitali emergenti. Integro nel mio flusso di lavoro solo le innovazioni che portano un reale vantaggio, mantenendo la regia creativa saldamente nelle mie mani.
-                </p>
+                <GlossaryParagraph className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Il web non si ferma mai, e neppure la mia formazione. Mi aggiorno costantemente sulle nuove tecnologie, sulle best practice di UX/UI Design e sugli strumenti digitali emergenti. Integro nel mio flusso di lavoro solo le innovazioni che portano un reale vantaggio, come React, Vite e Tailwind CSS, mantenendo la regia creativa.
+                </GlossaryParagraph>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                 Best Practice & UX Research
@@ -248,9 +249,9 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
                   <Target className="w-6 h-6" />
                 </div>
                 <h4 className="font-bold text-[#0A192F] dark:text-white text-sm uppercase tracking-wider">Lead Generation</h4>
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Alla progettazione visiva affianco una competenza strategica nella generazione di contatti, supportata da una formazione specifica come <strong>Social Lead's Manager</strong>. Questo mi permette di concecipere il design non solo come estetica, ma come uno strumento strutturato per guidare l'utente e convertire la navigazione in opportunità.
-                </p>
+                <GlossaryParagraph className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Alla progettazione visiva affianco una competenza strategica nella generazione di contatti, supportata da una formazione specifica. Questo mi permette di concepire il design non solo come estetica, ma come uno strumento strutturato per guidare l'utente e convertire la navigazione in opportunità stabili tramite la Lead Generation.
+                </GlossaryParagraph>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                 Social Lead's Manager

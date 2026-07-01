@@ -22,6 +22,7 @@ import {
   Share2
 } from 'lucide-react';
 import { ActiveTab } from '../types';
+import { GlossaryParagraph } from './GlossaryTerm';
 
 interface NormativaViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -330,12 +331,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                 <BookOpen className="w-5 h-5 text-[#4A90E2]" />
                 <span>Introduzione alla <span className="font-bold not-italic text-[#4A90E2]">Trasparenza Digitale</span></span>
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Nel panorama economico contemporaneo, un sito web non rappresenta più soltanto una vetrina estetica per il brand, ma una complessa infrastruttura soggetta a rigorose disposizioni giuridiche nazionali ed europee. Progettare con il rigore del <strong>Web Graphic Design strategico</strong> significa anzitutto garantire che il flusso d'acquisto, la fruizione dei contenuti e l'uso dell'Intelligenza Artificiale avvengano nel pieno rispetto della legge.
-              </p>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Questa guida operativa analizza le tre macro-aree normative fondamentali per chiunque gestisca siti web aziendali: l'<strong>Accessibilità Web (European Accessibility Act)</strong>, il <strong>Diritto di Recesso</strong> e il recentissimo <strong>AI Act Europeo</strong>.
-              </p>
+              <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Nel panorama economico contemporaneo, un sito web non rappresenta più soltanto una vetrina estetica per il brand, ma una complessa infrastruttura soggetta a rigorose disposizioni giuridiche nazionali ed europee. Progettare con il rigore del Web Graphic Design strategico significa anzitutto garantire che il flusso d'acquisto, la fruizione dei contenuti e l'uso dell'Intelligenza Artificiale avvengano nel pieno rispetto della legge.
+              </GlossaryParagraph>
+              <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Questa guida operativa analizza le tre macro-aree normative fondamentali per chiunque gestisca siti web aziendali: l'Accessibilità Web ed il relativo European Accessibility Act (EAA), il Diritto di Recesso e il recentissimo AI Act Europeo.
+              </GlossaryParagraph>
             </section>
 
             {/* SEZIONE 1: ACCESSIBILITÀ WEB E INCLUSIONE DIGITALE */}
@@ -363,31 +364,31 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     1.1 Perché Non È Più Solo una Scelta Etica
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    La navigazione facilitata (o accessibilità digitale) dei siti web non è più solo una scelta etica di inclusione, ma un <strong>obbligo di legge stringente</strong> per le aziende private. Chi non si adegua rischia pesanti sanzioni pecuniarie, l'esclusione dai mercati pubblici e un grave danno d'immagine commerciale.
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    La navigazione facilitata (o accessibilità digitale) dei siti web non è più solo una scelta etica di inclusione, ma un obbligo di legge stringente per le aziende private. Chi non si adegua secondo le indicazioni di AgID rischia pesanti sanzioni pecuniarie, l'esclusione dai mercati pubblici e un grave danno d'immagine commerciale.
+                  </GlossaryParagraph>
                 </div>
 
                 <div className="space-y-4">
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     1.2 Il Quadro Normativo (Cosa Dice la Legge)
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    La normativa italiana ed europea ha progressivamente esteso gli obblighi di accessibilità dal settore pubblico a quello privato.
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    La normativa italiana ed europea ha progressivamente esteso gli obblighi di accessibilità dal settore pubblico a quello privato, imponendo elevati criteri WCAG.
+                  </GlossaryParagraph>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-slate-100/50 dark:bg-white/5 p-4 border border-slate-200/50 dark:border-white/10">
                       <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#4A90E2] mb-1.5">European Accessibility Act (EAA)</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">
-                        Recepito in Italia con il <strong>D.Lgs. n. 82/2022</strong>. Stabilisce che tutti i servizi e prodotti digitali chiave (inclusi siti web ed e-commerce) devono essere accessibili.
-                      </p>
+                      <GlossaryParagraph className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">
+                        Recepito in Italia con il D.Lgs. n. 82/2022. Stabilisce che tutti i servizi e prodotti digitali chiave (inclusi siti web ed e-commerce) devono essere accessibili seguendo i canoni EAA.
+                      </GlossaryParagraph>
                     </div>
                     <div className="bg-slate-100/50 dark:bg-white/5 p-4 border border-slate-200/50 dark:border-white/10">
                       <h4 className="text-xs font-extrabold uppercase tracking-widest text-purple-500 mb-1.5">Standard Tecnico WCAG</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">
-                        La conformità si ottiene rispettando le linee guida internazionali <strong>Web Content Accessibility Guidelines (livello AA)</strong>, WCAG 2.1 e 2.2, strutturando codice e grafica per chiunque.
-                      </p>
+                      <GlossaryParagraph className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">
+                        La conformità si ottiene rispettando le linee guida internazionali Web Content Accessibility Guidelines (livello AA), come WCAG, strutturando codice e grafica per chiunque.
+                      </GlossaryParagraph>
                     </div>
                   </div>
 
@@ -437,9 +438,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                       <ShieldAlert className="w-4 h-4" />
                       <span>Nota Importante per le Microimprese</span>
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <GlossaryParagraph className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Anche se formalmente esentate dall'obbligo diretto EAA, le microimprese devono considerare i gravi rischi indiretti: l'esclusione commerciale dai bandi o collaborazioni B2B con grandi imprese obbligate (che non acquistano servizi non conformi), il rischio di cause risarcitorie civili e la perdita di clienti sul mercato digitale.
-                    </p>
+                    </GlossaryParagraph>
                   </div>
                 </div>
 
@@ -448,9 +449,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     1.3 Applicazioni Pratiche: Come Si Rende un Sito "Facilitato"
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    La navigazione facilitata richiede **interventi nativi strutturali sul codice e sul design**, non semplici "widget" o "overlay" che interferiscono con le tecnologie assistive.
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    La navigazione facilitata richiede interventi nativi strutturali sul codice e sul design, non semplici widget o overlay che interferiscono con le tecnologie assistive.
+                  </GlossaryParagraph>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
@@ -600,9 +601,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     2.1 La Normativa di Riferimento
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Il recesso per vendite telematiche è disciplinato rigidamente dal <strong>Codice del Consumo (D.Lgs. 206/2005)</strong>, recentemente aggiornato per tutelare i flussi informativi pre-acquisto.
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Il Diritto di Recesso per vendite telematiche è disciplinato rigidamente dal Codice del Consumo, recentemente aggiornato per tutelare i flussi informativi pre-acquisto, specialmente nei siti e-commerce.
+                  </GlossaryParagraph>
                 </div>
 
                 <div className="space-y-4">
@@ -613,9 +614,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-white dark:bg-[#0d1e36] p-4 border border-slate-200 dark:border-white/10 shadow-sm">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A192F] dark:text-white">Recesso Standard di 14 Giorni</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                        Il consumatore privato ha il diritto inviolabile di recedere dall'acquisto entro 14 giorni di calendario dalla consegna fisica, senza addurre motivazioni e senza penali.
-                      </p>
+                      <GlossaryParagraph className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                        Il consumatore privato gode del Diritto di Recesso e ha il diritto inviolabile di recedere dall'acquisto entro 14 giorni di calendario dalla consegna fisica, senza addurre motivazioni e senza penali.
+                      </GlossaryParagraph>
                     </div>
 
                     {/* BOX SCADENZE: SANZIONE MANCATA INFORMATIVA */}
@@ -632,9 +633,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     2.3 I Miei Obblighi di Design e Funzionalità
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    In fase di sviluppo del carrello e del flusso di checkout, configuro e strutturo:
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    In fase di sviluppo del carrello e del flusso di checkout per un e-commerce, configuro e strutturo l'aspetto grafico e funzionale:
+                  </GlossaryParagraph>
                   <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-[#4A90E2] shrink-0 mt-0.5" />
@@ -687,9 +688,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     3.1 Cos'è e Perché Vi Riguarda
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Il <strong>Regolamento UE 2024/1689 (AI Act)</strong> è entrato in vigore il <strong>1° Agosto 2024</strong> ed è il primo quadro giuridico globale per l'IA. Introduce requisiti di trasparenza vincolanti per qualsiasi applicativo che interagisce con gli utenti (es. chatbot d'assistenza, motori di raccomandazione o generazione testi).
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Il Regolamento UE 2024/1689, comunemente denominato AI Act, è entrato in vigore il 1° Agosto 2024 ed è il primo quadro giuridico globale per l'IA. Introduce requisiti di trasparenza vincolanti per qualsiasi applicativo o LLM che interagisce con gli utenti (es. chatbot d'assistenza, motori di raccomandazione o generazione testi).
+                  </GlossaryParagraph>
                 </div>
 
                 {/* VISUAL INFOGRAPHIC: RISK LEVELS */}
@@ -770,9 +771,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#0A192F] dark:text-white">
                     3.4 Il Mio Ruolo nell'Implementazione
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Come Web Graphic Designer, mi occupo di tradurre questi obblighi normativi in scelte di design e funzionalità concrete per il Vostro portale web:
-                  </p>
+                  <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Come specialista in Web Graphic Design, mi occupo di tradurre questi obblighi normativi in scelte di design e funzionalità concrete per il Vostro portale web:
+                  </GlossaryParagraph>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-white dark:bg-[#0d1e36] p-4 border border-slate-200 dark:border-white/5">

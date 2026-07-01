@@ -17,6 +17,7 @@ import {
   MessageSquare,
   Sparkles
 } from 'lucide-react';
+import { GlossaryParagraph } from './GlossaryTerm';
 
 interface BlogViewProps {
   setActiveTab: (tab: any) => void;
@@ -511,9 +512,9 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                     </div>
 
                     {/* Excerpt */}
-                    <p className="text-sm sm:text-base font-semibold text-[#0A192F] dark:text-slate-300 leading-relaxed border-l-4 border-[#4A90E2] pl-4 italic">
+                    <GlossaryParagraph className="text-sm sm:text-base font-semibold text-[#0A192F] dark:text-slate-300 leading-relaxed border-l-4 border-[#4A90E2] pl-4 italic">
                       {selectedArticle.excerpt}
-                    </p>
+                    </GlossaryParagraph>
 
                     {/* Cover image detail */}
                     <div className="h-64 sm:h-96 w-full overflow-hidden bg-slate-100">
@@ -532,9 +533,9 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                           <h3 className="text-base sm:text-lg font-bold text-[#0A192F] dark:text-white uppercase tracking-wider">
                             {block.subtitle}
                           </h3>
-                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                          <GlossaryParagraph className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                             {block.content}
-                          </p>
+                          </GlossaryParagraph>
                         </div>
                       ))}
                     </div>
@@ -571,9 +572,9 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                                   transition={{ duration: 0.2 }}
                                   className="overflow-hidden"
                                 >
-                                  <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-200/50 dark:border-white/5 mt-3">
+                                  <GlossaryParagraph className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-200/50 dark:border-white/5 mt-3">
                                     {faq.answer}
-                                  </p>
+                                  </GlossaryParagraph>
                                 </motion.div>
                               )}
                             </AnimatePresence>
