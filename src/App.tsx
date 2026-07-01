@@ -14,7 +14,7 @@ import ChatAssistant from './components/ChatAssistant';
 import LegalModal, { LegalDocType } from './components/LegalModal';
 import SitemapModal from './components/SitemapModal';
 import WebVitalsOverlay from './components/WebVitalsOverlay';
-import { Sparkles, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Cpu, Activity } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './lib/firebase';
@@ -45,6 +45,31 @@ export default function App() {
   const [readableFont, setReadableFont] = useState<boolean>(false);
   const [accessibilityOpen, setAccessibilityOpen] = useState<boolean>(false);
   const [announcement, setAnnouncement] = useState<string>('');
+  const [webVitalsOpen, setWebVitalsOpen] = useState<boolean>(false);
+  const [showAccent, setShowAccent] = useState<boolean>(true);
+  const lastScrollY = React.useRef<number>(0);
+
+  // Scroll listener to show accent ribbon on scroll up and hide on scroll down (mobile only)
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY <= 20) {
+        setShowAccent(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        // Scrolling down
+        setShowAccent(false);
+      } else {
+        // Scrolling up
+        setShowAccent(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // 1. Initial mounting hook to parse URL path or hash on page load and listen to back/forward navigation
   useEffect(() => {
@@ -201,7 +226,7 @@ export default function App() {
   return (
     <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr_320px] lg:grid-rows-[auto_1fr_auto] bg-[#111113]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
-      <WebVitalsOverlay />
+      <WebVitalsOverlay isOpen={webVitalsOpen} setIsOpen={setWebVitalsOpen} />
 
       {/* Sidebar Left - Desktop only */}
       <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-4 border-r border-white/10 flex-col p-8 bg-[#111113] text-white select-none">
@@ -257,25 +282,24 @@ export default function App() {
       </header>
 
       {/* Dynamic Upper Accent Ribbon - Mobile only */}
-      <div id="accent-ribbon" className="w-full lg:hidden bg-slate-950 text-slate-300 py-2.5 px-4 text-center text-xs border-b border-slate-900 flex justify-center items-center space-x-3">
-        <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-        <span className="font-semibold tracking-wide">
-          Sinergia Tecnologica: Scoprite la trasparenza
-        </span>
-        <button 
-          onClick={() => {
-            setActiveTab('servizi');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="text-amber-400 font-bold hover:underline inline-flex items-center space-x-1 pl-2 text-[11px] uppercase tracking-wider"
-        >
-          <span>Approfondisci</span>
-          <ArrowRight className="w-3 h-3" />
-        </button>
+      <div 
+        id="accent-ribbon" 
+        className="w-full lg:hidden bg-slate-950 text-slate-200 text-center text-[10px] font-mono uppercase tracking-[0.25em] border-b border-slate-900 flex justify-center items-center sticky top-0 z-50 transition-transform duration-300 ease-in-out select-none"
+        style={{ 
+          height: '36px',
+          transform: showAccent ? 'translateY(0)' : 'translateY(-100%)'
+        }}
+      >
+        FACILISSIMO WEB
       </div>
 
       {/* Main Navigation Bar - Mobile only */}
-      <div className="lg:hidden sticky top-0 z-50">
+      <div 
+        className="lg:hidden sticky z-40 transition-all duration-300 ease-in-out"
+        style={{ 
+          top: showAccent ? '36px' : '0px'
+        }}
+      >
         <Navbar 
           activeTab={activeTab} 
           setActiveTab={setActiveTab} 
@@ -374,13 +398,26 @@ export default function App() {
           setActiveTab={setActiveTab} 
           onLegalClick={handleOpenLegal} 
           onSitemapClick={() => setSitemapOpen(true)}
+          onWebVitalsClick={() => setWebVitalsOpen(!webVitalsOpen)}
         />
       </div>
 
       {/* Footer - Desktop only */}
-      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between bg-[#111113] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
+      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between items-center bg-[#111113] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
         <div>© 2026 FACILISSIMO WEB — P.IVA 02136780430</div>
-        <div>Servizio Nazionale ed Internazionale</div>
+        <div className="flex items-center space-x-6">
+          <button
+            id="btn-web-vitals-toggle"
+            onClick={() => setWebVitalsOpen(!webVitalsOpen)}
+            className="flex items-center space-x-1.5 text-[#bef264] hover:text-[#a3e635] transition-colors cursor-pointer uppercase tracking-wider font-bold"
+            title="Monitor Core Web Vitals"
+          >
+            <Activity className="w-3.5 h-3.5 text-[#bef264] animate-pulse" />
+            <span>Dev Performance</span>
+          </button>
+          <span>•</span>
+          <div>Servizio Nazionale ed Internazionale</div>
+        </div>
       </footer>
 
       {/* Floating Accessibility Panel */}

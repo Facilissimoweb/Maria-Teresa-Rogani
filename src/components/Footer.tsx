@@ -1,14 +1,15 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Award, CheckCircle, ArrowUpRight, Share2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Award, CheckCircle, ArrowUpRight, Share2, Activity } from 'lucide-react';
 import { ActiveTab } from '../types';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
   onLegalClick?: (docType: 'privacy' | 'cookie' | 'terms') => void;
   onSitemapClick?: () => void;
+  onWebVitalsClick?: () => void;
 }
 
-export default function Footer({ setActiveTab, onLegalClick, onSitemapClick }: FooterProps) {
+export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onWebVitalsClick }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const shareUrl = typeof window !== 'undefined' && window.location ? window.location.origin : 'https://facilissimoweb.it';
 
@@ -208,10 +209,21 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick }: F
             <p>&copy; {currentYear} FACILISSIMO WEB. Tutti i diritti riservati.</p>
             <p className="mt-1">P.IVA: 02136780430 | Sviluppato con standard d'eccellenza e soluzioni AI integrate.</p>
           </div>
-          <div id="footer-legal-links" className="flex space-x-6 mt-4 sm:mt-0 text-slate-500 shrink-0">
+          <div id="footer-legal-links" className="flex flex-wrap gap-4 mt-4 sm:mt-0 text-slate-500 shrink-0 justify-center sm:justify-end">
             <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Privacy Policy</button>
             <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Cookie Policy</button>
             <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Termini di Servizio</button>
+            {onWebVitalsClick && (
+              <button 
+                id="btn-web-vitals-toggle-mobile" 
+                onClick={onWebVitalsClick} 
+                className="text-[#bef264] hover:text-[#a3e635] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold flex items-center space-x-1.5"
+                title="Monitor Core Web Vitals"
+              >
+                <Activity className="w-3.5 h-3.5 animate-pulse" />
+                <span>Dev Performance</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

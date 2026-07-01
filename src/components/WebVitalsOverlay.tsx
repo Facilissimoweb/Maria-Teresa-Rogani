@@ -8,8 +8,12 @@ interface MetricState {
   raw: string;
 }
 
-export default function WebVitalsOverlay() {
-  const [isOpen, setIsOpen] = useState(false);
+interface WebVitalsOverlayProps {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+}
+
+export default function WebVitalsOverlay({ isOpen, setIsOpen }: WebVitalsOverlayProps) {
   const [isMinimized, setIsMinimized] = useState(false);
   
   const [lcp, setLcp] = useState<MetricState>({ value: 0, status: 'measuring', raw: 'Attesa...' });
@@ -243,19 +247,6 @@ export default function WebVitalsOverlay() {
 
   return (
     <>
-      {/* Floating Action Button */}
-      <div className="fixed bottom-24 left-6 z-50">
-        <button
-          id="btn-web-vitals-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 bg-[#bef264] text-black hover:bg-[#a3e635] transition-all duration-200 px-3.5 py-2.5 shadow-lg border border-[#bef264]/20 text-[10px] font-bold uppercase tracking-wider hover:scale-105 active:scale-95"
-          title="Monitor Core Web Vitals"
-        >
-          <Activity className="w-4 h-4 text-black animate-pulse" />
-          <span>Dev Performance ({cls.status === 'good' ? 'Ottimo' : 'Alert'})</span>
-        </button>
-      </div>
-
       {/* Main Overlay Panel */}
       <AnimatePresence>
         {isOpen && (
@@ -265,7 +256,7 @@ export default function WebVitalsOverlay() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed bottom-36 left-6 z-50 w-80 sm:w-96 bg-[#111113] text-slate-100 border-2 border-[#10B981] shadow-2xl p-4 font-sans overflow-hidden rounded-none"
+            className="fixed bottom-24 left-6 z-50 w-80 sm:w-96 bg-[#111113] text-slate-100 border-2 border-[#10B981] shadow-2xl p-4 font-sans overflow-hidden rounded-none"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
