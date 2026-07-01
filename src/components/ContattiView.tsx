@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, AlertCircle, Sparkles, Send, MapPin, Loader2 } from 'lucide-react';
+import { Calendar, Phone, Clock, FileText, CheckCircle2, ShieldCheck, Mail, AlertCircle, Sparkles, Send, MapPin, Loader2, FileSpreadsheet } from 'lucide-react';
 import { LeadForm } from '../types';
 import LegalModal, { LegalDocType } from './LegalModal';
+import { getAccessToken, appendLeadToSpreadsheet } from '../lib/firebase';
 
 const getProjectTypeName = (type: string) => {
   switch (type) {
@@ -106,6 +107,21 @@ export default function ContattiView() {
 
         if (!response.ok) {
           throw new Error(resData.error || 'Si è verificato un errore durante l\'invio della richiesta.');
+        }
+
+        // Try syncing with active Google Sheet if selected and authenticated
+        const activeSheetId = localStorage.getItem('fw_selected_spreadsheet_id');
+        const token = getAccessToken();
+        if (activeSheetId && token) {
+          try {
+            await appendLeadToSpreadsheet(token, activeSheetId, {
+              ...formData,
+              projectType: getProjectTypeName(formData.projectType)
+            });
+          } catch (sheetError) {
+            console.error('Error appending lead to Google Sheets:', sheetError);
+            // Non-blocking for the user, but logged for developer transparency.
+          }
         }
 
         if (resData.simulated) {

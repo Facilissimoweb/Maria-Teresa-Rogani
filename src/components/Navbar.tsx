@@ -41,6 +41,7 @@ export default function Navbar({
     { id: 'servizi', label: 'Servizi' },
     { id: 'normativa', label: 'Compliance' },
     { id: 'blog', label: 'Blog' },
+    { id: 'fogli', label: 'Google Sheets' },
   ] as const;
 
   const languages = [

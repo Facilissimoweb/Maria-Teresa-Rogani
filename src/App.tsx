@@ -8,6 +8,7 @@ import ServiziView from './components/ServiziView';
 import ContattiView from './components/ContattiView';
 import NormativaView from './components/NormativaView';
 import BlogView from './components/BlogView';
+import SheetsDashboard from './components/SheetsDashboard';
 import AccessibilityPanel from './components/AccessibilityPanel';
 import ChatAssistant from './components/ChatAssistant';
 import LegalModal, { LegalDocType } from './components/LegalModal';
@@ -36,7 +37,7 @@ export default function App() {
       const urlParams = new URLSearchParams(window.location.search);
       const queryArticle = urlParams.get('article');
 
-      const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'blog', 'contatti', 'normativa'];
+      const validTabs: ActiveTab[] = ['home', 'chi-sono', 'servizi', 'blog', 'contatti', 'normativa', 'fogli'];
       const articleIds = ['ai-act-web-design', 'lead-gen-social-strategy', 'accessibilita-web-business'];
 
       // Extract article ID from subpath like blog/ai-act-web-design, query string, or hash
@@ -106,7 +107,8 @@ export default function App() {
       'servizi': 'Servizi, Strategia e Lead Generation | Facilissimo Web',
       'blog': 'Blog, Risorse e Strategia Digitale | Facilissimo Web',
       'normativa': 'Compliance Normativa, Accessibilità, AI Act e GDPR | Facilissimo Web',
-      'contatti': 'Contatti, Consulenza Gratuita e Preventivo | Facilissimo Web'
+      'contatti': 'Contatti, Consulenza Gratuita e Preventivo | Facilissimo Web',
+      'fogli': 'Integrazione Google Sheets & Workspace | Facilissimo Web'
     };
     document.title = titleMap[activeTab] || 'Facilissimo Web';
 
@@ -117,7 +119,8 @@ export default function App() {
       'servizi': 'Pagina Servizi e Metodologia caricata. Scopri i servizi di design, strategia e lead generation.',
       'blog': 'Pagina Blog caricata. Leggi le ultime risorse, novità e guide strategiche.',
       'normativa': 'Pagina Compliance Normativa caricata. Approfondisci l\'Accessibilità Web, il GDPR e l\'AI Act.',
-      'contatti': 'Pagina Contatti caricata. Compila il modulo di richiesta per richiedere un preventivo o una consulenza.'
+      'contatti': 'Pagina Contatti caricata. Compila il modulo di richiesta per richiedere un preventivo o una consulenza.',
+      'fogli': 'Pagina Integrazione Google Sheets caricata. Gestisci l\'acquisizione dei contatti e sincronizza i fogli Google.'
     };
     setAnnouncement(announcementMap[activeTab] || 'Contenuto aggiornato.');
   }, [activeTab]);
@@ -159,6 +162,8 @@ export default function App() {
         return <BlogView setActiveTab={setActiveTab} />;
       case 'normativa':
         return <NormativaView setActiveTab={setActiveTab} />;
+      case 'fogli':
+        return <SheetsDashboard />;
       default:
         return <HomeView setActiveTab={setActiveTab} />;
     }

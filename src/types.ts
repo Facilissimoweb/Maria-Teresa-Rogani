@@ -1,4 +1,4 @@
-export type ActiveTab = 'home' | 'chi-sono' | 'servizi' | 'contatti' | 'normativa' | 'blog';
+export type ActiveTab = 'home' | 'chi-sono' | 'servizi' | 'contatti' | 'normativa' | 'blog' | 'fogli';
 
 export interface CMSPackage {
   id: string;
