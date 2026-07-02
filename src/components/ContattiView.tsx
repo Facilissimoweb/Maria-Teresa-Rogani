@@ -209,7 +209,7 @@ export default function ContattiView() {
               <img 
                 src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=800&q=80" 
                 alt="Start Your Project With Us"
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-cover border-b border-white/10"
+                className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-350"
                 referrerPolicy="no-referrer"
               />
             </div>

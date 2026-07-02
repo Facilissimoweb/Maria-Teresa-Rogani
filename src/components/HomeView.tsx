@@ -33,20 +33,20 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>[L'Evoluzione dello Sviluppo Web]</span>
+              <span style={{ fontSize: '14px' }}>[L'Evoluzione dello Sviluppo Web]</span>
             </div>
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Rigore.<br />
               Strategia.<br />
-              <span className="text-[#bef264]">Performance.</span>
+              <span className="text-[#bef264] italic">Performance.</span>
             </h1>
 
             <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">
               Siti Web ad Elevata Conversione, <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Progettati con Rigore e Strategia.</span>
             </h2>
             
-            <GlossaryParagraph className="text-sm text-slate-400 font-normal leading-relaxed max-w-2xl">
+            <GlossaryParagraph className="text-sm text-slate-400 font-normal leading-relaxed max-w-2xl text-justify">
               FACILISSIMO WEB semplifica lo sviluppo web coniugando tecnologia d'avanguardia, etica professionale della comunicazione e massima trasparenza economica. Garantisco la massima conversione dei Vostri contatti grazie a un approccio fortemente strategico come la lead generation.
             </GlossaryParagraph>
             

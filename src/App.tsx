@@ -284,10 +284,14 @@ export default function App() {
       {/* Dynamic Upper Accent Ribbon - Mobile only */}
       <div 
         id="accent-ribbon" 
-        className="w-full lg:hidden bg-slate-950 text-slate-200 text-center text-[10px] font-mono uppercase tracking-[0.25em] border-b border-slate-900 flex justify-center items-center sticky top-0 z-50 transition-transform duration-300 ease-in-out select-none"
+        className="w-full lg:hidden bg-slate-950 text-slate-200 text-center uppercase tracking-[0.25em] border-b border-slate-900 flex justify-center items-center sticky top-0 z-50 transition-transform duration-300 ease-in-out select-none"
         style={{ 
           height: '36px',
-          transform: showAccent ? 'translateY(0)' : 'translateY(-100%)'
+          transform: showAccent ? 'translateY(0)' : 'translateY(-100%)',
+          fontSize: '15px',
+          fontFamily: 'Anton, sans-serif',
+          lineHeight: '14px',
+          fontStyle: 'italic'
         }}
       >
         FACILISSIMO WEB

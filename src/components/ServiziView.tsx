@@ -269,7 +269,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
               <img 
                 src={serviziHeroImg} 
                 alt="Web App Development Services"
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-52 object-contain bg-black/80 border-b border-white/10 transition-all duration-300 group-hover:opacity-80"
+                className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-350"
                 referrerPolicy="no-referrer"
               />
             </div>
