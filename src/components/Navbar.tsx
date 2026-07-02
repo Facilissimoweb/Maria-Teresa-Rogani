@@ -137,7 +137,7 @@ export default function Navbar({
 
   return (
     <header id="app-navbar" className="sticky top-0 z-50 w-full bg-[#111113] border-b border-white/10 shadow-sm backdrop-blur-md bg-opacity-95 transition-all duration-300 text-white">
-      <div className="w-full px-6 lg:px-12">
+      <div style={{ backgroundColor: '#e56f28' }} className="w-full px-6 lg:px-12">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div 
@@ -152,7 +152,7 @@ export default function Navbar({
               <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-white block leading-none">
                 <span className="sm:inline hidden">FACILISSIMO </span>
                 <span className="sm:hidden inline">F.</span>
-                <span className="text-[#10B981] font-black">WEB</span>
+                <span style={{ color: '#3a3a35' }} className="font-black">WEB</span>
               </span>
               <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50 block font-bold mt-0.5 sm:mt-1 hidden sm:block">
                 Strategic Digital Partner
@@ -280,6 +280,7 @@ export default function Navbar({
             {setAccessibilityOpen && (
               <button
                 onClick={() => setAccessibilityOpen(!accessibilityOpen)}
+                style={{ backgroundColor: '#3a3a35' }}
                 className={`p-1.5 transition-colors cursor-pointer ${
                   accessibilityOpen ? 'text-[#10B981]' : 'text-white hover:text-[#10B981]'
                 }`}
@@ -331,7 +332,7 @@ export default function Navbar({
               className="text-white hover:text-[#10B981] p-1.5 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-6 h-6" style={{ backgroundColor: '#3a3a35' }} /> : <Menu className="w-6 h-6" style={{ backgroundColor: '#3a3a35' }} />}
             </button>
           </div>
         </div>
