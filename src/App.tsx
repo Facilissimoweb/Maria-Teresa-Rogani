@@ -224,7 +224,7 @@ export default function App() {
   ].filter(Boolean).join(" ");
 
   return (
-    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr_320px] lg:grid-rows-[auto_1fr_auto] bg-[#131311]`}>
+    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr] lg:grid-rows-[auto_1fr_auto] bg-[#131311]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
       <WebVitalsOverlay isOpen={webVitalsOpen} setIsOpen={setWebVitalsOpen} />
 
@@ -271,7 +271,7 @@ export default function App() {
       </aside>
 
       {/* Header - Desktop only */}
-      <header className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
+      <header className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
         <div className="px-2 py-0.5 border border-[#d69429] text-[#d69429] font-mono text-[9px] uppercase tracking-wider">
           Consapevolezza AI
         </div>
@@ -330,43 +330,7 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      {/* Panel Right - Desktop only */}
-      <aside className="hidden lg:flex lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3 border-l border-white/10 p-8 bg-white/2 backdrop-blur-sm flex-col space-y-8 text-white select-none">
-        <div className="space-y-1">
-          <p className="font-mono text-[9px] text-white/50 uppercase tracking-[0.2em]">Status Partner</p>
-          <h3 className="font-display text-2xl uppercase tracking-tight text-white leading-none font-bold">
-            Certified Social Lead's Manager
-          </h3>
-        </div>
-        
-        <div className="border-t border-white/10 pt-6 space-y-2">
-          <p className="font-mono text-[9px] text-[#d69429] uppercase tracking-[0.18em]">Integrazione Consapevole AI</p>
-          <p className="text-xs text-white/60 leading-relaxed font-sans font-light">
-            Integrazione etica e pienamente conforme all'AI Act europeo per trasferire tutti i benefici di tempo direttamente a Voi.
-          </p>
-        </div>
 
-        <div className="border-t border-white/10 pt-6 space-y-4 mt-auto">
-          <p className="font-mono text-[9px] text-white/50 uppercase tracking-[0.18em]">Protocollo Operativo</p>
-          <div className="grid grid-cols-2 gap-2">
-            {['React 18', 'Vite', 'Tailwind', 'LLM Opt.'].map((tech) => (
-              <div key={tech} className="px-2 py-1.5 border border-white/10 text-center font-mono text-[9px] text-white/70 uppercase tracking-wider">
-                {tech}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button 
-          onClick={() => {
-            setActiveTab('contatti');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="w-full bg-[#d69429] hover:bg-[#ab7621] text-white font-mono text-xs font-bold uppercase tracking-[0.2em] py-4 shadow-lg transition-colors cursor-pointer"
-        >
-          Iniziate Ora
-        </button>
-      </aside>
 
       {/* Global Interactive Banner before Footer - Mobile only */}
       <section id="trust-banner" className="lg:hidden bg-white border-t border-b border-slate-100 py-8">
@@ -407,7 +371,7 @@ export default function App() {
       </div>
 
       {/* Footer - Desktop only */}
-      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between items-center bg-[#131311] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
+      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between items-center bg-[#131311] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
         <div>© 2026 FACILISSIMO WEB — P.IVA 02136780430</div>
         <div className="flex items-center space-x-6">
           <button
