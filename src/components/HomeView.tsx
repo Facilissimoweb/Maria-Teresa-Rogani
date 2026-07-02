@@ -4,7 +4,6 @@ import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucid
 import { ActiveTab } from '../types';
 import heroImg from '../assets/images/regenerated_image_1782982577389.png';
 import { GlossaryParagraph } from './GlossaryTerm';
-import ParticleOverlay from './ParticleOverlay';
 
 interface HomeViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -27,9 +26,6 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
 
-        {/* Dynamic Interactive Particle Canvas Overlay */}
-        <ParticleOverlay />
-        
         {/* Background Decorative Polygon Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         
