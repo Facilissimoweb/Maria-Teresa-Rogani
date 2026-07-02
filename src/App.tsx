@@ -224,12 +224,12 @@ export default function App() {
   ].filter(Boolean).join(" ");
 
   return (
-    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr] lg:grid-rows-[auto_1fr_auto] bg-[#131311]`}>
+    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[1fr_280px] lg:grid-rows-[auto_1fr] bg-[#131311]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
       <WebVitalsOverlay isOpen={webVitalsOpen} setIsOpen={setWebVitalsOpen} />
 
-      {/* Sidebar Left - Desktop only */}
-      <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-4 border-r border-white/10 flex-col p-8 bg-[#131311] text-white select-none">
+      {/* Sidebar Right - Desktop only */}
+      <aside className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3 border-l border-white/10 flex-col p-8 bg-[#131311] text-white select-none">
         <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50 mb-12">
           Facilissimo Web — [v2.0]
         </div>
@@ -271,7 +271,7 @@ export default function App() {
       </aside>
 
       {/* Header - Desktop only */}
-      <header className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
+      <header className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
         <div className="px-2 py-0.5 border border-[#d69429] text-[#d69429] font-mono text-[9px] uppercase tracking-wider">
           Consapevolezza AI
         </div>
@@ -316,7 +316,7 @@ export default function App() {
       </div>
 
       {/* Main Content Area */}
-      <main id="app-main-content" className="flex-grow lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:overflow-y-auto lg:scrollbar-none bg-[#111113]">
+      <main id="app-main-content" className="flex-grow lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-3 lg:overflow-y-auto lg:scrollbar-none bg-[#111113]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -324,69 +324,52 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="flex flex-col min-h-full justify-between"
           >
-            {renderContent()}
+            <div>
+              {renderContent()}
+            </div>
+
+            <div>
+              {/* Global Interactive Banner before Footer - Mobile only */}
+              <section id="trust-banner" className="lg:hidden bg-white border-t border-b border-slate-100 py-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                  <div className="flex items-center space-x-3.5">
+                    <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded">
+                      <ShieldCheck className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm">Garantito da Standard Elevati</h4>
+                      <p className="text-xs text-slate-500">
+                        Pianificazione e collaudi ad alta affidabilità per garantire stabilità e scalabilità nel tempo.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3.5">
+                    <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded">
+                      <Cpu className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm">Ecosistema AI Trasparente</h4>
+                      <p className="text-xs text-slate-500">
+                        L'Intelligenza Artificiale al Vostro servizio per un incremento tangibile dell'efficienza dei costi di sviluppo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Shared Full Footer for both Desktop and Mobile */}
+              <Footer 
+                setActiveTab={setActiveTab} 
+                onLegalClick={handleOpenLegal} 
+                onSitemapClick={() => setSitemapOpen(true)}
+                onWebVitalsClick={() => setWebVitalsOpen(!webVitalsOpen)}
+              />
+            </div>
           </motion.div>
         </AnimatePresence>
       </main>
-
-
-
-      {/* Global Interactive Banner before Footer - Mobile only */}
-      <section id="trust-banner" className="lg:hidden bg-white border-t border-b border-slate-100 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center space-x-3.5">
-            <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded">
-              <ShieldCheck className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-slate-900 text-sm">Garantito da Standard Elevati</h4>
-              <p className="text-xs text-slate-500">
-                Pianificazione e collaudi ad alta affidabilità per garantire stabilità e scalabilità nel tempo.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3.5">
-            <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded">
-              <Cpu className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-slate-900 text-sm">Ecosistema AI Trasparente</h4>
-              <p className="text-xs text-slate-500">
-                L'Intelligenza Artificiale al Vostro servizio per un incremento tangibile dell'efficienza dei costi di sviluppo.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Shared Footer - Mobile only */}
-      <div className="lg:hidden">
-        <Footer 
-          setActiveTab={setActiveTab} 
-          onLegalClick={handleOpenLegal} 
-          onSitemapClick={() => setSitemapOpen(true)}
-          onWebVitalsClick={() => setWebVitalsOpen(!webVitalsOpen)}
-        />
-      </div>
-
-      {/* Footer - Desktop only */}
-      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between items-center bg-[#131311] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
-        <div>© 2026 FACILISSIMO WEB — P.IVA 02136780430</div>
-        <div className="flex items-center space-x-6">
-          <button
-            id="btn-web-vitals-toggle"
-            onClick={() => setWebVitalsOpen(!webVitalsOpen)}
-            className="flex items-center space-x-1.5 text-[#e7bf7e] hover:text-[#dea954] transition-colors cursor-pointer uppercase tracking-wider font-bold"
-            title="Monitor Core Web Vitals"
-          >
-            <Activity className="w-3.5 h-3.5 text-[#e7bf7e] animate-pulse" />
-            <span>Dev Performance</span>
-          </button>
-          <span>•</span>
-          <div>Servizio Nazionale ed Internazionale</div>
-        </div>
-      </footer>
 
       {/* Floating Accessibility Panel */}
       <AccessibilityPanel
