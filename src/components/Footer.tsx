@@ -204,12 +204,13 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] uppercase tracking-wider text-slate-500 gap-4">
-          <div id="footer-copyright" className="text-slate-500 text-center sm:text-left leading-relaxed">
-            <p>&copy; {currentYear} FACILISSIMO WEB. Tutti i diritti riservati.</p>
-            <p className="mt-1">P.IVA: 02136780430 | Sviluppato con standard d'eccellenza e soluzioni AI integrate.</p>
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col gap-6 w-full text-[10px] uppercase tracking-wider text-slate-500">
+          <div id="footer-copyright" className="text-slate-500 text-left w-full leading-relaxed space-y-3">
+            <p>&copy; {currentYear} FACILISSIMO WEB di Maria Teresa Rogani. Tutti i diritti di proprietà intellettuale, design visivo, codice sorgente e layout d'interfaccia sono riservati in tutta l'Unione Europea. Ogni utilizzo non autorizzato sarà perseguito a norma di legge.</p>
+            <hr className="border-black/10 dark:border-white/10 w-full" />
+            <p>P.IVA: 02136780430 | Partner Digitale Strategico con sede operativa in Italia. Sviluppato e ottimizzato secondo i più elevati standard tecnologici internazionali del W3C per massimizzare la velocità di caricamento, l'accessibilità digitale e i tassi di conversione della lead generation strategica attraverso soluzioni di Intelligenza Artificiale d'avanguardia integrate.</p>
           </div>
-          <div id="footer-legal-links" className="flex flex-wrap gap-4 mt-4 sm:mt-0 text-slate-500 shrink-0 justify-center sm:justify-end">
+          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-black/10 dark:border-white/10 w-full justify-start text-slate-500">
             <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Privacy Policy</button>
             <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Cookie Policy</button>
             <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Termini di Servizio</button>

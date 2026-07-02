@@ -391,26 +391,37 @@ div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > main#app-main-
 /* --- FOOTER CHROMATIC RE-STYLE --- */
 footer#app-footer {
   background-color: #e56f28 !important;
-  color: #3a3a35 !important;
-  border-top-color: rgba(58, 58, 53, 0.2) !important;
+  color: #111113 !important;
+  border-top-color: rgba(17, 17, 19, 0.25) !important;
 }
 
 div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-type(3) > footer#app-footer:nth-of-type(1) > div:nth-of-type(1) {
   background-color: #e56f28 !important;
 }
 
-/* Override child elements to match the new warm mud #3a3a35 text and white highlights */
+/* Override child elements for maximum contrast and readability on orange */
 footer#app-footer h3,
 footer#app-footer h4 {
   color: #ffffff !important;
-  border-bottom-color: rgba(58, 58, 53, 0.2) !important;
+  font-weight: 800 !important;
+  border-bottom-color: rgba(17, 17, 19, 0.25) !important;
 }
 
-footer#app-footer p,
+footer#app-footer p {
+  color: #111113 !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+}
+
 footer#app-footer span,
 footer#app-footer button,
 footer#app-footer a {
-  color: #3a3a35 !important;
+  color: #111113 !important;
+}
+
+footer#app-footer button,
+footer#app-footer a {
+  font-weight: 600 !important;
 }
 
 footer#app-footer button:hover,
@@ -421,22 +432,23 @@ footer#app-footer a:hover {
 /* Special color overrides for previously blue accents inside the footer */
 footer#app-footer .text-\[\#4A90E2\],
 footer#app-footer [class*="text-[#4A90E2]"] {
-  color: #3a3a35 !important;
+  color: #111113 !important;
+  font-weight: 700 !important;
 }
 
 footer#app-footer .border-\[\#4A90E2\],
 footer#app-footer [class*="border-[#4A90E2]"] {
-  border-color: #3a3a35 !important;
+  border-color: #111113 !important;
 }
 
 footer#app-footer svg {
-  color: #3a3a35 !important;
+  color: #111113 !important;
 }
 
 /* Also style the sitemap button and other highlights */
 #footer-sitemap-btn span {
-  color: #3a3a35 !important;
-  font-weight: bold !important;
+  color: #111113 !important;
+  font-weight: 700 !important;
 }
 
 #footer-sitemap-btn:hover span {
@@ -446,18 +458,148 @@ footer#app-footer svg {
 /* Adjust borders and dividers */
 footer#app-footer .border-t,
 footer#app-footer .border-b,
-footer#app-footer .border {
-  border-color: rgba(58, 58, 53, 0.2) !important;
+footer#app-footer .border,
+footer#app-footer hr {
+  border-color: rgba(17, 17, 19, 0.25) !important;
 }
 
-/* Ensure copyright text is dark gray */
+/* Ensure copyright text is dark gray with excellent contrast */
 #footer-copyright p,
 #footer-legal-links button {
-  color: rgba(58, 58, 53, 0.8) !important;
+  color: rgba(17, 17, 19, 0.85) !important;
+  font-weight: 500 !important;
 }
 
 #footer-legal-links button:hover {
   color: #ffffff !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-type(3) > footer#app-footer:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div#footer-copyright:nth-of-type(1) > p:nth-of-type(1) {
+  padding-left: 0px !important;
+  margin-left: 0px !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > button#ai-chat-trigger:nth-of-type(1) {
+  background-color: #f2ddbb !important;
+}
+
+/* --- CHAT CHROMATIC RE-STYLE --- */
+/* Target the main chat window container */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) {
+  border-color: #e56f28 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 25px 50px -12px rgba(229, 111, 40, 0.25) !important;
+}
+
+/* Chat header */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(1) {
+  background-color: #e56f28 !important;
+  border-bottom-color: rgba(17, 17, 19, 0.2) !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(1) h4 {
+  color: #111113 !important;
+  font-weight: 800 !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(1) p {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(1) button {
+  color: #111113 !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(1) button:hover {
+  color: #ffffff !important;
+  background-color: rgba(17, 17, 19, 0.15) !important;
+}
+
+/* WhatsApp & Request Form banner */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(2) {
+  background-color: #f2ddbb !important;
+  border-bottom-color: rgba(17, 17, 19, 0.15) !important;
+}
+
+/* Form Request button */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(2) button,
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(2) a {
+  background-color: #111113 !important;
+  color: #ffffff !important;
+  border: 1px solid #111113 !important;
+  font-weight: 700 !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(2) button:hover,
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(2) a:hover {
+  background-color: #e56f28 !important;
+  border-color: #e56f28 !important;
+  color: #ffffff !important;
+}
+
+/* Message List Container */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(3) {
+  background-color: #fcf8f2 !important;
+}
+
+/* User Message Bubble */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(3) .justify-end > div {
+  background-color: #e56f28 !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+/* Assistant Message Bubble */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(3) .justify-start > div {
+  background-color: #ffffff !important;
+  color: #111113 !important;
+  border-color: rgba(17, 17, 19, 0.15) !important;
+  font-weight: 500 !important;
+}
+
+/* Loader / Thinking state icon */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(3) svg.animate-spin {
+  color: #e56f28 !important;
+}
+
+/* Suggested chips */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(3) button {
+  background-color: #ffffff !important;
+  color: #111113 !important;
+  border-color: rgba(17, 17, 19, 0.15) !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > div:nth-of-type(3) button:hover {
+  border-color: #e56f28 !important;
+  background-color: #fcf8f2 !important;
+}
+
+/* Input Form Area */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > form {
+  background-color: #ffffff !important;
+  border-top-color: rgba(17, 17, 19, 0.15) !important;
+}
+
+/* Input Form Field */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > form input {
+  background-color: #fcf8f2 !important;
+  border-color: rgba(17, 17, 19, 0.15) !important;
+  color: #111113 !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > form input:focus {
+  border-color: #e56f28 !important;
+}
+
+/* Input Form Submit Button */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > form button {
+  background-color: #e56f28 !important;
+  color: #ffffff !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) > form button:hover {
+  background-color: #111113 !important;
 }
 
 
