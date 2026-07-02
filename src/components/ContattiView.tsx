@@ -174,12 +174,12 @@ export default function ContattiView() {
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>CONTATTI & CONSULENZA STRATEGICA</span>
+              <span style={{ fontSize: '15px' }}>CONTATTI & CONSULENZA STRATEGICA</span>
             </div>
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Progettiamo il<br />
-              <span className="text-[#bef264]">Vostro Successo</span>
+              <span className="text-[#bef264] italic">Vostro Successo</span>
             </h1>
             
             <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">

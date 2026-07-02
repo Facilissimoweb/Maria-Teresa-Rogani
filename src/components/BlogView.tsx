@@ -311,7 +311,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
             Risorse e Insights
           </span>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white font-display uppercase">
-            Il Nostro <span className="text-[#bef264]">Blog</span>
+            Il Nostro <span className="text-[#bef264] italic">Blog</span>
           </h1>
           <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-sans font-light leading-relaxed">
             Consulenza, strategie, novità normative e approfondimenti pratici per trasformare la presenza digitale della Vostra azienda in uno strumento etico, performante e ad alta conversione.

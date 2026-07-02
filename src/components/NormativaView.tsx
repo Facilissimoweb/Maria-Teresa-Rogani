@@ -178,12 +178,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
               <Scale className="w-4 h-4 text-[#10B981] shrink-0" />
-              <span>SICUREZZA DIGITALE & LEGALITÀ</span>
+              <span style={{ fontSize: '15px' }}>SICUREZZA DIGITALE & LEGALITÀ</span>
             </div>
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Normativa &<br />
-              <span className="text-[#bef264]">Compliance</span>
+              <span className="text-[#bef264] italic">Compliance</span>
             </h1>
             
             <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
