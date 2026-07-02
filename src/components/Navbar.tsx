@@ -167,8 +167,8 @@ export default function Navbar({
           </div>
 
           {/* Desktop Nav */}
-          <nav id="desktop-navigation" className="hidden xl:flex flex-1 justify-between items-center ml-8 xl:ml-16">
-            <div className="flex justify-between flex-1 mx-8 xl:mx-16">
+          <nav id="desktop-navigation" className="hidden xl:flex flex-1 justify-between items-center ml-4 xl:ml-8">
+            <div className="flex items-center space-x-4 xl:space-x-6 ml-4 xl:ml-8">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
