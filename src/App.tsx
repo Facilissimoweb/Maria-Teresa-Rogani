@@ -224,12 +224,12 @@ export default function App() {
   ].filter(Boolean).join(" ");
 
   return (
-    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[1fr_280px] lg:grid-rows-[auto_1fr] bg-[#131311]`}>
+    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr] lg:grid-rows-[auto_1fr] bg-[#131311]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
       <WebVitalsOverlay isOpen={webVitalsOpen} setIsOpen={setWebVitalsOpen} />
 
-      {/* Sidebar Right - Desktop only */}
-      <aside className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3 border-l border-white/10 flex-col p-8 bg-[#131311] text-white select-none">
+      {/* Sidebar Left - Desktop only */}
+      <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 border-r border-white/10 flex-col p-8 bg-[#131311] text-white select-none">
         <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50 mb-12">
           Facilissimo Web — [v2.0]
         </div>
@@ -271,7 +271,7 @@ export default function App() {
       </aside>
 
       {/* Header - Desktop only */}
-      <header className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
+      <header className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
         <div className="px-2 py-0.5 border border-[#d69429] text-[#d69429] font-mono text-[9px] uppercase tracking-wider">
           Consapevolezza AI
         </div>
@@ -316,7 +316,7 @@ export default function App() {
       </div>
 
       {/* Main Content Area */}
-      <main id="app-main-content" className="flex-grow lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-3 lg:overflow-y-auto lg:scrollbar-none bg-[#111113]">
+      <main id="app-main-content" className="flex-grow lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:overflow-y-auto lg:scrollbar-none bg-[#111113]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}

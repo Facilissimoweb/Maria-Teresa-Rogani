@@ -513,6 +513,20 @@ div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-typ
   margin-left: -7px !important;
 }
 
+/* --- SIDEBAR HEADER STYLING --- */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > aside:nth-of-type(1) > div:nth-of-type(1) {
+  color: #292525 !important;
+  background-color: #f4700a !important;
+  font-size: 16px !important;
+  font-family: Poppins, sans-serif !important;
+  font-weight: bold !important;
+  margin-bottom: 48px !important;
+  padding-left: 15px !important;
+  padding-right: 0px !important;
+  padding-top: 7px !important;
+  padding-bottom: 10px !important;
+}
+
 /* --- CHAT CHROMATIC RE-STYLE --- */
 /* Target the main chat window container */
 div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) {

@@ -55,7 +55,7 @@ export default function ParticleOverlay() {
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * particleSpeed,
           vy: (Math.random() - 0.5) * particleSpeed,
-          radius: Math.random() * 1.5 + 0.8,
+          radius: Math.random() * 6 + 4,
           alpha: Math.random() * 0.4 + 0.2, // subtle opacity
         });
       }
@@ -114,7 +114,7 @@ export default function ParticleOverlay() {
         // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha})`; // Elegant brand accent emerald-500
+        ctx.fillStyle = `rgba(244, 112, 10, ${p.alpha})`; // Elegant brand accent bright orange
         ctx.fill();
       }
 
@@ -132,7 +132,7 @@ export default function ParticleOverlay() {
 
           if (dist < connectionDistance) {
             const alpha = (1 - dist / connectionDistance) * 0.15;
-            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+            ctx.strokeStyle = `rgba(244, 112, 10, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);

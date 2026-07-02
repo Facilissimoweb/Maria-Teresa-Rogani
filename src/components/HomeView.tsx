@@ -15,11 +15,22 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
     <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
       <section id="hero-section" className="relative bg-[#131311] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none z-0"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+
         {/* Dynamic Interactive Particle Canvas Overlay */}
         <ParticleOverlay />
         
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
