@@ -46,7 +46,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               Siti Web ad Elevata Conversione, <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Progettati con Rigore e Strategia.</span>
             </h2>
             
-            <GlossaryParagraph className="text-sm text-slate-400 font-normal leading-relaxed max-w-2xl text-justify">
+            <GlossaryParagraph id="hero-description-paragraph" className="text-sm text-slate-400 font-normal leading-relaxed max-w-2xl text-left">
               FACILISSIMO WEB semplifica lo sviluppo web coniugando tecnologia d'avanguardia, etica professionale della comunicazione e massima trasparenza economica. Garantisco la massima conversione dei Vostri contatti grazie a un approccio fortemente strategico come la lead generation.
             </GlossaryParagraph>
             

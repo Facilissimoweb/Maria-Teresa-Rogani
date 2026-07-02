@@ -383,3 +383,81 @@ div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-typ
 div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-type(2) > header#app-navbar:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) {
   background-color: #3a3a35 !important;
 }
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > main#app-main-content:nth-of-type(1) > div:nth-of-type(1) > article#home-view:nth-of-type(1) > section#hero-section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) {
+  text-align: left !important;
+}
+
+/* --- FOOTER CHROMATIC RE-STYLE --- */
+footer#app-footer {
+  background-color: #e56f28 !important;
+  color: #3a3a35 !important;
+  border-top-color: rgba(58, 58, 53, 0.2) !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-type(3) > footer#app-footer:nth-of-type(1) > div:nth-of-type(1) {
+  background-color: #e56f28 !important;
+}
+
+/* Override child elements to match the new warm mud #3a3a35 text and white highlights */
+footer#app-footer h3,
+footer#app-footer h4 {
+  color: #ffffff !important;
+  border-bottom-color: rgba(58, 58, 53, 0.2) !important;
+}
+
+footer#app-footer p,
+footer#app-footer span,
+footer#app-footer button,
+footer#app-footer a {
+  color: #3a3a35 !important;
+}
+
+footer#app-footer button:hover,
+footer#app-footer a:hover {
+  color: #ffffff !important;
+}
+
+/* Special color overrides for previously blue accents inside the footer */
+footer#app-footer .text-\[\#4A90E2\],
+footer#app-footer [class*="text-[#4A90E2]"] {
+  color: #3a3a35 !important;
+}
+
+footer#app-footer .border-\[\#4A90E2\],
+footer#app-footer [class*="border-[#4A90E2]"] {
+  border-color: #3a3a35 !important;
+}
+
+footer#app-footer svg {
+  color: #3a3a35 !important;
+}
+
+/* Also style the sitemap button and other highlights */
+#footer-sitemap-btn span {
+  color: #3a3a35 !important;
+  font-weight: bold !important;
+}
+
+#footer-sitemap-btn:hover span {
+  color: #ffffff !important;
+}
+
+/* Adjust borders and dividers */
+footer#app-footer .border-t,
+footer#app-footer .border-b,
+footer#app-footer .border {
+  border-color: rgba(58, 58, 53, 0.2) !important;
+}
+
+/* Ensure copyright text is dark gray */
+#footer-copyright p,
+#footer-legal-links button {
+  color: rgba(58, 58, 53, 0.8) !important;
+}
+
+#footer-legal-links button:hover {
+  color: #ffffff !important;
+}
+
+
