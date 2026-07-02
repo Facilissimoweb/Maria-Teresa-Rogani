@@ -13,18 +13,11 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
   return (
     <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
-      <section id="hero-section" className="relative bg-[#131311] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none z-0"
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
+      <section id="hero-section" className="relative bg-gradient-to-r from-[#141412] to-[#0a0a09] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
+
+        {/* Bright Orange Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#f4700a]/30 via-[#f4700a]/15 to-transparent pointer-events-none z-0 mix-blend-screen" />
+        <div className="absolute inset-0 bg-[#f4700a]/10 pointer-events-none z-0" />
 
         {/* Background Decorative Polygon Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
