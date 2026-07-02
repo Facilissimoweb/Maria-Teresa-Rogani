@@ -153,14 +153,14 @@ export default function ContattiView() {
   };
 
   return (
-    <article id="contatti-view" className="bg-[#161619] text-white">
+    <article id="contatti-view" className="bg-[#1b1b18] text-white">
       {/* HERO SECTION */}
-      <section id="contatti-hero" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
+      <section id="contatti-hero" className="relative bg-[#131311] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
         {/* Dynamic Interactive Particle Canvas Overlay */}
         <ParticleOverlay />
         
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px]" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
@@ -170,19 +170,19 @@ export default function ContattiView() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="w-12 h-1 bg-[#10B981] mb-4"></div>
+            <div className="w-12 h-1 bg-[#d69429] mb-4"></div>
             
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#10B981] font-mono">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase text-[#d69429] font-mono">
+              <Sparkles className="w-3.5 h-3.5 text-[#dea954] shrink-0" />
               <span style={{ fontSize: '15px' }}>CONTATTI & CONSULENZA STRATEGICA</span>
             </div>
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Progettiamo il<br />
-              <span className="text-[#bef264] italic">Vostro Successo</span>
+              <span className="text-[#e7bf7e] italic">Vostro Successo</span>
             </h1>
             
-            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#10B981] tracking-wide font-bold leading-relaxed max-w-2xl">
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl">
               Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.</span>
             </h2>
           </motion.div>
@@ -196,7 +196,7 @@ export default function ContattiView() {
           >
             <div className="relative bg-black/40 border border-white/10 rounded-none overflow-hidden shadow-2xl">
               {/* Window header */}
-              <div className="flex items-center justify-between px-4 py-3 bg-[#161619] border-b border-white/10">
+              <div className="flex items-center justify-between px-4 py-3 bg-[#1b1b18] border-b border-white/10">
                 <div className="flex space-x-1.5">
                   <span className="w-2.5 h-2.5 bg-white/20 rounded-full inline-block" />
                   <span className="w-2.5 h-2.5 bg-white/20 rounded-full inline-block" />
@@ -214,9 +214,9 @@ export default function ContattiView() {
               />
             </div>
 
-            <div className="bg-[#161619] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
+            <div className="bg-[#1b1b18] border border-white/10 p-6 flex flex-col justify-center rounded-none select-none">
               <div className="mb-4">
-                <p className="text-[9px] uppercase tracking-[0.3em] text-[#10B981] mb-1 font-bold font-mono">Primo Incontro Gratuito</p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-[#d69429] mb-1 font-bold font-mono">Primo Incontro Gratuito</p>
                 <p className="text-xl font-bold text-white font-display uppercase tracking-tight">Sessione Strategica di 30 Minuti</p>
               </div>
               <div className="space-y-3 text-xs text-white/70 font-mono">
@@ -239,7 +239,7 @@ export default function ContattiView() {
       </section>
 
       {/* Main Content Area */}
-      <div className="py-16 bg-[#453f3f] border-b border-white/10 text-white">
+      <div className="py-16 bg-[#363630] border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {submitted ? (
@@ -326,7 +326,7 @@ export default function ContattiView() {
             <div className="pt-4">
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 font-mono cursor-pointer"
+                className="px-6 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 font-mono cursor-pointer"
               >
                 Invia una nuova richiesta
               </button>
@@ -349,13 +349,13 @@ export default function ContattiView() {
                 onClick={() => handleInquirySelect('call-gratuita')}
                 className={`p-6 rounded-none border-t-4 cursor-pointer transition-all duration-200 text-left relative ${
                   formData.inquiryType === 'call-gratuita'
-                    ? 'border-[#10B981] bg-[#111113] shadow-md'
+                    ? 'border-[#d69429] bg-[#131311] shadow-md'
                     : 'border-white/10 bg-black/25 hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <Phone className="w-5 h-5 text-[#10B981] shrink-0" />
+                    <Phone className="w-5 h-5 text-[#d69429] shrink-0" />
                     <h3 className="font-bold text-white text-sm uppercase tracking-wider font-display">Call Preliminare Gratuita</h3>
                   </div>
                   <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-none uppercase tracking-wider font-mono">Gratis</span>
@@ -374,19 +374,19 @@ export default function ContattiView() {
                   </li>
                 </ul>
               </div>
-
+ 
               <div 
                 id="select-sessione-codifica"
                 onClick={() => handleInquirySelect('sessione-codifica')}
                 className={`p-6 rounded-none border-t-4 cursor-pointer transition-all duration-200 text-left relative ${
                   formData.inquiryType === 'sessione-codifica'
-                    ? 'border-[#10B981] bg-[#111113] shadow-md'
+                    ? 'border-[#d69429] bg-[#131311] shadow-md'
                     : 'border-white/10 bg-black/25 hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <Calendar className="w-5 h-5 text-[#10B981] shrink-0" />
+                    <Calendar className="w-5 h-5 text-[#d69429] shrink-0" />
                     <h3 className="font-bold text-white text-sm uppercase tracking-wider font-display">Sessione Strategica</h3>
                   </div>
                   <span className="text-[9px] font-bold text-white bg-white/5 border border-white/10 px-2 py-1 rounded-none uppercase tracking-wider font-mono">60 Minuti</span>
@@ -405,10 +405,10 @@ export default function ContattiView() {
                   </li>
                 </ul>
               </div>
-
+ 
               {/* Certifications and support badge */}
-              <div className="bg-[#111113] text-white p-6 rounded-none border border-white/10 space-y-3">
-                <div className="flex items-center space-x-2 text-[#10B981]">
+              <div className="bg-[#131311] text-white p-6 rounded-none border border-white/10 space-y-3">
+                <div className="flex items-center space-x-2 text-[#d69429]">
                   <ShieldCheck className="w-5 h-5 animate-pulse" />
                   <span className="font-bold text-[10px] uppercase tracking-[0.15em] font-mono">Garanzia di Sicurezza</span>
                 </div>
@@ -416,12 +416,13 @@ export default function ContattiView() {
                   Ogni informazione o idea di business condivisa con me è tutelata da segreto professionale assoluto. Tratto i Vostri dati personali unicamente per rispondere alla Vostra richiesta, in piena conformità con il GDPR.
                 </p>
               </div>
+
             </div>
 
             {/* FORM COLUMN */}
-            <div className="lg:col-span-7 bg-[#111113] p-8 rounded-none border border-white/10 shadow-sm">
+            <div className="lg:col-span-7 bg-[#131311] p-8 rounded-none border border-white/10 shadow-sm">
               <h2 className="text-xl font-bold text-white uppercase tracking-wider mb-6 font-display border-b border-white/5 pb-2">Modulo di Richiesta</h2>
-
+ 
               {errors.length > 0 && (
                 <div id="error-box" className="p-4 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs rounded-none mb-6 space-y-1 font-mono">
                   <div className="flex items-center space-x-2 font-bold mb-1 uppercase tracking-wider">
@@ -435,13 +436,13 @@ export default function ContattiView() {
                   </ul>
                 </div>
               )}
-
+ 
               <form id="lead-generation-form" onSubmit={handleSubmit} className="space-y-5">
                 {/* Visual indicator of what's selected above */}
                 <div className="bg-black/40 p-4 border border-white/5 text-xs flex justify-between items-center select-none font-mono">
                   <div>
                     <span className="text-white/40 block font-bold uppercase tracking-wider text-[9px]">Ingaggio Selezionato:</span>
-                    <span className="text-[#10B981] font-bold text-xs">
+                    <span className="text-[#d69429] font-bold text-xs">
                       {formData.inquiryType === 'call-gratuita' ? '📞 Call Preliminare Gratuita (30 Min)' : '💻 Sessione Strategica (60 Min)'}
                     </span>
                   </div>
@@ -449,7 +450,7 @@ export default function ContattiView() {
                     Modifica
                   </span>
                 </div>
-
+ 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name field */}
                   <div className="space-y-1.5">
@@ -461,10 +462,10 @@ export default function ContattiView() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="es. Maria Teresa Rogani"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] focus:ring-1 focus:ring-[#d69429] bg-[#1b1b18] text-white font-sans placeholder-white/30"
                     />
                   </div>
-
+ 
                   {/* Company field */}
                   <div className="space-y-1.5">
                     <label htmlFor="company" className="text-[10px] font-bold text-white/80 uppercase tracking-wider font-mono">Nome Azienda / Ente</label>
@@ -475,11 +476,11 @@ export default function ContattiView() {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="es. Società Agricola SpA"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] focus:ring-1 focus:ring-[#d69429] bg-[#1b1b18] text-white font-sans placeholder-white/30"
                     />
                   </div>
                 </div>
-
+ 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Email field */}
                   <div className="space-y-1.5">
@@ -491,10 +492,10 @@ export default function ContattiView() {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="es. nome@azienda.it"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] focus:ring-1 focus:ring-[#d69429] bg-[#1b1b18] text-white font-sans placeholder-white/30"
                     />
                   </div>
-
+ 
                   {/* Phone field */}
                   <div className="space-y-1.5">
                     <label htmlFor="phone" className="text-[10px] font-bold text-white/80 uppercase tracking-wider font-mono">Recapito Telefonico *</label>
@@ -505,11 +506,11 @@ export default function ContattiView() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="es. +39 333 1234567"
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] focus:ring-1 focus:ring-[#d69429] bg-[#1b1b18] text-white font-sans placeholder-white/30"
                     />
                   </div>
                 </div>
-
+ 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Settore di Mercato select */}
                   <div className="space-y-1.5">
@@ -519,7 +520,7 @@ export default function ContattiView() {
                       name="marketSector"
                       value={formData.marketSector}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] bg-[#1b1b18] text-white font-sans"
                     >
                       <option value="E-commerce & Retail Online">E-commerce & Retail Online</option>
                       <option value="Servizi Professionali (Consulenza, Legale, Medico)">Servizi Professionali (Consulenza, Legale, Medico)</option>
@@ -535,7 +536,7 @@ export default function ContattiView() {
                       <option value="Altro / Non Elencato">Altro / Non Elencato</option>
                     </select>
                   </div>
-
+ 
                   {/* Scheduling dropdown */}
                   <div className="space-y-1.5">
                     <label htmlFor="preferredTime" className="text-[10px] font-bold text-white/80 uppercase tracking-wider font-mono">Fascia Oraria di Ricontatto</label>
@@ -544,7 +545,7 @@ export default function ContattiView() {
                       name="preferredTime"
                       value={formData.preferredTime}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] bg-[#1b1b18] text-white font-sans"
                     >
                       <option value="Mattina (09:00 - 13:00)">Mattina (09:00 - 13:00)</option>
                       <option value="Pomeriggio (14:00 - 18:00)">Pomeriggio (14:00 - 18:00)</option>
@@ -552,7 +553,7 @@ export default function ContattiView() {
                     </select>
                   </div>
                 </div>
-
+ 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Project Type field */}
                   <div className="space-y-1.5">
@@ -562,7 +563,7 @@ export default function ContattiView() {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] bg-[#1b1b18] text-white font-sans"
                     >
                       <option value="cms-professional">CMS Professional (WordPress / Webflow)</option>
                       <option value="cms-ecommerce">E-Commerce CMS Ready (Shopify / WooCommerce)</option>
@@ -575,7 +576,7 @@ export default function ContattiView() {
                       <option value="non-sicuro">Non ho ancora deciso (Valutiamo nella Call di 30 Minuti)</option>
                     </select>
                   </div>
-
+ 
                   {/* Budget selector */}
                   <div className="space-y-1.5">
                     <label htmlFor="budgetRange" className="text-[10px] font-bold text-white/80 uppercase tracking-wider font-mono">Budget Previsto Indicativo</label>
@@ -584,7 +585,7 @@ export default function ContattiView() {
                       name="budgetRange"
                       value={formData.budgetRange}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] bg-[#161619] text-white font-sans"
+                      className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] bg-[#1b1b18] text-white font-sans"
                     >
                       <option value="Fino a € 1.500">Fino a € 1.500</option>
                       <option value="€ 1.500 - € 3.000">€ 1.500 - € 3.000</option>
@@ -593,7 +594,7 @@ export default function ContattiView() {
                     </select>
                   </div>
                 </div>
-
+ 
                 {/* Message field */}
                 <div className="space-y-1.5">
                   <label htmlFor="message" className="text-[10px] font-bold text-white/80 uppercase tracking-wider font-mono">Dettagli sul Progetto o Domande</label>
@@ -604,10 +605,10 @@ export default function ContattiView() {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Fornitemi una breve descrizione della Vostra attività ed i Vostri obiettivi commerciali principali..."
-                    className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] bg-[#161619] text-white font-sans placeholder-white/30"
+                    className="w-full px-4 py-3 border border-white/10 rounded-none text-xs sm:text-sm focus:outline-none focus:border-[#d69429] focus:ring-1 focus:ring-[#d69429] bg-[#1b1b18] text-white font-sans placeholder-white/30"
                   />
                 </div>
-
+ 
                 {/* Privacy check */}
                 <div className="flex items-start space-x-3 pt-2">
                   <input
@@ -616,14 +617,14 @@ export default function ContattiView() {
                     name="consent"
                     checked={formData.consent}
                     onChange={handleCheckboxChange}
-                    className="w-4 h-4 mt-0.5 rounded-none border-white/20 text-[#10B981] focus:ring-[#10B981] bg-[#161619] cursor-pointer"
+                    className="w-4 h-4 mt-0.5 rounded-none border-white/20 text-[#d69429] focus:ring-[#d69429] bg-[#1b1b18] cursor-pointer"
                   />
                   <label htmlFor="consent" className="text-[11px] text-white/60 leading-relaxed font-sans font-light">
-                    Acconsento al trattamento dei dati personali ai sensi della{' '}
+                    Acconsento al tratamento dei dati personali ai sensi della{' '}
                     <button
                       type="button"
                       onClick={() => handleOpenLegal('privacy')}
-                      className="text-[#10B981] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                      className="text-[#d69429] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
                     >
                       Privacy Policy
                     </button>{' '}
@@ -631,7 +632,7 @@ export default function ContattiView() {
                     <button
                       type="button"
                       onClick={() => handleOpenLegal('cookie')}
-                      className="text-[#10B981] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                      className="text-[#d69429] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
                     >
                       Cookie Policy
                     </button>{' '}
@@ -639,14 +640,14 @@ export default function ContattiView() {
                     <button
                       type="button"
                       onClick={() => handleOpenLegal('terms')}
-                      className="text-[#10B981] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
+                      className="text-[#d69429] underline font-bold cursor-pointer inline bg-transparent border-none p-0"
                     >
                       Termini di Servizio
                     </button>
                     . Dichiaro di essere l'unico titolare dei dati inseriti. *
                   </label>
                 </div>
-
+ 
                 {/* Submit button */}
                 <div className="pt-4">
                   <button
@@ -655,8 +656,8 @@ export default function ContattiView() {
                     disabled={isSubmitting}
                     className={`w-full py-4 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-150 shadow-md flex items-center justify-center space-x-2 font-mono ${
                       isSubmitting 
-                        ? 'bg-[#10B981]/50 cursor-not-allowed' 
-                        : 'bg-[#10B981] hover:bg-[#10B981]/90 cursor-pointer'
+                        ? 'bg-[#d69429]/50 cursor-not-allowed' 
+                        : 'bg-[#d69429] hover:bg-[#ab7621] cursor-pointer'
                     }`}
                   >
                     {isSubmitting ? (

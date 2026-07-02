@@ -224,12 +224,12 @@ export default function App() {
   ].filter(Boolean).join(" ");
 
   return (
-    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr_320px] lg:grid-rows-[auto_1fr_auto] bg-[#111113]`}>
+    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr_320px] lg:grid-rows-[auto_1fr_auto] bg-[#131311]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
       <WebVitalsOverlay isOpen={webVitalsOpen} setIsOpen={setWebVitalsOpen} />
 
       {/* Sidebar Left - Desktop only */}
-      <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-4 border-r border-white/10 flex-col p-8 bg-[#111113] text-white select-none">
+      <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-4 border-r border-white/10 flex-col p-8 bg-[#131311] text-white select-none">
         <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50 mb-12">
           Facilissimo Web — [v2.0]
         </div>
@@ -251,7 +251,7 @@ export default function App() {
               }}
               className={`w-full text-left py-4 border-b border-white/5 text-xs font-mono tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
                 activeTab === item.id 
-                  ? 'text-[#10B981] font-bold border-b-[#10B981]' 
+                  ? 'text-[#d69429] font-bold border-b-[#d69429]' 
                   : item.id === 'blog' 
                     ? 'text-amber-500 hover:text-amber-400'
                     : 'text-white/55 hover:text-white'
@@ -271,8 +271,8 @@ export default function App() {
       </aside>
 
       {/* Header - Desktop only */}
-      <header className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#111113] text-white">
-        <div className="px-2 py-0.5 border border-[#10B981] text-[#10B981] font-mono text-[9px] uppercase tracking-wider">
+      <header className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
+        <div className="px-2 py-0.5 border border-[#d69429] text-[#d69429] font-mono text-[9px] uppercase tracking-wider">
           Consapevolezza AI
         </div>
         <div className="flex items-center space-x-6 text-xs font-mono text-white/50 uppercase tracking-[0.15em]">
@@ -340,7 +340,7 @@ export default function App() {
         </div>
         
         <div className="border-t border-white/10 pt-6 space-y-2">
-          <p className="font-mono text-[9px] text-[#10B981] uppercase tracking-[0.18em]">Integrazione Consapevole AI</p>
+          <p className="font-mono text-[9px] text-[#d69429] uppercase tracking-[0.18em]">Integrazione Consapevole AI</p>
           <p className="text-xs text-white/60 leading-relaxed font-sans font-light">
             Integrazione etica e pienamente conforme all'AI Act europeo per trasferire tutti i benefici di tempo direttamente a Voi.
           </p>
@@ -362,7 +362,7 @@ export default function App() {
             setActiveTab('contatti');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="w-full bg-[#10B981] hover:bg-[#10B981]/90 text-white font-mono text-xs font-bold uppercase tracking-[0.2em] py-4 shadow-lg transition-colors cursor-pointer"
+          className="w-full bg-[#d69429] hover:bg-[#ab7621] text-white font-mono text-xs font-bold uppercase tracking-[0.2em] py-4 shadow-lg transition-colors cursor-pointer"
         >
           Iniziate Ora
         </button>
@@ -407,16 +407,16 @@ export default function App() {
       </div>
 
       {/* Footer - Desktop only */}
-      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between items-center bg-[#111113] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
+      <footer className="hidden lg:flex lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4 border-t border-white/10 p-6 justify-between items-center bg-[#131311] text-white/50 text-[10px] font-mono uppercase tracking-[0.15em] select-none">
         <div>© 2026 FACILISSIMO WEB — P.IVA 02136780430</div>
         <div className="flex items-center space-x-6">
           <button
             id="btn-web-vitals-toggle"
             onClick={() => setWebVitalsOpen(!webVitalsOpen)}
-            className="flex items-center space-x-1.5 text-[#bef264] hover:text-[#a3e635] transition-colors cursor-pointer uppercase tracking-wider font-bold"
+            className="flex items-center space-x-1.5 text-[#e7bf7e] hover:text-[#dea954] transition-colors cursor-pointer uppercase tracking-wider font-bold"
             title="Monitor Core Web Vitals"
           >
-            <Activity className="w-3.5 h-3.5 text-[#bef264] animate-pulse" />
+            <Activity className="w-3.5 h-3.5 text-[#e7bf7e] animate-pulse" />
             <span>Dev Performance</span>
           </button>
           <span>•</span>

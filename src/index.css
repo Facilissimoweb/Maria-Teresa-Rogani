@@ -8,6 +8,66 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-display: "Oswald", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+
+  --color-pearl-beige-50: #fbf4ea;
+  --color-pearl-beige-100: #f7ead4;
+  --color-pearl-beige-200: #efd4a9;
+  --color-pearl-beige-300: #e7bf7e;
+  --color-pearl-beige-400: #dea954;
+  --color-pearl-beige-500: #d69429;
+  --color-pearl-beige-600: #ab7621;
+  --color-pearl-beige-700: #815918;
+  --color-pearl-beige-800: #563b10;
+  --color-pearl-beige-900: #2b1e08;
+  --color-pearl-beige-950: #1e1506;
+
+  --color-charcoal-brown-50: #f3f3f2;
+  --color-charcoal-brown-100: #e7e7e4;
+  --color-charcoal-brown-200: #cfcfc9;
+  --color-charcoal-brown-300: #b6b6af;
+  --color-charcoal-brown-400: #9e9e94;
+  --color-charcoal-brown-500: #868679;
+  --color-charcoal-brown-600: #6b6b61;
+  --color-charcoal-brown-700: #505049;
+  --color-charcoal-brown-800: #363630;
+  --color-charcoal-brown-900: #1b1b18;
+  --color-charcoal-brown-950: #131311;
+
+  --color-eggshell-50: #fbf7ea;
+  --color-eggshell-100: #f6efd5;
+  --color-eggshell-200: #eedfaa;
+  --color-eggshell-300: #e5cf80;
+  --color-eggshell-400: #dcbf56;
+  --color-eggshell-500: #d4af2b;
+  --color-eggshell-600: #a98c23;
+  --color-eggshell-700: #7f691a;
+  --color-eggshell-800: #554611;
+  --color-eggshell-900: #2a2309;
+  --color-eggshell-950: #1e1906;
+
+  --color-pale-oak-50: #f5f3f0;
+  --color-pale-oak-100: #ebe8e0;
+  --color-pale-oak-200: #d7d0c1;
+  --color-pale-oak-300: #c3b9a2;
+  --color-pale-oak-400: #aea284;
+  --color-pale-oak-500: #9a8a65;
+  --color-pale-oak-600: #7b6f51;
+  --color-pale-oak-700: #5d533c;
+  --color-pale-oak-800: #3e3728;
+  --color-pale-oak-900: #1f1c14;
+  --color-pale-oak-950: #16130e;
+
+  --color-autumn-leaf-50: #fcf0e8;
+  --color-autumn-leaf-100: #f9e1d2;
+  --color-autumn-leaf-200: #f4c3a4;
+  --color-autumn-leaf-300: #eea577;
+  --color-autumn-leaf-400: #e98649;
+  --color-autumn-leaf-500: #e3681c;
+  --color-autumn-leaf-600: #b65316;
+  --color-autumn-leaf-700: #883f11;
+  --color-autumn-leaf-800: #5b2a0b;
+  --color-autumn-leaf-900: #2d1506;
+  --color-autumn-leaf-950: #200f04;
 }
 
 /* --- ACCESSIBILITY ENHANCEMENTS --- */
@@ -75,12 +135,12 @@
 
 /* --- DARK MODE OVERRIDES --- */
 .dark {
-  background-color: #111113 !important;
+  background-color: #131311 !important;
   color: #ffffff !important;
 }
 
 .dark #app-navbar {
-  background-color: #111113 !important;
+  background-color: #131311 !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -93,20 +153,20 @@
 }
 
 .dark #desktop-navigation button.border-b-2 {
-  border-color: #10B981 !important;
+  border-color: #d69429 !important;
   color: #ffffff !important;
 }
 
 .dark #desktop-navigation #nav-cta-button {
-  border-color: #10B981 !important;
+  border-color: #d69429 !important;
   color: #ffffff !important;
 }
 .dark #desktop-navigation #nav-cta-button:hover {
-  background-color: #10B981 !important;
+  background-color: #d69429 !important;
 }
 
 .dark #mobile-nav-menu {
-  background-color: #111113 !important;
+  background-color: #131311 !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -115,30 +175,30 @@
 }
 
 .dark #mobile-nav-menu button.border-l-4 {
-  border-color: #10B981 !important;
+  border-color: #d69429 !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
   color: white !important;
 }
 
 .dark #mobile-nav-cta {
-  border-color: #10B981 !important;
+  border-color: #d69429 !important;
   color: white !important;
 }
 .dark #mobile-nav-cta:hover {
-  background-color: #10B981 !important;
+  background-color: #d69429 !important;
 }
 
 /* Section BG and Text Changes */
 .dark .bg-white {
-  background-color: #161619 !important;
+  background-color: #1b1b18 !important;
 }
 
 .dark .bg-slate-50 {
-  background-color: #111113 !important;
+  background-color: #131311 !important;
 }
 
 .dark .bg-\[\#F8FAFC\] {
-  background-color: #161619 !important;
+  background-color: #1b1b18 !important;
 }
 
 .dark .text-\[\#0A192F\],
@@ -159,16 +219,16 @@
 .dark .text-slate-800,
 .dark .text-slate-700,
 .dark .text-slate-600 {
-  color: #e2e8f0 !important;
+  color: #e7e7e4 !important;
 }
 
 .dark .text-slate-500,
 .dark .text-slate-400 {
-  color: #cbd5e1 !important;
+  color: #cfcfc9 !important;
 }
 
 .dark .text-slate-300 {
-  color: #f8fafc !important;
+  color: #f3f3f2 !important;
 }
 
 /* Match arbitrary hex text colors (like #0A192F or #0a192f) with class-wildcards in dark mode */
@@ -182,7 +242,7 @@
 .dark #legal-modal-body li,
 .dark #legal-modal-body span,
 .dark #legal-modal-body strong {
-  color: #e2e8f0 !important;
+  color: #e7e7e4 !important;
 }
 
 .dark #legal-modal-body h3,
@@ -191,7 +251,7 @@
 }
 
 .dark #legal-modal-body a {
-  color: #10B981 !important;
+  color: #d69429 !important;
 }
 .dark .border-slate-200, 
 .dark .border-slate-100 {
@@ -199,22 +259,22 @@
 }
 
 .dark .bg-emerald-50 {
-  background-color: rgba(16, 185, 129, 0.1) !important;
-  color: #34d399 !important;
+  background-color: rgba(214, 148, 41, 0.1) !important;
+  color: #dea954 !important;
 }
 
 .dark .bg-indigo-50 {
-  background-color: rgba(16, 185, 129, 0.1) !important;
-  color: #10B981 !important;
+  background-color: rgba(214, 148, 41, 0.1) !important;
+  color: #d69429 !important;
 }
 
 .dark .bg-slate-200\/50 {
   background-color: rgba(255, 255, 255, 0.05) !important;
-  color: #10B981 !important;
+  color: #d69429 !important;
 }
 
 .dark .bg-slate-100 {
-  background-color: #1c1c21 !important;
+  background-color: #1b1b18 !important;
 }
 
 .dark .hover\:bg-slate-50:hover {
@@ -225,7 +285,7 @@
 .dark input, 
 .dark textarea, 
 .dark select {
-  background-color: #161619 !important;
+  background-color: #1b1b18 !important;
   color: white !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
 }
@@ -236,7 +296,7 @@
 }
 
 .dark #trust-banner {
-  background-color: #161619 !important;
+  background-color: #1b1b18 !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -247,7 +307,7 @@
 
 .goog-te-gadget-simple {
   background-color: white !important;
-  border: 1px solid rgba(10, 25, 47, 0.2) !important;
+  border: 1px solid rgba(27, 27, 24, 0.2) !important;
   padding: 6px 12px !important;
   border-radius: 0px !important;
   font-family: inherit !important;
@@ -258,23 +318,23 @@
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
-  color: #0A192F !important;
+  color: #1b1b18 !important;
   transition: all 0.2s ease !important;
 }
 
 .goog-te-gadget-simple:hover {
-  border-color: #10B981 !important;
-  background-color: rgba(16, 185, 129, 0.05) !important;
+  border-color: #d69429 !important;
+  background-color: rgba(214, 148, 41, 0.05) !important;
 }
 
 .dark .goog-te-gadget-simple {
-  background-color: #161619 !important;
+  background-color: #1b1b18 !important;
   color: white !important;
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .dark .goog-te-gadget-simple:hover {
-  border-color: #10B981 !important;
+  border-color: #d69429 !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
