@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, ArrowRight, Sun, Moon, Accessibility, Lock, Unlock, ChevronRight } from 'lucide-react';
 import { ActiveTab } from '../types';
+import brandLogoImg from '../assets/images/regenerated_image_1782982577389.png';
 
 interface NavbarProps {
   activeTab: ActiveTab;
@@ -145,8 +146,13 @@ export default function Navbar({
             className="flex items-center space-x-2 sm:space-x-4 cursor-pointer group shrink-0"
             onClick={() => handleNavClick('home')}
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#111113] border border-[#10B981] rotate-45 flex items-center justify-center transition-transform duration-300 group-hover:rotate-[135deg] shadow-md shrink-0">
-              <span className="-rotate-45 text-[#10B981] font-bold text-[10px] sm:text-xs uppercase tracking-tighter block group-hover:rotate-[-135deg] transition-transform duration-300">FW</span>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0">
+              <img 
+                src={brandLogoImg} 
+                alt="Facilissimo Web Logo" 
+                className="max-w-full max-h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-white block leading-none">

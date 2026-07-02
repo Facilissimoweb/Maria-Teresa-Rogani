@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Award, CheckCircle, ArrowUpRight, Share2, Activity } from 'lucide-react';
 import { ActiveTab } from '../types';
+import brandLogoImg from '../assets/images/regenerated_image_1782982577389.png';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -25,12 +26,16 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
           {/* Brand Presentation */}
           <div id="footer-brand" className="space-y-4 col-span-1 md:col-span-1">
             <div className="flex items-center space-x-3 text-white cursor-pointer group" onClick={() => handleLinkClick('home')}>
-              <div className="relative w-8 h-8 flex items-center justify-center shrink-0">
-                <div className="absolute inset-0 border-2 border-[#4A90E2] rotate-45 transition-transform group-hover:rotate-90 duration-300"></div>
-                <span className="font-mono font-bold text-xs tracking-widest text-white mt-[1px] ml-[1px]">F</span>
+              <div className="w-10 h-10 flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0">
+                <img 
+                  src={brandLogoImg} 
+                  alt="Facilissimo Web Logo" 
+                  className="max-w-full max-h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <span className="text-sm font-bold uppercase tracking-widest">
-                FACILISSIMO <span className="text-[#4A90E2]">WEB</span>
+              <span className="text-sm font-bold uppercase tracking-widest text-white">
+                FACILISSIMO <span className="text-[#111113] font-black">WEB</span>
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">

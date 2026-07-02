@@ -483,6 +483,19 @@ div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-as
   background-color: #f2ddbb !important;
 }
 
+/* --- LOGO SIZE ADJUSTMENTS --- */
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-type(2) > header#app-navbar:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div#brand-logo:nth-of-type(1) > div:nth-of-type(1) {
+  width: 150px !important;
+  height: auto !important;
+}
+
+div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div:nth-of-type(2) > header#app-navbar:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div#brand-logo:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1) {
+  width: 150px !important;
+  height: 69.3906px !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
 /* --- CHAT CHROMATIC RE-STYLE --- */
 /* Target the main chat window container */
 div#root:nth-of-type(1) > div#app-root-container:nth-of-type(1) > div#ai-chat-assistant-container:nth-of-type(4) > div#ai-chat-window:nth-of-type(1) {
