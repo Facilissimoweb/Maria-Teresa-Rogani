@@ -134,7 +134,7 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
       </section>
 
       {/* Main Content Area */}
-      <div className="py-16 bg-[#161619] text-white border-b border-white/10">
+      <div className="py-16 bg-[#453f3f] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
           {/* PROFILE & VISION SECTION */}

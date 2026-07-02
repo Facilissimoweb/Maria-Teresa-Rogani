@@ -320,7 +320,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
       </section>
 
       {/* Main Blog Page / Detail Switcher */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 bg-[#161619] border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 bg-[#453f3f] border-b border-white/10">
         <AnimatePresence mode="wait">
           {!selectedArticleId ? (
             <motion.div

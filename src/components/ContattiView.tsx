@@ -239,7 +239,7 @@ export default function ContattiView() {
       </section>
 
       {/* Main Content Area */}
-      <div className="py-16 bg-[#161619] border-b border-white/10 text-white">
+      <div className="py-16 bg-[#453f3f] border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {submitted ? (
