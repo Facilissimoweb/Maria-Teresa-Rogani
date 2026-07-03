@@ -310,12 +310,14 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
           <span className="px-3 py-1 bg-white/5 text-[#f4700a] text-[10px] font-bold tracking-[0.25em] uppercase border border-white/10 inline-block font-mono">
             Risorse e Insights
           </span>
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white font-display uppercase">
-            Il Nostro <span className="text-[#f4700a] italic">Blog</span>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.85] font-display uppercase">
+            <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Il Nostro</span>
+            <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '50px' }}>Blog</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-sans font-light leading-relaxed">
-            Consulenza, strategie, novità normative e approfondimenti pratici per trasformare la presenza digitale della Vostra azienda in uno strumento etico, performante e ad alta conversione.
-          </p>
+          
+          <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-tight max-w-2xl mx-auto" style={{ fontSize: '30px', lineHeight: '1.15' }}>
+            Consulenza, strategie, novità normative, <span className="text-white block mt-1.5 capitalize" style={{ fontWeight: 'bold', fontFamily: 'Geist, sans-serif', fontSize: '19px', lineHeight: '1.2' }}>E approfondimenti pratici per trasformare la presenza digitale della Vostra azienda in uno strumento etico, performante e ad alta conversione.</span>
+          </h2>
         </div>
       </section>
 

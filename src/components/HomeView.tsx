@@ -75,11 +75,11 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.85] font-display uppercase">
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Rigore.</span>
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Strategia.</span>
-              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '43px' }}>Performance.</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '50px' }}>Performance.</span>
             </h1>
 
-            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl" style={{ fontSize: '30px' }}>
-              Siti Web ad Elevata Conversione, <span className="text-white block mt-1 capitalize" style={{ fontWeight: 'bold', fontFamily: 'Geist, sans-serif', fontSize: '19px' }}>Progettati con Rigore e Strategia.</span>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-tight max-w-2xl" style={{ fontSize: '30px', lineHeight: '1.15' }}>
+              Siti Web ad Elevata Conversione, <span className="text-white block mt-1.5 capitalize" style={{ fontWeight: 'bold', fontFamily: 'Geist, sans-serif', fontSize: '19px', lineHeight: '1.2' }}>Progettati con Rigore e Strategia.</span>
             </h2>
             
             <GlossaryParagraph id="hero-description-paragraph" className="text-base text-slate-400 font-normal leading-relaxed max-w-2xl text-left">

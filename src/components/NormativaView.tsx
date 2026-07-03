@@ -183,12 +183,12 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.85] font-display uppercase">
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Normativa &</span>
-              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic">Compliance</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '50px' }}>Compliance</span>
             </h1>
             
-            <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
-              Guida pratica agli adempimenti normativi per microimprese e professionisti. Perché la conformità digitale non è un optional, ma un vantaggio competitivo tangibile.
-            </p>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-tight max-w-2xl" style={{ fontSize: '30px', lineHeight: '1.15' }}>
+              Guida pratica agli adempimenti normativi, <span className="text-white block mt-1.5 capitalize" style={{ fontWeight: 'bold', fontFamily: 'Geist, sans-serif', fontSize: '19px', lineHeight: '1.2' }}>Perché la conformità digitale non è un optional, ma un vantaggio competitivo tangibile.</span>
+            </h2>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button

@@ -176,11 +176,11 @@ export default function ContattiView() {
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.85] font-display uppercase">
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Progettiamo il</span>
-              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic">Vostro Successo</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '50px' }}>Vostro Successo</span>
             </h1>
             
-            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl">
-              Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.</span>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-tight max-w-2xl" style={{ fontSize: '30px', lineHeight: '1.15' }}>
+              Scegliete la tipologia di ingaggio più adatta alle Vostre esigenze. <span className="text-white block mt-1.5 capitalize" style={{ fontWeight: 'bold', fontFamily: 'Geist, sans-serif', fontSize: '19px', lineHeight: '1.2' }}>Sono pronta ad affiancarvi con la massima trasparenza, fin dal primo istante.</span>
             </h2>
           </motion.div>
           
