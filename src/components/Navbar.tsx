@@ -150,7 +150,15 @@ export default function Navbar({
         }} 
         className="w-full lg:px-12"
       >
-        <div className="flex justify-between h-full items-center">
+        <div 
+          style={{
+            marginRight: '0px',
+            marginLeft: '21px',
+            marginTop: '7px',
+            marginBottom: '0px'
+          }}
+          className="flex justify-between h-full items-center"
+        >
           {/* Logo */}
           <div 
             id="brand-logo" 
@@ -298,11 +306,11 @@ export default function Navbar({
               onClick={() => setIsOpen(!isOpen)}
               style={{
                 marginLeft: '0px',
-                marginTop: '13px',
+                marginTop: '0px',
                 paddingBottom: '6px',
                 marginRight: '48px'
               }}
-              className="text-white hover:text-[#f4700a] p-1.5 focus:outline-none"
+              className="text-white hover:text-[#f4700a] p-1.5 focus:outline-none flex items-center justify-center"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="w-6 h-6" style={{ backgroundColor: '#3a3a35' }} /> : <Menu className="w-6 h-6" style={{ backgroundColor: '#3a3a35' }} />}

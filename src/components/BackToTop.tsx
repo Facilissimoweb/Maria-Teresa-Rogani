@@ -77,11 +77,12 @@ export default function BackToTop() {
           exit={{ opacity: 0, y: 15, scale: 0.8 }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
           onClick={scrollToTop}
-          className="fixed bottom-[92px] right-6 z-40 w-12 h-12 bg-[#111113] hover:bg-[#1b1b1f] text-[#f4700a] border-2 border-[#f4700a] shadow-2xl flex items-center justify-center transition-all duration-200 cursor-pointer rounded-none group"
+          style={{ width: '20px', height: '20px' }}
+          className="fixed bottom-[92px] right-6 z-40 bg-[#111113] hover:bg-[#1b1b1f] text-[#f4700a] border border-[#f4700a] shadow-2xl flex items-center justify-center transition-all duration-200 cursor-pointer rounded-none group"
           title="Torna su"
           aria-label="Torna all'inizio della pagina"
         >
-          <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-200" />
+          <ArrowUp className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform duration-200" />
         </motion.button>
       )}
     </AnimatePresence>

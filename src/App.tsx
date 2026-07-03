@@ -301,10 +301,12 @@ export default function App() {
         style={{ 
           height: '36px',
           transform: showAccent ? 'translateY(0)' : 'translateY(-100%)',
-          fontSize: '15px',
+          fontSize: '21px',
           fontFamily: 'Anton, sans-serif',
           lineHeight: '14px',
-          fontStyle: 'italic'
+          fontStyle: 'italic',
+          textAlign: 'justify',
+          textDecorationLine: 'none'
         }}
       >
         FACILISSIMO WEB
