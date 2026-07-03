@@ -13,7 +13,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
   return (
     <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
-      <section id="hero-section" className="relative bg-gradient-to-r from-[#141412] to-[#0a0a09] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
+      <section id="hero-section" className="relative bg-[#000000] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
 
         {/* Bright Orange Overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#f4700a]/30 via-[#f4700a]/15 to-transparent pointer-events-none z-0 mix-blend-screen" />
