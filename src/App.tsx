@@ -14,6 +14,7 @@ import ChatAssistant from './components/ChatAssistant';
 import LegalModal, { LegalDocType } from './components/LegalModal';
 import SitemapModal from './components/SitemapModal';
 import WebVitalsOverlay from './components/WebVitalsOverlay';
+import BackToTop from './components/BackToTop';
 import { Sparkles, ArrowRight, ShieldCheck, Cpu, Activity } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -124,12 +125,23 @@ export default function App() {
 
   // 2. Synchronize active tab changes with document titles, URL path/hash, and accessibility announcements
   useEffect(() => {
-    // Scroll to top instantly when tab changes
+    // Scroll to top instantly when tab changes (mobile & general window scroll)
     window.scrollTo(0, 0);
     try {
       window.scrollTo({ top: 0, behavior: 'instant' as any });
     } catch (e) {
       // fallback handled by previous call
+    }
+
+    // Force scroll to top on PC/Desktop scrollable container (#app-main-content)
+    const mainEl = document.getElementById('app-main-content');
+    if (mainEl) {
+      mainEl.scrollTop = 0;
+      try {
+        mainEl.scrollTo({ top: 0, behavior: 'instant' as any });
+      } catch (e) {
+        // fallback
+      }
     }
 
     // Sync state to URL pathname using history.pushState so Chrome/browsers detect true page navigation!
@@ -387,6 +399,9 @@ export default function App() {
 
       {/* Global Interactive AI Chat Assistant */}
       <ChatAssistant setActiveTab={setActiveTab} />
+
+      {/* Back to Top Floating Button */}
+      <BackToTop />
 
       {/* Global Interactive Legal Document Modal */}
       <LegalModal 
