@@ -15,6 +15,7 @@ import LegalModal, { LegalDocType } from './components/LegalModal';
 import SitemapModal from './components/SitemapModal';
 import WebVitalsOverlay from './components/WebVitalsOverlay';
 import BackToTop from './components/BackToTop';
+import CookieConsent from './components/CookieConsent';
 import { Sparkles, ArrowRight, ShieldCheck, Cpu, Activity } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -402,6 +403,9 @@ export default function App() {
 
       {/* Back to Top Floating Button */}
       <BackToTop />
+
+      {/* GDPR Cookie Consent Overlay Banner */}
+      <CookieConsent onOpenCookiePolicy={() => handleOpenLegal('cookie')} />
 
       {/* Global Interactive Legal Document Modal */}
       <LegalModal 
