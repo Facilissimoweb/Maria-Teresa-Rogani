@@ -15,8 +15,21 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
       {/* HERO SECTION */}
       <section id="hero-section" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
 
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImg} 
+            alt="Facilissimo Web Studio Background" 
+            className="w-full h-full object-cover object-center scale-100"
+            referrerPolicy="no-referrer"
+          />
+          {/* Subtle gradient overlay to allow the background photo to be beautifully visible while keeping text readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/95 via-[#09090b]/70 to-[#09090b]/30 md:from-[#09090b]/90 md:via-[#09090b]/60 md:to-transparent" />
+          <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
+        </div>
+
         {/* Background Decorative Polygon Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none z-0" />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Content */}
@@ -43,7 +56,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               Siti Web ad Elevata Conversione, <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Progettati con Rigore e Strategia.</span>
             </h2>
             
-            <GlossaryParagraph id="hero-description-paragraph" className="text-sm text-slate-400 font-normal leading-relaxed max-w-2xl text-left">
+            <GlossaryParagraph id="hero-description-paragraph" className="text-base text-slate-400 font-normal leading-relaxed max-w-2xl text-left">
               FACILISSIMO WEB semplifica lo sviluppo web coniugando tecnologia d'avanguardia, etica professionale della comunicazione e massima trasparenza economica. Garantisco la massima conversione dei Vostri contatti grazie a un approccio fortemente strategico come la lead generation.
             </GlossaryParagraph>
             
