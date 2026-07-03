@@ -75,7 +75,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.85] font-display uppercase">
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Rigore.</span>
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Strategia.</span>
-              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic">Performance.</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '40px' }}>Performance.</span>
             </h1>
 
             <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl">
