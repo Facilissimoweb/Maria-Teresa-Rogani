@@ -138,29 +138,40 @@ export default function Navbar({
 
   return (
     <header id="app-navbar" className="sticky top-0 z-50 w-full bg-[#111113] border-b border-white/10 shadow-sm backdrop-blur-md bg-opacity-95 transition-all duration-300 text-white">
-      <div style={{ backgroundColor: '#e56f28' }} className="w-full px-6 lg:px-12">
-        <div className="flex justify-between h-20 items-center">
+      <div 
+        style={{ 
+          backgroundColor: '#e56f28',
+          height: '68px',
+          paddingLeft: '24px',
+          paddingTop: '0px',
+          paddingBottom: '0px',
+          marginTop: '-14px',
+          marginBottom: '0px'
+        }} 
+        className="w-full lg:px-12"
+      >
+        <div className="flex justify-between h-full items-center">
           {/* Logo */}
           <div 
             id="brand-logo" 
             className="flex items-center space-x-2 sm:space-x-4 cursor-pointer group shrink-0"
             onClick={() => handleNavClick('home')}
           >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0">
-              <img 
-                src={brandLogoImg} 
-                alt="Facilissimo Web Logo" 
-                className="max-w-full max-h-full object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </div>
             <div>
               <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-white block leading-none">
                 <span className="sm:inline hidden">FACILISSIMO </span>
                 <span className="sm:hidden inline">F.</span>
                 <span style={{ color: '#3a3a35' }} className="font-black">WEB</span>
               </span>
-              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50 block font-bold mt-0.5 sm:mt-1 hidden sm:block">
+              <span 
+                style={{
+                  marginTop: '7px',
+                  paddingRight: '0px',
+                  paddingBottom: '-1px',
+                  paddingTop: '0px'
+                }}
+                className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50 block font-bold mt-0.5 sm:mt-1 hidden sm:block"
+              >
                 Strategic Digital Partner
               </span>
             </div>
@@ -285,6 +296,12 @@ export default function Navbar({
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
+              style={{
+                marginLeft: '0px',
+                marginTop: '13px',
+                paddingBottom: '6px',
+                marginRight: '48px'
+              }}
               className="text-white hover:text-[#f4700a] p-1.5 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
