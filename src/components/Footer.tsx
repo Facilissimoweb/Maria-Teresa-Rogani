@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Award, CheckCircle, ArrowUpRight, Share2, Activity } from 'lucide-react';
+import { Mail, Phone, MapPin, Award, CheckCircle, ArrowUpRight, Share2, Activity, Facebook, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 import { ActiveTab } from '../types';
 import brandLogoImg from '../assets/images/regenerated_image_1782982577389.png';
 
@@ -158,10 +158,11 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://api.whatsapp.com/send?text=${encodeURIComponent("Facilissimo Web di M. Teresa Rogani - Web Graphic Design Strategico e Lead Generation Certificata per lo sviluppo professionale della Vostra presenza digitale. Visita il sito: " + shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#f4700a]/10 hover:bg-[#f4700a] hover:text-white text-[#f4700a] text-[10px] font-bold uppercase tracking-widest border border-[#f4700a]/20 transition-all cursor-pointer"
+                className="flex items-center space-x-1.5 px-4 py-2 bg-[#f4700a]/10 hover:bg-[#f4700a] hover:text-white text-[#f4700a] text-[10px] font-bold uppercase tracking-widest border border-[#f4700a]/20 transition-all cursor-pointer"
                 title="Condividi su WhatsApp"
               >
-                WhatsApp
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
               </a>
 
               {/* LinkedIn */}
@@ -169,10 +170,11 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-blue-700/10 hover:bg-blue-700 hover:text-white text-blue-400 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20 transition-all cursor-pointer"
+                className="flex items-center space-x-1.5 px-4 py-2 bg-blue-700/10 hover:bg-blue-700 hover:text-white text-blue-400 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20 transition-all cursor-pointer"
                 title="Condividi su LinkedIn"
               >
-                LinkedIn
+                <Linkedin className="w-3.5 h-3.5" />
+                <span>LinkedIn</span>
               </a>
 
               {/* Facebook */}
@@ -180,10 +182,11 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-blue-800/10 hover:bg-blue-800 hover:text-white text-blue-500 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20 transition-all cursor-pointer"
+                className="flex items-center space-x-1.5 px-4 py-2 bg-blue-800/10 hover:bg-blue-800 hover:text-white text-blue-500 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20 transition-all cursor-pointer"
                 title="Condividi su Facebook"
               >
-                Facebook
+                <Facebook className="w-3.5 h-3.5" />
+                <span>Facebook</span>
               </a>
 
               {/* Twitter/X */}
@@ -191,19 +194,21 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent("Siti web professionali ad elevate prestazioni con Facilissimo Web, di M. Teresa Rogani.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-slate-800/20 hover:bg-slate-800 hover:text-white text-slate-300 text-[10px] font-bold uppercase tracking-widest border border-slate-700/30 transition-all cursor-pointer"
+                className="flex items-center space-x-1.5 px-4 py-2 bg-slate-800/20 hover:bg-slate-800 hover:text-white text-slate-300 text-[10px] font-bold uppercase tracking-widest border border-slate-700/30 transition-all cursor-pointer"
                 title="Condividi su Twitter/X"
               >
-                Twitter / X
+                <Twitter className="w-3.5 h-3.5" />
+                <span>Twitter / X</span>
               </a>
 
               {/* Email */}
               <a
                 href={`mailto:?subject=${encodeURIComponent("Consiglio Partner Digitale Strategico: Facilissimo Web")}&body=${encodeURIComponent("Ciao,\n\nti consiglio di esaminare i servizi offerti da Facilissimo Web (fondato da M. Teresa Rogani), un partner d'eccellenza per la progettazione visiva e la lead generation della tua impresa.\n\nSito web: " + shareUrl)}`}
-                className="px-4 py-2 bg-rose-600/10 hover:bg-rose-600 hover:text-white text-rose-400 text-[10px] font-bold uppercase tracking-widest border border-rose-500/20 transition-all cursor-pointer"
+                className="flex items-center space-x-1.5 px-4 py-2 bg-rose-600/10 hover:bg-rose-600 hover:text-white text-rose-400 text-[10px] font-bold uppercase tracking-widest border border-rose-500/20 transition-all cursor-pointer"
                 title="Consiglia via Email"
               >
-                Invia per Email
+                <Mail className="w-3.5 h-3.5" />
+                <span>Invia per Email</span>
               </a>
             </div>
           </div>

@@ -282,56 +282,6 @@ export default function Navbar({
 
           {/* Mobile Menu Button & Toggler */}
           <div className="flex xl:hidden items-center space-x-1">
-            {/* Mobile accessibility selector button */}
-            {setAccessibilityOpen && (
-              <button
-                onClick={() => setAccessibilityOpen(!accessibilityOpen)}
-                style={{ backgroundColor: '#3a3a35' }}
-                className={`p-1.5 transition-colors cursor-pointer ${
-                  accessibilityOpen ? 'text-[#f4700a]' : 'text-white hover:text-[#f4700a]'
-                }`}
-                aria-label="Opzioni di Accessibilità"
-                title="Accessibilità"
-              >
-                <Accessibility className="w-5 h-5" />
-              </button>
-            )}
-
-            {/* Mobile language selector button */}
-            <div className="relative">
-              <button
-                onClick={() => setIsLangOpen(!isLangOpen)}
-                className="p-1.5 text-white hover:text-[#f4700a] transition-colors cursor-pointer flex items-center justify-center space-x-1"
-                aria-label="Cambia lingua"
-                title="Lingua"
-              >
-                <span className="text-base">{currentLang.flag}</span>
-                <span className="text-[10px] font-mono font-bold uppercase">{currentLang.label}</span>
-              </button>
-              {isLangOpen && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
-                  <div className="absolute right-0 mt-2 w-44 bg-[#09090b] border border-white/10 shadow-xl py-1.5 z-50 rounded-2xl max-h-72 overflow-y-auto">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleLanguageChange(lang.code)}
-                        className={`w-full text-left px-4 py-2 text-xs font-bold uppercase tracking-wider hover:bg-white/5 cursor-pointer flex items-center justify-between ${
-                          activeLang === lang.code ? 'text-[#f4700a]' : 'text-slate-200'
-                        }`}
-                      >
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm">{lang.flag}</span>
-                          <span>{lang.label}</span>
-                        </div>
-                        {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#f4700a] rounded-full" />}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
@@ -350,46 +300,104 @@ export default function Navbar({
       {/* Mobile Drawer */}
       {isOpen && (
         <div id="mobile-nav-menu" className="xl:hidden bg-[#09090b] border-b border-white/10 animate-fadeIn transition-all duration-300">
-          <div style={{ backgroundColor: '#09090b' }} className="px-6 pt-2 pb-6 space-y-2">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                id={`mobile-nav-link-${item.id}`}
-                onClick={() => handleNavClick(item.id)}
-                style={{ fontFamily: "'Poppins', sans-serif", fontSize: '15px' }}
-                className={`block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
-                  item.id === 'blog'
-                    ? activeTab === 'blog'
-                      ? 'bg-amber-500/10 text-amber-500 border-l-4 border-amber-500 font-extrabold'
-                      : 'bg-amber-500/5 text-amber-600 border border-amber-500/10'
-                    : activeTab === item.id
-                      ? 'bg-white/5 text-white border-l-4 border-[#f4700a]'
-                      : 'text-slate-300 hover:bg-white/5 hover:text-white'
-                }`}
-              >
-                <span>{item.label}</span>
-                {item.id === 'blog' && (
-                  <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+          <div style={{ backgroundColor: '#09090b' }} className="px-6 pt-2 pb-6 space-y-4">
+            <div className="space-y-2">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  id={`mobile-nav-link-${item.id}`}
+                  onClick={() => handleNavClick(item.id)}
+                  style={{ fontFamily: "'Poppins', sans-serif", fontSize: '15px' }}
+                  className={`block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
+                    item.id === 'blog'
+                      ? activeTab === 'blog'
+                        ? 'bg-amber-500/10 text-amber-500 border-l-4 border-amber-500 font-extrabold'
+                        : 'bg-amber-500/5 text-amber-600 border border-amber-500/10'
+                      : activeTab === item.id
+                        ? 'bg-white/5 text-white border-l-4 border-[#f4700a]'
+                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {item.id === 'blog' && (
+                    <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+                  )}
+                </button>
+              ))}
+
+              {!isAdmin && (
+                <button
+                  id="mobile-nav-admin-lock"
+                  onClick={() => handleNavClick('fogli')}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                  className="block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-all duration-150 cursor-pointer flex items-center justify-between text-slate-300 bg-white/5 border border-white/10 hover:text-white hover:bg-white/10"
+                >
+                  <span className="flex items-center space-x-2">
+                    <Lock className="w-4 h-4 text-[#f4700a]" />
+                    <span>Area Riservata</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </button>
+              )}
+            </div>
+
+            {/* Accessibility Options and Language Selection inside Hamburger Menu */}
+            <div className="pt-4 border-t border-white/10 flex items-center gap-3">
+              {/* Accessibility Toggle */}
+              {setAccessibilityOpen && (
+                <button
+                  onClick={() => {
+                    setAccessibilityOpen(!accessibilityOpen);
+                    // Leave menu open so user can see effect if wanted
+                  }}
+                  className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 border text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                    accessibilityOpen 
+                      ? 'bg-[#f4700a]/10 border-[#f4700a] text-[#f4700a]' 
+                      : 'bg-white/5 border-white/10 text-slate-300 hover:text-white'
+                  }`}
+                  aria-label="Opzioni di Accessibilità"
+                >
+                  <Accessibility className="w-4 h-4" />
+                  <span>Accessibilità</span>
+                </button>
+              )}
+
+              {/* Language Selector */}
+              <div className="relative flex-1">
+                <button
+                  onClick={() => setIsLangOpen(!isLangOpen)}
+                  className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-white/5 border border-white/10 text-slate-300 hover:text-white text-[10px] font-bold uppercase tracking-wider cursor-pointer"
+                  aria-label="Cambia lingua"
+                >
+                  <span className="text-base">{currentLang.flag}</span>
+                  <span className="text-[10px] font-mono font-bold uppercase">{currentLang.label}</span>
+                </button>
+                {isLangOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
+                    <div className="absolute right-0 bottom-full mb-2 w-44 bg-[#09090b] border border-white/10 shadow-2xl py-1.5 z-50 rounded-2xl max-h-56 overflow-y-auto">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleLanguageChange(lang.code)}
+                          className={`w-full text-left px-4 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-white/5 cursor-pointer flex items-center justify-between ${
+                            activeLang === lang.code ? 'text-[#f4700a]' : 'text-slate-200'
+                          }`}
+                        >
+                          <div className="flex items-center space-x-2">
+                            <span className="text-sm">{lang.flag}</span>
+                            <span>{lang.label}</span>
+                          </div>
+                          {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#f4700a] rounded-full" />}
+                        </button>
+                      ))}
+                    </div>
+                  </>
                 )}
-              </button>
-            ))}
+              </div>
+            </div>
 
-            {!isAdmin && (
-              <button
-                id="mobile-nav-admin-lock"
-                onClick={() => handleNavClick('fogli')}
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-                className="block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-all duration-150 cursor-pointer flex items-center justify-between text-slate-300 bg-white/5 border border-white/10 hover:text-white hover:bg-white/10"
-              >
-                <span className="flex items-center space-x-2">
-                  <Lock className="w-4 h-4 text-[#f4700a]" />
-                  <span>Area Riservata</span>
-                </span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </button>
-            )}
-
-            <div className="pt-4">
+            <div className="pt-2">
               <button
                 id="mobile-nav-cta"
                 onClick={() => handleNavClick('contatti')}
