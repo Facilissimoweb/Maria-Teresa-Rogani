@@ -53,7 +53,7 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               M. Teresa<br />
-              <span className="text-[#e7bf7e] italic">Rogani</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent italic">Rogani</span>
             </h1>
             
             <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl">

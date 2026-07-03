@@ -183,7 +183,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
               Normativa &<br />
-              <span className="text-[#e7bf7e] italic">Compliance</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent italic">Compliance</span>
             </h1>
             
             <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
