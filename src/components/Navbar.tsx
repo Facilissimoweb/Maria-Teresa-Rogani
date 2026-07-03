@@ -167,20 +167,25 @@ export default function Navbar({
           >
             <div>
               <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-white block leading-none">
-                <span className="sm:inline hidden">FACILISSIMO </span>
-                <span className="sm:hidden inline">F.</span>
-                <span style={{ color: '#3a3a35' }} className="font-black">WEB</span>
-              </span>
-              <span 
-                style={{
-                  marginTop: '7px',
-                  paddingRight: '0px',
-                  paddingBottom: '-1px',
-                  paddingTop: '0px'
-                }}
-                className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50 block font-bold mt-0.5 sm:mt-1 hidden sm:block"
-              >
-                Strategic Digital Partner
+                <span className="sm:inline hidden">FACILISSIMO</span>
+                <span 
+                  style={{
+                    fontSize: '14px',
+                    textAlign: 'left',
+                    fontStyle: 'italic',
+                    lineHeight: '9px',
+                    fontFamily: 'system-ui',
+                    marginRight: '0px',
+                    marginBottom: '0px',
+                    paddingBottom: '5px',
+                    paddingTop: '0px',
+                    paddingLeft: '0px',
+                    paddingRight: '14px'
+                  }}
+                  className="sm:hidden inline text-[9px] tracking-normal font-bold"
+                >
+                  SITI WEB AD ELEVATA CONVERSIONE
+                </span>
               </span>
             </div>
           </div>
