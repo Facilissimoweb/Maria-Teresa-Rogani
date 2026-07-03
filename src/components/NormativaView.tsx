@@ -193,7 +193,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={() => setActiveTab('contatti')}
-                className="px-8 py-3.5 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Prenota Consulenza Gratuita
               </button>
@@ -203,7 +203,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                   const element = document.getElementById('checklist-section');
                   element?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-3.5 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono text-center"
+                className="px-8 py-3.5 border-2 border-[#f4700a] hover:bg-[#f4700a]/10 hover:text-orange-400 text-[#f4700a] text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono text-center"
               >
                 Esegui l'Audit Interattivo
               </button>
@@ -323,10 +323,10 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                 </p>
                 <button
                   onClick={() => setActiveTab('contatti')}
-                  className="w-full mt-4 py-2 bg-[#d69429] hover:bg-[#ab7621] text-white font-bold text-[10px] uppercase tracking-widest transition-colors cursor-pointer flex items-center justify-center space-x-1.5 font-mono"
+                  className="w-full mt-4 py-2 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black font-black text-[10px] uppercase tracking-widest transition-all duration-300 cursor-pointer flex items-center justify-center space-x-1.5 font-mono shadow-md"
                 >
                   <span>Iniziamo Ora</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-black" />
                 </button>
               </div>
             </div>
@@ -768,18 +768,18 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
             <div className="flex flex-col sm:flex-row justify-between gap-4 pt-4 border-t border-white/5">
               <button
                 onClick={handleCopyChecklist}
-                className="px-6 py-3 border border-white/20 hover:border-white/50 text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors flex items-center justify-center space-x-2 font-mono cursor-pointer"
+                className="px-6 py-3 border-2 border-[#f4700a] hover:bg-[#f4700a]/10 text-[#f4700a] hover:text-[#ff8c3a] font-bold text-[10px] uppercase tracking-wider rounded-none transition-all duration-300 flex items-center justify-center space-x-2 font-mono cursor-pointer"
               >
-                <Share2 className="w-4 h-4 text-white" />
+                <Share2 className="w-4 h-4 text-inherit" />
                 <span>{copiedText ? 'Copiato!' : 'Copia Report Audit'}</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('contatti')}
-                className="px-6 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors flex items-center justify-center space-x-2 font-mono cursor-pointer"
+                className="px-6 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black font-black text-[10px] uppercase tracking-wider rounded-none transition-all duration-300 flex items-center justify-center space-x-2 font-mono cursor-pointer shadow-md"
               >
                 <span>Richiedi Audit Professionale Completo</span>
-                <ArrowRight className="w-4 h-4 text-white" />
+                <ArrowRight className="w-4 h-4 text-black" />
               </button>
             </div>
           </div>

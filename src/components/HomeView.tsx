@@ -54,7 +54,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   setActiveTab('contatti');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-3.5 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Iniziate Ora
               </button>
@@ -65,7 +65,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   setActiveTab('servizi');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-3.5 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 border-2 border-[#f4700a] hover:bg-[#f4700a]/10 hover:text-orange-400 text-[#f4700a] text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono"
               >
                 Scoprite i Metodi
               </button>
@@ -328,7 +328,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 setActiveTab('contatti');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-8 py-3.5 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+              className="px-8 py-3.5 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
             >
               Richiedete la Vostra Call Gratuita
             </button>
@@ -337,7 +337,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                 setActiveTab('servizi');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-8 py-3.5 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono"
+              className="px-8 py-3.5 border-2 border-[#f4700a] hover:bg-[#f4700a]/10 hover:text-orange-400 text-[#f4700a] text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono"
             >
               Consultate i Miei Pacchetti
             </button>

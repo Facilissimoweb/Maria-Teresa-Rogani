@@ -545,10 +545,10 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab(selectedArticle.cta.actionTab)}
-                          className="px-5 py-3 bg-[#f4700a] hover:bg-[#f4700a]/90 text-white text-[10px] font-bold uppercase tracking-widest rounded-none transition-all duration-150 inline-flex items-center space-x-1 cursor-pointer font-mono"
+                          className="px-5 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-[10px] font-black uppercase tracking-widest rounded-none transition-all duration-300 inline-flex items-center space-x-1 cursor-pointer font-mono shadow-md"
                         >
                           <span>{selectedArticle.cta.buttonText}</span>
-                          <ArrowUpRight className="w-4 h-4" />
+                          <ArrowUpRight className="w-4 h-4 text-black" />
                         </button>
                       </div>
                     </div>
@@ -639,7 +639,7 @@ export default function BlogView({ setActiveTab }: BlogViewProps) {
                       </p>
                       <button
                         onClick={() => setActiveTab('contatti')}
-                        className="w-full py-2.5 border border-[#f4700a] hover:bg-[#f4700a] text-[#f4700a] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer font-mono"
+                        className="w-full py-2.5 border-2 border-[#f4700a] hover:bg-[#f4700a]/10 hover:text-orange-400 text-[#f4700a] text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer font-mono"
                       >
                         Prenota Sessione Gratuita
                       </button>

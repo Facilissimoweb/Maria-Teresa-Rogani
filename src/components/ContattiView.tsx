@@ -323,7 +323,7 @@ export default function ContattiView() {
             <div className="pt-4">
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 font-mono cursor-pointer"
+                className="px-6 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] rounded-none transition-all duration-300 font-mono cursor-pointer shadow-lg"
               >
                 Invia una nuova richiesta
               </button>
@@ -651,20 +651,20 @@ export default function ContattiView() {
                     type="submit"
                     id="form-submit-button"
                     disabled={isSubmitting}
-                    className={`w-full py-4 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-150 shadow-md flex items-center justify-center space-x-2 font-mono ${
+                    className={`w-full py-4 text-black font-black text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-300 shadow-md flex items-center justify-center space-x-2 font-mono ${
                       isSubmitting 
-                        ? 'bg-[#d69429]/50 cursor-not-allowed' 
-                        : 'bg-[#d69429] hover:bg-[#ab7621] cursor-pointer'
+                        ? 'bg-[#d69429]/50 cursor-not-allowed opacity-60' 
+                        : 'bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 cursor-pointer'
                     }`}
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-4 h-4 text-white animate-spin" />
+                        <Loader2 className="w-4 h-4 text-black animate-spin" />
                         <span>Invio in corso...</span>
                       </>
                     ) : (
                       <>
-                        <Send className="w-4 h-4 text-white" />
+                        <Send className="w-4 h-4 text-black" />
                         <span>Invia la Vostra Richiesta</span>
                       </>
                     )}

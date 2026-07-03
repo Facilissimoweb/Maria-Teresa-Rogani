@@ -20,12 +20,12 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
   };
 
   return (
-    <footer id="app-footer" className="bg-[#0A192F] text-slate-300 border-t border-white/10">
+    <footer id="app-footer" className="bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] text-black border-t border-black/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand Presentation */}
           <div id="footer-brand" className="space-y-4 col-span-1 md:col-span-1">
-            <div className="flex items-center space-x-3 text-white cursor-pointer group" onClick={() => handleLinkClick('home')}>
+            <div className="flex items-center space-x-3 text-black cursor-pointer group" onClick={() => handleLinkClick('home')}>
               <div className="w-10 h-10 flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0">
                 <img 
                   src={brandLogoImg} 
@@ -34,27 +34,27 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <span className="text-sm font-bold uppercase tracking-widest text-white">
+              <span className="text-sm font-black uppercase tracking-widest text-black">
                 FACILISSIMO <span className="text-[#111113] font-black">WEB</span>
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-neutral-900 font-medium leading-relaxed">
               La Vostra professionista della comunicazione di riferimento per lo sviluppo e la consulenza di siti web ad elevate prestazioni. Coniugo competenze consolidate e soluzioni strategiche per massimizzare la Vostra conversione.
             </p>
-            <div className="flex items-center space-x-2 text-[10px] text-[#4A90E2] font-bold uppercase tracking-wider bg-white/5 border border-white/10 px-3 py-2 rounded-none w-fit">
-              <Award className="w-4 h-4 text-[#4A90E2]" />
+            <div className="flex items-center space-x-2 text-[10px] text-black font-black uppercase tracking-wider bg-black/5 border border-black/10 px-3 py-2 rounded-none w-fit">
+              <Award className="w-4 h-4 text-black" />
               <span>Certified Social Lead's Manager</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div id="footer-links" className="space-y-4">
-            <h3 className="text-white text-xs font-bold uppercase tracking-widest border-b border-white/10 pb-2">Navigazione</h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
+            <h3 className="text-black text-xs font-black uppercase tracking-widest border-b border-black/15 pb-2">Navigazione</h3>
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
               <li>
                 <button 
                   onClick={() => handleLinkClick('home')} 
-                  className="hover:text-[#4A90E2] transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
+                  className="hover:text-black hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
                 >
                   <span>Inizio (Home)</span>
                 </button>
@@ -62,7 +62,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               <li>
                 <button 
                   onClick={() => handleLinkClick('chi-sono')} 
-                  className="hover:text-[#4A90E2] transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
+                  className="hover:text-black hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
                 >
                   <span>Chi Sono (Biografia)</span>
                 </button>
@@ -70,7 +70,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               <li>
                 <button 
                   onClick={() => handleLinkClick('servizi')} 
-                  className="hover:text-[#4A90E2] transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
+                  className="hover:text-black hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
                 >
                   <span>Servizi & Processo</span>
                 </button>
@@ -78,7 +78,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               <li>
                 <button 
                   onClick={() => handleLinkClick('contatti')} 
-                  className="hover:text-[#4A90E2] transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
+                  className="hover:text-black hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left"
                 >
                   <span>Prenotazione & Contatti</span>
                 </button>
@@ -86,7 +86,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               <li>
                 <button 
                   onClick={onSitemapClick} 
-                  className="hover:text-[#4A90E2] transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left font-bold text-[#4A90E2]"
+                  className="hover:text-black hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left font-black text-black"
                   id="footer-sitemap-btn"
                 >
                   <span>Mappa del Sito (Sitemap)</span>
@@ -97,22 +97,22 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
 
           {/* Professional Engagements */}
           <div id="footer-services" className="space-y-4">
-            <h3 className="text-white text-xs font-bold uppercase tracking-widest border-b border-white/10 pb-2">Il Vostro Successo</h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
+            <h3 className="text-black text-xs font-black uppercase tracking-widest border-b border-black/15 pb-2">Il Vostro Successo</h3>
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
               <li className="flex items-start space-x-2">
-                <CheckCircle className="w-4 h-4 text-[#4A90E2] shrink-0 mt-0.5" />
+                <CheckCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                 <span>Soluzioni Custom React/Vite</span>
               </li>
               <li className="flex items-start space-x-2">
-                <CheckCircle className="w-4 h-4 text-[#4A90E2] shrink-0 mt-0.5" />
+                <CheckCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                 <span>Piattaforme CMS Ottimizzate</span>
               </li>
               <li className="flex items-start space-x-2">
-                <CheckCircle className="w-4 h-4 text-[#4A90E2] shrink-0 mt-0.5" />
+                <CheckCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                 <span>Analisi Strategica del Funnel</span>
               </li>
               <li className="flex items-start space-x-2">
-                <CheckCircle className="w-4 h-4 text-[#4A90E2] shrink-0 mt-0.5" />
+                <CheckCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                 <span>Trasparenza Etica nell'Uso di AI</span>
               </li>
             </ul>
@@ -120,22 +120,22 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
 
           {/* Contacts */}
           <div id="footer-contact-info" className="space-y-4">
-            <h3 className="text-white text-xs font-bold uppercase tracking-widest border-b border-white/10 pb-2">Contatti Diretti</h3>
-            <ul className="space-y-3.5 text-xs sm:text-sm">
+            <h3 className="text-black text-xs font-black uppercase tracking-widest border-b border-black/15 pb-2">Contatti Diretti</h3>
+            <ul className="space-y-3.5 text-xs sm:text-sm font-medium">
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-[#4A90E2] shrink-0" />
-                <a href="mailto:facilissimoweb.mc@gmail.com" className="hover:text-[#4A90E2] transition-colors duration-150 break-all">
+                <Mail className="w-5 h-5 text-black shrink-0" />
+                <a href="mailto:facilissimoweb.mc@gmail.com" className="hover:text-black hover:underline transition-colors duration-150 break-all">
                   facilissimoweb.mc@gmail.com
                 </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-[#4A90E2] shrink-0" />
-                <a href="tel:+393793603321" className="hover:text-[#4A90E2] transition-colors duration-150">
+                <Phone className="w-5 h-5 text-black shrink-0" />
+                <a href="tel:+393793603321" className="hover:text-black hover:underline transition-colors duration-150">
                   +39 379 360 3321
                 </a>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-[#4A90E2] shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-black shrink-0 mt-0.5" />
                 <span>Servizio Attivo su Scala Nazionale ed Internazionale</span>
               </li>
             </ul>
@@ -143,14 +143,14 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
         </div>
 
         {/* Modern Sharing Buttons Block */}
-        <div id="footer-sharing-section" className="border-t border-white/10 mt-12 pt-8 text-center sm:text-left">
+        <div id="footer-sharing-section" className="border-t border-black/15 mt-12 pt-8 text-center sm:text-left">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <div className="space-y-1">
-              <h4 className="text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center sm:justify-start gap-2">
-                <Share2 className="w-4 h-4 text-[#4A90E2]" />
+              <h4 className="text-black text-xs font-black uppercase tracking-widest flex items-center justify-center sm:justify-start gap-2">
+                <Share2 className="w-4 h-4 text-black" />
                 <span>Condividete Facilissimo Web</span>
               </h4>
-              <p className="text-[11px] text-slate-400">Consigliate i nostri servizi di Web Graphic Design strategico e Lead Generation ai vostri colleghi e contatti professionali.</p>
+              <p className="text-[11px] text-neutral-900 font-medium">Consigliate i nostri servizi di Web Graphic Design strategico e Lead Generation ai vostri colleghi e contatti professionali.</p>
             </div>
             <div className="flex flex-wrap gap-4 justify-center">
               {/* WhatsApp */}
@@ -216,15 +216,15 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
 
         <div 
           style={{
-            backgroundColor: '#f9f0f0',
+            backgroundColor: 'rgba(0, 0, 0, 0.12)',
             paddingTop: '35px',
             marginLeft: '0px',
             paddingLeft: '23px',
             paddingBottom: '28px'
           }}
-          className="border-t border-white/10 mt-12 flex flex-col gap-6 w-full text-[10px] uppercase tracking-wider text-neutral-600"
+          className="border-t border-black/15 mt-12 flex flex-col gap-6 w-full text-[10px] uppercase tracking-wider text-black font-extrabold"
         >
-          <div id="footer-copyright" className="text-neutral-600 text-left w-full leading-relaxed space-y-3">
+          <div id="footer-copyright" className="text-black text-left w-full leading-relaxed space-y-3">
             <p
               style={{
                 paddingBottom: '3px',
@@ -235,7 +235,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
             >
               &copy; {currentYear} FACILISSIMO WEB di Maria Teresa Rogani. Tutti i diritti di proprietà intellettuale, design visivo, codice sorgente e layout d'interfaccia sono riservati in tutta l'Unione Europea. Ogni utilizzo non autorizzato sarà perseguito a norma di legge.
             </p>
-            <hr className="border-black/10 dark:border-white/10 w-full" />
+            <hr className="border-black/20 w-full" />
             <p
               style={{
                 marginLeft: '-7px',
@@ -249,18 +249,18 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               P.IVA: 02136780430 | Partner Digitale Strategico con sede operativa in Italia. Sviluppato e ottimizzato secondo i più elevati standard tecnologici internazionali del W3C per massimizzare la velocità di caricamento, l'accessibilità digitale e i tassi di conversione della lead generation strategica attraverso soluzioni di Intelligenza Artificiale d'avanguardia integrate.
             </p>
           </div>
-          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-black/10 dark:border-white/10 w-full justify-start text-neutral-500">
-            <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Privacy Policy</button>
-            <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Cookie Policy</button>
-            <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Termini di Servizio</button>
+          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-black/20 w-full justify-start text-black">
+            <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-neutral-800 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-black">Privacy Policy</button>
+            <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-neutral-800 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-black">Cookie Policy</button>
+            <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-neutral-800 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-black">Termini di Servizio</button>
             {onWebVitalsClick && (
               <button 
                 id="btn-web-vitals-toggle-mobile" 
                 onClick={onWebVitalsClick} 
-                className="text-[#bef264] hover:text-[#a3e635] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold flex items-center space-x-1.5"
+                className="text-black hover:text-neutral-800 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black flex items-center space-x-1.5"
                 title="Monitor Core Web Vitals"
               >
-                <Activity className="w-3.5 h-3.5 animate-pulse" />
+                <Activity className="w-3.5 h-3.5 animate-pulse text-black" />
                 <span>Dev Performance</span>
               </button>
             )}

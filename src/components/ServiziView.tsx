@@ -233,7 +233,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
               <button
                 id="servizi-hero-cta"
                 onClick={() => setActiveTab('contatti')}
-                className="px-8 py-3.5 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Iniziate Ora
               </button>
@@ -310,9 +310,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <button
                   id="tab-selector-cms"
                   onClick={() => setActiveCategory('cms')}
-                  className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                  className={`px-5 py-3 rounded-none text-xs font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activeCategory === 'cms'
-                      ? 'bg-[#d69429] text-white'
+                      ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black shadow-md'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -322,9 +322,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <button
                   id="tab-selector-custom"
                   onClick={() => setActiveCategory('custom')}
-                  className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                  className={`px-5 py-3 rounded-none text-xs font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activeCategory === 'custom'
-                      ? 'bg-[#d69429] text-white'
+                      ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black shadow-md'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -334,9 +334,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <button
                   id="tab-selector-social"
                   onClick={() => setActiveCategory('social')}
-                  className={`px-5 py-3 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                  className={`px-5 py-3 rounded-none text-xs font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activeCategory === 'social'
-                      ? 'bg-[#d69429] text-white'
+                      ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black shadow-md'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -395,10 +395,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab('contatti')}
-                          className="w-full mt-4 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                          className="w-full mt-4 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-none transition-all duration-300 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                         >
                           <span>Selezionate questo pacchetto</span>
-                          <ChevronRight className="w-4 h-4 text-white" />
+                          <ChevronRight className="w-4 h-4 text-black" />
                         </button>
                       </div>
                     </div>
@@ -452,10 +452,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab('contatti')}
-                          className="w-full mt-4 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                          className="w-full mt-4 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-none transition-all duration-300 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                         >
                           <span>Inizializzate lo sviluppo custom</span>
-                          <ChevronRight className="w-4 h-4 text-white" />
+                          <ChevronRight className="w-4 h-4 text-black" />
                         </button>
                       </div>
                     </div>
@@ -509,10 +509,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                         </p>
                         <button
                           onClick={() => setActiveTab('contatti')}
-                          className="w-full mt-4 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                          className="w-full mt-4 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-none transition-all duration-300 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                         >
                           <span>Selezionate questa strategia</span>
-                          <ChevronRight className="w-4 h-4 text-white" />
+                          <ChevronRight className="w-4 h-4 text-black" />
                         </button>
                       </div>
                     </div>
@@ -538,9 +538,9 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                   key={phase.phase}
                   id={`phase-tab-${phase.phase}`}
                   onClick={() => setActivePhase(phase.phase)}
-                  className={`px-4 py-2.5 rounded-none text-[10px] font-bold uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
+                  className={`px-4 py-2.5 rounded-none text-[10px] font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-2 cursor-pointer font-mono ${
                     activePhase === phase.phase
-                      ? 'bg-[#d69429] text-white shadow-md'
+                      ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black shadow-md'
                       : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
                   }`}
                 >
@@ -601,10 +601,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
                 <div className="pt-2">
                   <button
                     onClick={() => setActiveTab('contatti')}
-                    className="w-full py-2.5 bg-transparent border border-white/20 hover:border-white text-white font-bold text-[10px] uppercase tracking-wider rounded-none transition-colors duration-150 flex items-center justify-center space-x-1 font-mono cursor-pointer"
+                    className="w-full py-2.5 bg-transparent border-2 border-[#f4700a] hover:bg-[#f4700a]/10 text-[#f4700a] hover:text-[#ff8c3a] font-bold text-[10px] uppercase tracking-wider rounded-none transition-all duration-300 flex items-center justify-center space-x-1 font-mono cursor-pointer"
                   >
                     <span>Chiedete informazioni</span>
-                    <ChevronRight className="w-4 h-4 text-white" />
+                    <ChevronRight className="w-4 h-4 text-inherit" />
                   </button>
                 </div>
               </div>
@@ -626,10 +626,10 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
             <div className="md:col-span-4 flex justify-end">
               <button
                 onClick={() => setActiveTab('contatti')}
-                className="px-6 py-3 bg-[#d69429] hover:bg-[#ab7621] text-white font-bold text-xs uppercase tracking-[0.2em] rounded-none transition-colors duration-150 shadow-md flex items-center space-x-2 w-full md:w-auto justify-center font-mono cursor-pointer"
+                className="px-6 py-3 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black font-black text-xs uppercase tracking-[0.2em] rounded-none transition-all duration-300 shadow-md flex items-center space-x-2 w-full md:w-auto justify-center font-mono cursor-pointer"
               >
                 <span>Contattatemi Ora</span>
-                <ArrowRight className="w-4 h-4 text-white" />
+                <ArrowRight className="w-4 h-4 text-black" />
               </button>
             </div>
           </div>

@@ -68,7 +68,7 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
               <button
                 id="chi-sono-hero-cta"
                 onClick={() => setActiveTab('contatti')}
-                className="px-8 py-3.5 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
+                className="px-8 py-3.5 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
               >
                 Parliamo del Vostro Progetto
               </button>
@@ -317,10 +317,10 @@ export default function ChiSonoView({ setActiveTab }: ChiSonoViewProps) {
           <div className="pt-2">
             <button
               onClick={() => setActiveTab('contatti')}
-              className="px-8 py-4 bg-[#d69429] hover:bg-[#ab7621] text-white text-xs font-bold uppercase tracking-[0.2em] transition-all duration-200 inline-flex items-center space-x-2 cursor-pointer font-mono"
+              className="px-8 py-4 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 inline-flex items-center space-x-2 cursor-pointer font-mono shadow-md"
             >
               <span>Contattami per una Sessione Strategica</span>
-              <ArrowRight className="w-4 h-4 text-white" />
+              <ArrowRight className="w-4 h-4 text-black" />
             </button>
           </div>
         </div>
