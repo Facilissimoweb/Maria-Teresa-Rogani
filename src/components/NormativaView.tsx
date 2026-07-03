@@ -181,9 +181,9 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
               <span style={{ fontSize: '15px' }}>SICUREZZA DIGITALE & LEGALITÀ</span>
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.85] font-display uppercase">
-              Normativa &<br />
-              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent italic">Compliance</span>
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.85] font-display uppercase">
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block">Normativa &</span>
+              <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic">Compliance</span>
             </h1>
             
             <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl font-light">
