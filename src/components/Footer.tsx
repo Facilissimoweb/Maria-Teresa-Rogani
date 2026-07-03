@@ -104,42 +104,42 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               <li>
                 <button 
                   onClick={() => handleLinkClick('home')} 
-                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white"
+                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white !text-white"
                 >
-                  <span>Inizio (Home)</span>
+                  <span className="text-white hover:text-[#f4700a]">Inizio (Home)</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => handleLinkClick('chi-sono')} 
-                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white"
+                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white !text-white"
                 >
-                  <span>Chi Sono (Biografia)</span>
+                  <span className="text-white hover:text-[#f4700a]">Chi Sono (Biografia)</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => handleLinkClick('servizi')} 
-                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white"
+                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white !text-white"
                 >
-                  <span>Servizi & Processo</span>
+                  <span className="text-white hover:text-[#f4700a]">Servizi & Processo</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => handleLinkClick('contatti')} 
-                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white"
+                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left text-white !text-white"
                 >
-                  <span>Prenotazione & Contatti</span>
+                  <span className="text-white hover:text-[#f4700a]">Prenotazione & Contatti</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={onSitemapClick} 
-                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left font-black text-white"
+                  className="hover:text-[#f4700a] hover:underline transition-colors duration-150 flex items-center space-x-1 cursor-pointer text-left font-black text-white !text-white"
                   id="footer-sitemap-btn"
                 >
-                  <span>Mappa del Sito (Sitemap)</span>
+                  <span className="text-white hover:text-[#f4700a]">Mappa del Sito (Sitemap)</span>
                 </button>
               </li>
             </ul>
@@ -186,7 +186,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-white shrink-0 mt-0.5" />
-                <span>Servizio Attivo su Scala Nazionale ed Internazionale</span>
+                <span className="text-white">Servizio Attivo su Scala Nazionale ed Internazionale</span>
               </li>
             </ul>
           </div>
@@ -282,6 +282,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 paddingRight: '26px',
                 textAlign: 'center'
               }}
+              className="text-white !text-white"
             >
               &copy; {currentYear} FACILISSIMO WEB di Maria Teresa Rogani. Tutti i diritti di proprietà intellettuale, design visivo, codice sorgente e layout d'interfaccia sono riservati in tutta l'Unione Europea. Ogni utilizzo non autorizzato sarà perseguito a norma di legge.
             </p>
@@ -295,23 +296,24 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 paddingLeft: '8px',
                 textAlign: 'center'
               }}
+              className="text-white !text-white"
             >
               P.IVA: 02136780430 | Partner Digitale Strategico con sede operativa in Italia. Sviluppato e ottimizzato secondo i più elevati standard tecnologici internazionali del W3C per massimizzare la velocità di caricamento, l'accessibilità digitale e i tassi di conversione della lead generation strategica attraverso soluzioni di Intelligenza Artificiale d'avanguardia integrate.
             </p>
           </div>
-          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-white/10 w-full justify-start text-white">
-            <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-white">Privacy Policy</button>
-            <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-white">Cookie Policy</button>
-            <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-white">Termini di Servizio</button>
+          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-white/10 w-full justify-start text-white !text-white">
+            <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-white !text-white">Privacy Policy</button>
+            <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-white !text-white">Cookie Policy</button>
+            <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black text-white !text-white">Termini di Servizio</button>
             {onWebVitalsClick && (
               <button 
                 id="btn-web-vitals-toggle-mobile" 
                 onClick={onWebVitalsClick} 
-                className="text-white hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black flex items-center space-x-1.5"
+                className="text-white hover:text-[#f4700a] cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-black flex items-center space-x-1.5 !text-white"
                 title="Monitor Core Web Vitals"
               >
                 <Activity className="w-3.5 h-3.5 animate-pulse text-white" />
-                <span>Dev Performance</span>
+                <span className="text-white">Dev Performance</span>
               </button>
             )}
           </div>

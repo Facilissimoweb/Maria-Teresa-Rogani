@@ -78,8 +78,8 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic" style={{ fontSize: '43px' }}>Performance.</span>
             </h1>
 
-            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl">
-              Siti Web ad Elevata Conversione, <span className="text-white font-sans font-light capitalize text-base sm:text-lg block mt-1">Progettati con Rigore e Strategia.</span>
+            <h2 className="text-xl sm:text-2xl font-display uppercase text-[#d69429] tracking-wide font-bold leading-relaxed max-w-2xl" style={{ fontSize: '30px' }}>
+              Siti Web ad Elevata Conversione, <span className="text-white block mt-1 capitalize" style={{ fontWeight: 'bold', fontFamily: 'Geist, sans-serif', fontSize: '19px' }}>Progettati con Rigore e Strategia.</span>
             </h2>
             
             <GlossaryParagraph id="hero-description-paragraph" className="text-base text-slate-400 font-normal leading-relaxed max-w-2xl text-left">
