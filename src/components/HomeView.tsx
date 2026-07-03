@@ -10,17 +10,43 @@ interface HomeViewProps {
 }
 
 export default function HomeView({ setActiveTab }: HomeViewProps) {
+  const [scrollY, setScrollY] = React.useState(0);
+
+  React.useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Move the background image down at 35% of the scroll speed
+  const parallaxOffset = scrollY * 0.35;
+
   return (
     <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
       <section id="hero-section" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
 
         {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img 
             src={heroImg} 
             alt="Facilissimo Web Studio Background" 
-            className="w-full h-full object-cover object-center scale-100"
+            className="absolute left-0 w-full h-[140%] -top-[20%] object-cover object-center scale-105"
+            style={{
+              transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+              willChange: 'transform'
+            }}
             referrerPolicy="no-referrer"
           />
           {/* Subtle gradient overlay to allow the background photo to be beautifully visible while keeping text readable */}
