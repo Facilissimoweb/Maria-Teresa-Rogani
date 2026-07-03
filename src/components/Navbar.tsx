@@ -168,24 +168,6 @@ export default function Navbar({
             <div>
               <span className="text-xs sm:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.18em] text-white block leading-none">
                 <span className="sm:inline hidden">FACILISSIMO</span>
-                <span 
-                  style={{
-                    fontSize: '14px',
-                    textAlign: 'left',
-                    fontStyle: 'italic',
-                    lineHeight: '9px',
-                    fontFamily: 'system-ui',
-                    marginRight: '0px',
-                    marginBottom: '0px',
-                    paddingBottom: '5px',
-                    paddingTop: '0px',
-                    paddingLeft: '0px',
-                    paddingRight: '14px'
-                  }}
-                  className="sm:hidden inline text-[9px] tracking-normal font-bold"
-                >
-                  SITI WEB AD ELEVATA CONVERSIONE
-                </span>
               </span>
             </div>
           </div>

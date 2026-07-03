@@ -152,17 +152,17 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
               </h4>
               <p className="text-[11px] text-slate-400">Consigliate i nostri servizi di Web Graphic Design strategico e Lead Generation ai vostri colleghi e contatti professionali.</p>
             </div>
-            <div className="flex flex-wrap gap-2.5 justify-center">
+            <div className="flex flex-wrap gap-4 justify-center">
               {/* WhatsApp */}
               <a
                 href={`https://api.whatsapp.com/send?text=${encodeURIComponent("Facilissimo Web di M. Teresa Rogani - Web Graphic Design Strategico e Lead Generation Certificata per lo sviluppo professionale della Vostra presenza digitale. Visita il sito: " + shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 px-4 py-2 bg-[#f4700a]/10 hover:bg-[#f4700a] hover:text-white text-[#f4700a] text-[10px] font-bold uppercase tracking-widest border border-[#f4700a]/20 transition-all cursor-pointer"
+                style={{ backgroundColor: '#25D366' }}
+                className="flex items-center justify-center w-10 h-10 rounded-full text-white transition-all hover:scale-105 cursor-pointer shadow-lg"
                 title="Condividi su WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>WhatsApp</span>
+                <MessageCircle className="w-5 h-5" />
               </a>
 
               {/* LinkedIn */}
@@ -170,11 +170,11 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 px-4 py-2 bg-blue-700/10 hover:bg-blue-700 hover:text-white text-blue-400 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20 transition-all cursor-pointer"
+                style={{ backgroundColor: '#0077B5' }}
+                className="flex items-center justify-center w-10 h-10 rounded-full text-white transition-all hover:scale-105 cursor-pointer shadow-lg"
                 title="Condividi su LinkedIn"
               >
-                <Linkedin className="w-3.5 h-3.5" />
-                <span>LinkedIn</span>
+                <Linkedin className="w-5 h-5" />
               </a>
 
               {/* Facebook */}
@@ -182,11 +182,11 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 px-4 py-2 bg-blue-800/10 hover:bg-blue-800 hover:text-white text-blue-500 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20 transition-all cursor-pointer"
+                style={{ backgroundColor: '#1877F2' }}
+                className="flex items-center justify-center w-10 h-10 rounded-full text-white transition-all hover:scale-105 cursor-pointer shadow-lg"
                 title="Condividi su Facebook"
               >
-                <Facebook className="w-3.5 h-3.5" />
-                <span>Facebook</span>
+                <Facebook className="w-5 h-5" />
               </a>
 
               {/* Twitter/X */}
@@ -194,33 +194,62 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent("Siti web professionali ad elevate prestazioni con Facilissimo Web, di M. Teresa Rogani.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 px-4 py-2 bg-slate-800/20 hover:bg-slate-800 hover:text-white text-slate-300 text-[10px] font-bold uppercase tracking-widest border border-slate-700/30 transition-all cursor-pointer"
+                style={{ backgroundColor: '#000000' }}
+                className="flex items-center justify-center w-10 h-10 rounded-full text-white transition-all hover:scale-105 cursor-pointer shadow-lg"
                 title="Condividi su Twitter/X"
               >
-                <Twitter className="w-3.5 h-3.5" />
-                <span>Twitter / X</span>
+                <Twitter className="w-5 h-5" />
               </a>
 
               {/* Email */}
               <a
                 href={`mailto:?subject=${encodeURIComponent("Consiglio Partner Digitale Strategico: Facilissimo Web")}&body=${encodeURIComponent("Ciao,\n\nti consiglio di esaminare i servizi offerti da Facilissimo Web (fondato da M. Teresa Rogani), un partner d'eccellenza per la progettazione visiva e la lead generation della tua impresa.\n\nSito web: " + shareUrl)}`}
-                className="flex items-center space-x-1.5 px-4 py-2 bg-rose-600/10 hover:bg-rose-600 hover:text-white text-rose-400 text-[10px] font-bold uppercase tracking-widest border border-rose-500/20 transition-all cursor-pointer"
+                style={{ backgroundColor: '#EA4335' }}
+                className="flex items-center justify-center w-10 h-10 rounded-full text-white transition-all hover:scale-105 cursor-pointer shadow-lg"
                 title="Consiglia via Email"
               >
-                <Mail className="w-3.5 h-3.5" />
-                <span>Invia per Email</span>
+                <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col gap-6 w-full text-[10px] uppercase tracking-wider text-slate-500">
-          <div id="footer-copyright" className="text-slate-500 text-left w-full leading-relaxed space-y-3">
-            <p>&copy; {currentYear} FACILISSIMO WEB di Maria Teresa Rogani. Tutti i diritti di proprietà intellettuale, design visivo, codice sorgente e layout d'interfaccia sono riservati in tutta l'Unione Europea. Ogni utilizzo non autorizzato sarà perseguito a norma di legge.</p>
+        <div 
+          style={{
+            backgroundColor: '#f9f0f0',
+            paddingTop: '35px',
+            marginLeft: '0px',
+            paddingLeft: '23px',
+            paddingBottom: '28px'
+          }}
+          className="border-t border-white/10 mt-12 flex flex-col gap-6 w-full text-[10px] uppercase tracking-wider text-neutral-600"
+        >
+          <div id="footer-copyright" className="text-neutral-600 text-left w-full leading-relaxed space-y-3">
+            <p
+              style={{
+                paddingBottom: '3px',
+                paddingTop: '0px',
+                paddingRight: '26px',
+                textAlign: 'center'
+              }}
+            >
+              &copy; {currentYear} FACILISSIMO WEB di Maria Teresa Rogani. Tutti i diritti di proprietà intellettuale, design visivo, codice sorgente e layout d'interfaccia sono riservati in tutta l'Unione Europea. Ogni utilizzo non autorizzato sarà perseguito a norma di legge.
+            </p>
             <hr className="border-black/10 dark:border-white/10 w-full" />
-            <p>P.IVA: 02136780430 | Partner Digitale Strategico con sede operativa in Italia. Sviluppato e ottimizzato secondo i più elevati standard tecnologici internazionali del W3C per massimizzare la velocità di caricamento, l'accessibilità digitale e i tassi di conversione della lead generation strategica attraverso soluzioni di Intelligenza Artificiale d'avanguardia integrate.</p>
+            <p
+              style={{
+                marginLeft: '-7px',
+                paddingTop: '6px',
+                paddingBottom: '8px',
+                marginRight: '26px',
+                paddingLeft: '8px',
+                textAlign: 'center'
+              }}
+            >
+              P.IVA: 02136780430 | Partner Digitale Strategico con sede operativa in Italia. Sviluppato e ottimizzato secondo i più elevati standard tecnologici internazionali del W3C per massimizzare la velocità di caricamento, l'accessibilità digitale e i tassi di conversione della lead generation strategica attraverso soluzioni di Intelligenza Artificiale d'avanguardia integrate.
+            </p>
           </div>
-          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-black/10 dark:border-white/10 w-full justify-start text-slate-500">
+          <div id="footer-legal-links" className="flex flex-wrap gap-4 pt-4 border-t border-black/10 dark:border-white/10 w-full justify-start text-neutral-500">
             <button onClick={() => onLegalClick && onLegalClick('privacy')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Privacy Policy</button>
             <button onClick={() => onLegalClick && onLegalClick('cookie')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Cookie Policy</button>
             <button onClick={() => onLegalClick && onLegalClick('terms')} className="hover:text-slate-400 cursor-pointer bg-transparent border-none text-[10px] uppercase tracking-wider font-bold">Termini di Servizio</button>
