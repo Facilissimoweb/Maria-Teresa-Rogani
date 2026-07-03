@@ -204,12 +204,12 @@ export function GlossaryWord({ termKey, children }: GlossaryWordProps) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="font-medium border-b border-dashed border-[#4A90E2] hover:border-solid hover:text-[#4A90E2] transition-colors focus:outline-none cursor-help text-inherit inline-flex items-center gap-0.5"
+        className="font-medium border-b border-dashed border-[#f4700a] hover:border-solid hover:text-[#f4700a] transition-colors focus:outline-none cursor-help text-inherit inline-flex items-center gap-0.5"
         title="Clicca per visualizzare la definizione"
         id={`glossary-btn-${termKey}`}
       >
         {children}
-        <HelpCircle className="w-3 h-3 text-[#4A90E2]/60 inline-block align-middle ml-0.5" />
+        <HelpCircle className="w-3 h-3 text-[#f4700a]/80 inline-block align-middle ml-0.5" />
       </button>
 
       <AnimatePresence>
@@ -219,11 +219,11 @@ export function GlossaryWord({ termKey, children }: GlossaryWordProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-72 sm:w-80 bg-slate-900 border border-slate-800 text-slate-200 p-4 rounded-lg shadow-2xl z-50 text-left block pointer-events-auto leading-normal font-sans"
+            className="fixed bottom-4 left-4 right-4 max-w-sm mx-auto z-50 sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:bottom-full sm:mb-2 sm:w-80 sm:right-auto sm:bottom-auto bg-[#111113] border-2 border-[#f4700a] text-slate-100 p-4 rounded-none shadow-2xl text-left block pointer-events-auto leading-normal font-sans"
             id={`glossary-popover-${termKey}`}
           >
             {/* Popover Header */}
-            <span className="flex items-center justify-between border-b border-slate-800 pb-2 mb-2 block">
+            <span className="flex items-center justify-between border-b border-white/10 pb-2 mb-2 block">
               <span className="flex items-center gap-1.5">
                 <span className={`w-2 h-2 rounded-full ${getCategoryColor(definition.category).split(' ')[0]}`} />
                 <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">
@@ -236,7 +236,7 @@ export function GlossaryWord({ termKey, children }: GlossaryWordProps) {
                   e.stopPropagation();
                   setIsOpen(false);
                 }}
-                className="text-slate-500 hover:text-slate-300 transition-colors p-0.5 hover:bg-slate-800 rounded"
+                className="text-slate-500 hover:text-[#f4700a] transition-colors p-0.5 hover:bg-white/5 rounded-none"
                 title="Chiudi spiegazione"
                 id={`glossary-close-${termKey}`}
               >
@@ -250,7 +250,7 @@ export function GlossaryWord({ termKey, children }: GlossaryWordProps) {
             </strong>
 
             {/* Explanations */}
-            <span className="text-xs text-[#4A90E2] block mb-1.5 font-medium leading-relaxed">
+            <span className="text-xs text-[#f4700a] block mb-1.5 font-medium leading-relaxed">
               {definition.shortDesc}
             </span>
             <span className="text-xs text-slate-400 block leading-relaxed mb-3">
@@ -258,16 +258,16 @@ export function GlossaryWord({ termKey, children }: GlossaryWordProps) {
             </span>
 
             {/* Context Link */}
-            <span className="text-[10px] text-slate-500 flex items-center justify-between pt-2 border-t border-slate-800 block">
+            <span className="text-[10px] text-slate-500 flex items-center justify-between pt-2 border-t border-white/10 block">
               <span>Clicca fuori per chiudere</span>
               <span className="flex items-center gap-1 font-mono text-slate-400">
-                INFO <ExternalLink className="w-2.5 h-2.5" />
+                INFO <ExternalLink className="w-2.5 h-2.5 text-[#f4700a]" />
               </span>
             </span>
 
             {/* Caret Anchor */}
-            <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-slate-900 block" />
-            <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-slate-800 z-[-1] block -mt-[1px]" />
+            <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-[#111113] hidden sm:block" />
+            <span className="absolute top-full left-1/2 -translate-x-1/2 border-[10px] border-transparent border-t-[#f4700a] z-[-1] hidden sm:block -mt-[1px]" />
           </motion.span>
         )}
       </AnimatePresence>
