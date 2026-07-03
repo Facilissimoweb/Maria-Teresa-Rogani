@@ -164,7 +164,9 @@ export default function Navbar({
               fontFamily: "'Oswald', sans-serif",
               fontStyle: 'italic',
               fontSize: '25px',
-              fontWeight: 700
+              fontWeight: 700,
+              paddingBottom: '0px',
+              marginTop: '11px'
             }}
           >
             FACILISSIMO WEB
@@ -178,7 +180,31 @@ export default function Navbar({
           className="p-2 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none flex items-center justify-center cursor-pointer text-black"
           aria-label="Apri menu"
         >
-          {isOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6 text-black" />}
+          {isOpen ? (
+            <X 
+              className="text-black" 
+              style={{
+                marginTop: '10px',
+                borderWidth: '1px',
+                borderStyle: 'none',
+                borderRadius: '0px',
+                width: '50px',
+                height: '38px'
+              }}
+            />
+          ) : (
+            <Menu 
+              className="text-black" 
+              style={{
+                marginTop: '10px',
+                borderWidth: '1px',
+                borderStyle: 'none',
+                borderRadius: '0px',
+                width: '50px',
+                height: '38px'
+              }}
+            />
+          )}
         </button>
       </div>
 
