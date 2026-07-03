@@ -56,16 +56,16 @@ export default function SitemapModal({ isOpen, onClose, setActiveTab, onLegalCli
       {/* Dialog container */}
       <div 
         id="sitemap-modal-body"
-        className="relative bg-[#111113] border-2 border-[#10B981] shadow-2xl p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-slideUp text-left rounded-none"
+        className="relative bg-[#111113] border-2 border-[#f4700a] shadow-2xl p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-slideUp text-left rounded-none"
       >
         {/* Header */}
         <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-6">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-[#bef264] text-black">
+            <div className="p-2 bg-[#f4700a] text-white">
               <Network className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#bef264] font-mono">ARCHITETTURA SITO</h3>
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#f4700a] font-mono">ARCHITETTURA SITO</h3>
               <p className="text-lg font-black uppercase text-white leading-none mt-1 font-display">MAPPA DEL SITO (SITEMAP)</p>
             </div>
           </div>

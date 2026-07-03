@@ -258,13 +258,13 @@ export default function Navbar({
                   activeTab === 'fogli'
                     ? 'text-amber-500 border-slate-200/20 bg-amber-500/5'
                     : isAdmin
-                      ? 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-500'
+                      ? 'text-[#f4700a] dark:text-[#f4700a] hover:text-orange-500'
                       : 'text-slate-400 hover:text-[#0A192F] dark:hover:text-white'
                 }`}
                 title={isAdmin ? "Area Riservata Sbloccata" : "Accesso Area Riservata"}
                 aria-label="Area Riservata"
               >
-                {isAdmin ? <Unlock className="w-5 h-5 text-emerald-500" /> : <Lock className="w-5 h-5" />}
+                {isAdmin ? <Unlock className="w-5 h-5 text-[#f4700a]" /> : <Lock className="w-5 h-5" />}
                 <span className="text-[10px] font-mono font-bold uppercase ml-1.5 hidden md:inline">
                   {isAdmin ? "Sbloccato" : "Area Riservata"}
                 </span>
@@ -288,7 +288,7 @@ export default function Navbar({
                 onClick={() => setAccessibilityOpen(!accessibilityOpen)}
                 style={{ backgroundColor: '#3a3a35' }}
                 className={`p-1.5 transition-colors cursor-pointer ${
-                  accessibilityOpen ? 'text-[#10B981]' : 'text-white hover:text-[#10B981]'
+                  accessibilityOpen ? 'text-[#f4700a]' : 'text-white hover:text-[#f4700a]'
                 }`}
                 aria-label="Opzioni di Accessibilità"
                 title="Accessibilità"
@@ -301,7 +301,7 @@ export default function Navbar({
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="p-1.5 text-white hover:text-[#10B981] transition-colors cursor-pointer flex items-center justify-center space-x-1"
+                className="p-1.5 text-white hover:text-[#f4700a] transition-colors cursor-pointer flex items-center justify-center space-x-1"
                 aria-label="Cambia lingua"
                 title="Lingua"
               >
@@ -317,14 +317,14 @@ export default function Navbar({
                         key={lang.code}
                         onClick={() => handleLanguageChange(lang.code)}
                         className={`w-full text-left px-4 py-2 text-xs font-bold uppercase tracking-wider hover:bg-white/5 cursor-pointer flex items-center justify-between ${
-                          activeLang === lang.code ? 'text-[#10B981]' : 'text-slate-200'
+                          activeLang === lang.code ? 'text-[#f4700a]' : 'text-slate-200'
                         }`}
                       >
                         <div className="flex items-center space-x-2">
                           <span className="text-sm">{lang.flag}</span>
                           <span>{lang.label}</span>
                         </div>
-                        {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#10B981] rounded-full" />}
+                        {activeLang === lang.code && <span className="w-1.5 h-1.5 bg-[#f4700a] rounded-full" />}
                       </button>
                     ))}
                   </div>
@@ -335,7 +335,7 @@ export default function Navbar({
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-[#10B981] p-1.5 focus:outline-none"
+              className="text-white hover:text-[#f4700a] p-1.5 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="w-6 h-6" style={{ backgroundColor: '#3a3a35' }} /> : <Menu className="w-6 h-6" style={{ backgroundColor: '#3a3a35' }} />}
@@ -363,7 +363,7 @@ export default function Navbar({
                       ? 'bg-amber-500/10 text-amber-500 border-l-4 border-amber-500 font-extrabold'
                       : 'bg-amber-500/5 text-amber-600 border border-amber-500/10'
                     : activeTab === item.id
-                      ? 'bg-white/5 text-white border-l-4 border-[#10B981]'
+                      ? 'bg-white/5 text-white border-l-4 border-[#f4700a]'
                       : 'text-slate-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
@@ -382,7 +382,7 @@ export default function Navbar({
                 className="block w-full text-left px-4 py-3 rounded text-xs font-bold tracking-[0.15em] uppercase transition-all duration-150 cursor-pointer flex items-center justify-between text-slate-300 bg-white/5 border border-white/10 hover:text-white hover:bg-white/10"
               >
                 <span className="flex items-center space-x-2">
-                  <Lock className="w-4 h-4 text-[#10B981]" />
+                  <Lock className="w-4 h-4 text-[#f4700a]" />
                   <span>Area Riservata</span>
                 </span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
@@ -394,7 +394,7 @@ export default function Navbar({
                 id="mobile-nav-cta"
                 onClick={() => handleNavClick('contatti')}
                 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '12px' }}
-                className="w-full text-center py-3 border-2 border-[#10B981] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#10B981] hover:text-white text-[#10B981] transition-all duration-200"
+                className="w-full text-center py-3 border-2 border-[#f4700a] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#f4700a] hover:text-white text-[#f4700a] transition-all duration-200"
               >
                 Area Clienti & Richiesta
               </button>

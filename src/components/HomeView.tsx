@@ -13,11 +13,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
   return (
     <article id="home-view" className="animate-fadeIn">
       {/* HERO SECTION */}
-      <section id="hero-section" className="relative bg-[#000000] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
-
-        {/* Bright Orange Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#f4700a]/30 via-[#f4700a]/15 to-transparent pointer-events-none z-0 mix-blend-screen" />
-        <div className="absolute inset-0 bg-[#f4700a]/10 pointer-events-none z-0" />
+      <section id="hero-section" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
 
         {/* Background Decorative Polygon Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
@@ -259,7 +255,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
 
                 <div className="flex items-start space-x-3">
                   <div className="p-2 bg-white/5 border-t-2 border-[#d69429] text-white rounded-none mt-0.5 shrink-0">
-                    <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                    <ShieldCheck className="w-4 h-4 text-[#f4700a]" />
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-xs uppercase tracking-wider font-mono">Trasparenza Economica</h4>
@@ -294,7 +290,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-white/5">
                     <span className="text-white/50">Generazione Codice Base</span>
-                    <span className="text-emerald-400 font-bold">Assistita da AI Generative</span>
+                    <span className="text-[#f4700a] font-bold">Assistita da AI Generative</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-white/5">
                     <span className="text-white/50">Test & Controllo Sicurezza</span>

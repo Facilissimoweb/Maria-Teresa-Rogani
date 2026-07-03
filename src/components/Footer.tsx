@@ -158,7 +158,7 @@ export default function Footer({ setActiveTab, onLegalClick, onSitemapClick, onW
                 href={`https://api.whatsapp.com/send?text=${encodeURIComponent("Facilissimo Web di M. Teresa Rogani - Web Graphic Design Strategico e Lead Generation Certificata per lo sviluppo professionale della Vostra presenza digitale. Visita il sito: " + shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-emerald-600/10 hover:bg-emerald-600 hover:text-white text-emerald-400 text-[10px] font-bold uppercase tracking-widest border border-emerald-500/20 transition-all cursor-pointer"
+                className="px-4 py-2 bg-[#f4700a]/10 hover:bg-[#f4700a] hover:text-white text-[#f4700a] text-[10px] font-bold uppercase tracking-widest border border-[#f4700a]/20 transition-all cursor-pointer"
                 title="Condividi su WhatsApp"
               >
                 WhatsApp

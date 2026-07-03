@@ -417,8 +417,8 @@ export default function SheetsDashboard() {
         {/* Header Block */}
         <div className="border-b border-slate-200 dark:border-slate-800 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-2">
-            <div className="inline-flex items-center space-x-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/30 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">
-              <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+            <div className="inline-flex items-center space-x-2 bg-orange-500/10 dark:bg-orange-950/25 border border-orange-500/20 dark:border-orange-950/20 px-3.5 py-1.5 rounded text-[10px] font-bold tracking-[0.2em] uppercase text-[#f4700a] dark:text-[#f4700a]">
+              <FileSpreadsheet className="w-3.5 h-3.5 text-[#f4700a] shrink-0" />
               <span>Integrazione Google Sheets</span>
             </div>
             <h1 className="text-3xl font-light italic text-slate-900 dark:text-white">
@@ -455,8 +455,8 @@ export default function SheetsDashboard() {
         )}
 
         {successMsg && (
-          <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 text-xs text-emerald-700 flex items-start space-x-3 rounded-none">
-            <CheckCircle className="w-4.5 h-4.5 text-emerald-500 shrink-0" />
+          <div className="bg-orange-500/10 border-l-4 border-[#f4700a] p-4 text-xs text-[#f4700a] flex items-start space-x-3 rounded-none">
+            <CheckCircle className="w-4.5 h-4.5 text-[#f4700a] shrink-0" />
             <div className="space-y-1">
               <span className="font-bold">Completato:</span>
               <p>{successMsg}</p>
@@ -472,8 +472,8 @@ export default function SheetsDashboard() {
           </div>
         ) : !user ? (
           /* LOGIN BLOCK */
-          <div className="max-w-xl mx-auto bg-white dark:bg-[#0c1e36] border-2 border-emerald-500 p-8 text-center space-y-6 shadow-xl rounded-none">
-            <div className="w-16 h-16 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 rounded-none flex items-center justify-center mx-auto border border-emerald-200">
+          <div className="max-w-xl mx-auto bg-white dark:bg-[#0c1e36] border-2 border-[#f4700a] p-8 text-center space-y-6 shadow-xl rounded-none">
+            <div className="w-16 h-16 bg-orange-500/10 dark:bg-orange-950/20 text-[#f4700a] rounded-none flex items-center justify-center mx-auto border border-orange-500/20">
               <FileSpreadsheet className="w-10 h-10" />
             </div>
 
@@ -488,15 +488,15 @@ export default function SheetsDashboard() {
               <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Permessi e Sicurezza:</h4>
               <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                 <li className="flex items-center space-x-2">
-                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span className="text-[#f4700a] font-bold">✓</span>
                   <span><strong>Proprietà Assoluta:</strong> Nessun database di terze parti memorizzerà i tuoi dati.</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span className="text-[#f4700a] font-bold">✓</span>
                   <span><strong>Trasparenza GDPR:</strong> Pieno controllo sugli accessi tramite il tuo account Google.</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span className="text-[#f4700a] font-bold">✓</span>
                   <span><strong>Portabilità:</strong> Esporta e gestisci i dati in tempo reale in formato Excel o PDF.</span>
                 </li>
               </ul>
@@ -506,7 +506,7 @@ export default function SheetsDashboard() {
             <button 
               onClick={handleSignIn}
               style={{ width: '100%' }}
-              className="px-6 py-3.5 bg-[#10B981] hover:bg-[#10B981]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg flex items-center justify-center space-x-3 cursor-pointer transition-colors"
+              className="px-6 py-3.5 bg-[#f4700a] hover:bg-[#f4700a]/90 text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg flex items-center justify-center space-x-3 cursor-pointer transition-colors"
             >
               <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#FFF" />
@@ -555,9 +555,9 @@ export default function SheetsDashboard() {
               <div className="bg-white dark:bg-[#0c1e36] p-6 border border-slate-200 dark:border-slate-800 space-y-4">
                 <div className="flex items-center space-x-3.5">
                   {user.photoURL ? (
-                    <img src={user.photoURL} alt={user.displayName || 'Profilo'} className="w-12 h-12 rounded-full border-2 border-emerald-500" />
+                    <img src={user.photoURL} alt={user.displayName || 'Profilo'} className="w-12 h-12 rounded-full border-2 border-[#f4700a]" />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold">
+                    <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-[#f4700a] font-bold">
                       {user.displayName ? user.displayName[0] : 'G'}
                     </div>
                   )}
@@ -567,9 +567,9 @@ export default function SheetsDashboard() {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-emerald-500">
+                <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-[#f4700a]">
                   <div className="flex items-center space-x-1.5 font-bold uppercase tracking-wider text-[9px]">
-                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping" />
+                    <span className="w-1.5 h-1.5 bg-orange-500/100 rounded-full animate-ping" />
                     <span>Connesso via API</span>
                   </div>
                 </div>
@@ -583,9 +583,9 @@ export default function SheetsDashboard() {
                 </div>
 
                 {selectedSheetId ? (
-                  <div className="p-3 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/30 text-xs rounded-none space-y-1.5">
+                  <div className="p-3 bg-orange-500/10/70 dark:bg-orange-950/20 border border-orange-500/20 dark:border-orange-950/20 text-xs rounded-none space-y-1.5">
                     <span className="text-slate-400 block text-[9px] font-bold uppercase tracking-wider">Foglio Selezionato:</span>
-                    <span className="text-[#0A192F] dark:text-emerald-400 font-bold block truncate">{selectedSheetName}</span>
+                    <span className="text-[#0A192F] dark:text-[#f4700a] font-bold block truncate">{selectedSheetName}</span>
                     <span className="text-[10px] text-slate-400 block truncate font-mono">ID: {selectedSheetId}</span>
                     
                     <div className="pt-2 flex items-center space-x-3">
@@ -593,7 +593,7 @@ export default function SheetsDashboard() {
                         href={`https://docs.google.com/spreadsheets/d/${selectedSheetId}`} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-[10px] font-bold text-emerald-600 hover:underline flex items-center space-x-1 uppercase tracking-wider"
+                        className="text-[10px] font-bold text-[#f4700a] hover:underline flex items-center space-x-1 uppercase tracking-wider"
                       >
                         <span>Apri Foglio Real-time</span>
                         <ExternalLink className="w-3 h-3 shrink-0" />
@@ -610,7 +610,7 @@ export default function SheetsDashboard() {
                 <button
                   onClick={handleCreateNewSheet}
                   disabled={creatingSheet}
-                  className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-2 transition-colors cursor-pointer"
+                  className="w-full py-2.5 bg-[#f4700a] hover:bg-orange-600 disabled:bg-slate-300 text-white text-[10px] font-bold uppercase tracking-wider flex items-center justify-center space-x-2 transition-colors cursor-pointer"
                 >
                   {creatingSheet ? (
                     <>
@@ -649,7 +649,7 @@ export default function SheetsDashboard() {
                         onClick={() => handleSelectSheet(sheet.id, sheet.name)}
                         className={`p-2.5 border text-xs cursor-pointer transition-all flex items-center justify-between rounded-none ${
                           selectedSheetId === sheet.id
-                            ? 'border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/10'
+                            ? 'border-[#f4700a] bg-orange-500/10/50 dark:bg-orange-950/10'
                             : 'border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-white/5'
                         }`}
                       >
@@ -658,7 +658,7 @@ export default function SheetsDashboard() {
                           <span className="text-[9px] text-slate-400 font-mono block">Aggiornato il {sheet.createdTime ? new Date(sheet.createdTime).toLocaleDateString() : 'N/A'}</span>
                         </div>
                         {selectedSheetId === sheet.id && (
-                          <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                          <Check className="w-4 h-4 text-[#f4700a] shrink-0" />
                         )}
                       </div>
                     ))}
@@ -679,7 +679,7 @@ export default function SheetsDashboard() {
                     <p className="text-[10px] text-slate-400">Verifica o testa l'invio istantaneo dei dati</p>
                   </div>
                   
-                  <span className="text-[9px] bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400 font-bold px-2 py-1 uppercase tracking-wider">
+                  <span className="text-[9px] bg-orange-100 text-orange-800 dark:bg-orange-950/20 dark:text-[#f4700a] font-bold px-2 py-1 uppercase tracking-wider">
                     Connesso
                   </span>
                 </div>
@@ -733,7 +733,7 @@ export default function SheetsDashboard() {
                           Simulazione
                         </span>
                       ) : (
-                        <span className="inline-flex items-center space-x-1 px-1.5 py-0.5 text-[8px] font-bold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/30 text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
+                        <span className="inline-flex items-center space-x-1 px-1.5 py-0.5 text-[8px] font-bold bg-orange-500/10 dark:bg-orange-950/20 border border-orange-500/20 dark:border-orange-950/20 text-[#f4700a] dark:text-[#f4700a] uppercase tracking-widest">
                           Dati Reali
                         </span>
                       )}
@@ -779,12 +779,12 @@ export default function SheetsDashboard() {
 
                   {/* KPI 2: Pipeline value */}
                   <div className="p-4 bg-slate-50/50 dark:bg-slate-900/30 border border-slate-100 dark:border-slate-850/50 flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-emerald-500/10 text-emerald-500 flex items-center justify-center rounded border border-emerald-500/25 shrink-0">
+                    <div className="w-10 h-10 bg-orange-500/100/10 text-[#f4700a] flex items-center justify-center rounded border border-[#f4700a]/25 shrink-0">
                       <DollarSign className="w-5 h-5" />
                     </div>
                     <div className="space-y-0.5 min-w-0">
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">Valore Stimato</span>
-                      <span className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block leading-none">
+                      <span className="text-2xl font-bold font-mono text-[#f4700a] dark:text-[#f4700a] block leading-none">
                         € {stats.pipelineValue.toLocaleString('it-IT')}
                       </span>
                     </div>
@@ -824,21 +824,21 @@ export default function SheetsDashboard() {
                               <stop offset="95%" stopColor="#4A90E2" stopOpacity={0}/>
                             </linearGradient>
                             <linearGradient id="colorPipeline" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#10B981" stopOpacity={0.4}/>
-                              <stop offset="95%" stopColor="#10B981" stopOpacity={0}/>
+                              <stop offset="5%" stopColor="#f4700a" stopOpacity={0.4}/>
+                              <stop offset="95%" stopColor="#f4700a" stopOpacity={0}/>
                             </linearGradient>
                           </defs>
                           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" className="dark:hidden" />
                           <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" className="hidden dark:block" />
                           <XAxis dataKey="date" stroke="#94a3b8" fontSize={10} tickLine={false} />
                           <YAxis yAxisId="left" stroke="#4A90E2" fontSize={10} tickLine={false} label={{ value: 'Contatti', angle: -90, position: 'insideLeft', style: { fill: '#4a90e2', fontSize: 10, fontWeight: 'bold' } }} />
-                          <YAxis yAxisId="right" orientation="right" stroke="#10B981" fontSize={10} tickLine={false} label={{ value: 'Valore (€)', angle: 90, position: 'insideRight', style: { fill: '#10b981', fontSize: 10, fontWeight: 'bold' } }} />
+                          <YAxis yAxisId="right" orientation="right" stroke="#f4700a" fontSize={10} tickLine={false} label={{ value: 'Valore (€)', angle: 90, position: 'insideRight', style: { fill: '#f4700a', fontSize: 10, fontWeight: 'bold' } }} />
                           <Tooltip 
                             contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '11px' }}
                             labelStyle={{ fontWeight: 'bold', color: '#38bdf8' }}
                           />
                           <Area yAxisId="left" type="monotone" dataKey="leads" name="Nuovi Contatti" stroke="#4A90E2" strokeWidth={2} fillOpacity={1} fill="url(#colorLeads)" />
-                          <Area yAxisId="right" type="monotone" dataKey="pipeline" name="Valore Est. (€)" stroke="#10B981" strokeWidth={2} fillOpacity={1} fill="url(#colorPipeline)" />
+                          <Area yAxisId="right" type="monotone" dataKey="pipeline" name="Valore Est. (€)" stroke="#f4700a" strokeWidth={2} fillOpacity={1} fill="url(#colorPipeline)" />
                           <Legend wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
                         </AreaChart>
                       </ResponsiveContainer>
@@ -872,7 +872,7 @@ export default function SheetsDashboard() {
                             />
                             <Bar dataKey="value" name="Volume Richieste" fill="#6366F1" radius={[0, 4, 4, 0]}>
                               {stats.byProject.map((_entry, index) => {
-                                const colors = ['#4A90E2', '#10B981', '#6366F1', '#F59E0B', '#EC4899', '#8B5CF6'];
+                                const colors = ['#4A90E2', '#f4700a', '#6366F1', '#F59E0B', '#EC4899', '#8B5CF6'];
                                 return <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />;
                               })}
                             </Bar>
@@ -897,7 +897,7 @@ export default function SheetsDashboard() {
 
                   <div className="flex items-center space-x-6 text-xs font-mono">
                     <div className="flex items-center space-x-2">
-                      <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full inline-block" />
+                      <span className="w-2.5 h-2.5 bg-orange-500/100 rounded-full inline-block" />
                       <span className="text-slate-500">📞 Call Gratuita:</span>
                       <span className="font-bold text-slate-800 dark:text-white">{stats.callGratuitaCount}</span>
                     </div>
@@ -937,7 +937,7 @@ export default function SheetsDashboard() {
                   </div>
                 ) : loadingLeads ? (
                   <div className="flex flex-col items-center justify-center py-16 space-y-3">
-                    <Loader2 className="w-6 h-6 text-emerald-500 animate-spin" />
+                    <Loader2 className="w-6 h-6 text-[#f4700a] animate-spin" />
                     <span className="text-[10px] text-slate-400 font-mono">Caricamento record in corso...</span>
                   </div>
                 ) : leads.length === 0 ? (
@@ -981,7 +981,7 @@ export default function SheetsDashboard() {
                                 <span className="block text-[9px] text-slate-400">{row[9] || '-'}</span>
                               </div>
                             </td>
-                            <td className="py-3.5 px-3 whitespace-nowrap font-bold text-slate-900 dark:text-emerald-400 font-mono text-[11px]">
+                            <td className="py-3.5 px-3 whitespace-nowrap font-bold text-slate-900 dark:text-[#f4700a] font-mono text-[11px]">
                               {row[8] || '-'}
                             </td>
                           </tr>

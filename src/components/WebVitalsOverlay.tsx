@@ -256,15 +256,15 @@ export default function WebVitalsOverlay({ isOpen, setIsOpen }: WebVitalsOverlay
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed bottom-24 left-6 z-50 w-80 sm:w-96 bg-[#111113] text-slate-100 border-2 border-[#10B981] shadow-2xl p-4 font-sans overflow-hidden rounded-none"
+            className="fixed bottom-24 left-6 z-50 w-80 sm:w-96 bg-[#111113] text-slate-100 border-2 border-[#f4700a] shadow-2xl p-4 font-sans overflow-hidden rounded-none"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
               <div className="flex items-center space-x-2">
-                <Activity className="w-5 h-5 text-[#bef264]" />
+                <Activity className="w-5 h-5 text-[#f4700a]" />
                 <div>
                   <h3 className="text-xs font-extrabold uppercase tracking-widest text-white font-display">Core Web Vitals</h3>
-                  <p className="text-[9px] text-[#bef264] font-mono">Real-Time Monitor (Dev Tool)</p>
+                  <p className="text-[9px] text-[#f4700a] font-mono">Real-Time Monitor (Dev Tool)</p>
                 </div>
               </div>
               <div className="flex items-center space-x-1.5">

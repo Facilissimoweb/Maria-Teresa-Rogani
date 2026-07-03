@@ -90,8 +90,8 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
       date: 'Novembre/Dicembre 2026',
       title: 'Fase 3: Watermarking & Trasparenza',
       status: 'Scadenza imminente',
-      color: 'border-emerald-600 text-emerald-600 bg-emerald-50/5',
-      badgeColor: 'bg-emerald-500 text-white',
+      color: 'border-[#f4700a] text-[#f4700a] bg-orange-500/5',
+      badgeColor: 'bg-[#f4700a] text-white',
       details: 'Attivazione della marcatura tecnica per contenuti generati da IA. Interfacce trasparenti obbligatorie per chatbot ed assistenti virtuali.'
     },
     {
@@ -431,8 +431,8 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
 
                       {/* Milestone 2027 */}
                       <div className="relative">
-                        <div className="absolute -left-8.5 top-0.5 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black">3</div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 font-mono">Scadenze Future & Best Practices</span>
+                        <div className="absolute -left-8.5 top-0.5 bg-[#f4700a] text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black">3</div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#f4700a] font-mono">Scadenze Future & Best Practices</span>
                         <h5 className="text-xs font-bold uppercase text-white font-mono">Regola d'Oro per le Microimprese</h5>
                         <p className="text-xs text-white/50 mt-1 leading-relaxed">
                           Anche se formalmente esentati sotto i 10 dipendenti, l'adeguamento previene sanzioni indirette B2B, cause di discriminazione e aumenta la reach organica e SEO.
@@ -470,7 +470,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
                       { title: "Dichiarazione di Accessibilità", desc: "La redazione del documento standardizzato da pubblicare nel footer indicando canali di feedback." }
                     ].map((item, idx) => (
                       <div key={idx} className="bg-[#131311] p-4 border border-white/5 flex items-start space-x-3">
-                        <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-[#f4700a] shrink-0 mt-0.5" />
                         <div>
                           <h5 className="text-xs font-bold text-white uppercase tracking-wider font-mono">{item.title}</h5>
                           <p className="text-[11px] text-white/50 mt-1 leading-relaxed font-sans font-light">{item.desc}</p>

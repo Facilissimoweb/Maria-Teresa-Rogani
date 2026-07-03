@@ -335,7 +335,7 @@ export default function App() {
               <section id="trust-banner" className="lg:hidden bg-white border-t border-b border-slate-100 py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
                   <div className="flex items-center space-x-3.5">
-                    <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded">
+                    <div className="p-2.5 bg-orange-500/10 text-[#f4700a] rounded">
                       <ShieldCheck className="w-6 h-6" />
                     </div>
                     <div>

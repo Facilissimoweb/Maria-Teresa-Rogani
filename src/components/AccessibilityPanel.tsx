@@ -123,11 +123,11 @@ export default function AccessibilityPanel({
             <button
               onClick={() => setHighContrast(!highContrast)}
               className={`w-12 h-6 flex items-center rounded-full p-1 transition-all duration-300 cursor-pointer ${
-                highContrast ? 'bg-emerald-500 justify-end' : 'bg-slate-200 justify-start'
+                highContrast ? 'bg-[#f4700a] justify-end' : 'bg-slate-200 justify-start'
               }`}
             >
               <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-md">
-                {highContrast && <Check className="w-2.5 h-2.5 text-emerald-600" />}
+                {highContrast && <Check className="w-2.5 h-2.5 text-orange-600" />}
               </div>
             </button>
           </div>
@@ -141,11 +141,11 @@ export default function AccessibilityPanel({
             <button
               onClick={() => setReadableFont(!readableFont)}
               className={`w-12 h-6 flex items-center rounded-full p-1 transition-all duration-300 cursor-pointer ${
-                readableFont ? 'bg-emerald-500 justify-end' : 'bg-slate-200 justify-start'
+                readableFont ? 'bg-[#f4700a] justify-end' : 'bg-slate-200 justify-start'
               }`}
             >
               <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-md">
-                {readableFont && <Check className="w-2.5 h-2.5 text-emerald-600" />}
+                {readableFont && <Check className="w-2.5 h-2.5 text-orange-600" />}
               </div>
             </button>
           </div>

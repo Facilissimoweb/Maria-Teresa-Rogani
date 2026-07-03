@@ -154,10 +154,7 @@ export default function ContattiView() {
   return (
     <article id="contatti-view" className="bg-[#1b1b18] text-white">
       {/* HERO SECTION */}
-      <section id="contatti-hero" className="relative bg-[#000000] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
-        {/* Bright Orange Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#f4700a]/30 via-[#f4700a]/15 to-transparent pointer-events-none z-0 mix-blend-screen" />
-        <div className="absolute inset-0 bg-[#f4700a]/10 pointer-events-none z-0" />
+      <section id="contatti-hero" className="relative bg-[#111113] text-white overflow-hidden py-16 lg:py-24 border-b border-white/10">
         
         {/* Background Decorative Polygon Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d69429_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -230,7 +227,7 @@ export default function ContattiView() {
                 </div>
                 <div className="flex justify-between items-end pb-1">
                   <span className="text-[9px] uppercase tracking-[0.15em] opacity-50">Costo</span>
-                  <span className="font-semibold text-emerald-400">GRATUITA (100% Off)</span>
+                  <span className="font-semibold text-[#f4700a]">GRATUITA (100% Off)</span>
                 </div>
               </div>
             </div>
@@ -245,8 +242,8 @@ export default function ContattiView() {
         {submitted ? (
           /* SUCCESS SCREEN */
           <div id="submission-success-card" className="max-w-3xl mx-auto bg-[#111113] border border-white/10 p-10 shadow-lg text-center space-y-8">
-            <div className="w-16 h-16 bg-white/5 rounded-none flex items-center justify-center mx-auto text-[#10B981] border border-white/10">
-              <CheckCircle2 className="w-10 h-10 text-emerald-400" />
+            <div className="w-16 h-16 bg-white/5 rounded-none flex items-center justify-center mx-auto text-[#f4700a] border border-white/10">
+              <CheckCircle2 className="w-10 h-10 text-[#f4700a]" />
             </div>
             
             <div className="space-y-2">
@@ -358,18 +355,18 @@ export default function ContattiView() {
                     <Phone className="w-5 h-5 text-[#d69429] shrink-0" />
                     <h3 className="font-bold text-white text-sm uppercase tracking-wider font-display">Call Preliminare Gratuita</h3>
                   </div>
-                  <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-none uppercase tracking-wider font-mono">Gratis</span>
+                  <span className="text-[9px] font-bold text-[#f4700a] bg-[#f4700a]/10 border border-[#f4700a]/20 px-2 py-1 rounded-none uppercase tracking-wider font-mono">Gratis</span>
                 </div>
                 <p className="text-xs text-white/60 leading-relaxed font-sans font-light">
                   Un briefing telefonico o video di 30 minuti. Serve a conoscerci, inquadrare l'idea generale della Vostra piattaforma e valutare se la Vostra attività necessita di un CMS o di uno sviluppo Custom.
                 </p>
                 <ul className="mt-3 space-y-1.5 text-[9px] text-white/40 uppercase tracking-wider font-mono">
                   <li className="flex items-center space-x-2">
-                    <span className="text-emerald-400 font-bold">✓</span>
+                    <span className="text-[#f4700a] font-bold">✓</span>
                     <span>Nessun obbligo di acquisto</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <span className="text-emerald-400 font-bold">✓</span>
+                    <span className="text-[#f4700a] font-bold">✓</span>
                     <span>Durata: 30 minuti</span>
                   </li>
                 </ul>
@@ -396,11 +393,11 @@ export default function ContattiView() {
                 </p>
                 <ul className="mt-3 space-y-1.5 text-[9px] text-white/40 uppercase tracking-wider font-mono">
                   <li className="flex items-center space-x-2">
-                    <span className="text-emerald-400 font-bold">✓</span>
+                    <span className="text-[#f4700a] font-bold">✓</span>
                     <span>Analisi architetturale approfondita</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <span className="text-emerald-400 font-bold">✓</span>
+                    <span className="text-[#f4700a] font-bold">✓</span>
                     <span>Consigliata per e-commerce e portali</span>
                   </li>
                 </ul>
