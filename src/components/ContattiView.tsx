@@ -236,7 +236,7 @@ export default function ContattiView() {
       </section>
 
       {/* Main Content Area */}
-      <div className="py-16 bg-[#363630] border-b border-white/10 text-white">
+      <div className="py-16 bg-gradient-to-b from-black via-[#f4700a]/25 to-[#111113] border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {submitted ? (

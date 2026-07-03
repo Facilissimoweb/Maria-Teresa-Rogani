@@ -125,7 +125,7 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
       </section>
 
       {/* CORE STATS & BRAND VALUES */}
-      <section id="values-section" className="py-20 bg-[#363630] border-b border-white/10 text-white">
+      <section id="values-section" className="py-20 bg-gradient-to-b from-black via-[#f4700a]/25 to-[#111113] border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-4">
             <div className="space-y-2">

@@ -278,7 +278,7 @@ export default function NormativaView({ setActiveTab }: NormativaViewProps) {
       </section>
 
       {/* 2. MAIN LAYOUT CONTAINER WITH STICKY SIDEBAR */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 bg-[#363630] border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 bg-gradient-to-b from-black via-[#f4700a]/25 to-[#111113] border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           
           {/* Desktop Left Sticky Navigation Menu */}

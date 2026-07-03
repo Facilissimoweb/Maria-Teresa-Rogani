@@ -300,7 +300,7 @@ export default function ServiziView({ setActiveTab }: ServiziViewProps) {
       </section>
 
       {/* Main Content Area */}
-      <div className="py-16 bg-[#363630] text-white border-b border-white/10">
+      <div className="py-16 bg-gradient-to-b from-black via-[#f4700a]/25 to-[#111113] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
           {/* COMPARISON TABS (CMS VS CUSTOM VS SOCIAL) */}
