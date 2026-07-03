@@ -49,6 +49,17 @@ export default function App() {
   const [announcement, setAnnouncement] = useState<string>('');
   const [webVitalsOpen, setWebVitalsOpen] = useState<boolean>(false);
   const [showAccent, setShowAccent] = useState<boolean>(true);
+  const [isMobile, setIsMobile] = useState<boolean>(true);
+
+  // Monitor screen size to determine if device is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const lastScrollY = React.useRef<number>(0);
 
   // Scroll listener to show accent ribbon on scroll up and hide on scroll down (mobile only)
@@ -237,62 +248,9 @@ export default function App() {
   ].filter(Boolean).join(" ");
 
   return (
-    <div id="app-root-container" className={`${containerClasses} lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-[280px_1fr] lg:grid-rows-[auto_1fr] bg-[#131311]`}>
+    <div id="app-root-container" className={`${containerClasses} bg-[#131311]`}>
       {/* Dev-tool Overlay for Core Web Vitals */}
       <WebVitalsOverlay isOpen={webVitalsOpen} setIsOpen={setWebVitalsOpen} />
-
-      {/* Sidebar Left - Desktop only */}
-      <aside className="hidden lg:flex lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 border-r border-white/10 flex-col p-8 bg-[#131311] text-white select-none">
-        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50 mb-12">
-          Facilissimo Web — [v2.0]
-        </div>
-        <nav className="flex-grow flex flex-col space-y-2">
-          {[
-            { id: 'home', label: '01 Home' },
-            { id: 'chi-sono', label: '02 Chi Sono' },
-            { id: 'servizi', label: '03 Servizi' },
-            { id: 'normativa', label: '04 Compliance' },
-            { id: 'blog', label: '05 Blog', badge: true },
-            ...(isAdmin ? [{ id: 'fogli', label: '06 Area Riservata' }] : []),
-            { id: 'contatti', label: '07 Contatti' }
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                setActiveTab(item.id as ActiveTab);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className={`w-full text-left py-4 border-b border-white/5 text-xs font-mono tracking-[0.15em] uppercase transition-colors duration-150 cursor-pointer flex items-center justify-between ${
-                activeTab === item.id 
-                  ? 'text-[#d69429] font-bold border-b-[#d69429]' 
-                  : item.id === 'blog' 
-                    ? 'text-amber-500 hover:text-amber-400'
-                    : 'text-white/55 hover:text-white'
-              }`}
-            >
-              <span>{item.label}</span>
-              {item.badge && (
-                <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping shrink-0" />
-              )}
-            </button>
-          ))}
-        </nav>
-        <div className="font-mono text-[10px] text-white/40 tracking-[0.15em] leading-relaxed uppercase mt-auto">
-          Strategic Digital Partner<br />
-          M. Teresa Rogani
-        </div>
-      </aside>
-
-      {/* Header - Desktop only */}
-      <header className="hidden lg:flex lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 border-b border-white/10 p-6 justify-between items-center bg-[#131311] text-white">
-        <div className="px-2 py-0.5 border border-[#d69429] text-[#d69429] font-mono text-[9px] uppercase tracking-wider">
-          Consapevolezza AI
-        </div>
-        <div className="flex items-center space-x-6 text-xs font-mono text-white/50 uppercase tracking-[0.15em]">
-          <span className="cursor-pointer hover:text-white transition-colors" onClick={() => handleOpenLegal('privacy')}>Privacy Policy</span>
-          <span className="cursor-pointer hover:text-white transition-colors" onClick={() => setSitemapOpen(true)}>Sitemap</span>
-        </div>
-      </header>
 
       {/* Dynamic Upper Accent Ribbon - Mobile only */}
       <div 
@@ -312,11 +270,11 @@ export default function App() {
         FACILISSIMO WEB
       </div>
 
-      {/* Main Navigation Bar - Mobile only */}
+      {/* Main Navigation Bar - Universal Classic Navbar */}
       <div 
-        className="lg:hidden sticky z-40 transition-all duration-300 ease-in-out"
+        className="sticky z-40 transition-all duration-300 ease-in-out"
         style={{ 
-          top: showAccent ? '36px' : '0px'
+          top: (isMobile && showAccent) ? '36px' : '0px'
         }}
       >
         <Navbar 
@@ -331,7 +289,7 @@ export default function App() {
       </div>
 
       {/* Main Content Area */}
-      <main id="app-main-content" className="flex-grow lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:overflow-y-auto lg:scrollbar-none bg-[#111113]">
+      <main id="app-main-content" className="flex-grow bg-[#111113]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
