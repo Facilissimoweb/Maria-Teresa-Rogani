@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import { createServer as createViteServer } from "vite";
-import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 
@@ -14,39 +13,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Initialize Gemini SDK with telemetry header
-const getGeminiClient = () => {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    throw new Error("GEMINI_API_KEY non è configurata nei Secrets del server.");
-  }
-  return new GoogleGenAI({
-    apiKey: apiKey,
-    httpOptions: {
-      headers: {
-        'User-Agent': 'aistudio-build',
-      }
-    }
-  });
-};
-
-// API chat endpoint with state-of-the-art system prompt in Italian
-app.post("/api/chat", async (req, res) => {
-  try {
-    const { messages } = req.body;
-    if (!messages || !Array.isArray(messages)) {
-      return res.status(400).json({ error: "Il corpo della richiesta deve contenere un array 'messages'." });
-    }
-
-    const ai = getGeminiClient();
-
-    // Map message format into standard Gemini Content parts
-    const contents = messages.map((m: any) => ({
-      role: m.role === "assistant" ? "model" : "user",
-      parts: [{ text: m.content }]
-    }));
-
-    const systemInstruction = `
+const systemInstruction = `
 Sei il Chatbox Automatico (un assistente virtuale intelligente) di M. Teresa Rogani, fondatrice e unica professionista di "Facilissimo Web" (Web Graphic Designer e alleata strategica delle imprese).
 
 ATTENZIONE MASSIMA - REGOLE RIGIDE:
@@ -65,41 +32,95 @@ Informazioni su M. Teresa Rogani:
 - Servizi Offerti:
   1. Piattaforme CMS: Sviluppo guidato e personalizzato su WordPress o Webflow (Professional ed E-Commerce).
   2. Sviluppo Custom: Siti d'élite e Single Page Applications (SPA) veloci con React, Vite e Tailwind CSS, anche in architettura Enterprise con database.
-  3. Integrazioni AI Studiate ad Hoc: Integrazione di modelli LLM (Gemini, GPT) e chatbot intelligenti istruiti sui dati aziendali, automatizzando flussi di lavoro (AI workflows) e gestendo la conformità all'AI Act europeo.
+  3. Integrazioni AI Studiate ad Hoc: Integrazione di modelli LLM (Gemini, GPT, Llama) e chatbot intelligenti istruiti sui dati aziendali, automatizzando flussi di lavoro (AI workflows) e gestendo la conformità all'AI Act europeo.
   4. Social Lead Generation: Campagne pubblicitarie mirate su Meta (Facebook/Instagram) e LinkedIn, ideazione di funnel d'acquisizione contatti qualificati.
 - Azioni: Consiglia di cliccare sul pulsante WhatsApp presente in chat per scriverle direttamente in tempo reale, oppure di compilare il modulo nella sezione "Contatti" per programmare una sessione strategica gratuita di 30 minuti.
 `;
 
-    let response;
-    try {
-      response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: contents,
-        config: {
-          systemInstruction: systemInstruction,
-          temperature: 0.7,
-        },
-      });
-    } catch (primaryError: any) {
-      console.warn("Primary model (gemini-3.5-flash) failed, attempting fallback to gemini-3.1-flash-lite:", primaryError.message);
-      // Fallback model call
-      response = await ai.models.generateContent({
-        model: "gemini-3.1-flash-lite",
-        contents: contents,
-        config: {
-          systemInstruction: systemInstruction,
-          temperature: 0.7,
-        },
+// API chat endpoint with state-of-the-art system prompt in Italian using Groq API
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { messages } = req.body;
+    if (!messages || !Array.isArray(messages)) {
+      return res.status(400).json({ error: "Il corpo della richiesta deve contenere un array 'messages'." });
+    }
+
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ 
+        error: "GROQ_API_KEY non è configurata nelle variabili d'ambiente. Assicurati di impostare la variabile GROQ_API_KEY." 
       });
     }
 
-    const text = response.text || "Mi scuso, si è verificato un problema nell'elaborazione della risposta.";
-    res.json({ reply: text });
+    // Format messages for Groq Chat Completions API
+    const messagesForGroq = [
+      { role: "system", content: systemInstruction },
+      ...messages.map((m: any) => ({
+        role: m.role === "assistant" ? "assistant" : "user",
+        content: m.content
+      }))
+    ];
+
+    let responseText = "";
+
+    try {
+      // Primary model: llama-3.3-70b-versatile
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: messagesForGroq,
+          temperature: 0.7
+        })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error?.message || `Groq API returned status ${response.status}`);
+      }
+
+      const data = await response.json();
+      responseText = data.choices?.[0]?.message?.content || "";
+    } catch (primaryError: any) {
+      console.warn("Primary model llama-3.3-70b-versatile failed, attempting fallback:", primaryError.message);
+
+      // Fallback model: llama-3.1-8b-instant
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant",
+          messages: messagesForGroq,
+          temperature: 0.7
+        })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error?.message || `Groq Fallback API returned status ${response.status}`);
+      }
+
+      const data = await response.json();
+      responseText = data.choices?.[0]?.message?.content || "";
+    }
+
+    if (!responseText) {
+      throw new Error("La risposta di Groq è vuota.");
+    }
+
+    res.json({ reply: responseText });
 
   } catch (error: any) {
-    console.error("Errore nel server chat API:", error.message);
+    console.error("Errore nel server chat API (Groq):", error.message);
     res.status(500).json({ 
-      error: error.message || "Errore interno del server durante la chiamata a Gemini." 
+      error: error.message || "Errore interno del server durante la chiamata a Groq." 
     });
   }
 });
