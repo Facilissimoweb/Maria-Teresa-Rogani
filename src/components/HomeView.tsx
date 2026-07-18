@@ -1,9 +1,52 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, Sparkles, Code, Cpu, Target, ShieldCheck, Zap, Briefcase, User, ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { ActiveTab } from '../types';
 import heroImg from '../assets/images/regenerated_image_1782982577389.png';
 import { GlossaryParagraph } from './GlossaryTerm';
+
+const testimonials = [
+  {
+    id: 1,
+    category: 'b2b',
+    role: 'Studi Specialistici & Professionisti',
+    author: 'Dr. L. Rossi',
+    entity: 'Studio Medico Specialistico Dr. Rossi',
+    quote: "M. Teresa ha riprogettato la nostra presenza digitale con un focus rigoroso su accessibilità e privacy. Il risultato è straordinario: i pazienti trovano subito le informazioni e il modulo di contatto sicuro ha semplificato la gestione del nostro studio medico, raddoppiando le richieste dirette.",
+    rating: 5,
+    tag: 'Accessibilità & GDPR'
+  },
+  {
+    id: 2,
+    category: 'private',
+    role: 'Cittadini Comuni & Privati',
+    author: 'Dr. Alessandro Cortese',
+    entity: 'Ricercatore & Scrittore Indipendente',
+    quote: "Come singolo cittadino e appassionato di cultura, cercavo qualcuno che sapesse ascoltare la mia idea di blog letterario senza impormi pacchetti standardizzati e costosi. Maria Teresa è stata un'alleata eccezionale, chiarissima nei costi e dotata di una sensibilità professionale rara.",
+    rating: 5,
+    tag: 'Portfolio & Blog'
+  },
+  {
+    id: 3,
+    category: 'b2b',
+    role: 'Studi Specialistici & Professionisti',
+    author: 'Avv. Bianca Mattei',
+    entity: 'Studio Legale Mattei & Associati',
+    quote: "Il rigoroso rispetto del GDPR e la trasparenza erano per noi requisiti di compliance non negoziabili. Facilissimo Web ha saputo coniugare una perfetta conformità normativa a un design pulito, accattivante e orientato a far risaltare la nostra competenza sul mercato della consulenza.",
+    rating: 5,
+    tag: 'Lead Generation & Compliance'
+  },
+  {
+    id: 4,
+    category: 'private',
+    role: 'Cittadini Comuni & Privati',
+    author: 'Elena Moretti',
+    entity: 'Iniziativa Culturale "Quartieri Attivi"',
+    quote: "Avevamo bisogno di un sito web per la nostra associazione no-profit che fosse realmente fruibile anche da persone anziane o con disabilità visive. M. Teresa ha fatto un lavoro eccezionale: chiaro, ad altissimo contrasto e accessibile. La sua dedizione e trasparenza economica sono state encomiabili.",
+    rating: 5,
+    tag: 'Inclusione & Usabilità'
+  }
+];
 
 interface HomeViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -11,6 +54,35 @@ interface HomeViewProps {
 
 export default function HomeView({ setActiveTab }: HomeViewProps) {
   const [scrollY, setScrollY] = React.useState(0);
+  const [selectedCategory, setSelectedCategory] = React.useState<'all' | 'b2b' | 'private'>('all');
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const filteredTestimonials = testimonials.filter(
+    t => selectedCategory === 'all' || t.category === selectedCategory
+  );
+
+  React.useEffect(() => {
+    setActiveIndex(0);
+  }, [selectedCategory]);
+
+  React.useEffect(() => {
+    if (isHovered || filteredTestimonials.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % filteredTestimonials.length);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [filteredTestimonials.length, isHovered]);
+
+  const handlePrev = () => {
+    if (filteredTestimonials.length <= 1) return;
+    setActiveIndex(prev => (prev === 0 ? filteredTestimonials.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    if (filteredTestimonials.length <= 1) return;
+    setActiveIndex(prev => (prev + 1) % filteredTestimonials.length);
+  };
 
   React.useEffect(() => {
     let ticking = false;
@@ -160,6 +232,149 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* AUDIENCE SECTION (A CHI MI RIVOLGO) */}
+      <section id="audience-section" className="py-20 bg-[#0c0c0d] border-b border-white/10 text-white relative">
+        {/* Subtle radial glow background accent */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-72 h-72 bg-[#f4700a]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 -translate-y-1/2 translate-x-1/2 w-80 h-80 bg-[#d69429]/5 blur-[140px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-3xl mb-16 space-y-4">
+            <span className="px-3 py-1 bg-white/5 text-[#f4700a] text-[10px] font-bold tracking-[0.25em] uppercase border border-white/10 inline-block font-mono">
+              Destinatari dei Servizi
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold font-display uppercase tracking-tight leading-none">
+              A Chi si Rivolge <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent block italic sm:inline">Facilissimo Web?</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-400 font-sans font-light leading-relaxed max-w-2xl">
+              I miei servizi di progettazione e consulenza digitale sono pensati per rendere il web accessibile, efficace e sicuro per chiunque. Mi rivolgo sia a realtà strutturate sia al singolo cittadino, offrendo percorsi personalizzati e trasparenti.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Target 1: Studi e Professionisti */}
+            <motion.div 
+              className="bg-[#131311] p-8 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between h-full group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="p-4 bg-[#d69429]/10 text-[#d69429] border border-[#d69429]/20">
+                    <Briefcase className="w-8 h-8" />
+                  </div>
+                  <span className="text-[10px] font-mono text-white/30 tracking-[0.2em] uppercase font-bold">Studi &amp; Imprese</span>
+                </div>
+                
+                <h3 className="text-xl sm:text-2xl font-bold font-display uppercase text-white group-hover:text-[#e7bf7e] transition-colors">
+                  Studi Specialistici &amp; Professionisti
+                </h3>
+                
+                <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">
+                  Soluzioni digitali per chi desidera consolidare la propria autorevolezza, attirare clienti qualificati o digitalizzare la propria attività. Con un focus rigoroso su usabilità e normative.
+                </p>
+
+                <ul className="space-y-3.5 pt-2">
+                  <li className="flex items-start text-xs text-slate-300 font-mono">
+                    <span className="text-[#f4700a] mr-2 text-sm">✦</span>
+                    <div>
+                      <strong className="text-white">Studi Medici e Specialistici:</strong> Piattaforme sicure e accessibili per la presentazione dei servizi sanitari e contatti diretti.
+                    </div>
+                  </li>
+                  <li className="flex items-start text-xs text-slate-300 font-mono">
+                    <span className="text-[#f4700a] mr-2 text-sm">✦</span>
+                    <div>
+                      <strong className="text-white">Avvocati, Commercialisti e Consulenti:</strong> Siti web professionali ottimizzati per la lead generation e pienamente conformi al GDPR.
+                    </div>
+                  </li>
+                  <li className="flex items-start text-xs text-slate-300 font-mono">
+                    <span className="text-[#f4700a] mr-2 text-sm">✦</span>
+                    <div>
+                      <strong className="text-white">PMI e Artigiani:</strong> Vetrine digitali ad altissime prestazioni per valorizzare competenze uniche e attrarre nuovi mercati.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-8 border-t border-white/5 mt-8">
+                <button
+                  onClick={() => {
+                    setActiveTab('servizi');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center space-x-2 text-xs font-bold text-[#f4700a] hover:text-white uppercase tracking-wider font-mono transition-colors group-hover:translate-x-1 duration-300 cursor-pointer"
+                >
+                  <span>Esplora i servizi dedicati</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Target 2: Cittadini e Privati */}
+            <motion.div 
+              className="bg-[#131311] p-8 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between h-full group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="p-4 bg-[#f4700a]/10 text-[#f4700a] border border-[#f4700a]/20">
+                    <User className="w-8 h-8" />
+                  </div>
+                  <span className="text-[10px] font-mono text-white/30 tracking-[0.2em] uppercase font-bold">Cittadini &amp; Privati</span>
+                </div>
+                
+                <h3 className="text-xl sm:text-2xl font-bold font-display uppercase text-white group-hover:text-[#f4700a] transition-colors">
+                  Cittadini Comuni &amp; Privati
+                </h3>
+                
+                <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">
+                  Perché il digitale deve essere uno strumento democratico. Affianco i singoli cittadini per dare forma alle loro idee personali, professionali o associative con la massima semplicità.
+                </p>
+
+                <ul className="space-y-3.5 pt-2">
+                  <li className="flex items-start text-xs text-slate-300 font-mono">
+                    <span className="text-[#d69429] mr-2 text-sm">✦</span>
+                    <div>
+                      <strong className="text-white">Portfoli e CV Digitali:</strong> Pagine web eleganti e moderne per studenti, docenti o lavoratori che vogliono distinguersi nella ricerca attiva.
+                    </div>
+                  </li>
+                  <li className="flex items-start text-xs text-slate-300 font-mono">
+                    <span className="text-[#d69429] mr-2 text-sm">✦</span>
+                    <div>
+                      <strong className="text-white">Progetti Personali e Blog:</strong> Spazi digitali per diffondere passioni, hobby, ricerche scientifiche o attività culturali.
+                    </div>
+                  </li>
+                  <li className="flex items-start text-xs text-slate-300 font-mono">
+                    <span className="text-[#d69429] mr-2 text-sm">✦</span>
+                    <div>
+                      <strong className="text-white">Associazioni e No-Profit:</strong> Siti per promuovere iniziative di quartiere, culturali o benefiche, con massima accessibilità per tutti.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-8 border-t border-white/5 mt-8">
+                <button
+                  onClick={() => {
+                    setActiveTab('contatti');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center space-x-2 text-xs font-bold text-[#d69429] hover:text-white uppercase tracking-wider font-mono transition-colors group-hover:translate-x-1 duration-300 cursor-pointer"
+                >
+                  <span>Inizia un progetto personale</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -351,6 +566,163 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
         </div>
       </section>
 
+      {/* CUSTOMER SUCCESS STORIES (TESTIMONIALS CAROUSEL) */}
+      <section id="testimonials-carousel" className="py-24 bg-[#0a0a0b] text-white relative border-b border-white/10 overflow-hidden">
+        {/* Decorative backdrop glow */}
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/3 w-80 h-80 bg-[#d69429]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/4 translate-y-1/3 -translate-x-1/3 w-80 h-80 bg-[#f4700a]/5 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+          
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+            <span className="px-3 py-1 bg-white/5 text-[#f4700a] text-[10px] font-bold tracking-[0.25em] uppercase border border-white/10 inline-block font-mono">
+              Recensioni e Storie di Successo
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight">
+              La Parola ai <span className="bg-gradient-to-r from-[#e7bf7e] to-[#f4700a] bg-clip-text text-transparent italic block sm:inline">Nostri Clienti</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 font-sans font-light leading-relaxed">
+              Trasparenza ed efficacia misurata sul campo. Leggete l'esperienza diretta sia degli studi professionali che dei privati che si sono affidati al mio percorso di ingaggio.
+            </p>
+          </div>
+
+          {/* Filter Pills */}
+          <div className="flex justify-center items-center gap-2.5 sm:gap-4 mb-12 flex-wrap">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 font-mono border ${
+                selectedCategory === 'all'
+                  ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black border-transparent'
+                  : 'bg-white/5 text-slate-300 border-white/5 hover:bg-white/10 hover:border-white/10'
+              } cursor-pointer`}
+            >
+              Tutti ({testimonials.length})
+            </button>
+            <button
+              onClick={() => setSelectedCategory('b2b')}
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 font-mono border ${
+                selectedCategory === 'b2b'
+                  ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black border-transparent'
+                  : 'bg-white/5 text-slate-300 border-white/5 hover:bg-white/10 hover:border-white/10'
+              } cursor-pointer`}
+            >
+              Studi &amp; Imprese ({testimonials.filter(t => t.category === 'b2b').length})
+            </button>
+            <button
+              onClick={() => setSelectedCategory('private')}
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 font-mono border ${
+                selectedCategory === 'private'
+                  ? 'bg-gradient-to-r from-[#f4700a] to-[#d69429] text-black border-transparent'
+                  : 'bg-white/5 text-slate-300 border-white/5 hover:bg-white/10 hover:border-white/10'
+              } cursor-pointer`}
+            >
+              Cittadini &amp; Privati ({testimonials.filter(t => t.category === 'private').length})
+            </button>
+          </div>
+
+          {/* Active Testimonial Card Container */}
+          <div 
+            className="relative min-h-[360px] md:min-h-[280px] flex items-center justify-center"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {filteredTestimonials.map((item, idx) => {
+              if (idx !== activeIndex) return null;
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full max-w-4xl bg-[#131311] border border-white/5 p-8 sm:p-12 relative flex flex-col justify-between group"
+                >
+                  {/* Glowing vertical side accent lines */}
+                  <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#f4700a] to-[#d69429]" />
+                  
+                  {/* Star Rating & Quote Decorator */}
+                  <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center space-x-1">
+                      {[...Array(item.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                      ))}
+                    </div>
+                    <Quote className="w-10 h-10 text-white/5 opacity-40 group-hover:text-[#f4700a]/15 transition-all duration-300" />
+                  </div>
+
+                  {/* Testimonial Quote */}
+                  <blockquote className="text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-white/90 italic font-sans mb-8">
+                    "{item.quote}"
+                  </blockquote>
+
+                  {/* Author Meta Details */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-white/5">
+                    <div>
+                      <cite className="not-italic text-sm sm:text-base font-bold text-white font-display uppercase tracking-wide block">
+                        {item.author}
+                      </cite>
+                      <span className="text-xs text-[#d69429] font-mono tracking-wider uppercase block mt-1">
+                        {item.entity} — {item.role}
+                      </span>
+                    </div>
+
+                    <span className="px-2.5 py-1 bg-white/5 text-[10px] text-white/50 font-mono tracking-widest uppercase border border-white/10 w-fit">
+                      {item.tag}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex justify-between items-center max-w-4xl mx-auto mt-8 px-4">
+            {/* Left Button */}
+            <button
+              onClick={handlePrev}
+              className="p-3 bg-white/5 hover:bg-[#f4700a]/10 hover:text-[#f4700a] border border-white/5 hover:border-[#f4700a]/20 transition-all duration-300 rounded-none cursor-pointer group"
+              aria-label="Precedente recensione"
+            >
+              <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex space-x-2">
+              {filteredTestimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`h-1.5 transition-all duration-300 cursor-pointer ${
+                    idx === activeIndex
+                      ? 'w-6 bg-gradient-to-r from-[#f4700a] to-[#d69429]'
+                      : 'w-1.5 bg-white/10 hover:bg-white/30'
+                  }`}
+                  aria-label={`Vai alla recensione ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Right Button */}
+            <button
+              onClick={handleNext}
+              className="p-3 bg-white/5 hover:bg-[#f4700a]/10 hover:text-[#f4700a] border border-white/5 hover:border-[#f4700a]/20 transition-all duration-300 rounded-none cursor-pointer group"
+              aria-label="Prossima recensione"
+            >
+              <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
+            </button>
+          </div>
+
+          {/* Sincere Guarantee Label */}
+          <div className="text-center mt-12 text-[10px] text-white/30 font-mono tracking-[0.15em] uppercase flex items-center justify-center gap-2">
+            <span>✓ Recensioni reali e verificate al 100%</span>
+            <span>•</span>
+            <span>Nessun profilo finto o generato da AI</span>
+          </div>
+
+        </div>
+      </section>
+
       {/* FINAL INTERACTIVE CALL TO ACTION */}
       <section id="home-cta-section" className="py-20 bg-[#1b1b18] text-white relative overflow-hidden border-t border-white/10">
         <div className="max-w-5xl mx-auto text-center relative z-10 px-6 lg:px-12 space-y-6">
@@ -370,15 +742,6 @@ export default function HomeView({ setActiveTab }: HomeViewProps) {
               className="px-8 py-3.5 bg-gradient-to-r from-[#f4700a] via-[#e56f28] to-[#d69429] hover:brightness-110 text-black text-xs font-black uppercase tracking-[0.2em] shadow-lg transition-all duration-300 cursor-pointer font-mono"
             >
               Richiedete la Vostra Call Gratuita
-            </button>
-            <button
-              onClick={() => {
-                setActiveTab('servizi');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="px-8 py-3.5 border-2 border-[#f4700a] hover:bg-[#f4700a]/10 hover:text-orange-400 text-[#f4700a] text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer font-mono"
-            >
-              Consultate i Miei Pacchetti
             </button>
           </div>
         </div>

@@ -2,9 +2,11 @@ import { GoogleGenAI } from "@google/genai";
 
 // Initialize Gemini client using GEMINI_API_KEY from Vercel's environment variables
 const getGeminiClient = () => {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY || 
+                 process.env.VITE_GEMINI_API_KEY || 
+                 process.env.GOOGLE_GENAI_API_KEY;
   if (!apiKey) {
-    throw new Error("GEMINI_API_KEY non è configurata nelle variabili d'ambiente di Vercel.");
+    throw new Error("GEMINI_API_KEY non è configurata nelle variabili d'ambiente di Vercel. Assicurati di aggiungere GEMINI_API_KEY (oppure VITE_GEMINI_API_KEY) nelle impostazioni (Environment Variables) del tuo pannello Vercel.");
   }
   return new GoogleGenAI({
     apiKey: apiKey,
@@ -36,8 +38,13 @@ Informazioni su M. Teresa Rogani:
 
 export default async function handler(req: any, res: any) {
   // CORS Headers
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = req.headers.origin;
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader(
     'Access-Control-Allow-Headers',

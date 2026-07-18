@@ -17,7 +17,7 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
     {
       id: 'welcome',
       role: 'assistant',
-      content: 'Benvenuti su Facilissimo Web! Sono l\'Assistente AI Strategica di M. Teresa Rogani, Web Graphic Designer e alleata strategica delle imprese. M. Teresa opera come unica professionista indipendente per affiancarvi in ogni fase del Vostro progetto. Come posso aiutarvi oggi a ottimizzare i Vostri risultati online? Se desiderate scriverle direttamente, potete anche cliccare sul pulsante WhatsApp qui sopra!'
+      content: 'Benvenuti su Facilissimo Web! Sono il **Chatbox automatico di M. Teresa Rogani** (un assistente virtuale intelligente: non state parlando direttamente con lei, ma con il suo risponditore AI). M. Teresa opera come unica professionista indipendente per affiancarvi in ogni fase del Vostro progetto. Come vostro assistente virtuale, sono a disposizione per illustrare i servizi e i vantaggi dell\'accessibilità e della lead generation. Come posso aiutarvi oggi a ottimizzare i Vostri risultati online? Se desiderate scriverle o parlarle direttamente, potete cliccare sul pulsante WhatsApp o compilare il modulo di richiesta!'
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -140,7 +140,7 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
       {
         id: 'welcome',
         role: 'assistant',
-        content: 'Benvenuti su Facilissimo Web! Sono l\'Assistente AI Strategica di M. Teresa Rogani, Web Graphic Designer e alleata strategica delle imprese. M. Teresa opera come unica professionista indipendente per affiancarvi in ogni fase del Vostro progetto. Come posso aiutarvi oggi a ottimizzare i Vostri risultati online? Se desiderate scriverle direttamente, potete anche cliccare sul pulsante WhatsApp qui sopra!'
+        content: 'Benvenuti su Facilissimo Web! Sono il **Chatbox automatico di M. Teresa Rogani** (un assistente virtuale intelligente: non state parlando direttamente con lei, ma con il suo risponditore AI). M. Teresa opera come unica professionista indipendente per affiancarvi in ogni fase del Vostro progetto. Come vostro assistente virtuale, sono a disposizione per illustrare i servizi e i vantaggi dell\'accessibilità e della lead generation. Come posso aiutarvi oggi a ottimizzare i Vostri risultati online? Se desiderate scriverle o parlarle direttamente, potete cliccare sul pulsante WhatsApp o compilare il modulo di richiesta!'
       }
     ]);
     setError(null);
@@ -169,13 +169,24 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
       {/* Floating Chat Trigger Button */}
       <button
         id="ai-chat-trigger"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          const nextState = !isOpen;
+          setIsOpen(nextState);
+          if (nextState) {
+            // Scroll both window and the main view container to the top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const mainEl = document.getElementById('app-main-content');
+            if (mainEl) {
+              mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }
+        }}
         className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl relative cursor-pointer ${
           isOpen
             ? 'bg-rose-600 text-white hover:bg-rose-700'
             : 'bg-[#f4700a] text-white hover:bg-[#d45d05] hover:scale-105'
         }`}
-        title="Chiedi all'Assistente AI Strategico"
+        title="Apri Chatbox Facilissimo Web"
         aria-label="Apri assistente virtuale"
       >
         {isOpen ? (
@@ -201,8 +212,8 @@ export default function ChatAssistant({ setActiveTab }: ChatAssistantProps) {
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-[#f4700a]">Consulente AI</h4>
-                <p className="text-sm font-extrabold uppercase tracking-wider">M.Teresa Assistant</p>
+                <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-[#f4700a]">CHATBOX FACILISSIMO WEB</h4>
+                <p className="text-sm font-extrabold uppercase tracking-wider">DI M.TERESA ROGANI</p>
               </div>
             </div>
             <div className="flex items-center space-x-1.5">
